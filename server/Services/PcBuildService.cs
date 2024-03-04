@@ -11,4 +11,17 @@ public class PcBuildService{
         PcBuild pcBuild = repo.CreatePcBuild(pcBuildData);
         return pcBuild;
     }
+
+    internal List<PcBuild> GetPersonalBuilds(string userId){
+        if(userId == null)throw new Exception("No user found");
+        List<PcBuild> pcBuilds = repo.GetPersonalBuilds(userId);
+        return pcBuilds;
+    }
+
+    internal string DeletePcBuild(int pcBuildId, string userId){
+        if(userId == null)throw new Exception("Not Authorized");
+        repo.DeletePcBuild(pcBuildId);
+        string message = "Build deleted.";
+        return message;
+    }
 }

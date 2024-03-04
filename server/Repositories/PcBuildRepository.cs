@@ -26,5 +26,29 @@ public class PcBuildRepository{
         }, pcBuildData).FirstOrDefault();
         return pcBuild;
     }
+
+    internal List<PcBuild> GetPersonalBuilds(string userId){
+        string sql = @"
+        SELECT
+        pcBuilds.*,
+        accounts.*
+        FROM pcBuilds
+        JOIN accounts ON pcBuilds.creatorId = accounts.id
+        WHERE pcBuilds.creatorId = @userId
+        ";
+        List<PcBuild> pcBuilds = db.Query<PcBuild, Account, PcBuild>(sql,(pcBuild, account)=>{
+            pcBuild.Creator = account;
+            return pcBuild;
+        }, new{userId}).ToList();
+        return pcBuilds;
+    }
+
+    internal void DeletePcBuild(int pcBuildId){
+        string sql = @"
+        DELETE pcBuilds
+        WHERE id = @pcBuildId
+        ";
+        db.Execute(sql, new{pcBuildId});
+    }
 }
 
