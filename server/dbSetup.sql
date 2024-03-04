@@ -12,7 +12,7 @@ CREATE TABLE stockParts(
   productImage VARCHAR(500) NOT NULL,
   type VARCHAR(10) NOT NULL,
   size VARCHAR(50),
-  price INT NOT NULL,
+  price DECIMAL(8,2) NOT NULL,
   name VARCHAR(70) NOT NULL,
   company VARCHAR(60) NOT NULL,
   speed VARCHAR(50),
@@ -25,7 +25,7 @@ CREATE TABLE pcBuilds(
   name VARCHAR(50) NOT NULL,
   creatorId VARCHAR(255) NOT NULL,
   powerScore INT,
-  price INT NOT NULL,
+  price DECIMAL(6,2),
   rating INT,
   Foreign Key (creatorId) REFERENCES accounts(id) ON DELETE CASCADE
 ) default charset utf8 COMMENT '';

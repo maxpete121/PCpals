@@ -10,4 +10,19 @@ public class PcBuildController : ControllerBase{
         this.auth = auth;
         this.pcBuildService = pcBuildService;
     }
+
+    [HttpPost]
+    [Authorize]
+    public async Task<ActionResult<PcBuild>> CreatePcBuild([FromBody]PcBuild pcBuildData){
+        try
+        {
+            Account userInfo = await auth.GetUserInfoAsync<Account>(HttpContext);
+            PcBuild pcBuild = pcBuildService.CreatePcBuild(pcBuildData, userInfo.Id);
+            return Ok(pcBuild);
+        }
+         catch (Exception error)
+        {
+          return BadRequest(error.Message);
+        }
+    }
 }

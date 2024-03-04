@@ -13,7 +13,7 @@ public class StockPartRepository{
         INSERT INTO stockParts
         (productImage, type, size, price, name, company, speed, gigs, powerScore)
         VALUES
-        (@productImage, @type, @size, @price, @name, @company, @speed, @gigs, @powerScore)
+        (@productImage, @type, @size, @price, @name, @company, @speed, @gigs, @powerScore);
 
         SELECT
         *
