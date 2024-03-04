@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+
 namespace PCpals.Controllers;
 
 [ApiController]
@@ -16,7 +18,21 @@ public class StockPartController : ControllerBase{
         try
         {
             Account userInfo = await auth.GetUserInfoAsync<Account>(HttpContext);
-            StockPart stockPart = stockPartService
+            StockPart stockPart = stockPartService.CreateStockPart(stockPartData, userInfo.Id);
+            return Ok(stockPart);
+        }
+         catch (Exception error)
+        {
+          return BadRequest(error.Message);
+        }
+    }
+
+    [HttpGet("{type}")]
+    public ActionResult<List<StockPart>> GetPartsByType(string type){
+        try
+        {
+           List<StockPart> stockParts = stockPartService.GetPartsByType(type);
+           return Ok(stockParts); 
         }
          catch (Exception error)
         {

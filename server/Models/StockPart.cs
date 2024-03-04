@@ -1,6 +1,6 @@
 namespace PCpals.Models;
 
-public class StockPart{
+public class StockPart : RepoItem<int>{
     public string ProductImage {get; set;}
     public string Type {get; set;}
     public string Size {get; set;}

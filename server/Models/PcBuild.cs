@@ -1,6 +1,6 @@
 namespace PCpals.Models;
 
-public class PcBuild{
+public class PcBuild : RepoItem<int>{
     public string Name {get; set;}
     public string CreatorId {get; set;}
     public int PowerScore {get; set;}
