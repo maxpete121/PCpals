@@ -15,4 +15,10 @@ public class StockPartService{
         List<StockPart> stockParts = repo.GetPartsByType(type);
         return stockParts;
     }
+
+    internal string DeleteStockPart(int partId, string userId){
+        repo.DeleteStockPart(partId);
+        string message = "Part removed.";
+        return message;
+    }
 }

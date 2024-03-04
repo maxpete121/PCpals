@@ -34,4 +34,12 @@ public class StockPartRepository{
         List<StockPart> stockParts = db.Query<StockPart>(sql, new{type}).ToList();
         return stockParts;
     }
+
+    internal void DeleteStockPart(int partId){
+        string sql = @"
+        DELETE FROM stockParts
+        WHERE id = @partId
+        ";
+        db.Execute(sql, new{partId});
+    }
 }

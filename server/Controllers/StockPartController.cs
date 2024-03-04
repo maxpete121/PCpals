@@ -39,4 +39,19 @@ public class StockPartController : ControllerBase{
           return BadRequest(error.Message);
         }
     }
+    
+    [HttpDelete("{partId}")]
+    [Authorize]
+    public async Task<ActionResult<string>> DeleteStockPart(int partId){
+        try
+        {
+            Account userInfo = await auth.GetUserInfoAsync<Account>(HttpContext);
+            string message = stockPartService.DeleteStockPart(partId, userInfo.Id);
+            return Ok(message);
+        }
+         catch (Exception error)
+        {
+          return BadRequest(error.Message);
+        }
+    }
 }
