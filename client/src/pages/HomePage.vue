@@ -1,13 +1,30 @@
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <div class="home-card p-5 card align-items-center shadow rounded elevation-3">
-      <img src="https://bcw.blob.core.windows.net/public/img/8600856373152463" alt="CodeWorks Logo"
-        class="rounded-circle">
-      <h1 class="my-5 bg-dark text-white p-3 rounded text-center">
-        Vue 3 Starter
-      </h1>
+<section class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-10 p-2 d-lg-flex justify-content-between">
+      <img class="img-resize" src="https://www.intel.com/content/dam/www/public/us/en/images/video-thumbnails/15s-vid-intel-pro-rpls-14thg-ag-na-hqprim-na-us-eng-16x9-video-thumbnail.png.rendition.intel.web.1920.1080.png" alt="Pc set up picture.">
+      <div class="d-flex flex-column align-items-end">
+        <h2>Need a PC?</h2>
+        <h4>Let us help!</h4>
+        <p>Choose from multiple pre-made PC builds or create your own with our guided tour!</p>
+        <div>
+          <button class="btn btn-outline-secondary me-2">Browse PCs</button>
+          <button class="btn btn-outline-secondary">Create Build</button>
+        </div>
+      </div>
     </div>
   </div>
+  <div class="row justify-content-center">
+    <div class="col-5">
+      <h4>Top Reviewed</h4>
+      <div></div>
+    </div>
+    <div class="col-5">
+      <h4>Our Favorites</h4>
+      <div></div>
+    </div>
+  </div>
+</section>
 </template>
 
 <script>
@@ -21,6 +38,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.img-resize{
+  max-height: 300px;
+  max-width: 600px;
+}
 .home {
   display: grid;
   height: 80vh;
