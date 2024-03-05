@@ -1,11 +1,11 @@
 <template>
 <section class="container-fluid">
   <div class="row justify-content-center">
-    <div class="col-10 p-2 d-lg-flex justify-content-between">
+    <div class="col-10 p-2 d-lg-flex justify-content-between align-items-center">
       <img class="img-resize" src="https://www.intel.com/content/dam/www/public/us/en/images/video-thumbnails/15s-vid-intel-pro-rpls-14thg-ag-na-hqprim-na-us-eng-16x9-video-thumbnail.png.rendition.intel.web.1920.1080.png" alt="Pc set up picture.">
-      <div class="d-flex flex-column align-items-end">
+      <div class="d-flex flex-column align-items-center">
         <h2>Need a PC?</h2>
-        <h4>Let us help!</h4>
+        <h4 class="mt-2 mb-2">Let us help!</h4>
         <p>Choose from multiple pre-made PC builds or create your own with our guided tour!</p>
         <div>
           <button class="btn btn-outline-secondary me-2">Browse PCs</button>

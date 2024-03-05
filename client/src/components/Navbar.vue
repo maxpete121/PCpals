@@ -1,8 +1,8 @@
 <template>
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark px-3">
+  <nav class="navbar navbar-expand-sm navbar-dark px-3 new-nav">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex flex-column align-items-center">
-        <img alt="logo" src="../assets/img/cw-logo.png" height="45" />
+      <div class="d-flex flex-column align-items-center text-dark">
+        <h3 class="fst-italic">BoisePcPals</h3>
       </div>
     </router-link>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
@@ -55,6 +55,10 @@ export default {
 </script>
 
 <style scoped>
+.new-nav{
+  border-bottom: solid 1px purple;
+  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.218);
+}
 a:hover {
   text-decoration: none;
 }
