@@ -35,4 +35,32 @@ public class BuildPartController : ControllerBase{
           return BadRequest(error.Message);
         }
     }
+
+    [HttpGet("{buildPartId}/single")]
+    public ActionResult<BuildPart> GetBuildPartById(int buildPartId){
+        try
+        {
+           BuildPart buildPart = buildPartService.GetBuildPartById(buildPartId);
+           return Ok(buildPart); 
+        }
+         catch (Exception error)
+        {
+          return BadRequest(error.Message);
+        }
+    }
+
+    [HttpDelete("{buildPartId}")]
+    [Authorize]
+    public async Task<ActionResult<string>> DeleteBuildPart(int buildPartId){
+        try
+        {
+            Account userInfo = await auth.GetUserInfoAsync<Account>(HttpContext);
+            string message = buildPartService.DeleteBuildPart(buildPartId, userInfo.Id);
+            return Ok(message);
+        }
+         catch (Exception error)
+        {
+          return BadRequest(error.Message);
+        }
+    }
 }

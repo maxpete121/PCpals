@@ -16,4 +16,18 @@ public class BuildPartService{
         List<BuildPart> buildParts = repo.GetPcBuildParts(pcId);
         return buildParts;
     }
+
+    internal BuildPart GetBuildPartById(int buildPartId){
+        BuildPart buildPart = repo.GetBuildPartById(buildPartId);
+        return buildPart;
+    }
+
+    internal string DeleteBuildPart(int buildPartId, string userId){
+        BuildPart buildPart = GetBuildPartById(buildPartId);
+        if(userId == buildPart.CreatorId){
+            repo.DeleteBuildPart(buildPartId);
+            string message = "Part Removed";
+            return message;
+        }else{throw new Exception("Not Authorized");}
+    }
 }

@@ -42,4 +42,28 @@ public class BuildPartRepository{
         }, new{pcId}).ToList();
         return buildParts;
     }
+
+    internal BuildPart GetBuildPartById(int buildPartId){
+        string sql = @"
+        SELECT
+        buildParts.*,
+        stockParts.*
+        FROM buildParts
+        JOIN stockParts ON buildParts.partId = stockParts.id
+        WHERE buildParts.id = @buildPartId
+        ";
+        BuildPart buildPart = db.Query<BuildPart, StockPart, BuildPart>(sql, (buildPart, stockPart)=>{
+            buildPart.Part = stockPart;
+            return buildPart;
+        }, new{buildPartId}).FirstOrDefault();
+        return buildPart;
+    }
+
+    internal void DeleteBuildPart(int buildPartId){
+        string sql = @"
+        DELETE buildParts
+        WHERE id = @buildPartId
+        ";
+        db.Execute(sql, new{buildPartId});
+    }
 }
