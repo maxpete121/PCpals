@@ -18,10 +18,16 @@ public class PcBuildService{
         return pcBuilds;
     }
 
+    internal PcBuild GetPcById(int pcId){
+        PcBuild pcBuild = repo.GetPcById(pcId);
+        return pcBuild;
+    }
+
     internal string DeletePcBuild(int pcBuildId, string userId){
         if(userId == null)throw new Exception("Not Authorized");
         repo.DeletePcBuild(pcBuildId);
         string message = "Build deleted.";
         return message;
     }
+
 }

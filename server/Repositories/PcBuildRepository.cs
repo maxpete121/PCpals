@@ -43,6 +43,23 @@ public class PcBuildRepository{
         return pcBuilds;
     }
 
+    internal PcBuild GetPcById(int pcId){
+        string sql = @"
+        SELECT
+        pcBuilds.*,
+        accounts.*
+        FROM pcBuilds
+        JOIN accounts ON pcBuilds.creatorId = accounts.id
+        WHERE pcBuilds.id = @pcId
+        ";
+        PcBuild pcBuild = db.Query<PcBuild, Account, PcBuild>(sql, (pcBuild, account)=>{
+            pcBuild.Creator = account;
+            return pcBuild;
+        }, new{pcId}).FirstOrDefault();
+        return pcBuild;
+
+    }
+
     internal void DeletePcBuild(int pcBuildId){
         string sql = @"
         DELETE pcBuilds

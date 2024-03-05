@@ -30,3 +30,12 @@ CREATE TABLE pcBuilds(
   Foreign Key (creatorId) REFERENCES accounts(id) ON DELETE CASCADE
 ) default charset utf8 COMMENT '';
 
+CREATE TABLE buildParts(
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  buildId int NOT NULL,
+  creatorId VARCHAR(255) NOT NULL,
+  partId int NOT NULL,
+  Foreign Key (creatorId) REFERENCES accounts(id) ON DELETE CASCADE,
+  Foreign Key (partId) REFERENCES stockParts(id)
+) default charset utf8 COMMENT '';
+

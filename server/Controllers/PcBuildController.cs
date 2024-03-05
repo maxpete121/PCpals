@@ -55,4 +55,17 @@ public class PcBuildController : ControllerBase{
           return BadRequest(error.Message);
         }
     }
+
+    [HttpGet("{pcId}")]
+    public ActionResult<PcBuild> GetPcById(int pcId){
+        try
+        {
+          PcBuild pcBuild = pcBuildService.GetPcById(pcId);
+          return  pcBuild;  
+        }
+         catch (Exception error)
+        {
+          return BadRequest(error.Message);
+        }
+    }
 }
