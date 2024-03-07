@@ -10,6 +10,8 @@ export const AppState = reactive({
   userBuilds: [],
  /**@type {PcBuild[]} */
   savedUserBuilds: [],
+// /**@type {PcBuild} */
+  activeBuildToEdit: {},
 // /**@type {} */
   suggestedBuilds: [],
 })

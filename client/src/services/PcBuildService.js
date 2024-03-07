@@ -16,6 +16,11 @@ class PcBuildService{
         let userBuilds = response.data.map(build => new PcBuild(build))
         AppState.userBuilds = userBuilds
     }
+
+    async getPcById(pcId){
+        let response = await api.get(`api/pcBuilds/${pcId}`)
+        AppState.activeBuildToEdit = new PcBuild(response.data)
+    }
 }
 
 export const pcBuildService = new PcBuildService()
