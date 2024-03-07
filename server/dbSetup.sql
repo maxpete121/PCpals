@@ -27,6 +27,7 @@ CREATE TABLE pcBuilds(
   powerScore INT,
   price DECIMAL(6,2),
   rating INT,
+  isPrivate BOOLEAN DEFAULT true,
   Foreign Key (creatorId) REFERENCES accounts(id) ON DELETE CASCADE
 ) default charset utf8 COMMENT '';
 
