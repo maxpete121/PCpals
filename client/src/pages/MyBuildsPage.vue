@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="row justify-content-center">
-      <div class="col-3 mt-2">
+      <div class="col-3 mt-3">
         <div class="d-flex filter-container justify-content-center">
           <button class="btn-one">Your Builds</button>
           <button class="btn-two">Saved Builds</button>
@@ -43,6 +43,7 @@ export default {
     let buildRef = ref('')
     let account = computed(()=> AppState.account)
     watch(account, getUserBuilds)
+    
     async function createBuild(){
         let buildData = {name: buildRef.value, creatorId: account.value.id}
         let build = await pcBuildService.createBuild(buildData)

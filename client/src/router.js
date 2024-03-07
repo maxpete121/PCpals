@@ -22,6 +22,11 @@ const routes = [
     component: loadPage('EditBuildPage')
   },
   {
+    path: '/Admin',
+    name: 'Admin',
+    component: loadPage('AdminPage')
+  },
+  {
     path: '/account',
     name: 'Account',
     component: loadPage('AccountPage'),

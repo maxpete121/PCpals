@@ -5,6 +5,11 @@
         <h3 class="fst-italic">BoisePcPals</h3>
       </div>
     </router-link>
+    <router-link :to="{ name: 'Admin' }">
+    <div>
+      <h6>Admin Page</h6>
+    </div>
+     </router-link>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -12,7 +17,7 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
-          <router-link :to="{ name: 'myBuilds' }" class="btn text-success lighten-30 selectable text-uppercase">
+          <router-link @click="getUserBuilds()" :to="{ name: 'myBuilds' }" class="btn text-success lighten-30 selectable text-uppercase">
             My Builds
           </router-link>
         </li>
@@ -32,8 +37,12 @@
 import { onMounted, ref } from 'vue';
 import { loadState, saveState } from '../utils/Store.js';
 import Login from './Login.vue';
+import { pcBuildService } from '../services/PcBuildService.js';
 export default {
   setup() {
+    async function getUserBuilds(){
+      await pcBuildService.getUserBuilds()
+    }
 
     const theme = ref(loadState('theme') || 'light')
 
@@ -42,6 +51,7 @@ export default {
     })
 
     return {
+      getUserBuilds,
       theme,
       toggleTheme() {
         theme.value = theme.value == 'light' ? 'dark' : 'light'
