@@ -20,30 +20,44 @@
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-4">
+        <div v-for="userBuild in userBuilds">
+        <UserBuildComponent :userBuild="userBuild"/>
+        </div>
+      </div>
+    </div>
   </section>
 </template>
 
 <script>
-import { computed, ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { Account } from '../models/Account';
 import { AppState } from '../AppState';
 import { pcBuildService } from '../services/PcBuildService';
+import UserBuildComponent from '../components/UserBuildComponent.vue';
 import Pop from '../utils/Pop';
 
 export default {
   setup() {
     let buildRef = ref('')
     let account = computed(()=> AppState.account)
+    watch(account, getUserBuilds)
     async function createBuild(){
         let buildData = {name: buildRef.value, creatorId: account.value.id}
         let build = await pcBuildService.createBuild(buildData)
+        buildRef.value = ''
         Pop.success(`${build.name} created!`)
+    }
+    async function getUserBuilds(){
+      await pcBuildService.getUserBuilds()
     }
     return {
       createBuild,
-      buildRef
+      buildRef,
+      userBuilds: computed(()=> AppState.userBuilds),
     }
-  }
+  }, components: {UserBuildComponent}
 }
 </script>
 

@@ -11,6 +11,11 @@ class PcBuildService{
         AppState.userBuilds.unshift(build)
         return build
     }
+    async getUserBuilds(){
+        let response = await api.get('api/pcBuilds/account')
+        let userBuilds = response.data.map(build => new PcBuild(build))
+        AppState.userBuilds = userBuilds
+    }
 }
 
 export const pcBuildService = new PcBuildService()
