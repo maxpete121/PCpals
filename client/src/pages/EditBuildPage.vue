@@ -1,10 +1,10 @@
 <template>
     <div class="container-fluid">
         <div class="row mt-3">
-            <div class="col-5">
+            <div class="col-lg-5 col-10">
                 <h4>{{ activeBuild.name }}</h4>
             </div>
-            <div class="col-6 d-flex flex-column align-items-center">
+            <div class="col-lg-6 col-12 d-flex flex-column align-items-center">
                 <span class="box">
                     <button @click="getStockParts('cpu')" class="type-button">CPUs</button>
                     <button @click="getStockParts('gpu')" class="type-button">GPUs</button>
@@ -53,7 +53,7 @@ export default {
 
 <style lang="scss" scoped>
 .box{
-    outline: solid 2px black;
+    outline: solid 2px purple;
     border-radius: 15px;
     overflow: hidden;
 }
