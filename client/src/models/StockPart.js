@@ -2,6 +2,7 @@
 
 export class StockPart{
     constructor(data){
+        this.id = data.id
         this.productImage = data.productImage
         this.type = data.type
         this.size = data.size

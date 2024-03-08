@@ -1,6 +1,9 @@
+
 <template>
-    <div class="component">
-        <form class="d-flex flex-column w-25" action="">
+    <div class="ms-2">
+        <form @submit.prevent="addStockPart()" class="d-flex flex-column w-25" action="">
+            <label for="">name</label>
+            <input v-model="stockPartData.name" type="text">
             <label for="">product image</label>
             <input v-model="stockPartData.productImage" type="text">
             <label for="">type</label>
@@ -27,16 +30,21 @@
 import { AppState } from '../AppState';
 import { computed, ref, onMounted } from 'vue';
 import { StockPart } from '../models/StockPart';
+import { stockPartService } from '../services/StockPartService';
 export default {
     setup(){
-        /**@type {StockPart{}} */
-        let stockPartData = ref({})
+        
+        let stockPartData = ref()
+        stockPartData.value = {}
 
         async function addStockPart(){
-            
+            console.log(stockPartData.value)
+            await stockPartService.addStockPart(stockPartData.value)
+            stockPartData.value = {}
         }
     return { 
-        stockPartData
+        stockPartData,
+        addStockPart
      }
     }
 };
