@@ -1,5 +1,8 @@
 namespace PCpals.Controllers;
 
+[ApiController]
+[Route("api/buildParts")]
+
 public class BuildPartController : ControllerBase{
     private readonly Auth0Provider auth;
     private readonly BuildPartService buildPartService;

@@ -3,6 +3,7 @@
         <div class="row mt-3">
             <div class="col-lg-5 col-10">
                 <h4>{{ activeBuild.name }}</h4>
+                <div></div>
             </div>
             <div class="col-lg-6 col-12 d-flex flex-column align-items-center">
                 <span class="box">
@@ -41,10 +42,12 @@ export default {
         async function getStockParts(type){
             await stockPartService.getStockParts(type)
         }
+
     return { 
         activeBuild,
         getStockParts,
-        stockParts: computed(()=> AppState.activeStockParts)
+        stockParts: computed(()=> AppState.activeStockParts),
+        pcParts: computed(()=> AppState.activeBuildParts)
      }
     }, components: {StockPartComponent}
 };

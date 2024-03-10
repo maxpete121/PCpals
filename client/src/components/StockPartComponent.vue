@@ -13,7 +13,7 @@
             </div>
             <div class="options-card me-3 d-flex align-items-center">
                 <button class="option-button">Details</button>
-                <button class="option-button-two">Add</button>
+                <button @click="addPcPart()" class="option-button-two">Add</button>
             </div>
         </div>
     </div>
@@ -24,10 +24,20 @@
 import { AppState } from '../AppState';
 import { computed, ref, onMounted } from 'vue';
 import { StockPart } from '../models/StockPart';
+import { pcBuildService } from '../services/PcBuildService';
+import { pcPartService } from '../services/pcPartService';
 export default {
     props: { stockPart: { type: StockPart, required: true } },
     setup(props) {
+        let account = computed(()=> AppState.account)
+        let activeBuild = computed(()=> AppState.activeBuildToEdit)
+        async function addPcPart(){
+            let pcPartData = {buildId: activeBuild.value.id, creatorId: account.value.id, partId: props.stockPart.id}
+            await pcPartService.addPcPart(pcPartData)
+
+        }
         return {
+            addPcPart,
             progressWidth: computed(()=>{
                 let style = `width: ${props.stockPart.powerScore}%`
                 return style
