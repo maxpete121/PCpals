@@ -68,4 +68,19 @@ public class PcBuildController : ControllerBase{
           return BadRequest(error.Message);
         }
     }
+
+    [HttpPut("{pcId}/parts")]
+    [Authorize]
+    public async Task<ActionResult<PcBuild>> UpdateBuildParts([FromBody]PcBuild updateBuildDate, int pcId){
+      try
+      {
+        Account userInfo = await auth.GetUserInfoAsync<Account>(HttpContext);
+        PcBuild pcBuild = pcBuildService.UpdateBuildParts(updateBuildDate, pcId, userInfo.Id);
+        return Ok(pcBuild);
+      }
+         catch (Exception error)
+        {
+          return BadRequest(error.Message);
+        }
+    }
 }

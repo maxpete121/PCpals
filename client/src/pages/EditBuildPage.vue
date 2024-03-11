@@ -10,6 +10,7 @@
             </div>
             <div class="col-lg-5 col-12 d-flex flex-column align-items-center">
                 <span class="box">
+                    <button @click="getStockParts('case')" class="type-button">Case</button>
                     <button @click="getStockParts('cpu')" class="type-button">CPUs</button>
                     <button @click="getStockParts('gpu')" class="type-button">GPUs</button>
                     <button @click="getStockParts('motherboard')" class="type-button">Motherboards</button>

@@ -6,5 +6,13 @@ public class PcBuild : RepoItem<int>{
     public int PowerScore {get; set;}
     public decimal Price {get; set;}
     public int Rating {get; set;}
+    public string PcCase {get; set;}
+    public string CasePicture {get; set;}
+    public string pcCpu {get; set;}
+    public string Gpu {get; set;}
+    public string MotherBoard {get; set;}
+    public string Ram {get; set;}
+    public string PcStorage {get; set;}
+    public string PowerSupply {get; set;}
     public Account Creator {get; set;}
 }

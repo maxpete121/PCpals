@@ -67,5 +67,32 @@ public class PcBuildRepository{
         ";
         db.Execute(sql, new{pcBuildId});
     }
+
+    internal PcBuild UpdateBuildParts(PcBuild buildData){
+        string sql = @"
+        UPDATE pcBuilds SET
+        pcCase = @pcCase,
+        casePicture = @casePicture,
+        pcCpu = @pcCpu,
+        gpu = @gpu,
+        motherBoard = @motherBoard,
+        ram = @ram,
+        pcStorage = @pcStorage,
+        powerSupply = @powerSupply
+        WHERE id = @id;
+
+        SELECT
+        pcBuilds.*,
+        accounts.*
+        FROM pcBuilds
+        JOIN accounts ON pcBuilds.creatorId = accounts.id
+        WHERE pcBuilds.id = @pcId
+        ";
+        PcBuild pcBuild = db.Query<PcBuild, Account, PcBuild>(sql, (pcBuild, account)=>{
+            pcBuild.Creator = account;
+            return pcBuild;
+        }, buildData).FirstOrDefault();
+        return pcBuild;
+    }
 }
 

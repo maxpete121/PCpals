@@ -28,6 +28,14 @@ CREATE TABLE pcBuilds(
   price DECIMAL(6,2),
   rating INT,
   isPrivate BOOLEAN DEFAULT true,
+  pcCase VARCHAR(70),
+  casePicture VARCHAR(70),
+  pcCpu VARCHAR(70),
+  gpu VARCHAR(70),
+  motherBoard VARCHAR(70),
+  ram VARCHAR(70),
+  pcStorage VARCHAR(70),
+  powerSupply VARCHAR(70),
   Foreign Key (creatorId) REFERENCES accounts(id) ON DELETE CASCADE
 ) default charset utf8 COMMENT '';
 

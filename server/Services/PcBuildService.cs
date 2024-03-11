@@ -30,4 +30,21 @@ public class PcBuildService{
         return message;
     }
 
+    internal PcBuild UpdateBuildParts(PcBuild updateBuildData ,int pcId,string userId){
+        PcBuild originalPc = GetPcById(pcId);
+        if(originalPc == null)throw new Exception("PC ID is invalid.");
+        else if(originalPc.CreatorId == userId){
+        originalPc.PcCase = updateBuildData.PcCase?.Length > 0 ? updateBuildData.PcCase : originalPc.PcCase;
+        originalPc.CasePicture = updateBuildData.CasePicture?.Length > 0 ? updateBuildData.CasePicture : originalPc.CasePicture;
+        originalPc.pcCpu = updateBuildData.pcCpu?.Length > 0 ? updateBuildData.pcCpu : originalPc.pcCpu;
+        originalPc.Gpu = updateBuildData.Gpu?.Length > 0 ? updateBuildData.Gpu : originalPc.Gpu;
+        originalPc.MotherBoard = updateBuildData.MotherBoard?.Length > 0 ? updateBuildData.MotherBoard : originalPc.MotherBoard;
+        originalPc.Ram = updateBuildData.Ram?.Length > 0 ? updateBuildData.Ram : originalPc.Ram;
+        originalPc.PcStorage = updateBuildData.PcStorage?.Length > 0 ? updateBuildData.PcStorage : originalPc.PcStorage;
+        originalPc.PowerSupply = updateBuildData.PowerSupply?.Length > 0 ? updateBuildData.PowerSupply : originalPc.PowerSupply;
+        PcBuild newPcBuild = repo.UpdateBuildParts(originalPc);
+        return newPcBuild;
+        }else{throw new Exception("Not Authorized");}
+    }
+
 }
