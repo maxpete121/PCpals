@@ -36,6 +36,7 @@ CREATE TABLE pcBuilds(
   ram VARCHAR(70),
   pcStorage VARCHAR(70),
   powerSupply VARCHAR(70),
+  cooler VARCHAR(70),
   Foreign Key (creatorId) REFERENCES accounts(id) ON DELETE CASCADE
 ) default charset utf8 COMMENT '';
 

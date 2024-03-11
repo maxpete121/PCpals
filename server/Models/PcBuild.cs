@@ -8,11 +8,12 @@ public class PcBuild : RepoItem<int>{
     public int Rating {get; set;}
     public string PcCase {get; set;}
     public string CasePicture {get; set;}
-    public string pcCpu {get; set;}
+    public string PcCpu {get; set;}
     public string Gpu {get; set;}
     public string MotherBoard {get; set;}
     public string Ram {get; set;}
     public string PcStorage {get; set;}
     public string PowerSupply {get; set;}
+    public string Cooler {get; set;}
     public Account Creator {get; set;}
 }

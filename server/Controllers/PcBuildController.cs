@@ -71,11 +71,11 @@ public class PcBuildController : ControllerBase{
 
     [HttpPut("{pcId}/parts")]
     [Authorize]
-    public async Task<ActionResult<PcBuild>> UpdateBuildParts([FromBody]PcBuild updateBuildDate, int pcId){
+    public async Task<ActionResult<PcBuild>> UpdateBuildParts([FromBody]PcBuild updateBuildData, int pcId){
       try
       {
         Account userInfo = await auth.GetUserInfoAsync<Account>(HttpContext);
-        PcBuild pcBuild = pcBuildService.UpdateBuildParts(updateBuildDate, pcId, userInfo.Id);
+        PcBuild pcBuild = pcBuildService.UpdateBuildParts(updateBuildData, pcId, userInfo.Id);
         return Ok(pcBuild);
       }
          catch (Exception error)

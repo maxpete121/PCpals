@@ -16,6 +16,7 @@ export class PcBuild{
         this.motherBoard = data.motherBoard
         this.ram = data.ram
         this.pcStorage = data.pcStorage
+        this.cooler = data.cooler
         this.powerSupply = data.powerSupply
     }
 }

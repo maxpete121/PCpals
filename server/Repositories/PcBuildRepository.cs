@@ -78,6 +78,7 @@ public class PcBuildRepository{
         motherBoard = @motherBoard,
         ram = @ram,
         pcStorage = @pcStorage,
+        cooler = @cooler,
         powerSupply = @powerSupply
         WHERE id = @id;
 
@@ -86,7 +87,7 @@ public class PcBuildRepository{
         accounts.*
         FROM pcBuilds
         JOIN accounts ON pcBuilds.creatorId = accounts.id
-        WHERE pcBuilds.id = @pcId
+        WHERE pcBuilds.id = @id
         ";
         PcBuild pcBuild = db.Query<PcBuild, Account, PcBuild>(sql, (pcBuild, account)=>{
             pcBuild.Creator = account;

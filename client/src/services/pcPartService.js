@@ -16,6 +16,7 @@ class PcPartService{
         let newParts = await response.data.map(part => new PcPart(part))
         AppState.activeBuildParts = newParts
     }
+    async deletePcPart(partId){}
 }
 
 export const pcPartService = new PcPartService()

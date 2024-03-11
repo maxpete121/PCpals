@@ -36,7 +36,7 @@ public class PcBuildService{
         else if(originalPc.CreatorId == userId){
         originalPc.PcCase = updateBuildData.PcCase?.Length > 0 ? updateBuildData.PcCase : originalPc.PcCase;
         originalPc.CasePicture = updateBuildData.CasePicture?.Length > 0 ? updateBuildData.CasePicture : originalPc.CasePicture;
-        originalPc.pcCpu = updateBuildData.pcCpu?.Length > 0 ? updateBuildData.pcCpu : originalPc.pcCpu;
+        originalPc.PcCpu = updateBuildData.PcCpu?.Length > 0 ? updateBuildData.PcCpu : originalPc.PcCpu;
         originalPc.Gpu = updateBuildData.Gpu?.Length > 0 ? updateBuildData.Gpu : originalPc.Gpu;
         originalPc.MotherBoard = updateBuildData.MotherBoard?.Length > 0 ? updateBuildData.MotherBoard : originalPc.MotherBoard;
         originalPc.Ram = updateBuildData.Ram?.Length > 0 ? updateBuildData.Ram : originalPc.Ram;

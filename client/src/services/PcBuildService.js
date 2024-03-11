@@ -21,6 +21,24 @@ class PcBuildService{
         let response = await api.get(`api/pcBuilds/${pcId}`)
         AppState.activeBuildToEdit = new PcBuild(response.data)
     }
+
+    async updateBuildParts(pcId, stockPartData){
+        let buildData = {}
+        if(stockPartData.type == 'case'){
+            buildData.casePicture = stockPartData.productImage
+            buildData.pcCase = stockPartData.name
+        }else if(stockPartData.type == 'cpu'){ buildData.pcCpu = stockPartData.name}
+        else if(stockPartData.type == 'gpu'){ buildData.gpu = stockPartData.name}
+        else if(stockPartData.type == 'motherBoard'){buildData.motherBoard = stockPartData.name}
+        else if(stockPartData.type == 'ram'){buildData.ram = stockPartData.name}
+        else if(stockPartData.type == 'storage'){buildData.pcStorage = stockPartData.name}
+        else if(stockPartData.type == 'powerSupply'){buildData.powerSupply = stockPartData.name}
+        else if(stockPartData.type == 'cooler'){buildData.cooler = stockPartData.name}
+        console.log(buildData)
+        let response = await api.put(`api/pcBuilds/${pcId}/parts`, buildData)
+        let updatedBuild = new PcBuild(response.data)
+        AppState.activeBuildToEdit = updatedBuild
+    }
 }
 
 export const pcBuildService = new PcBuildService()
