@@ -2,7 +2,7 @@
     <div class="part-card d-flex align-items-center justify-content-between w-100">
         <div class="d-flex align-items-center">
             <img class="part-image" :src="stockPart.productImage" alt="Part image">
-            <h6 class="ms-3 text-size">{{ stockPart.name }}</h6>
+            <p class="ms-3 text-size">{{ stockPart.name }}</p>
         </div>
         <div class="d-flex align-items-center">
             <h6 class="me-2 mt-2">Speed</h6>

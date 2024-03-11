@@ -1,11 +1,14 @@
 <template>
     <div class="container-fluid">
-        <div class="row mt-3">
+        <div class="row mt-3 justify-content-center">
             <div class="col-lg-5 col-10">
                 <h4>{{ activeBuild.name }}</h4>
                 <div></div>
+                <div v-for="pcPart in pcParts">
+                <PcPartComponent :pcPart="pcPart"/>
+                </div>
             </div>
-            <div class="col-lg-6 col-12 d-flex flex-column align-items-center">
+            <div class="col-lg-5 col-12 d-flex flex-column align-items-center">
                 <span class="box">
                     <button @click="getStockParts('cpu')" class="type-button">CPUs</button>
                     <button @click="getStockParts('gpu')" class="type-button">GPUs</button>
@@ -30,17 +33,23 @@ import { computed, ref, onMounted, watch } from 'vue';
 import { pcBuildService } from '../services/PcBuildService';
 import { stockPartService } from '../services/StockPartService';
 import StockPartComponent from '../components/StockPartComponent.vue';
+import PcPartComponent from '../components/PcPartComponent.vue';
+import { pcPartService } from '../services/pcPartService';
 export default {
     setup(){
         let route = useRoute()
         let activeBuild = computed(()=> AppState.activeBuildToEdit)
         let account = computed(()=> AppState.account)
         watch(account, getPcById)
+        watch(activeBuild, getBuildParts)
         async function getPcById(){
             await pcBuildService.getPcById(route.params.buildId)
         }
         async function getStockParts(type){
             await stockPartService.getStockParts(type)
+        }
+        async function getBuildParts(){
+            await pcPartService.getBuildParts(activeBuild.value.id)
         }
 
     return { 
@@ -49,7 +58,7 @@ export default {
         stockParts: computed(()=> AppState.activeStockParts),
         pcParts: computed(()=> AppState.activeBuildParts)
      }
-    }, components: {StockPartComponent}
+    }, components: {StockPartComponent, PcPartComponent}
 };
 </script>
 

@@ -39,6 +39,9 @@ public class Startup
 
     services.AddScoped<PcBuildRepository>();
     services.AddScoped<PcBuildService>();
+
+    services.AddScoped<BuildPartRepository>();
+    services.AddScoped<BuildPartService>();
   }
 
   private void ConfigureCors(IServiceCollection services)

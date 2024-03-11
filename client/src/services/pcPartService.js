@@ -11,7 +11,11 @@ class PcPartService{
 
     }
 
-    async getBuildParts(){}
+    async getBuildParts(buildId){
+        let response = await api.get(`api/buildParts/${buildId}`)
+        let newParts = await response.data.map(part => new PcPart(part))
+        AppState.activeBuildParts = newParts
+    }
 }
 
 export const pcPartService = new PcPartService()

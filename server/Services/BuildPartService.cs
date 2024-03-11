@@ -9,6 +9,7 @@ public class BuildPartService{
     internal BuildPart CreateBuildPart(BuildPart buildPartData, string userId){
         if(userId == null)throw new Exception("Not Authorized");
         BuildPart buildPart = repo.CreateBuildPart(buildPartData);
+        if(buildPartData == null)throw new Exception("Repo error");
         return buildPart;
     }
 
