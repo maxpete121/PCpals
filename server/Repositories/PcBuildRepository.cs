@@ -62,7 +62,7 @@ public class PcBuildRepository{
 
     internal void DeletePcBuild(int pcBuildId){
         string sql = @"
-        DELETE pcBuilds
+        DELETE FROM pcBuilds
         WHERE id = @pcBuildId
         ";
         db.Execute(sql, new{pcBuildId});

@@ -61,7 +61,7 @@ public class BuildPartRepository{
 
     internal void DeleteBuildPart(int buildPartId){
         string sql = @"
-        DELETE buildParts
+        DELETE FROM buildParts
         WHERE id = @buildPartId
         ";
         db.Execute(sql, new{buildPartId});
