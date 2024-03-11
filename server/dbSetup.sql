@@ -29,7 +29,7 @@ CREATE TABLE pcBuilds(
   rating INT,
   isPrivate BOOLEAN DEFAULT true,
   pcCase VARCHAR(70),
-  casePicture VARCHAR(70),
+  casePicture VARCHAR(500),
   pcCpu VARCHAR(70),
   gpu VARCHAR(70),
   motherBoard VARCHAR(70),

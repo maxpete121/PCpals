@@ -25,11 +25,11 @@ class PcBuildService{
     async updateBuildParts(pcId, stockPartData){
         let buildData = {}
         if(stockPartData.type == 'case'){
-            buildData.casePicture = stockPartData.productImage
             buildData.pcCase = stockPartData.name
+            buildData.casePicture = stockPartData.productImage
         }else if(stockPartData.type == 'cpu'){ buildData.pcCpu = stockPartData.name}
         else if(stockPartData.type == 'gpu'){ buildData.gpu = stockPartData.name}
-        else if(stockPartData.type == 'motherBoard'){buildData.motherBoard = stockPartData.name}
+        else if(stockPartData.type == 'motherB'){buildData.motherBoard = stockPartData.name}
         else if(stockPartData.type == 'ram'){buildData.ram = stockPartData.name}
         else if(stockPartData.type == 'storage'){buildData.pcStorage = stockPartData.name}
         else if(stockPartData.type == 'powerSupply'){buildData.powerSupply = stockPartData.name}

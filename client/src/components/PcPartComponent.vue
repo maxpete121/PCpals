@@ -21,7 +21,7 @@ export default {
     setup(props){
         let activeBuild = computed(()=> AppState.activeBuildToEdit)
         async function deletePcPart(){
-            let partData = {name: 'none', productImage: 'none', type: props.pcPart.part.type}
+            let partData = {name: 'none', productImage: '', type: props.pcPart.part.type}
             await pcBuildService.updateBuildParts(activeBuild.value.id, partData)
             await pcPartService.deletePcPart(props.pcPart.id)
         }

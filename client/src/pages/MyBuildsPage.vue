@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { computed, ref, watch } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 import { Account } from '../models/Account';
 import { AppState } from '../AppState';
 import { pcBuildService } from '../services/PcBuildService';
@@ -40,6 +40,7 @@ import Pop from '../utils/Pop';
 
 export default {
   setup() {
+
     let buildRef = ref('')
     let account = computed(()=> AppState.account)
     watch(account, getUserBuilds)

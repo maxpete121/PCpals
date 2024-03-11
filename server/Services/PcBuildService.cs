@@ -35,7 +35,7 @@ public class PcBuildService{
         if(originalPc == null)throw new Exception("PC ID is invalid.");
         else if(originalPc.CreatorId == userId){
         originalPc.PcCase = updateBuildData.PcCase?.Length > 0 ? updateBuildData.PcCase : originalPc.PcCase;
-        originalPc.CasePicture = updateBuildData.CasePicture?.Length > 0 ? updateBuildData.CasePicture : originalPc.CasePicture;
+        originalPc.CasePicture = updateBuildData.CasePicture;
         originalPc.PcCpu = updateBuildData.PcCpu?.Length > 0 ? updateBuildData.PcCpu : originalPc.PcCpu;
         originalPc.Gpu = updateBuildData.Gpu?.Length > 0 ? updateBuildData.Gpu : originalPc.Gpu;
         originalPc.MotherBoard = updateBuildData.MotherBoard?.Length > 0 ? updateBuildData.MotherBoard : originalPc.MotherBoard;

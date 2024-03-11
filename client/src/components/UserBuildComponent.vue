@@ -1,10 +1,10 @@
 <template>
-    <div class="build-card d-flex align-items-center mt-3">
-        <div class="text-center me-4 ms-2">
+    <div class="build-card d-flex align-items-center mt-3 p-1">
+        <div class="text-center me-4 ms-4">
             <img class="cover-img" :src="userBuild.casePicture || 'https://rusutikaa.github.io/docs/developer.apple.com/library/archive/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/defaultphoto_2x.png'" alt="">
             <h3>{{ userBuild.name }}</h3>
         </div>
-        <div class="specs text-center me-1">
+        <div class="specs text-center me-3 ms-3">
             <h5>Parts</h5>
             <div class="d-flex justify-content-between part-section">
                 <p class="me-2">CPU</p>
@@ -61,8 +61,8 @@ export default {
 
 <style lang="scss" scoped>
 .cover-img{
-    width: 200px;
-    height: 165px;
+    width: 130px;
+    max-height: 100;
 }
 
 .specs{
