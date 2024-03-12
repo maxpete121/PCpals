@@ -16,6 +16,7 @@ class PcBuildService{
         let response = await api.get('api/pcBuilds/account')
         let userBuilds = response.data.map(build => new PcBuild(build))
         AppState.userBuilds = userBuilds
+        console.log(userBuilds)
     }
 
     async getPcById(pcId){
@@ -60,7 +61,12 @@ class PcBuildService{
         AppState.userBuilds = AppState.userBuilds.map(build => build.id !== pcId ? build : newBuildData)
     }
 
-    async updatePowerScore(){}
+    async updatePowerScore(pcId, average){
+        let buildData = {powerScore: average}
+        console.log(buildData)
+        let response = await api.put(`api/pcBuilds/${pcId}/powerScore`, buildData)
+        AppState.activeBuildToEdit.powerScore = buildData.powerScore
+    }
 
 
 }

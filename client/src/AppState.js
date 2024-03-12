@@ -18,4 +18,13 @@ export const AppState = reactive({
   activeStockParts: [],
 
   activeBuildParts: [],
+
+  cpu: [],
+  gpu: [],
+  motherboard: [],
+  case: [],
+  ram: [],
+  storage: [],
+  cooler: [],
+  powerSupply: [],
 })

@@ -110,9 +110,16 @@ public class PcBuildController : ControllerBase
   [Authorize]
   public async Task<ActionResult<PcBuild>> UpdatePowerScore([FromBody] PcBuild updateData, int pcId)
   {
+    try
+    {
     Account userInfo = await auth.GetUserInfoAsync<Account>(HttpContext);
     PcBuild pcBuild = pcBuildService.UpdatePowerScore(updateData, pcId, userInfo.Id);
     return Ok(pcBuild);
+    }
+    catch (Exception error)
+    {
+      return BadRequest(error.Message);
+    }
   }
 
 }

@@ -3,10 +3,54 @@
         <div class="row mt-3 justify-content-center">
             <div class="col-lg-5 col-10">
                 <h4>{{ activeBuild.name }}</h4>
-                <div></div>
-                <div class="mt-3" v-for="pcPart in pcParts">
-                <PcPartComponent :pcPart="pcPart"/>
+                <div class="part-holder">
+                    <h4 class="fst-italic">Case</h4>
+                    <div v-for="Case in Cases">
+                        <PcPartComponent :pcPart="Case"/>
+                    </div>
+                    <div class="d-flex align-items-end" v-if="Cases.length == 0">
+                    <h4 class="mt-4">No Part selected...</h4>
+                    </div>
                 </div>
+                <div class="part-holder">
+                    <h4 class="fst-italic">CPU</h4>
+                    <div v-for="CPU in CPUs">
+                        <PcPartComponent :pcPart="CPU"/>
+                    </div>
+                    <div class="d-flex align-items-end" v-if="CPUs.length == 0">
+                    <h4 class="mt-4">No Part selected...</h4>
+                    </div>
+                </div>
+                <div class="part-holder">
+                    <h4 class="fst-italic">GPU</h4>
+                    <div v-for="GPU in GPUs">
+                        <PcPartComponent :pcPart="GPU"/>
+                    </div>
+                    <div class="d-flex align-items-end" v-if="GPUs.length == 0">
+                    <h4 class="mt-4">No Part selected...</h4>
+                    </div>
+                </div>
+                <div class="part-holder">
+                    <h4 class="fst-italic">Ram</h4>
+                    <div v-for="Ram in Rams">
+                        <PcPartComponent :pcPart="Ram"/>
+                    </div>
+                    <div class="d-flex align-items-end" v-if="Rams.length == 0">
+                    <h4 class="mt-4">No Part selected...</h4>
+                    </div>
+                </div>
+                <div class="part-holder">
+                    <h4 class="fst-italic">MotherBoard</h4>
+                    <div v-for="MotherBoard in Motherboards">
+                        <PcPartComponent :pcPart="MotherBoard"/>
+                    </div>
+                    <div class="d-flex align-items-end" v-if="Motherboards.length == 0">
+                    <h4 class="mt-4">No Part selected...</h4>
+                    </div>
+                </div>
+                <!-- <div class="mt-3" v-for="pcPart in pcParts">
+                <PcPartComponent :pcPart="pcPart"/>
+                </div> -->
             </div>
             <div class="col-lg-5 col-12 d-flex flex-column align-items-center">
                 <span class="box">
@@ -41,6 +85,7 @@ export default {
         let route = useRoute()
         let activeBuild = computed(()=> AppState.activeBuildToEdit)
         let account = computed(()=> AppState.account)
+        let pcParts = computed(()=> AppState.activeBuildParts)
         watch(account, getPcById)
         watch(activeBuild, getBuildParts)
         onMounted(()=>{
@@ -62,7 +107,12 @@ export default {
         activeBuild,
         getStockParts,
         stockParts: computed(()=> AppState.activeStockParts),
-        pcParts: computed(()=> AppState.activeBuildParts)
+        pcParts: computed(()=> AppState.activeBuildParts),
+        CPUs: computed(()=> AppState.cpu),
+        GPUs: computed(()=> AppState.gpu),
+        Motherboards: computed(()=> AppState.motherboard),
+        Cases: computed(()=> AppState.case),
+        Rams: computed(()=> AppState.ram),
      }
     }, components: {StockPartComponent, PcPartComponent}
 };
@@ -74,6 +124,13 @@ export default {
     outline: solid 2px purple;
     border-radius: 15px;
     overflow: hidden;
+}
+.part-holder{
+    border-bottom: solid 2px purple;
+    height: 100px;
+    margin-top: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 .type-button{
     all: unset;
