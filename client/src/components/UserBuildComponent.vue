@@ -4,8 +4,10 @@
             <img class="cover-img" :src="userBuild.casePicture || 'https://rusutikaa.github.io/docs/developer.apple.com/library/archive/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/defaultphoto_2x.png'" alt="">
             <h3>{{ userBuild.name }}</h3>
         </div>
-        <div class="specs text-center me-3 ms-3">
-            <h5>Parts</h5>
+        <div class="specs text-center me-3 ms-4 ps-2 pe-2 pb-2">
+            <div class="sticky-top">
+                <h5>Parts</h5>
+            </div>
             <div class="d-flex justify-content-between part-section">
                 <p class="me-2">CPU</p>
                 <p class="fst-italic" v-if="userBuild.pcCpu && userBuild.pcCpu !== 'none'">{{ userBuild.pcCpu }}✅</p>
@@ -26,11 +28,21 @@
                 <p class="fst-italic" v-if="userBuild.motherBoard && userBuild.motherBoard !== 'none'">{{ userBuild.motherBoard }}✅</p>
                 <p v-else>None🚫</p>
             </div>
+            <div class="d-flex justify-content-between part-section">
+                <p class="me-2">Storage</p>
+                <p class="fst-italic" v-if="userBuild.pcStorage && userBuild.pcStorage !== 'none'">{{ userBuild.pcStorage }}✅</p>
+                <p v-else>None🚫</p>
+            </div>
+            <div class="d-flex justify-content-between part-section">
+                <p class="me-2">Power Supply</p>
+                <p class="fst-italic" v-if="userBuild.powerSupply && userBuild.powerSupply !== 'none'">{{ userBuild.powerSupply }}✅</p>
+                <p v-else>None🚫</p>
+            </div>
         </div>
         <div class="d-flex flex-column align-items-center ms-4">
             <button class="btn-build">Add to Cart</button>
-            <button v-if="userBuild.isPrivate == false" class="btn-build mt-2">Make Private</button>
-            <button v-else class="btn-build mt-2">Share Build</button>
+            <button v-if="userBuild.isPrivate == false" @click="updateShare('true')" class="btn-build mt-2">Make Private</button>
+            <button v-else @click="updateShare('false')" class="btn-build mt-2">Share Build</button>
             <button @click="getPcById()" class="btn-build mt-2">Edit Build</button>
             <button class="btn-delete mt-2">Delete<i class="mdi mdi-delete"></i></button>
         </div>
@@ -51,8 +63,17 @@ export default {
             await pcBuildService.getPcById(props.userBuild.id)
             router.push({name: 'EditBuild', params: {buildId: props.userBuild.id}})
         }
+        async function updateShare(){
+                await pcBuildService.updateShare(props.userBuild.id)
+        }
     return { 
-        getPcById
+        getPcById,
+        updateShare,
+        isPrivate: computed(()=>{
+            if(props.userBuild.isPrivate == true){
+                return 'yes'
+            }else{return 'no'}
+        })
      }
     }
 };
@@ -67,6 +88,12 @@ export default {
 
 .specs{
     width: 360px;
+    height: 170px;
+    overflow-y: scroll;
+    outline: solid 1px purple;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.208);
+
 }
 
 .part-section{

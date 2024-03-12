@@ -35,6 +35,7 @@ export default {
             let pcPartData = {buildId: activeBuild.value.id, creatorId: account.value.id, partId: props.stockPart.id}
             await pcPartService.addPcPart(pcPartData)
             await pcBuildService.updateBuildParts(activeBuild.value.id, props.stockPart)
+            AppState.activeStockParts = []
         }
         return {
             addPcPart,

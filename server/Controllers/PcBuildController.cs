@@ -83,4 +83,19 @@ public class PcBuildController : ControllerBase{
           return BadRequest(error.Message);
         }
     }
+
+    [HttpPut("{pcId}/share/update")]
+    [Authorize]
+    public async Task<ActionResult<PcBuild>> UpdateShare([FromBody]PcBuild buildData,int pcId){
+      try
+      {
+        Account userInfo = await auth.GetUserInfoAsync<Account>(HttpContext);
+        PcBuild pcBuild = pcBuildService.UpdateShare(buildData,pcId, userInfo.Id);
+        return Ok(pcBuild);
+      }
+         catch (Exception error)
+        {
+          return BadRequest(error.Message);
+        }
+    }
 }

@@ -35,7 +35,7 @@ public class PcBuildService{
         if(originalPc == null)throw new Exception("PC ID is invalid.");
         else if(originalPc.CreatorId == userId){
         originalPc.PcCase = updateBuildData.PcCase?.Length > 0 ? updateBuildData.PcCase : originalPc.PcCase;
-        originalPc.CasePicture = updateBuildData.CasePicture;
+        originalPc.CasePicture = updateBuildData.CasePicture?.Length > 0 ? updateBuildData.CasePicture : originalPc.CasePicture;
         originalPc.PcCpu = updateBuildData.PcCpu?.Length > 0 ? updateBuildData.PcCpu : originalPc.PcCpu;
         originalPc.Gpu = updateBuildData.Gpu?.Length > 0 ? updateBuildData.Gpu : originalPc.Gpu;
         originalPc.MotherBoard = updateBuildData.MotherBoard?.Length > 0 ? updateBuildData.MotherBoard : originalPc.MotherBoard;
@@ -44,6 +44,15 @@ public class PcBuildService{
         originalPc.PowerSupply = updateBuildData.PowerSupply?.Length > 0 ? updateBuildData.PowerSupply : originalPc.PowerSupply;
         PcBuild newPcBuild = repo.UpdateBuildParts(originalPc);
         return newPcBuild;
+        }else{throw new Exception("Not Authorized");}
+    }
+
+    internal PcBuild UpdateShare(PcBuild buildData,int pcId, string userId){
+        PcBuild originalPc = GetPcById(pcId);
+        if(originalPc.CreatorId == userId){
+            originalPc.IsPrivate = buildData.IsPrivate != originalPc.IsPrivate ? buildData.IsPrivate : originalPc.IsPrivate;
+            PcBuild newBuild = repo.UpdateShare(originalPc);
+            return newBuild;
         }else{throw new Exception("Not Authorized");}
     }
 

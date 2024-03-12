@@ -1,3 +1,4 @@
+
 import { AppState } from "../AppState"
 import { PcBuild } from "../models/PcBuild"
 import { api } from "./AxiosService"
@@ -34,10 +35,22 @@ class PcBuildService{
         else if(stockPartData.type == 'storage'){buildData.pcStorage = stockPartData.name}
         else if(stockPartData.type == 'powerSupply'){buildData.powerSupply = stockPartData.name}
         else if(stockPartData.type == 'cooler'){buildData.cooler = stockPartData.name}
-        console.log(buildData)
         let response = await api.put(`api/pcBuilds/${pcId}/parts`, buildData)
         let updatedBuild = new PcBuild(response.data)
         AppState.activeBuildToEdit = updatedBuild
+    }
+
+    async updateShare(pcId){
+        let activeBuild = AppState.userBuilds.find(build => build.id == pcId)
+        if(activeBuild.isPrivate == true){
+            activeBuild.isPrivate = false
+        }else if(activeBuild.isPrivate == false){
+            activeBuild.isPrivate = true
+        }
+        let updateData = {isPrivate: activeBuild.isPrivate}
+        let response = await api.put(`api/pcBuilds/${pcId}/share/update`, updateData)
+        let newBuildData = new PcBuild(response.data)
+        AppState.userBuilds = AppState.userBuilds.map(build => build.id !== pcId ? build : newBuildData)
     }
 }
 

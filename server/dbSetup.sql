@@ -27,7 +27,7 @@ CREATE TABLE pcBuilds(
   powerScore INT,
   price DECIMAL(6,2),
   rating INT,
-  isPrivate BOOLEAN DEFAULT true,
+  isPrivate BOOLEAN,
   pcCase VARCHAR(70),
   casePicture VARCHAR(500),
   pcCpu VARCHAR(70),

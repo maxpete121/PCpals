@@ -95,5 +95,27 @@ public class PcBuildRepository{
         }, buildData).FirstOrDefault();
         return pcBuild;
     }
+
+    internal PcBuild UpdateShare(PcBuild updateData){
+        string sql = @"
+        UPDATE pcBuilds SET
+        name = @name,
+        isPrivate = @isPrivate
+        WHERE id = @id;
+
+        SELECT
+        pcBuilds.*,
+        accounts.*
+        FROM pcBuilds
+        JOIN accounts ON pcBuilds.creatorId = accounts.id
+        WHERE pcBuilds.id = @id
+        ";
+        PcBuild newPcBuild = db.Query<PcBuild, Account, PcBuild>(sql, (pcBuild, account)=>{
+            pcBuild.Creator = account;
+            return pcBuild;
+        }, updateData).FirstOrDefault();
+        return newPcBuild;
+
+    }
 }
 

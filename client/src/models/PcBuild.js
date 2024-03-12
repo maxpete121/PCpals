@@ -8,7 +8,7 @@ export class PcBuild{
         this.price = data.price || 0
         this.rating = data.rating || 'None'
         this.creator = data.creator
-        this.isPrivate = data.isPrivate || true
+        this.isPrivate = data.isPrivate
         this.pcCase = data.pcCase
         this.casePicture = data.casePicture
         this.pcCpu = data.pcCpu
