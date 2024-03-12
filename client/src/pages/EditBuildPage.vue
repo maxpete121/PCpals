@@ -4,7 +4,7 @@
             <div class="col-lg-5 col-10">
                 <h4>{{ activeBuild.name }}</h4>
                 <div></div>
-                <div v-for="pcPart in pcParts">
+                <div class="mt-3" v-for="pcPart in pcParts">
                 <PcPartComponent :pcPart="pcPart"/>
                 </div>
             </div>

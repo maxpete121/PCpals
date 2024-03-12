@@ -23,6 +23,13 @@ class PcBuildService{
         AppState.activeBuildToEdit = new PcBuild(response.data)
     }
 
+    async deleteBuild(buildId){
+        let response = await api.delete(`api/pcBuilds/${buildId}`)
+        let buildIndex = AppState.userBuilds.findIndex(build => build.id == buildId)
+        AppState.userBuilds.splice(buildIndex, 1)
+        return response.data
+    }
+
     async updateBuildParts(pcId, stockPartData){
         let buildData = {}
         if(stockPartData.type == 'case'){
@@ -52,6 +59,10 @@ class PcBuildService{
         let newBuildData = new PcBuild(response.data)
         AppState.userBuilds = AppState.userBuilds.map(build => build.id !== pcId ? build : newBuildData)
     }
+
+    async updatePowerScore(){}
+
+
 }
 
 export const pcBuildService = new PcBuildService()

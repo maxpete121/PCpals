@@ -56,4 +56,14 @@ public class PcBuildService{
         }else{throw new Exception("Not Authorized");}
     }
 
+    internal PcBuild UpdatePowerScore(PcBuild updateData, int pcId, string userId){
+        PcBuild originalPc = GetPcById(pcId);
+        if(originalPc == null)throw new Exception("No PC found with that Id.");
+        if(originalPc.CreatorId == userId){
+            originalPc.PowerScore = updateData.PowerScore > 0 ? updateData.PowerScore : originalPc.PowerScore;
+            PcBuild updatedData = repo.UpdatePowerScore(originalPc);
+            return updatedData;
+        }else{throw new Exception("Not Authorized.");}
+    }
+
 }

@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="row justify-content-center">
-      <div class="col-6">
+      <div class="col-5">
         <div v-for="userBuild in userBuilds">
         <UserBuildComponent :userBuild="userBuild"/>
         </div>

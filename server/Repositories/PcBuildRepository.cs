@@ -117,5 +117,25 @@ public class PcBuildRepository{
         return newPcBuild;
 
     }
+
+    internal PcBuild UpdatePowerScore(PcBuild updateData){
+        string sql = @"
+        UPDATE pcBuilds SET
+        powerScore = @powerScore
+        WHERE id = @id;
+
+        SELECT
+        pcBuilds.*,
+        accounts.*
+        FROM pcBuilds
+        JOIN accounts ON pcBuilds.creatorId = accounts.id
+        WHERE pcBuilds.id = @id
+        ";
+        PcBuild updatedBuild = db.Query<PcBuild, Account, PcBuild>(sql, (pcBuild, account)=>{
+            pcBuild.Creator = account;
+            return pcBuild;
+        }, updateData).FirstOrDefault();
+        return updatedBuild;
+    }
 }
 
