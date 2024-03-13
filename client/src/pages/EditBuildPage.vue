@@ -3,10 +3,16 @@
         <div class="row mt-3 justify-content-center">
             <div class="col-lg-5 col-10">
                 <div class="d-flex">
-                    <h4>{{ activeBuild.name }}</h4>
-                    <span class="d-flex">
-                        <h4>Price</h4>
-                        <h4>{{ activeBuild.price }}</h4>
+                    <span>
+                        <h4>{{ activeBuild.name }}</h4>
+                    </span>
+                    <span class="d-flex ms-4">
+                        <h4 class="me-2">Price</h4>
+                        <h4>${{ activeBuild.price }}</h4>
+                    </span>
+                    <span class="d-flex ms-4">
+                        <h4 class="me-2">Power Score</h4>
+                        <h4>{{ activeBuild.powerScore }}</h4>
                     </span>
                 </div>
                 <div class="part-holder">

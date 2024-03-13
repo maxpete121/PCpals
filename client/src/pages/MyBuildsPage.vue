@@ -1,7 +1,7 @@
 <template>
   <section class="container-fluid">
     <div class="row justify-content-center">
-      <div class="col-4 mt-3 info-card p-2 d-flex flex-column align-items-center">
+      <div class="col-lg-4 col-10 mt-3 info-card p-2 d-flex flex-column align-items-center">
         <h4>Welcome to your builds!</h4>
         <div class="d-flex flex-column align-items-center">
           <h5 class="mt-2">Create new build...</h5>
@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="row justify-content-center">
-      <div class="col-3 mt-3">
+      <div class="col-lg-3 col-7 mt-3">
         <div class="d-flex filter-container justify-content-center">
           <button class="btn-one">Your Builds</button>
           <button class="btn-two">Saved Builds</button>
@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="row justify-content-center">
-      <div class="col-5">
+      <div class="col-lg-5 col-12 d-flex justify-content-center">
         <div v-for="userBuild in userBuilds">
         <UserBuildComponent :userBuild="userBuild"/>
         </div>

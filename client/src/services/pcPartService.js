@@ -25,7 +25,6 @@ class PcPartService{
         let newParts = await response.data.map(part => new PcPart(part))
         AppState.activeBuildParts = newParts
         for(let i = 0; AppState.activeBuildParts.length > i; i++){
-            console.log(i)
             if(AppState.activeBuildParts[i].part.type == 'cpu' && AppState.cpu.length == 0){
                 AppState.cpu.push(newParts[i])
             }else if(AppState.activeBuildParts[i].part.type == 'gpu' && AppState.gpu.length == 0){
