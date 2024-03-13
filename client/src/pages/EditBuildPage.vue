@@ -2,14 +2,20 @@
     <div class="container-fluid">
         <div class="row mt-3 justify-content-center">
             <div class="col-lg-5 col-10">
-                <h4>{{ activeBuild.name }}</h4>
+                <div class="d-flex">
+                    <h4>{{ activeBuild.name }}</h4>
+                    <span class="d-flex">
+                        <h4>Price</h4>
+                        <h4>{{ activeBuild.price }}</h4>
+                    </span>
+                </div>
                 <div class="part-holder">
                     <h4 class="fst-italic">Case</h4>
                     <div v-for="Case in Cases">
                         <PcPartComponent :pcPart="Case"/>
                     </div>
                     <div class="d-flex align-items-end" v-if="Cases.length == 0">
-                    <h4 class="mt-4">No Part selected...</h4>
+                    <h4 class="mt-4 text-danger">No Part selected...</h4>
                     </div>
                 </div>
                 <div class="part-holder">
@@ -18,7 +24,7 @@
                         <PcPartComponent :pcPart="CPU"/>
                     </div>
                     <div class="d-flex align-items-end" v-if="CPUs.length == 0">
-                    <h4 class="mt-4">No Part selected...</h4>
+                    <h4 class="mt-4 text-danger">No Part selected...</h4>
                     </div>
                 </div>
                 <div class="part-holder">
@@ -27,7 +33,7 @@
                         <PcPartComponent :pcPart="GPU"/>
                     </div>
                     <div class="d-flex align-items-end" v-if="GPUs.length == 0">
-                    <h4 class="mt-4">No Part selected...</h4>
+                    <h4 class="mt-4 text-danger">No Part selected...</h4>
                     </div>
                 </div>
                 <div class="part-holder">
@@ -36,7 +42,7 @@
                         <PcPartComponent :pcPart="Ram"/>
                     </div>
                     <div class="d-flex align-items-end" v-if="Rams.length == 0">
-                    <h4 class="mt-4">No Part selected...</h4>
+                    <h4 class="mt-4 text-danger">No Part selected...</h4>
                     </div>
                 </div>
                 <div class="part-holder">
@@ -45,25 +51,35 @@
                         <PcPartComponent :pcPart="MotherBoard"/>
                     </div>
                     <div class="d-flex align-items-end" v-if="Motherboards.length == 0">
-                    <h4 class="mt-4">No Part selected...</h4>
+                    <h4 class="mt-4 text-danger">No Part selected...</h4>
                     </div>
                 </div>
-                <!-- <div class="mt-3" v-for="pcPart in pcParts">
-                <PcPartComponent :pcPart="pcPart"/>
-                </div> -->
+                <div class="part-holder">
+                    <h4 class="fst-italic">Storage</h4>
+                    <div v-for="Storage in Storages">
+                        <PcPartComponent :pcPart="Storage"/>
+                    </div>
+                    <div class="d-flex align-items-end" v-if="Storages.length == 0">
+                    <h4 class="mt-4 text-danger">No Part selected...</h4>
+                    </div>
+                </div>
             </div>
             <div class="col-lg-5 col-12 d-flex flex-column align-items-center">
-                <span class="box">
-                    <button v-if="activeBuild.pcCase == null || activeBuild.pcCase == 'none'" @click="getStockParts('case')" class="type-button">Case</button>
-                    <button v-if="activeBuild.pcCpu == null || activeBuild.pcCpu == 'none'" @click="getStockParts('cpu')" class="type-button">CPUs</button>
-                    <button v-if="activeBuild.gpu == null || activeBuild.gpu == 'none'" @click="getStockParts('gpu')" class="type-button">GPUs</button>
-                    <button v-if="activeBuild.motherBoard == null || activeBuild.motherBoard == 'none'" @click="getStockParts('motherB')" class="type-button">Motherboards</button>
-                    <button v-if="activeBuild.ram == null || activeBuild.ram == 'none'" @click="getStockParts('ram')" class="type-button">RAM</button>
-                    <button v-if="activeBuild.storage == null || activeBuild.storage == 'none'" @click="getStockParts('storage')" class="type-button">Storage</button>
-                    <button v-if="activeBuild.powerSupply == null || activeBuild.powerSupply == 'none'" @click="getStockParts('powerSupply')" class="type-button-end">Power Supply</button>
-                </span>
-                <div class="w-100" v-for="stockPart in stockParts">
-                 <StockPartComponent class="mt-3" :stockPart="stockPart"/>
+                <div class="sticky-top w-100">
+                    <div class="w-100 d-flex justify-content-center">
+                        <span class="box mt-2">
+                            <button v-if="activeBuild.pcCase == null || activeBuild.pcCase == 'none'" @click="getStockParts('case')" class="type-button">Case</button>
+                            <button v-if="activeBuild.pcCpu == null || activeBuild.pcCpu == 'none'" @click="getStockParts('cpu')" class="type-button">CPUs</button>
+                            <button v-if="activeBuild.gpu == null || activeBuild.gpu == 'none'" @click="getStockParts('gpu')" class="type-button">GPUs</button>
+                            <button v-if="activeBuild.motherBoard == null || activeBuild.motherBoard == 'none'" @click="getStockParts('motherB')" class="type-button">Motherboards</button>
+                            <button v-if="activeBuild.ram == null || activeBuild.ram == 'none'" @click="getStockParts('ram')" class="type-button">RAM</button>
+                            <button v-if="activeBuild.storage == null || activeBuild.storage == 'none'" @click="getStockParts('storage')" class="type-button">Storage</button>
+                            <button v-if="activeBuild.powerSupply == null || activeBuild.powerSupply == 'none'" @click="getStockParts('powerSupply')" class="type-button-end">Power Supply</button>
+                        </span>
+                    </div>
+                    <div class="w-100" v-for="stockPart in stockParts">
+                     <StockPartComponent class="mt-3" :stockPart="stockPart"/>
+                    </div>
                 </div>
             </div>
         </div>
@@ -113,6 +129,8 @@ export default {
         Motherboards: computed(()=> AppState.motherboard),
         Cases: computed(()=> AppState.case),
         Rams: computed(()=> AppState.ram),
+        Storages: computed(()=> AppState.storage),
+        PowerSupplys: computed(()=> AppState.powerSupply),
      }
     }, components: {StockPartComponent, PcPartComponent}
 };
@@ -128,7 +146,7 @@ export default {
 .part-holder{
     border-bottom: solid 2px purple;
     height: 100px;
-    margin-top: 5px;
+    margin-top: 10px;
     padding-left: 8px;
     padding-right: 8px;
 }

@@ -60,7 +60,8 @@ public class PcBuildService{
         PcBuild originalPc = GetPcById(pcId);
         if(originalPc == null)throw new Exception("No PC found with that Id.");
         if(originalPc.CreatorId == userId){
-            originalPc.PowerScore = updateData.PowerScore > 0 ? updateData.PowerScore : originalPc.PowerScore;
+            originalPc.PowerScore = updateData.PowerScore;
+            originalPc.Price = updateData.Price;
             PcBuild updatedData = repo.UpdatePowerScore(originalPc);
             return updatedData;
         }else{throw new Exception("Not Authorized.");}

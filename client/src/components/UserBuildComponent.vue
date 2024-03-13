@@ -9,12 +9,12 @@
                 <div class="sticky-top part-title">
                     <h5 class="fst-italic">Parts</h5>
                 </div>
-                <div class="d-flex justify-content-between part-section">
+                <div class="d-flex justify-content-between part-section rounded-2">
                     <p class="me-2">Case</p>
                     <p class="fst-italic" v-if="userBuild.pcCase && userBuild.pcCase !== 'none'">{{ userBuild.pcCase }}✅</p>
                     <p v-else>None🚫</p>
                 </div>
-                <div class="d-flex justify-content-between part-section">
+                <div class="d-flex justify-content-between part-section rounded-2">
                     <p class="me-2">CPU</p>
                     <p class="fst-italic" v-if="userBuild.pcCpu && userBuild.pcCpu !== 'none'">{{ userBuild.pcCpu }}✅</p>
                     <p v-else>None🚫</p>

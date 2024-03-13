@@ -9,13 +9,16 @@ class PcPartService{
         let response = await api.post('api/buildParts', pcPartData)
         let newPart = new PcPart(response.data)
         AppState.activeBuildParts.push(newPart)
+        let price = await this.PriceMath()
         let average = await this.powerScoreMath(newPart.creatorId)
-        pcBuildService.updatePowerScore(newPart.buildId, average)
+        pcBuildService.updatePowerScore(newPart.buildId, average, price)
         if(newPart.part.type == 'cpu' && AppState.cpu.length == 0){AppState.cpu.push(newPart)}
         else if(newPart.part.type == 'gpu' && AppState.gpu.length == 0){AppState.gpu.push(newPart)}
         else if(newPart.part.type == 'motherB' && AppState.motherboard.length == 0){AppState.motherboard.push(newPart)}
         else if(newPart.part.type == 'case' && AppState.case.length == 0){AppState.case.push(newPart)}
         else if(newPart.part.type == 'ram' && AppState.ram.length == 0){AppState.ram.push(newPart)}
+        else if(newPart.part.type == 'storage' && AppState.ram.length == 0){AppState.storage.push(newPart)}
+        else if(newPart.part.type == 'powerSupply' && AppState.powerSupply.length == 0){AppState.powerSupply.push(newPart)}
     }
     async getBuildParts(buildId){
         let response = await api.get(`api/buildParts/${buildId}`)
@@ -33,6 +36,10 @@ class PcPartService{
                 AppState.case.push(newParts[i])
             }else if(AppState.activeBuildParts[i].part.type == 'ram' && AppState.ram.length == 0){
                 AppState.ram.push(newParts[i])
+            }else if(AppState.activeBuildParts[i].part.type == 'storage' && AppState.storage.length == 0){
+                AppState.storage.push(newParts[i])
+            }else if(AppState.activeBuildParts[i].part.type == 'powerSupply' && AppState.powerSupply.length == 0){
+                AppState.powerSupply.push(newParts[i])
             }
         }
     }
@@ -45,11 +52,16 @@ class PcPartService{
         return response.data
     }
     async PartClear(part){
+        let price = await this.PriceMath()
+        let average = await this.powerScoreMath()
+        pcBuildService.updatePowerScore(part.buildId, average, price)
         if(part.part.type == 'cpu'){AppState.cpu = []}
         else if(part.part.type == 'gpu'){AppState.gpu = []}
         else if(part.part.type == 'motherB'){AppState.motherboard = []}
         else if(part.part.type == 'ram'){AppState.ram = []}
         else if(part.part.type == 'case'){AppState.case = []}
+        else if(part.part.type == 'storage'){AppState.storage = []}
+        else if(part.part.type == 'powerSupply'){AppState.powerSupply = []}
     }
     async powerScoreMath(pcId){
         let totalScore = 0
@@ -57,8 +69,18 @@ class PcPartService{
             totalScore += AppState.activeBuildParts[i].part.powerScore
         }
         let partCount = AppState.activeBuildParts.length
-        let average = totalScore / partCount
-        let roundedAverage = Math.round(average)
+        if(partCount > 0){
+            let average = totalScore / partCount
+            let roundedAverage = Math.round(average)
+            return roundedAverage
+        }else{return 0}
+    }
+    async PriceMath(){
+        let price = 0
+        for(let i = 0; AppState.activeBuildParts.length > i; i++){
+            price += AppState.activeBuildParts[i].part.price
+        }
+        let roundedAverage = Math.round(price * 100) / 100
         return roundedAverage
     }
 }

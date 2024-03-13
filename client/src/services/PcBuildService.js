@@ -61,11 +61,12 @@ class PcBuildService{
         AppState.userBuilds = AppState.userBuilds.map(build => build.id !== pcId ? build : newBuildData)
     }
 
-    async updatePowerScore(pcId, average){
-        let buildData = {powerScore: average}
+    async updatePowerScore(pcId, average, price){
+        let buildData = {powerScore: average, price: price}
         console.log(buildData)
         let response = await api.put(`api/pcBuilds/${pcId}/powerScore`, buildData)
-        AppState.activeBuildToEdit.powerScore = buildData.powerScore
+        let newBuild = new PcBuild(response.data)
+        AppState.activeBuildToEdit = newBuild
     }
 
 

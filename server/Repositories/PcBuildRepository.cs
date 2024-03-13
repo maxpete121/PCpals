@@ -121,7 +121,8 @@ public class PcBuildRepository{
     internal PcBuild UpdatePowerScore(PcBuild updateData){
         string sql = @"
         UPDATE pcBuilds SET
-        powerScore = @powerScore
+        powerScore = @powerScore,
+        price = @price
         WHERE id = @id;
 
         SELECT
