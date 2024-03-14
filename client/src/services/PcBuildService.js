@@ -70,6 +70,12 @@ class PcBuildService{
         AppState.activeBuildToEdit = newBuild
     }
 
+    async getSharedBuilds(){
+        let response = await api.get('api/pcBuilds/shared')
+        let allBuilds = await response.data.map(build => new PcBuild(build))
+        AppState.recentBuilds = allBuilds
+    }
+
 
 }
 

@@ -19,21 +19,33 @@
       <h4>Top Reviewed</h4>
       <div></div>
     </div>
-    <div class="col-5">
+    <div class="col-5 d-flex flex-column align-items-center">
       <h4>Recent Builds</h4>
-      <div v-for="recentBuild in recentBuilds"></div>
+      <div class="d-flex justify-content-center" v-for="recentBuild in recentBuilds">
+        <HomeBuildComponent :recentBuild="recentBuild"/>
+      </div>
     </div>
   </div>
 </section>
 </template>
 
 <script>
+import { computed, onMounted } from 'vue';
+import { AppState } from '../AppState';
+import { pcBuildService } from '../services/PcBuildService';
+import HomeBuildComponent from '../components/HomeBuildComponent.vue';
 export default {
   setup() {
+    onMounted(()=>{
+      getSharedBuilds()
+    })
+    async function getSharedBuilds(){
+      await pcBuildService.getSharedBuilds()
+    }
     return {
       recentBuilds: computed(()=> AppState.recentBuilds)
     }
-  }
+  }, components: {HomeBuildComponent}
 }
 </script>
 
