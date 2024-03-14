@@ -7,6 +7,7 @@ import { api } from "./AxiosService"
 class PcBuildService{
 
     async createBuild(buildData){
+        buildData.isPrivate = true
         let response = await api.post('api/pcBuilds', buildData)
         let build = new PcBuild(response.data)
         AppState.userBuilds.unshift(build)

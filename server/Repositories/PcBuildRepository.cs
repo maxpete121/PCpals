@@ -9,9 +9,9 @@ public class PcBuildRepository{
     internal PcBuild CreatePcBuild(PcBuild pcBuildData){
         string sql = @"
         INSERT INTO pcBuilds
-        (name, creatorId, powerScore, price, rating)
+        (name, creatorId, powerScore, price, rating, isPrivate)
         VALUES
-        (@name, @creatorId, @powerScore, @price, @rating);
+        (@name, @creatorId, @powerScore, @price, @rating, @isPrivate);
 
         SELECT
         pcBuilds.*,
