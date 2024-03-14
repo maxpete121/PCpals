@@ -7,11 +7,11 @@
                         <h4>{{ activeBuild.name }}</h4>
                     </span>
                     <span class="d-flex ms-4 pc-info mt-2">
-                        <h4 class="me-2">Price</h4>
+                        <h4 class="me-2">Price:</h4>
                         <h4>${{ activeBuild.price }}</h4>
                     </span>
                     <span class="d-flex ms-4 pc-info mt-2">
-                        <h4 class="me-2">Power Score</h4>
+                        <h4 class="me-2">Power Score:</h4>
                         <h4>{{ activeBuild.powerScore }}</h4>
                     </span>
                 </div>
@@ -69,6 +69,15 @@
                     <h4 class="mt-4 text-danger">No Part selected...</h4>
                     </div>
                 </div>
+                <div class="part-holder">
+                    <h4 class="fst-italic">Power Supply</h4>
+                    <div v-for="PowerSupply in PowerSupplys">
+                        <PcPartComponent :pcPart="PowerSupply"/>
+                    </div>
+                    <div class="d-flex align-items-end" v-if="PowerSupplys.length == 0">
+                    <h4 class="mt-4 text-danger">No Part selected...</h4>
+                    </div>
+                </div>
             </div>
             <div class="col-lg-5 col-12 d-flex flex-column align-items-center">
                 <div class="sticky-top w-100">
@@ -80,7 +89,7 @@
                             <button v-if="activeBuild.motherBoard == null || activeBuild.motherBoard == 'none'" @click="getStockParts('motherB')" class="type-button">Motherboards</button>
                             <button v-if="activeBuild.ram == null || activeBuild.ram == 'none'" @click="getStockParts('ram')" class="type-button">RAM</button>
                             <button v-if="activeBuild.storage == null || activeBuild.storage == 'none'" @click="getStockParts('storage')" class="type-button">Storage</button>
-                            <button v-if="activeBuild.powerSupply == null || activeBuild.powerSupply == 'none'" @click="getStockParts('powerSupply')" class="type-button-end">Power Supply</button>
+                            <button v-if="activeBuild.powerSupply == null || activeBuild.powerSupply == 'none'" @click="getStockParts('powerS')" class="type-button-end">Power Supply</button>
                         </span>
                     </div>
                     <div class="w-100" v-for="stockPart in stockParts">

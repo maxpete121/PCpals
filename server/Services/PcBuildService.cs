@@ -67,4 +67,9 @@ public class PcBuildService{
         }else{throw new Exception("Not Authorized.");}
     }
 
+    internal List<PcBuild> GetAllSharedBuilds(){
+        List<PcBuild> pcBuilds = repo.GetAllSharedBuilds();
+        return pcBuilds;
+    }
+
 }

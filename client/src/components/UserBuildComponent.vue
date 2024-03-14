@@ -1,6 +1,6 @@
 <template>
     <div class="build-card mt-3 p-lg-1 p-2">
-        <div class="d-lg-flex justify-content-between">
+        <div class="d-lg-flex justify-content-between align-items-center">
             <div class="text-center me-4 ms-4">
                 <img class="cover-img" :src="casePic" alt="">
                 <h3 class="fst-italic">{{ userBuild.name }}</h3>
@@ -102,7 +102,7 @@ export default {
             getPcById,
             updateShare,
             casePic: computed(() => {
-                if (props.userBuild.casePicture == 'none') {
+                if (props.userBuild.casePicture == 'none' || props.userBuild.casePicture == null) {
                     return 'https://rusutikaa.github.io/docs/developer.apple.com/library/archive/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/defaultphoto_2x.png'
                 } else { return props.userBuild.casePicture }
             }),

@@ -20,8 +20,8 @@
       <div></div>
     </div>
     <div class="col-5">
-      <h4>Our Favorites</h4>
-      <div></div>
+      <h4>Recent Builds</h4>
+      <div v-for="recentBuild in recentBuilds"></div>
     </div>
   </div>
 </section>
@@ -31,7 +31,7 @@
 export default {
   setup() {
     return {
-      
+      recentBuilds: computed(()=> AppState.recentBuilds)
     }
   }
 }

@@ -17,7 +17,7 @@ class PcBuildService{
         let response = await api.get('api/pcBuilds/account')
         let userBuilds = response.data.map(build => new PcBuild(build))
         AppState.userBuilds = userBuilds
-        // console.log(userBuilds)
+        console.log(userBuilds)
     }
 
     async getPcById(pcId){
@@ -42,7 +42,7 @@ class PcBuildService{
         else if(stockPartData.type == 'motherB'){buildData.motherBoard = stockPartData.name}
         else if(stockPartData.type == 'ram'){buildData.ram = stockPartData.name}
         else if(stockPartData.type == 'storage'){buildData.pcStorage = stockPartData.name}
-        else if(stockPartData.type == 'powerSupply'){buildData.powerSupply = stockPartData.name}
+        else if(stockPartData.type == 'powerS'){buildData.powerSupply = stockPartData.name}
         else if(stockPartData.type == 'cooler'){buildData.cooler = stockPartData.name}
         let response = await api.put(`api/pcBuilds/${pcId}/parts`, buildData)
         let updatedBuild = new PcBuild(response.data)

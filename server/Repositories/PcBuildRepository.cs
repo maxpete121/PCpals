@@ -138,5 +138,21 @@ public class PcBuildRepository{
         }, updateData).FirstOrDefault();
         return updatedBuild;
     }
+
+    internal List<PcBuild> GetAllSharedBuilds(){
+        string sql = @"
+        SELECT
+        pcBuilds.*,
+        accounts.*
+        FROM pcBuilds
+        JOIN accounts ON pcBuilds.creatorId = accounts.id
+        WHERE pcBuilds.isPrivate = false
+        ";
+        List<PcBuild> allPcs = db.Query<PcBuild, Account, PcBuild>(sql, (pcBuild, account)=>{
+            pcBuild.Creator = account;
+            return pcBuild;
+        }).ToList();
+        return allPcs;
+    }
 }
 

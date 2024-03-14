@@ -122,4 +122,17 @@ public class PcBuildController : ControllerBase
     }
   }
 
+  [HttpGet("shared")]
+  public ActionResult<List<PcBuild>> GetAllSharedBuilds(){
+    try
+    {
+      List<PcBuild> pcBuilds = pcBuildService.GetAllSharedBuilds();
+      return Ok(pcBuilds);
+    }
+    catch (Exception error)
+    {
+      return BadRequest(error.Message);
+    }
+  }
+
 }

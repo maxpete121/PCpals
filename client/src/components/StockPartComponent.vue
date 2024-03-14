@@ -7,8 +7,8 @@
         <div class="d-flex align-items-center">
             <div class="">
                 <span class="d-flex price-area justify-content-center">
-                    <p class="me-2">Price:</p>
-                    <p>${{ stockPart.price }}</p>
+                    <h6 class="me-2">Price:</h6>
+                    <h6>${{ stockPart.price }}</h6>
                 </span>
                 <div class="d-flex">
                     <h6 class="me-2">Speed</h6>

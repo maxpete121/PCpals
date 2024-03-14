@@ -3,7 +3,11 @@
         <div class="d-flex align-items-center mt-1">
             <h6>{{ pcPart.part.name }}</h6>
         </div>
-        <div>
+        <div class="d-flex align-items-center">
+            <div class="d-flex me-3 mt-1">
+                <h6 class="me-2">Price:</h6>
+                <h6>${{ pcPart.part.price }}</h6>
+            </div>
             <button @click="deletePcPart()" class="btn btn-outline-danger"><i class="mdi mdi-delete"></i></button>
         </div>
     </div>
