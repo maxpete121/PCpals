@@ -1,6 +1,6 @@
 <template>
     <div class="build-card d-flex align-items-center w-100">
-        <div>
+        <div class="ms-1 d-flex flex-column align-items-center mt-1">
             <img class="cover-img" :src="casePic" alt="Case picture">
             <h3>{{ recentBuild.name }}</h3>
         </div>
@@ -53,11 +53,10 @@
                     <p v-else>None🚫</p>
                 </div>
             </div>
-            <div class="d-flex justify-content-center mt-2">
-                <button class="btn-build me-2">Add to Cart</button>
-                <button  class="btn-build me-2">Save Build</button>
-                <button  class="btn-build me-2">Edit Build</button>
-                <button  class="btn-delete">Delete<i class="mdi mdi-delete"></i></button>
+            <div class="d-flex justify-content-center mt-3">
+                <button class="btn-build me-3">Add to Cart</button>
+                <button  class="btn-build me-3">Save Build</button>
+                <button  class="btn-build">Reviews</button>
             </div>
         </div>
     </div>
