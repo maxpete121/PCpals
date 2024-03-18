@@ -19,7 +19,7 @@
       <h4>Top Reviewed</h4>
       <div></div>
     </div>
-    <div class="col-5 d-flex flex-column align-items-center">
+    <div class="col-5 d-flex flex-column align-items-center recent-build pt-1 pb-3">
       <h4>Recent Builds</h4>
       <div class="d-flex justify-content-center" v-for="recentBuild in recentBuilds">
         <HomeBuildComponent :recentBuild="recentBuild"/>
@@ -72,5 +72,10 @@ export default {
       object-position: center;
     }
   }
+}
+
+.recent-build{
+  outline: solid 1px purple;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.171);
 }
 </style>

@@ -49,3 +49,14 @@ CREATE TABLE buildParts(
   Foreign Key (partId) REFERENCES stockParts(id)
 ) default charset utf8 COMMENT '';
 
+CREATE TABLE reviews(
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  creatorId VARCHAR(255),
+  buildId INT NOT NULL,
+  body VARCHAR(500),
+  stars INT,
+  Foreign Key (creatorId) REFERENCES accounts(id) ON DELETE CASCADE,
+  Foreign Key (buildId) REFERENCES pcBuilds(id)
+) default charset utf8 COMMENT '';
+
+
