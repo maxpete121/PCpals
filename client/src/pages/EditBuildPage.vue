@@ -43,20 +43,20 @@
                     </div>
                 </div>
                 <div class="part-holder">
-                    <h4 class="fst-italic">Ram</h4>
-                    <div v-for="Ram in Rams">
-                        <PcPartComponent :pcPart="Ram"/>
-                    </div>
-                    <div class="d-flex align-items-end" v-if="Rams.length == 0">
-                    <h4 class="mt-4 text-danger">No Part selected...</h4>
-                    </div>
-                </div>
-                <div class="part-holder">
                     <h4 class="fst-italic">MotherBoard</h4>
                     <div v-for="MotherBoard in Motherboards">
                         <PcPartComponent :pcPart="MotherBoard"/>
                     </div>
                     <div class="d-flex align-items-end" v-if="Motherboards.length == 0">
+                        <h4 class="mt-4 text-danger">No Part selected...</h4>
+                    </div>
+                </div>
+                <div class="part-holder">
+                    <h4 class="fst-italic">Ram</h4>
+                    <div v-for="Ram in Rams">
+                        <PcPartComponent :pcPart="Ram"/>
+                    </div>
+                    <div class="d-flex align-items-end" v-if="Rams.length == 0">
                     <h4 class="mt-4 text-danger">No Part selected...</h4>
                     </div>
                 </div>

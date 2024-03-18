@@ -3,9 +3,22 @@
         <div class="ms-1 d-flex flex-column align-items-center mt-1">
             <img class="cover-img" :src="casePic" alt="Case picture">
             <h3>{{ recentBuild.name }}</h3>
+            <span class="d-flex text-success">
+                <h4 class="fst-italic me-2">Price:</h4>
+                <h4>${{ recentBuild.price }}</h4>
+            </span>
         </div>
-        <div>
-            <div class="specs text-center me-lg-4 ms-lg-4 ps-2 pe-2 pb-2 mt-1">
+        <div class="d-flex flex-column justify-content-center">
+            <div class="d-flex justify-content-center">
+                    <h4>Speed</h4>
+                    <div class="ms-2 speed-view">
+                        <div class="progress progress-bg" role="progressbar" aria-label="Basic example"
+                            aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar progress-bg-child" :style="progressWidth"></div>
+                        </div>
+                    </div>
+                </div>
+            <div class="specs text-center me-lg-4 ms-lg-3 ps-2 pe-2 pb-2 mt-1">
                 <div class="sticky-top part-title">
                     <h5 class="fst-italic">Parts</h5>
                 </div>
@@ -56,10 +69,11 @@
             <div class="d-flex justify-content-center mt-3">
                 <button class="btn-build me-3">Add to Cart</button>
                 <button  class="btn-build me-3">Save Build</button>
-                <button  class="btn-build">Reviews</button>
+                <button  class="btn-build" data-bs-toggle="modal" data-bs-target="#reviewModal">Reviews</button>
             </div>
         </div>
     </div>
+    <ReviewModal id="reviewModal"/>
 </template>
 
 
@@ -67,6 +81,7 @@
 import { AppState } from '../AppState';
 import { computed, ref, onMounted } from 'vue';
 import { PcBuild } from '../models/PcBuild';
+import ReviewModal from './ReviewModal.vue';
 export default {
     props: { recentBuild: { type: PcBuild, required: true } },
     setup(props) {
@@ -76,8 +91,12 @@ export default {
                     return 'https://rusutikaa.github.io/docs/developer.apple.com/library/archive/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/defaultphoto_2x.png'
                 } else { return props.recentBuild.casePicture }
             }),
+            progressWidth: computed(() => {
+                let style = `width: ${props.recentBuild.powerScore}%`
+                return style
+            })
         }
-    }
+    }, components: {ReviewModal}
 };
 </script>
 
@@ -86,6 +105,19 @@ export default {
 .build-card {
     outline: solid 1px purple;
     box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.219);
+}
+
+.speed-view {
+    width: 150px;
+    margin-top: 10px;
+}
+
+.progress-bg {
+    background-color: gray;
+}
+
+.progress-bg-child {
+    background-color: purple;
 }
 
 .specs {

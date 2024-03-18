@@ -21,7 +21,7 @@
     </div>
     <div class="col-5 d-flex flex-column align-items-center recent-build pt-1 pb-3">
       <h4>Recent Builds</h4>
-      <div class="d-flex justify-content-center" v-for="recentBuild in recentBuilds">
+      <div class="d-flex justify-content-center mb-3" v-for="recentBuild in recentBuilds">
         <HomeBuildComponent :recentBuild="recentBuild"/>
       </div>
     </div>
@@ -34,6 +34,7 @@ import { computed, onMounted } from 'vue';
 import { AppState } from '../AppState';
 import { pcBuildService } from '../services/PcBuildService';
 import HomeBuildComponent from '../components/HomeBuildComponent.vue';
+import ReviewModal from '../components/ReviewModal.vue';
 export default {
   setup() {
     onMounted(()=>{
@@ -45,7 +46,7 @@ export default {
     return {
       recentBuilds: computed(()=> AppState.recentBuilds)
     }
-  }, components: {HomeBuildComponent}
+  }, components: {HomeBuildComponent, ReviewModal}
 }
 </script>
 
@@ -75,7 +76,10 @@ export default {
 }
 
 .recent-build{
-  outline: solid 1px purple;
+  outline: solid 2px purple;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.171);
+  overflow-y: scroll;
+  height: 345px;
+  border-radius: 15px;
 }
 </style>
