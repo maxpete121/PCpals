@@ -69,7 +69,7 @@
             <div class="d-flex justify-content-center mt-3">
                 <button class="btn-build me-3">Add to Cart</button>
                 <button  class="btn-build me-3">Save Build</button>
-                <button  class="btn-build" data-bs-toggle="modal" data-bs-target="#reviewModal">Reviews</button>
+                <button @click="getActiveReviews()" class="btn-build">Reviews</button>
             </div>
         </div>
     </div>
@@ -82,10 +82,17 @@ import { AppState } from '../AppState';
 import { computed, ref, onMounted } from 'vue';
 import { PcBuild } from '../models/PcBuild';
 import ReviewModal from './ReviewModal.vue';
+import { reviewService } from '../services/ReviewService';
+import { Modal } from 'bootstrap';
 export default {
     props: { recentBuild: { type: PcBuild, required: true } },
     setup(props) {
+        async function getActiveReviews(){
+            await reviewService.getActiveReviews(props.recentBuild.id)
+            Modal.getOrCreateInstance("#reviewModal").show()
+        }
         return {
+            getActiveReviews,
             casePic: computed(() => {
                 if (props.recentBuild.casePicture == 'none' || props.recentBuild.casePicture == null) {
                     return 'https://rusutikaa.github.io/docs/developer.apple.com/library/archive/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/defaultphoto_2x.png'

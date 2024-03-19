@@ -21,6 +21,8 @@ export const AppState = reactive({
 
   recentBuilds: [],
 
+  topReviewed: [],
+
   activeBuildForReview: [],
   activeBuildReviews: [],
 
