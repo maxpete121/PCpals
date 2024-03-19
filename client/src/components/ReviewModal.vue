@@ -8,11 +8,19 @@
       </div>
       <div class="modal-body">
         <div>
-          <div class="text-center">
+          <div class="text-center d-flex flex-column align-items-center">
             <h3>Leave a review!</h3>
-            <form >
-              <div class="d-flex">
-                <select v-model="reviewData.rating" name="rating" id="rating">
+            <form @submit.prevent="createReview()" class="d-flex flex-column align-items-center">
+              <div>
+                <h6>Title</h6>
+                <input required v-model="reviewData.title" type="text">
+              </div>
+              <div class="mt-2">
+                <h6>Description</h6>
+                <textarea class="" required v-model="reviewData.body" name="body" id="review-body" cols="30" rows="3"></textarea>
+              </div>
+              <div class="d-flex mt-2">
+                <select required v-model="reviewData.stars" name="rating" id="rating">
                   <option selected value="0">Rating</option>
                   <option value="1">⭐</option>
                   <option value="2">⭐⭐</option>
@@ -20,9 +28,14 @@
                   <option value="2">⭐⭐⭐⭐</option>
                   <option value="2">⭐⭐⭐⭐⭐</option>
                 </select>
-                <button>Post</button>
+                <button class="ms-2 btn btn-outline-dark">Post</button>
               </div>
             </form>
+          </div>
+          <div class="review-holder">
+            <div v-for="activeReview in activeReviews">
+              yes
+            </div>
           </div>
         </div>
       </div>
@@ -44,12 +57,23 @@ import { Modal } from 'bootstrap';
 export default {
     setup(){
       let reviewData = ref()
-      reviewData.value = {rating: 0}
+      reviewData.value = {}
+      let account = computed(()=> AppState.account)
+      let activeBuild = computed(()=> AppState.activeBuildForReview)
       async function closeModal(){
         AppState.activeBuildReviews = []
         Modal.getOrCreateInstance("#reviewModal").hide()
       }
+
+      async function createReview(){
+        reviewData.value.creatorId = account.value.id
+        reviewData.value.buildId = activeBuild.value.id
+        await reviewService.createReview(reviewData.value)
+        reviewData.value = {}
+      }
     return { 
+      activeReviews: computed(()=> AppState.activeBuildReviews),
+      createReview,
       closeModal,
       reviewData,
      }

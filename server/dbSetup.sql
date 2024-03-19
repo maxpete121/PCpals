@@ -54,6 +54,7 @@ CREATE TABLE reviews(
   creatorId VARCHAR(255),
   buildId INT NOT NULL,
   body VARCHAR(500),
+  title VARCHAR(60),
   stars INT,
   Foreign Key (creatorId) REFERENCES accounts(id) ON DELETE CASCADE,
   Foreign Key (buildId) REFERENCES pcBuilds(id)

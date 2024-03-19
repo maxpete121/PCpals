@@ -23,7 +23,7 @@ export const AppState = reactive({
 
   topReviewed: [],
 
-  activeBuildForReview: [],
+  activeBuildForReview: {},
   activeBuildReviews: [],
 
   cpu: [],

@@ -9,9 +9,9 @@ public class ReviewRepository{
     internal Reviews CreateReview(PcBuild buildData){
         string sql = @"
         INSERT INTO reviews
-        (creatorId, buildId, body, stars)
+        (creatorId, buildId, body, stars, title)
         VALUES
-        (@creatorId, @buildId, @body, @stars);
+        (@creatorId, @buildId, @body, @stars, @title);
 
         SELECT
         reviews.*,

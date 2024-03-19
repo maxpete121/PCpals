@@ -88,8 +88,12 @@ export default {
     props: { recentBuild: { type: PcBuild, required: true } },
     setup(props) {
         async function getActiveReviews(){
+            await setActiveBuild()
             await reviewService.getActiveReviews(props.recentBuild.id)
             Modal.getOrCreateInstance("#reviewModal").show()
+        }
+        async function setActiveBuild(){
+            await reviewService.setActiveBuild(props.recentBuild.id)
         }
         return {
             getActiveReviews,
