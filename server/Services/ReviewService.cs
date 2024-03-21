@@ -6,9 +6,9 @@ public class ReviewsService{
         this.repo = repo;
     }
 
-    internal Reviews CreateReview(PcBuild buildData, string userId){
+    internal Reviews CreateReview(Reviews reviewData, string userId){
         if(userId == null)throw new Exception("Not Authorized");
-        Reviews newReview = repo.CreateReview(buildData);
+        Reviews newReview = repo.CreateReview(reviewData);
         return newReview;
     }
 

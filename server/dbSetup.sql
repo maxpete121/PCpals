@@ -56,8 +56,7 @@ CREATE TABLE reviews(
   body VARCHAR(500),
   title VARCHAR(60),
   stars INT,
-  Foreign Key (creatorId) REFERENCES accounts(id) ON DELETE CASCADE,
-  Foreign Key (buildId) REFERENCES pcBuilds(id)
+  Foreign Key (creatorId) REFERENCES accounts(id) ON DELETE CASCADE
 ) default charset utf8 COMMENT '';
 
 

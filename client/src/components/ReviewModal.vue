@@ -34,7 +34,7 @@
           </div>
           <div class="review-holder">
             <div v-for="activeReview in activeReviews">
-              yes
+              <ReviewComponent :review="activeReview"/>
             </div>
           </div>
         </div>
@@ -54,20 +54,20 @@ import { AppState } from '../AppState';
 import { computed, ref, onMounted } from 'vue';
 import { reviewService } from '../services/ReviewService';
 import { Modal } from 'bootstrap';
+import ReviewComponent from './ReviewComponent.vue';
 export default {
     setup(){
       let reviewData = ref()
       reviewData.value = {}
       let account = computed(()=> AppState.account)
-      let activeBuild = computed(()=> AppState.activeBuildForReview)
       async function closeModal(){
         AppState.activeBuildReviews = []
         Modal.getOrCreateInstance("#reviewModal").hide()
       }
 
       async function createReview(){
+        reviewData.value.buildId = AppState.activeBuildForReview.id
         reviewData.value.creatorId = account.value.id
-        reviewData.value.buildId = activeBuild.value.id
         await reviewService.createReview(reviewData.value)
         reviewData.value = {}
       }
@@ -77,7 +77,7 @@ export default {
       closeModal,
       reviewData,
      }
-    }
+    }, components: {ReviewComponent}
 };
 </script>
 

@@ -6,12 +6,12 @@ public class ReviewRepository{
         this.db = db;
     }
 
-    internal Reviews CreateReview(PcBuild buildData){
+    internal Reviews CreateReview(Reviews buildData){
         string sql = @"
         INSERT INTO reviews
-        (creatorId, buildId, body, stars, title)
+        (creatorId, buildId, title, body, stars)
         VALUES
-        (@creatorId, @buildId, @body, @stars, @title);
+        (@creatorId, @buildId, @title, @body, @stars);
 
         SELECT
         reviews.*,
@@ -50,7 +50,7 @@ public class ReviewRepository{
         accounts.*
         FROM reviews
         JOIN accounts ON reviews.creatorId = accounts.id
-        WHERE reviews.id = @buildId
+        WHERE reviews.buildId = @buildId
         ";
         List<Reviews> reviews = db.Query<Reviews, Account, Reviews>(sql, (review, account)=>{
             review.Creator = account;
