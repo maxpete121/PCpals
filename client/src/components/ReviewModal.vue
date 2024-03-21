@@ -8,7 +8,7 @@
       </div>
       <div class="modal-body">
         <div>
-          <div class="text-center d-flex flex-column align-items-center">
+          <div id="reviewCreate" class="text-center d-flex flex-column align-items-center">
             <h3>Leave a review!</h3>
             <form @submit.prevent="createReview()" class="d-flex flex-column align-items-center">
               <div>
