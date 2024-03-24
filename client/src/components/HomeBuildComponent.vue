@@ -24,15 +24,12 @@
                 </div>
                 <div class="d-flex justify-content-between part-section rounded-2">
                     <p class="me-2">Case</p>
-                    <p class="fst-italic" v-if="recentBuild.pcCase && recentBuild.pcCase !== 'none'">{{
-                recentBuild.pcCase
-            }}✅</p>
+                    <p class="fst-italic" v-if="recentBuild.pcCase && recentBuild.pcCase !== 'none'">{{ recentBuild.pcCase }}✅</p>
                     <p v-else>None🚫</p>
                 </div>
                 <div class="d-flex justify-content-between part-section rounded-2">
                     <p class="me-2">CPU</p>
-                    <p class="fst-italic" v-if="recentBuild.pcCpu && recentBuild.pcCpu !== 'none'">{{ recentBuild.pcCpu
-                        }}✅</p>
+                    <p class="fst-italic" v-if="recentBuild.pcCpu && recentBuild.pcCpu !== 'none'">{{ recentBuild.pcCpu }}✅</p>
                     <p v-else>None🚫</p>
                 </div>
                 <div class="d-flex justify-content-between part-section rounded-2">
@@ -49,20 +46,17 @@
                 </div>
                 <div class="d-flex justify-content-between part-section rounded-2">
                     <p class="me-2">Motherboard</p>
-                    <p class="fst-italic" v-if="recentBuild.motherBoard && recentBuild.motherBoard !== 'none'">{{
-                recentBuild.motherBoard }}✅</p>
+                    <p class="fst-italic" v-if="recentBuild.motherBoard && recentBuild.motherBoard !== 'none'">{{ recentBuild.motherBoard }}✅</p>
                     <p v-else>None🚫</p>
                 </div>
                 <div class="d-flex justify-content-between part-section rounded-2">
                     <p class="me-2">Storage</p>
-                    <p class="fst-italic" v-if="recentBuild.pcStorage && recentBuild.pcStorage !== 'none'">{{
-                recentBuild.pcStorage }}✅</p>
+                    <p class="fst-italic" v-if="recentBuild.pcStorage && recentBuild.pcStorage !== 'none'">{{ recentBuild.pcStorage }}✅</p>
                     <p v-else>None🚫</p>
                 </div>
                 <div class="d-flex justify-content-between part-section rounded-2">
                     <p class="me-2">Power Supply</p>
-                    <p class="fst-italic" v-if="recentBuild.powerSupply && recentBuild.powerSupply !== 'none'">{{
-                recentBuild.powerSupply }}✅</p>
+                    <p class="fst-italic" v-if="recentBuild.powerSupply && recentBuild.powerSupply !== 'none'">{{ recentBuild.powerSupply }}✅</p>
                     <p v-else>None🚫</p>
                 </div>
             </div>

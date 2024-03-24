@@ -26,7 +26,7 @@ CREATE TABLE pcBuilds(
   creatorId VARCHAR(255) NOT NULL,
   powerScore INT,
   price DECIMAL(6,2),
-  rating INT,
+  rating DECIMAL(6,2),
   isPrivate BOOLEAN,
   pcCase VARCHAR(70),
   casePicture VARCHAR(500),
@@ -46,7 +46,7 @@ CREATE TABLE buildParts(
   creatorId VARCHAR(255) NOT NULL,
   partId int NOT NULL,
   Foreign Key (creatorId) REFERENCES accounts(id) ON DELETE CASCADE,
-  Foreign Key (partId) REFERENCES stockParts(id)
+  Foreign Key (partId) REFERENCES stockParts(id) ON DELETE CASCADE
 ) default charset utf8 COMMENT '';
 
 CREATE TABLE reviews(
@@ -55,7 +55,7 @@ CREATE TABLE reviews(
   buildId INT NOT NULL,
   body VARCHAR(500),
   title VARCHAR(60),
-  stars INT,
+  stars DECIMAL(6,2),
   Foreign Key (creatorId) REFERENCES accounts(id) ON DELETE CASCADE
 ) default charset utf8 COMMENT '';
 

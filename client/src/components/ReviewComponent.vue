@@ -9,6 +9,9 @@
             <h6>Description</h6>
             <p>{{ review.body }}</p>
         </div>
+        <div v-if="account.id == review.creatorId">
+            <button @click="deleteReview()" class="btn btn-outline-danger"><i class="mdi mdi-delete"></i></button>
+        </div>
     </div>
 </template>
 
@@ -17,10 +20,21 @@
 import { AppState } from '../AppState';
 import { computed, ref, onMounted } from 'vue';
 import { Reviews } from '../models/Reviews';
+import { reviewService } from '../services/ReviewService';
+import Pop from '../utils/Pop';
 export default {
     props:{review: {type: Reviews, required: true}},
-    setup(){
-    return {  }
+    setup(props){
+        async function deleteReview(){
+            if(window.confirm('Are you sure you want to delete your review?')){
+                let message = await reviewService.deleteReview(props.review.id)
+                Pop.success(message)
+            }
+        }
+    return { 
+        account: computed(()=> AppState.account),
+        deleteReview,
+     }
     }
 };
 </script>
