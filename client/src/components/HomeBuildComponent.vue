@@ -64,6 +64,10 @@
                 <button class="btn-build me-3">Add to Cart</button>
                 <button  class="btn-build me-3">Save Build</button>
                 <button @click="getActiveReviews()" class="btn-build">Reviews</button>
+                <div v-if="recentBuild.rating" class="d-flex ms-3">
+                    <h5>{{ recentBuild.rating }}</h5>
+                    <h5>/5⭐</h5>
+                </div>
             </div>
         </div>
     </div>

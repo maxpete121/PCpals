@@ -135,4 +135,18 @@ public class PcBuildController : ControllerBase
     }
   }
 
+  [HttpPut("{buildId}/rating")]
+  [Authorize]
+  public async Task<ActionResult<PcBuild>> UpdateRating([FromBody] PcBuild updateData, int buildId){
+    try
+    {
+      Account userInfo = await auth.GetUserInfoAsync<Account>(HttpContext);
+      PcBuild pcBuild = pcBuildService.UpdateRating(updateData, buildId, userInfo.Id);
+      return Ok(pcBuild);
+    }
+    catch (Exception error)
+    {
+      return BadRequest(error.Message);
+    }
+  }
 }

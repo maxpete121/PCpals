@@ -70,6 +70,15 @@ class PcBuildService{
         AppState.activeBuildToEdit = newBuild
     }
 
+    async updateRating(ratingData, buildId){
+        let buildData = {rating: ratingData}
+        console.log(buildData, buildId)
+        let response = await api.put(`api/pcBuilds/${buildId}/rating`, buildData)
+        let updatedBuild = new PcBuild(response.data)
+        AppState.activeBuildForReview = updatedBuild
+        AppState.recentBuilds = AppState.recentBuilds.map(pc => pc.id !== buildId ? pc : updatedBuild)
+    }
+
     async getSharedBuilds(){
         let response = await api.get('api/pcBuilds/shared')
         let allBuilds = await response.data.map(build => new PcBuild(build))

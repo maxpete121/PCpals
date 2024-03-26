@@ -2,6 +2,7 @@ import { AppState } from "../AppState"
 import { PcBuild } from "../models/PcBuild"
 import { Reviews } from "../models/Reviews"
 import { api } from "./AxiosService"
+import { pcBuildService } from "./PcBuildService"
 
 
 class ReviewService{
@@ -18,29 +19,34 @@ class ReviewService{
     }
 
     async createReview(reviewData){
-        // console.log(reviewData)
+        console.log(reviewData)
         let response = await api.post('api/reviews', reviewData)
         let newReview = new Reviews(response.data)
         AppState.activeBuildReviews.unshift(newReview)
-        this.averageReview()
+        this.averageReview(newReview.buildId)
     }
 
     async deleteReview(reviewId){
         let response = await api.delete(`api/reviews/${reviewId}`)
         let reviewIndex = AppState.activeBuildReviews.findIndex(review => review.id == reviewId)
         AppState.activeBuildReviews.splice(reviewIndex, 1)
+        await this.averageReview(AppState.activeBuildForReview.id)
         return response.data
     }
 
-    async averageReview(){
+    async averageReview(buildId){
         let totalStars = 0
         for(let i = 0; AppState.activeBuildReviews.length > i; i++){
             totalStars += AppState.activeBuildReviews[i].stars
         }
         let reviewCount = AppState.activeBuildReviews.length
-        let average = totalStars / reviewCount
-        let roundedAverage = Math.round(average * 100) / 100
-        console.log(roundedAverage)
+        if(reviewCount > 0){
+            let average = totalStars / reviewCount
+            let roundedAverage = Math.round(average * 100) / 100
+            pcBuildService.updateRating(roundedAverage, buildId)
+        }else{
+            pcBuildService.updateRating(0, buildId)
+        }
     }
 }
 

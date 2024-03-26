@@ -154,5 +154,26 @@ public class PcBuildRepository{
         }).ToList();
         return allPcs;
     }
+internal PcBuild UpdateRating(PcBuild updateData){
+        string sql = @"
+        UPDATE pcBuilds SET
+        name = @name,
+        rating = @rating
+        WHERE id = @id;
+
+        SELECT
+        pcBuilds.*,
+        accounts.*
+        FROM pcBuilds
+        JOIN accounts ON pcBuilds.creatorId = accounts.id
+        WHERE pcBuilds.id = @id
+        ";
+        PcBuild updateBuild = db.Query<PcBuild, Account, PcBuild>(sql, (pcBuild, account)=>{
+            pcBuild.Creator = account;
+            return pcBuild;
+        }, updateData).FirstOrDefault();
+        return updateBuild;
 }
+}
+
 
