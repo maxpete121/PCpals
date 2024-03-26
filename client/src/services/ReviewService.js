@@ -19,7 +19,7 @@ class ReviewService{
     }
 
     async createReview(reviewData){
-        console.log(reviewData)
+        // console.log(reviewData)
         let response = await api.post('api/reviews', reviewData)
         let newReview = new Reviews(response.data)
         AppState.activeBuildReviews.unshift(newReview)

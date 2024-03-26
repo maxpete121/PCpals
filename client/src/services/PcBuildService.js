@@ -17,7 +17,7 @@ class PcBuildService{
         let response = await api.get('api/pcBuilds/account')
         let userBuilds = response.data.map(build => new PcBuild(build))
         AppState.userBuilds = userBuilds
-        console.log(userBuilds)
+        // console.log(userBuilds)
     }
 
     async getPcById(pcId){
@@ -72,7 +72,7 @@ class PcBuildService{
 
     async updateRating(ratingData, buildId){
         let buildData = {rating: ratingData}
-        console.log(buildData, buildId)
+        // console.log(buildData, buildId)
         let response = await api.put(`api/pcBuilds/${buildId}/rating`, buildData)
         let updatedBuild = new PcBuild(response.data)
         AppState.activeBuildForReview = updatedBuild

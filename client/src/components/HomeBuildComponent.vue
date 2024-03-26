@@ -1,5 +1,5 @@
 <template>
-    <div class="build-card d-flex align-items-center w-100">
+    <div class="build-card d-lg-flex align-items-center pb-1">
         <div class="ms-1 d-flex flex-column align-items-center mt-1">
             <img class="cover-img" :src="casePic" alt="Case picture">
             <h3>{{ recentBuild.name }}</h3>
@@ -10,6 +10,7 @@
         </div>
         <div class="d-flex flex-column justify-content-center">
             <div class="d-flex justify-content-center">
+                <div class="d-flex">
                     <h4>Speed</h4>
                     <div class="ms-2 speed-view">
                         <div class="progress progress-bg" role="progressbar" aria-label="Basic example"
@@ -18,56 +19,86 @@
                         </div>
                     </div>
                 </div>
+                    <div v-if="recentBuild.rating > 0" class="d-flex ms-3 review-case mt-1">
+                       <h5 class="rating-text">{{ recentBuild.rating }}</h5>
+                       <h5 class="rating-text">/5⭐</h5>
+                    </div>
+                    <div v-else-if="recentBuild.rating == 0" class="ms-3 mt-1">
+                        <h5>No Reviews⭐</h5>
+                    </div>
+                </div>
             <div class="specs text-center me-lg-4 ms-lg-3 ps-2 pe-2 pb-2 mt-1">
                 <div class="sticky-top part-title">
                     <h5 class="fst-italic">Parts</h5>
                 </div>
-                <div class="d-flex justify-content-between part-section rounded-2">
-                    <p class="me-2">Case</p>
-                    <p class="fst-italic" v-if="recentBuild.pcCase && recentBuild.pcCase !== 'none'">{{ recentBuild.pcCase }}✅</p>
-                    <p v-else>None🚫</p>
+                <div class="mb-2">
+                    <span class="d-flex justify-content-start part-type">
+                        <h5 class="title-card">Case:</h5>
+                    </span>
+                    <div class="part-section rounded-2 d-flex justify-content-center">
+                        <p class="fst-italic" v-if="recentBuild.pcCase && recentBuild.pcCase !== 'none'">{{ recentBuild.pcCase }}✅</p>
+                        <p v-else>None🚫</p>
+                    </div>
                 </div>
-                <div class="d-flex justify-content-between part-section rounded-2">
-                    <p class="me-2">CPU</p>
-                    <p class="fst-italic" v-if="recentBuild.pcCpu && recentBuild.pcCpu !== 'none'">{{ recentBuild.pcCpu }}✅</p>
-                    <p v-else>None🚫</p>
+                <div class="mb-2">
+                    <span class="d-flex justify-content-start part-type">
+                        <h5 class="title-card">CPU:</h5>
+                    </span>
+                    <div class="part-section rounded-2 d-flex justify-content-center">
+                        <p class="fst-italic" v-if="recentBuild.pcCpu && recentBuild.pcCpu !== 'none'">{{ recentBuild.pcCpu }}✅</p>
+                        <p v-else>None🚫</p>
+                    </div>
                 </div>
-                <div class="d-flex justify-content-between part-section rounded-2">
-                    <p class="me-2">GPU</p>
-                    <p class="fst-italic" v-if="recentBuild.gpu && recentBuild.gpu !== 'none'">{{ recentBuild.gpu }}✅
-                    </p>
-                    <p v-else>None🚫</p>
+                <div class="mb-2">
+                    <span class="d-flex justify-content-start part-type">
+                        <h5 class="title-card">GPU:</h5>
+                    </span>
+                    <div class="part-section rounded-2 d-flex justify-content-center">
+                        <p class="fst-italic" v-if="recentBuild.gpu && recentBuild.gpu !== 'none'">{{ recentBuild.gpu }}✅</p>
+                        <p v-else>None🚫</p>
+                    </div>
                 </div>
-                <div class="d-flex justify-content-between part-section rounded-2">
-                    <p class="me-2">Ram</p>
-                    <p class="fst-italic" v-if="recentBuild.ram && recentBuild.ram !== 'none'">{{ recentBuild.ram }}✅
-                    </p>
-                    <p v-else>None🚫</p>
+                <div class="mb-2">
+                    <span class="d-flex justify-content-start part-type">
+                        <h5 class="title-card">Ram:</h5>
+                    </span>
+                    <div class="part-section rounded-2 d-flex justify-content-center">
+                        <p class="fst-italic" v-if="recentBuild.ram && recentBuild.ram !== 'none'">{{ recentBuild.ram }}✅</p>
+                        <p v-else>None🚫</p>
+                    </div>
                 </div>
-                <div class="d-flex justify-content-between part-section rounded-2">
-                    <p class="me-2">Motherboard</p>
-                    <p class="fst-italic" v-if="recentBuild.motherBoard && recentBuild.motherBoard !== 'none'">{{ recentBuild.motherBoard }}✅</p>
-                    <p v-else>None🚫</p>
+                <div class="mb-2">
+                    <span class="d-flex justify-content-start part-type">
+                        <h5 class="title-card">Motherboard:</h5>
+                    </span>
+                    <div class="part-section rounded-2 d-flex justify-content-center">
+                        <p class="fst-italic" v-if="recentBuild.motherBoard && recentBuild.motherBoard !== 'none'">{{ recentBuild.motherBoard }}✅</p>
+                        <p v-else>None🚫</p>
+                    </div>
                 </div>
-                <div class="d-flex justify-content-between part-section rounded-2">
-                    <p class="me-2">Storage</p>
-                    <p class="fst-italic" v-if="recentBuild.pcStorage && recentBuild.pcStorage !== 'none'">{{ recentBuild.pcStorage }}✅</p>
-                    <p v-else>None🚫</p>
+                <div class="mb-2">
+                    <span class="d-flex justify-content-start part-type">
+                        <h5 class="title-card">Storage:</h5>
+                    </span>
+                    <div class="part-section rounded-2 d-flex justify-content-center">
+                        <p class="fst-italic" v-if="recentBuild.pcStorage && recentBuild.pcStorage !== 'none'">{{ recentBuild.pcStorage }}✅</p>
+                        <p v-else>None🚫</p>
+                    </div>
                 </div>
-                <div class="d-flex justify-content-between part-section rounded-2">
-                    <p class="me-2">Power Supply</p>
-                    <p class="fst-italic" v-if="recentBuild.powerSupply && recentBuild.powerSupply !== 'none'">{{ recentBuild.powerSupply }}✅</p>
-                    <p v-else>None🚫</p>
+                <div class="">
+                    <span class="d-flex justify-content-start part-type">
+                        <h5 class="title-card">Power Supply:</h5>
+                    </span>
+                    <div class="part-section rounded-2 d-flex justify-content-center">
+                        <p class="fst-italic" v-if="recentBuild.powerSupply && recentBuild.powerSupply !== 'none'">{{ recentBuild.powerSupply }}✅</p>
+                        <p v-else>None🚫</p>
+                    </div>
                 </div>
             </div>
             <div class="d-flex justify-content-center mt-3">
                 <button class="btn-build me-3">Add to Cart</button>
                 <button  class="btn-build me-3">Save Build</button>
                 <button @click="getActiveReviews()" class="btn-build">Reviews</button>
-                <div v-if="recentBuild.rating" class="d-flex ms-3">
-                    <h5>{{ recentBuild.rating }}</h5>
-                    <h5>/5⭐</h5>
-                </div>
             </div>
         </div>
     </div>
@@ -128,9 +159,23 @@ export default {
 .progress-bg-child {
     background-color: purple;
 }
-
+.review-case{
+    padding-left: 8px;
+    padding-right: 8px;
+}
+.rating-text{
+    height: 18px;
+}
+.part-type{
+    height: 25px;
+    
+}
+.title-card{
+    height: 27px;
+    border-bottom: solid 1px purple;
+}
 .specs {
-    width: 380px;
+    width: 360px;
     height: 170px;
     overflow-y: scroll;
     outline: solid 2px purple;
@@ -146,7 +191,7 @@ export default {
 }
 
 .part-section {
-    border-bottom: solid 1px purple;
+    border: solid 1px purple;
     height: 28px;
     margin-top: 7px;
 }
