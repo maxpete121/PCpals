@@ -10,19 +10,11 @@
         </div>
         <div class="d-flex flex-column justify-content-center">
             <div class="d-flex justify-content-center">
-                <div class="d-flex">
-                    <div class="d-flex review-case">
-                       <h6 class="rating-text">{{ recentBuild.rating }}</h6>
-                       <h6 class="rating-text">/5⭐</h6>
-                    </div>
-                    <h4 class="ms-4">Speed</h4>
-                    <div class="ms-2 speed-view">
-                        <div class="progress progress-bg" role="progressbar" aria-label="Basic example"
-                            aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-                            <div class="progress-bar progress-bg-child" :style="progressWidth"></div>
-                        </div>
-                    </div>
-                </div>
+            <div class="d-flex justify-content-center mb-2 mt-1 pe-1">
+                <button class="btn-build me-3">Add to Cart</button>
+                <button  class="btn-build">Save Build</button>
+                <button @click="getActiveReviews()" class="btn-build ms-3">Reviews</button>
+            </div>
                 </div>
             <div class="specs text-center me-lg-4 ms-lg-3 ps-2 pe-2 pb-2 mt-1">
                 <div class="sticky-top part-title d-flex justify-content-center">
@@ -92,10 +84,18 @@
                     </div>
                 </div>
             </div>
-            <div class="d-flex justify-content-evenly mt-3 pe-1">
-                <button class="btn-build">Add to Cart</button>
-                <button  class="btn-build">Save Build</button>
-                <button @click="getActiveReviews()" class="btn-build">Reviews</button>
+            <div class="d-flex justify-content-center pt-3">
+                    <div class="d-flex review-case">
+                       <h6 class="rating-text">{{ recentBuild.rating }}</h6>
+                       <h6 class="rating-text">/5⭐</h6>
+                    </div>
+                    <h4 class="ms-4">Speed</h4>
+                    <div class="ms-2 speed-view">
+                        <div class="progress progress-bg" role="progressbar" aria-label="Basic example"
+                            aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar progress-bg-child" :style="progressWidth"></div>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>
@@ -180,7 +180,7 @@ export default {
 }
 .specs {
     width: 360px;
-    height: 170px;
+    height: 165px;
     overflow-y: scroll;
     outline: solid 2px purple;
     border-radius: 5px;
