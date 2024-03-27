@@ -23,40 +23,68 @@
                     <div class="sticky-top part-title">
                         <h5 class="fst-italic">Parts</h5>
                     </div>
-                    <div class="d-flex justify-content-between part-section rounded-2">
-                        <p class="me-2 fw-bold">Case</p>
-                        <p class="fst-italic" v-if="userBuild.pcCase && userBuild.pcCase !== 'none'">{{ userBuild.pcCase }}✅</p>
-                        <p v-else>None🚫</p>
+                    <div class="mb-2">
+                        <span class="d-flex justify-content-start part-type">
+                            <h5 class="title-card">Case:</h5>
+                        </span>
+                        <div class="part-section rounded-2 d-flex justify-content-center">
+                            <p class="fst-italic" v-if="userBuild.pcCase && userBuild.pcCase !== 'none'">{{ userBuild.pcCase }}✅</p>
+                            <p v-else>None🚫</p>
+                        </div>
                     </div>
-                    <div class="d-flex justify-content-between part-section rounded-2">
-                        <p class="me-2 fw-bold">CPU</p>
-                        <p class="fst-italic" v-if="userBuild.pcCpu && userBuild.pcCpu !== 'none'">{{ userBuild.pcCpu }}✅</p>
-                        <p v-else>None🚫</p>
+                    <div class="mb-2">
+                        <span class="d-flex justify-content-start part-type">
+                            <h5 class="title-card">CPU:</h5>
+                        </span>
+                        <div class="part-section rounded-2 d-flex justify-content-center">
+                            <p class="fst-italic" v-if="userBuild.pcCpu && userBuild.pcCpu !== 'none'">{{ userBuild.pcCpu }}✅</p>
+                            <p v-else>None🚫</p>
+                        </div>
                     </div>
-                    <div class="d-flex justify-content-between part-section rounded-2">
-                        <p class="me-2 fw-bold">GPU</p>
-                        <p class="fst-italic" v-if="userBuild.gpu && userBuild.gpu !== 'none'">{{ userBuild.gpu }}✅</p>
-                        <p v-else>None🚫</p>
+                    <div class="mb-2">
+                        <span class="d-flex justify-content-start part-type">
+                            <h5 class="title-card">GPU:</h5>
+                        </span>
+                        <div class="part-section rounded-2 d-flex justify-content-center">
+                            <p class="fst-italic" v-if="userBuild.gpu && userBuild.gpu !== 'none'">{{ userBuild.gpu }}✅</p>
+                            <p v-else>None🚫</p>
+                        </div>
                     </div>
-                    <div class="d-flex justify-content-between part-section rounded-2">
-                        <p class="me-2 fw-bold">Ram</p>
-                        <p class="fst-italic" v-if="userBuild.ram && userBuild.ram !== 'none'">{{ userBuild.ram }}✅</p>
-                        <p v-else>None🚫</p>
+                    <div class="mb-2">
+                        <span class="d-flex justify-content-start part-type">
+                            <h5 class="title-card">Ram:</h5>
+                        </span>
+                        <div class="part-section rounded-2 d-flex justify-content-center">
+                            <p class="fst-italic" v-if="userBuild.ram && userBuild.ram !== 'none'">{{ userBuild.ram }}✅</p>
+                            <p v-else>None🚫</p>
+                        </div>
                     </div>
-                    <div class="d-flex justify-content-between part-section rounded-2">
-                        <p class="me-2 fw-bold">Motherboard</p>
-                        <p class="fst-italic" v-if="userBuild.motherBoard && userBuild.motherBoard !== 'none'">{{ userBuild.motherBoard }}✅</p>
-                        <p v-else>None🚫</p>
+                    <div class="mb-2">
+                        <span class="d-flex justify-content-start part-type">
+                            <h5 class="title-card">Motherboard:</h5>
+                        </span>
+                        <div class="part-section rounded-2 d-flex justify-content-center">
+                            <p class="fst-italic" v-if="userBuild.motherBoard && userBuild.motherBoard !== 'none'">{{ userBuild.motherBoard }}✅</p>
+                            <p v-else>None🚫</p>
+                        </div>
                     </div>
-                    <div class="d-flex justify-content-between part-section rounded-2">
-                        <p class="me-2 fw-bold">Storage</p>
-                        <p class="fst-italic" v-if="userBuild.pcStorage && userBuild.pcStorage !== 'none'">{{ userBuild.pcStorage }}✅</p>
-                        <p v-else>None🚫</p>
+                    <div class="mb-2">
+                        <span class="d-flex justify-content-start part-type">
+                            <h5 class="title-card">Storage:</h5>
+                        </span>
+                        <div class="part-section rounded-2 d-flex justify-content-center">
+                            <p class="fst-italic" v-if="userBuild.pcStorage && userBuild.pcStorage !== 'none'">{{ userBuild.pcStorage }}✅</p>
+                            <p v-else>None🚫</p>
+                        </div>
                     </div>
-                    <div class="d-flex justify-content-between part-section rounded-2">
-                        <p class="me-2 fw-bold">Power Supply</p>
-                        <p class="fst-italic" v-if="userBuild.powerSupply && userBuild.powerSupply !== 'none'">{{ userBuild.powerSupply }}✅</p>
-                        <p v-else>None🚫</p>
+                    <div class="">
+                        <span class="d-flex justify-content-start part-type">
+                            <h5 class="title-card">Power Supply:</h5>
+                        </span>
+                        <div class="part-section rounded-2 d-flex justify-content-center">
+                            <p class="fst-italic" v-if="userBuild.powerSupply && userBuild.powerSupply !== 'none'">{{ userBuild.powerSupply }}✅</p>
+                            <p v-else>None🚫</p>
+                        </div>
                     </div>
                 </div>
                 <div class="d-flex justify-content-center mt-2">
@@ -147,11 +175,17 @@ export default {
 }
 
 .part-section {
-    border-bottom: solid 1px purple;
+    border: solid 1px purple;
     height: 28px;
     margin-top: 7px;
 }
-
+.part-type{
+    height: 25px;  
+}
+.title-card{
+    height: 27px;
+    border-bottom: solid 1px purple;
+}
 .build-card {
     outline: solid 1px purple;
     box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.219);

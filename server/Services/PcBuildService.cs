@@ -75,11 +75,9 @@ public class PcBuildService{
     internal PcBuild UpdateRating(PcBuild updateData, int buildId, string userId){
         PcBuild originalBuild = GetPcById(buildId);
         if(originalBuild == null)throw new Exception("No Pc found with that Id");
-        if(originalBuild.CreatorId == userId){
-            originalBuild.Rating = updateData.Rating;
-            PcBuild updatedBuild = repo.UpdateRating(originalBuild);
-            return updatedBuild;
-        }else{throw new Exception("Not Authorized");}
+        originalBuild.Rating = updateData.Rating;
+        PcBuild updatedBuild = repo.UpdateRating(originalBuild);
+        return updatedBuild;
     }
 
 }

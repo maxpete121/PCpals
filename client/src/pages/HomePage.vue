@@ -1,10 +1,20 @@
 <template>
 <section class="container-fluid">
   <div class="row justify-content-center">
-    <div class="col-8 p-2 d-lg-flex justify-content-center align-items-center">
-      <button class="home-btn">Find a PC</button>
-      <button class="home-btn ms-4 me-4">Build a PC</button>
-      <button class="home-btn">Get a PC clean</button>
+    <div class="col-3 text-center main ps-2 pe-2">
+      <h3>Find a PC</h3>
+      <p>Browse our selection of high end gaming PCs, or check out other users builds.</p>
+      <button class="home-btn">Browse</button>
+    </div>
+    <div class="col-3 text-center main ms-4 me-4">
+      <h3>Build your own PC</h3>
+      <p>Make an account or sign in to create a PC build and share it with others!</p>
+      <button class="home-btn ms-4 me-4">Pc Builder</button>
+    </div>
+    <div class="col-3 text-center main">
+      <h3>Schedule a clean</h3>
+      <p>Submit a ticket to our team to get your PC cleaned today!</p>
+      <button class="home-btn">Get a clean</button>
     </div>
   </div>
   <div class="row justify-content-center">
@@ -55,6 +65,14 @@ export default {
     max-height: 100px;
     max-width: 300px;
   }
+}
+
+.main{
+  background-image: image-set('../assets/img/test1.png');
+  background-position: center;
+  background-size: cover;
+  height: 288px;
+  padding-top: 70px;
 }
 .home {
   display: grid;

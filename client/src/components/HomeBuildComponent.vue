@@ -19,13 +19,13 @@
                         </div>
                     </div>
                 </div>
-                    <div v-if="recentBuild.rating > 0" class="d-flex ms-3 review-case mt-1">
+                    <div class="d-flex ms-3 review-case mt-1">
                        <h5 class="rating-text">{{ recentBuild.rating }}</h5>
                        <h5 class="rating-text">/5⭐</h5>
                     </div>
-                    <div v-else-if="recentBuild.rating == 0" class="ms-3 mt-1">
+                    <!-- <div v-else-if="!recentBuild.rating" class="ms-3 mt-1">
                         <h5>No Reviews⭐</h5>
-                    </div>
+                    </div> -->
                 </div>
             <div class="specs text-center me-lg-4 ms-lg-3 ps-2 pe-2 pb-2 mt-1">
                 <div class="sticky-top part-title">
@@ -167,8 +167,7 @@ export default {
     height: 18px;
 }
 .part-type{
-    height: 25px;
-    
+    height: 25px;  
 }
 .title-card{
     height: 27px;
