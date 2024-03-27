@@ -49,3 +49,6 @@ CREATE TABLE buildParts(
   Foreign Key (partId) REFERENCES stockParts(id)
 ) default charset utf8 COMMENT '';
 
+ALTER TABLE stockParts
+ADD COLUMN watts INT
+AFTER powerScore;

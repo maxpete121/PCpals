@@ -11,9 +11,9 @@ public class StockPartRepository{
     internal StockPart CreateStockPart(StockPart stockPartData){
         string sql = @"
         INSERT INTO stockParts
-        (productImage, type, size, price, name, company, speed, gigs, powerScore)
+        (productImage, type, size, price, name, company, speed, gigs, powerScore, watts)
         VALUES
-        (@productImage, @type, @size, @price, @name, @company, @speed, @gigs, @powerScore);
+        (@productImage, @type, @size, @price, @name, @company, @speed, @gigs, @powerScore, @watts);
 
         SELECT
         *

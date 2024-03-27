@@ -12,5 +12,6 @@ export class StockPart{
         this.speed = data.speed
         this.gigs = data.gigs
         this.powerScore = data.powerScore
+        this.watts = data.watts
     }
 }

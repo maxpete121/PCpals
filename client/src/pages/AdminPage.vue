@@ -20,6 +20,8 @@
             <input v-model="stockPartData.gigs" type="text">
             <label for="">powerScore</label>
             <input v-model="stockPartData.powerScore" type="text">
+            <label for="">Watts</label>
+            <input v-model="stockPartData.watts" type="text">
             <button class="mt-2">AddStockPart</button>
         </form>
     </div>
