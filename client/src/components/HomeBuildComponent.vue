@@ -2,7 +2,7 @@
     <div class="build-card d-lg-flex align-items-center pb-1">
         <div class="ms-1 d-flex flex-column align-items-center mt-1">
             <img class="cover-img" :src="casePic" alt="Case picture">
-            <h3>{{ recentBuild.name }}</h3>
+                <h3>{{ recentBuild.name }}</h3>
             <span class="d-flex text-success">
                 <h4 class="fst-italic me-2">Price:</h4>
                 <h4>${{ recentBuild.price }}</h4>
@@ -11,7 +11,11 @@
         <div class="d-flex flex-column justify-content-center">
             <div class="d-flex justify-content-center">
                 <div class="d-flex">
-                    <h4>Speed</h4>
+                    <div class="d-flex review-case">
+                       <h6 class="rating-text">{{ recentBuild.rating }}</h6>
+                       <h6 class="rating-text">/5⭐</h6>
+                    </div>
+                    <h4 class="ms-4">Speed</h4>
                     <div class="ms-2 speed-view">
                         <div class="progress progress-bg" role="progressbar" aria-label="Basic example"
                             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
@@ -19,17 +23,10 @@
                         </div>
                     </div>
                 </div>
-                    <div class="d-flex ms-3 review-case mt-1">
-                       <h5 class="rating-text">{{ recentBuild.rating }}</h5>
-                       <h5 class="rating-text">/5⭐</h5>
-                    </div>
-                    <!-- <div v-else-if="!recentBuild.rating" class="ms-3 mt-1">
-                        <h5>No Reviews⭐</h5>
-                    </div> -->
                 </div>
             <div class="specs text-center me-lg-4 ms-lg-3 ps-2 pe-2 pb-2 mt-1">
-                <div class="sticky-top part-title">
-                    <h5 class="fst-italic">Parts</h5>
+                <div class="sticky-top part-title d-flex justify-content-center">
+                    <h5 class="fst-italic title-child">PC Parts:</h5>
                 </div>
                 <div class="mb-2">
                     <span class="d-flex justify-content-start part-type">
@@ -95,9 +92,9 @@
                     </div>
                 </div>
             </div>
-            <div class="d-flex justify-content-center mt-3">
-                <button class="btn-build me-3">Add to Cart</button>
-                <button  class="btn-build me-3">Save Build</button>
+            <div class="d-flex justify-content-evenly mt-3 pe-1">
+                <button class="btn-build">Add to Cart</button>
+                <button  class="btn-build">Save Build</button>
                 <button @click="getActiveReviews()" class="btn-build">Reviews</button>
             </div>
         </div>
@@ -143,8 +140,9 @@ export default {
 
 <style lang="scss" scoped>
 .build-card {
-    outline: solid 1px purple;
+    outline: solid 2px purple;
     box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.219);
+    background-color: whitesmoke;
 }
 
 .speed-view {
@@ -161,7 +159,14 @@ export default {
 }
 .review-case{
     padding-left: 8px;
-    padding-right: 8px;
+    padding-right: 3px;
+    background-color: purple;
+    color: white;
+    padding-top: 5px;
+    padding-bottom: 3px;
+    border-radius: 5px;
+    height: 31px;
+    outline: solid 2px black;
 }
 .rating-text{
     height: 18px;
@@ -186,7 +191,12 @@ export default {
 .part-title {
     background-color: rgba(255, 255, 255, 0.24);
     backdrop-filter: blur(5px);
-    // padding-bottom: 3px;
+    height: 25px;
+}
+.title-child{
+    border-bottom: solid 2px purple;
+    height: 25px;
+    width: 100px;
 }
 
 .part-section {

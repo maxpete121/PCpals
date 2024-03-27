@@ -110,5 +110,17 @@ export default {
   padding-bottom: 4px;
   outline: solid 2px purple;
   border-radius: 10px;
+  background-color: white;
+}
+.home-btn:hover{
+  all: unset;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  outline: solid 2px purple;
+  border-radius: 10px;
+  background-color: rgb(212, 212, 212);
+  cursor: pointer;
 }
 </style>
