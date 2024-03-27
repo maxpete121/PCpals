@@ -5,10 +5,18 @@
             <p class="ms-3 text-size">{{ stockPart.name }}</p>
         </div>
         <div class="d-flex align-items-center">
-            <h6 class="me-2 mt-2">Speed</h6>
-            <div class="me-2 speed-view">
-                <div class="progress progress-bg" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-                    <div class="progress-bar progress-bg-child" :style="progressWidth"></div>
+            <div class="">
+                <span class="d-flex price-area justify-content-center">
+                    <h6 class="me-2">Price:</h6>
+                    <h6>${{ stockPart.price }}</h6>
+                </span>
+                <div class="d-flex">
+                    <h6 class="me-2">Speed</h6>
+                    <div class="me-2 speed-view mt-1">
+                        <div class="progress progress-bg" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar progress-bg-child" :style="progressWidth"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="options-card me-3 d-flex align-items-center">
@@ -60,6 +68,9 @@ export default {
     box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.152);
 }
 
+.price-area{
+    height: 25px;
+}
 .part-card:hover {
     outline: solid 1px purple;
     cursor: pointer;

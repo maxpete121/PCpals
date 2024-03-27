@@ -6,7 +6,7 @@ export class PcBuild{
         this.creatorId = data.creatorId
         this.powerScore = data.powerScore || 0
         this.price = data.price || 0
-        this.rating = data.rating || 'None'
+        this.rating = data.rating || 0
         this.creator = data.creator
         this.isPrivate = data.isPrivate
         this.watts = data.watts

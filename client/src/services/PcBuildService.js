@@ -7,6 +7,7 @@ import { api } from "./AxiosService"
 class PcBuildService{
 
     async createBuild(buildData){
+        buildData.isPrivate = true
         let response = await api.post('api/pcBuilds', buildData)
         let build = new PcBuild(response.data)
         AppState.userBuilds.unshift(build)
@@ -41,7 +42,7 @@ class PcBuildService{
         else if(stockPartData.type == 'motherB'){buildData.motherBoard = stockPartData.name}
         else if(stockPartData.type == 'ram'){buildData.ram = stockPartData.name}
         else if(stockPartData.type == 'storage'){buildData.pcStorage = stockPartData.name}
-        else if(stockPartData.type == 'powerSupply'){buildData.powerSupply = stockPartData.name}
+        else if(stockPartData.type == 'powerS'){buildData.powerSupply = stockPartData.name}
         else if(stockPartData.type == 'cooler'){buildData.cooler = stockPartData.name}
         let response = await api.put(`api/pcBuilds/${pcId}/parts`, buildData)
         let updatedBuild = new PcBuild(response.data)
@@ -69,7 +70,24 @@ class PcBuildService{
         AppState.activeBuildToEdit = newBuild
     }
 
+    async updateRating(ratingData, buildId){
+        let buildData = {rating: ratingData}
+        // console.log(buildData, buildId)
+        let response = await api.put(`api/pcBuilds/${buildId}/rating`, buildData)
+        let updatedBuild = new PcBuild(response.data)
+        AppState.activeBuildForReview = updatedBuild
+        AppState.recentBuilds = AppState.recentBuilds.map(pc => pc.id !== buildId ? pc : updatedBuild)
+    }
+
+    async getSharedBuilds(){
+        let response = await api.get('api/pcBuilds/shared')
+        let allBuilds = await response.data.map(build => new PcBuild(build))
+        AppState.recentBuilds = allBuilds
+    }
+
 
 }
 
 export const pcBuildService = new PcBuildService()
+
+

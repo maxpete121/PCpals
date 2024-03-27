@@ -9,9 +9,9 @@ public class PcBuildRepository{
     internal PcBuild CreatePcBuild(PcBuild pcBuildData){
         string sql = @"
         INSERT INTO pcBuilds
-        (name, creatorId, powerScore, price, rating)
+        (name, creatorId, powerScore, price, rating, isPrivate)
         VALUES
-        (@name, @creatorId, @powerScore, @price, @rating);
+        (@name, @creatorId, @powerScore, @price, @rating, @isPrivate);
 
         SELECT
         pcBuilds.*,
@@ -138,5 +138,42 @@ public class PcBuildRepository{
         }, updateData).FirstOrDefault();
         return updatedBuild;
     }
+
+    internal List<PcBuild> GetAllSharedBuilds(){
+        string sql = @"
+        SELECT
+        pcBuilds.*,
+        accounts.*
+        FROM pcBuilds
+        JOIN accounts ON pcBuilds.creatorId = accounts.id
+        WHERE pcBuilds.isPrivate = false
+        ";
+        List<PcBuild> allPcs = db.Query<PcBuild, Account, PcBuild>(sql, (pcBuild, account)=>{
+            pcBuild.Creator = account;
+            return pcBuild;
+        }).ToList();
+        return allPcs;
+    }
+internal PcBuild UpdateRating(PcBuild updateData){
+        string sql = @"
+        UPDATE pcBuilds SET
+        name = @name,
+        rating = @rating
+        WHERE id = @id;
+
+        SELECT
+        pcBuilds.*,
+        accounts.*
+        FROM pcBuilds
+        JOIN accounts ON pcBuilds.creatorId = accounts.id
+        WHERE pcBuilds.id = @id
+        ";
+        PcBuild updateBuild = db.Query<PcBuild, Account, PcBuild>(sql, (pcBuild, account)=>{
+            pcBuild.Creator = account;
+            return pcBuild;
+        }, updateData).FirstOrDefault();
+        return updateBuild;
 }
+}
+
 

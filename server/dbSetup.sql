@@ -25,8 +25,8 @@ CREATE TABLE pcBuilds(
   name VARCHAR(50) NOT NULL,
   creatorId VARCHAR(255) NOT NULL,
   powerScore INT,
+  rating DECIMAL(5,2),
   price DECIMAL(6,2),
-  rating INT,
   isPrivate BOOLEAN,
   pcCase VARCHAR(70),
   casePicture VARCHAR(500),
@@ -46,8 +46,9 @@ CREATE TABLE buildParts(
   creatorId VARCHAR(255) NOT NULL,
   partId int NOT NULL,
   Foreign Key (creatorId) REFERENCES accounts(id) ON DELETE CASCADE,
-  Foreign Key (partId) REFERENCES stockParts(id)
+  Foreign Key (partId) REFERENCES stockParts(id) ON DELETE CASCADE
 ) default charset utf8 COMMENT '';
+
 
 ALTER TABLE stockParts
 ADD COLUMN watts INT

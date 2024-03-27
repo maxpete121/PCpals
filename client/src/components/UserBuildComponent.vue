@@ -1,6 +1,6 @@
 <template>
     <div class="build-card mt-3 p-lg-1 p-2">
-        <div class="d-lg-flex justify-content-between">
+        <div class="d-lg-flex justify-content-between align-items-center">
             <div class="text-center me-4 ms-4">
                 <img class="cover-img" :src="casePic" alt="">
                 <h3 class="fst-italic">{{ userBuild.name }}</h3>
@@ -24,43 +24,38 @@
                         <h5 class="fst-italic">Parts</h5>
                     </div>
                     <div class="d-flex justify-content-between part-section rounded-2">
-                        <p class="me-2">Case</p>
-                        <p class="fst-italic" v-if="userBuild.pcCase && userBuild.pcCase !== 'none'">{{ userBuild.pcCase
-                            }}✅</p>
+                        <p class="me-2 fw-bold">Case</p>
+                        <p class="fst-italic" v-if="userBuild.pcCase && userBuild.pcCase !== 'none'">{{ userBuild.pcCase }}✅</p>
                         <p v-else>None🚫</p>
                     </div>
                     <div class="d-flex justify-content-between part-section rounded-2">
-                        <p class="me-2">CPU</p>
-                        <p class="fst-italic" v-if="userBuild.pcCpu && userBuild.pcCpu !== 'none'">{{ userBuild.pcCpu
-                            }}✅</p>
+                        <p class="me-2 fw-bold">CPU</p>
+                        <p class="fst-italic" v-if="userBuild.pcCpu && userBuild.pcCpu !== 'none'">{{ userBuild.pcCpu }}✅</p>
                         <p v-else>None🚫</p>
                     </div>
                     <div class="d-flex justify-content-between part-section rounded-2">
-                        <p class="me-2">GPU</p>
+                        <p class="me-2 fw-bold">GPU</p>
                         <p class="fst-italic" v-if="userBuild.gpu && userBuild.gpu !== 'none'">{{ userBuild.gpu }}✅</p>
                         <p v-else>None🚫</p>
                     </div>
                     <div class="d-flex justify-content-between part-section rounded-2">
-                        <p class="me-2">Ram</p>
+                        <p class="me-2 fw-bold">Ram</p>
                         <p class="fst-italic" v-if="userBuild.ram && userBuild.ram !== 'none'">{{ userBuild.ram }}✅</p>
                         <p v-else>None🚫</p>
                     </div>
                     <div class="d-flex justify-content-between part-section rounded-2">
-                        <p class="me-2">Motherboard</p>
-                        <p class="fst-italic" v-if="userBuild.motherBoard && userBuild.motherBoard !== 'none'">{{
-                    userBuild.motherBoard }}✅</p>
+                        <p class="me-2 fw-bold">Motherboard</p>
+                        <p class="fst-italic" v-if="userBuild.motherBoard && userBuild.motherBoard !== 'none'">{{ userBuild.motherBoard }}✅</p>
                         <p v-else>None🚫</p>
                     </div>
                     <div class="d-flex justify-content-between part-section rounded-2">
-                        <p class="me-2">Storage</p>
-                        <p class="fst-italic" v-if="userBuild.pcStorage && userBuild.pcStorage !== 'none'">{{
-                    userBuild.pcStorage }}✅</p>
+                        <p class="me-2 fw-bold">Storage</p>
+                        <p class="fst-italic" v-if="userBuild.pcStorage && userBuild.pcStorage !== 'none'">{{ userBuild.pcStorage }}✅</p>
                         <p v-else>None🚫</p>
                     </div>
                     <div class="d-flex justify-content-between part-section rounded-2">
-                        <p class="me-2">Power Supply</p>
-                        <p class="fst-italic" v-if="userBuild.powerSupply && userBuild.powerSupply !== 'none'">{{
-                    userBuild.powerSupply }}✅</p>
+                        <p class="me-2 fw-bold">Power Supply</p>
+                        <p class="fst-italic" v-if="userBuild.powerSupply && userBuild.powerSupply !== 'none'">{{ userBuild.powerSupply }}✅</p>
                         <p v-else>None🚫</p>
                     </div>
                 </div>
@@ -102,7 +97,7 @@ export default {
             getPcById,
             updateShare,
             casePic: computed(() => {
-                if (props.userBuild.casePicture == 'none') {
+                if (props.userBuild.casePicture == 'none' || props.userBuild.casePicture == null) {
                     return 'https://rusutikaa.github.io/docs/developer.apple.com/library/archive/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/defaultphoto_2x.png'
                 } else { return props.userBuild.casePicture }
             }),
@@ -136,7 +131,7 @@ export default {
 }
 
 .specs {
-    width: 380px;
+    width: 385px;
     height: 170px;
     overflow-y: scroll;
     outline: solid 2px purple;

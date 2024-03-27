@@ -18,7 +18,7 @@ class PcPartService{
         else if(newPart.part.type == 'case' && AppState.case.length == 0){AppState.case.push(newPart)}
         else if(newPart.part.type == 'ram' && AppState.ram.length == 0){AppState.ram.push(newPart)}
         else if(newPart.part.type == 'storage' && AppState.ram.length == 0){AppState.storage.push(newPart)}
-        else if(newPart.part.type == 'powerSupply' && AppState.powerSupply.length == 0){AppState.powerSupply.push(newPart)}
+        else if(newPart.part.type == 'powerS' && AppState.powerSupply.length == 0){AppState.powerSupply.push(newPart)}
     }
     async getBuildParts(buildId){
         let response = await api.get(`api/buildParts/${buildId}`)
@@ -37,7 +37,7 @@ class PcPartService{
                 AppState.ram.push(newParts[i])
             }else if(AppState.activeBuildParts[i].part.type == 'storage' && AppState.storage.length == 0){
                 AppState.storage.push(newParts[i])
-            }else if(AppState.activeBuildParts[i].part.type == 'powerSupply' && AppState.powerSupply.length == 0){
+            }else if(AppState.activeBuildParts[i].part.type == 'powerS' && AppState.powerSupply.length == 0){
                 AppState.powerSupply.push(newParts[i])
             }
         }
@@ -60,7 +60,7 @@ class PcPartService{
         else if(part.part.type == 'ram'){AppState.ram = []}
         else if(part.part.type == 'case'){AppState.case = []}
         else if(part.part.type == 'storage'){AppState.storage = []}
-        else if(part.part.type == 'powerSupply'){AppState.powerSupply = []}
+        else if(part.part.type == 'powerS'){AppState.powerSupply = []}
     }
     async powerScoreMath(pcId){
         let totalScore = 0

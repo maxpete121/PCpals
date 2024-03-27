@@ -122,4 +122,31 @@ public class PcBuildController : ControllerBase
     }
   }
 
+  [HttpGet("shared")]
+  public ActionResult<List<PcBuild>> GetAllSharedBuilds(){
+    try
+    {
+      List<PcBuild> pcBuilds = pcBuildService.GetAllSharedBuilds();
+      return Ok(pcBuilds);
+    }
+    catch (Exception error)
+    {
+      return BadRequest(error.Message);
+    }
+  }
+
+  [HttpPut("{buildId}/rating")]
+  [Authorize]
+  public async Task<ActionResult<PcBuild>> UpdateRating([FromBody] PcBuild updateData, int buildId){
+    try
+    {
+      Account userInfo = await auth.GetUserInfoAsync<Account>(HttpContext);
+      PcBuild pcBuild = pcBuildService.UpdateRating(updateData, buildId, userInfo.Id);
+      return Ok(pcBuild);
+    }
+    catch (Exception error)
+    {
+      return BadRequest(error.Message);
+    }
+  }
 }

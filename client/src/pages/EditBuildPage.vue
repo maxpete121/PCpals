@@ -2,16 +2,16 @@
     <div class="container-fluid">
         <div class="row mt-3 justify-content-center">
             <div class="col-lg-5 col-10">
-                <div class="d-flex">
-                    <span>
+                <div class="d-flex justify-content-evenly info-box mb-2">
+                    <span class="pc-info mt-2">
                         <h4>{{ activeBuild.name }}</h4>
                     </span>
-                    <span class="d-flex ms-4">
-                        <h4 class="me-2">Price</h4>
+                    <span class="d-flex ms-4 pc-info mt-2">
+                        <h4 class="me-2">Price:</h4>
                         <h4>${{ activeBuild.price }}</h4>
                     </span>
-                    <span class="d-flex ms-4">
-                        <h4 class="me-2">Power Score</h4>
+                    <span class="d-flex ms-4 pc-info mt-2">
+                        <h4 class="me-2">Power Score:</h4>
                         <h4>{{ activeBuild.powerScore }}</h4>
                     </span>
                 </div>
@@ -43,6 +43,15 @@
                     </div>
                 </div>
                 <div class="part-holder">
+                    <h4 class="fst-italic">MotherBoard</h4>
+                    <div v-for="MotherBoard in Motherboards">
+                        <PcPartComponent :pcPart="MotherBoard"/>
+                    </div>
+                    <div class="d-flex align-items-end" v-if="Motherboards.length == 0">
+                        <h4 class="mt-4 text-danger">No Part selected...</h4>
+                    </div>
+                </div>
+                <div class="part-holder">
                     <h4 class="fst-italic">Ram</h4>
                     <div v-for="Ram in Rams">
                         <PcPartComponent :pcPart="Ram"/>
@@ -52,20 +61,20 @@
                     </div>
                 </div>
                 <div class="part-holder">
-                    <h4 class="fst-italic">MotherBoard</h4>
-                    <div v-for="MotherBoard in Motherboards">
-                        <PcPartComponent :pcPart="MotherBoard"/>
-                    </div>
-                    <div class="d-flex align-items-end" v-if="Motherboards.length == 0">
-                    <h4 class="mt-4 text-danger">No Part selected...</h4>
-                    </div>
-                </div>
-                <div class="part-holder">
                     <h4 class="fst-italic">Storage</h4>
                     <div v-for="Storage in Storages">
                         <PcPartComponent :pcPart="Storage"/>
                     </div>
                     <div class="d-flex align-items-end" v-if="Storages.length == 0">
+                    <h4 class="mt-4 text-danger">No Part selected...</h4>
+                    </div>
+                </div>
+                <div class="part-holder">
+                    <h4 class="fst-italic">Power Supply</h4>
+                    <div v-for="PowerSupply in PowerSupplys">
+                        <PcPartComponent :pcPart="PowerSupply"/>
+                    </div>
+                    <div class="d-flex align-items-end" v-if="PowerSupplys.length == 0">
                     <h4 class="mt-4 text-danger">No Part selected...</h4>
                     </div>
                 </div>
@@ -148,6 +157,15 @@ export default {
     outline: solid 2px purple;
     border-radius: 15px;
     overflow: hidden;
+}
+.pc-info{
+    border-bottom: solid 1px purple;
+}
+.info-box{
+    outline: solid 2px purple;
+    padding-bottom: 5px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.322);
+    border-radius: 8px;
 }
 .part-holder{
     border-bottom: solid 2px purple;
