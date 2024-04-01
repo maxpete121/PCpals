@@ -21,6 +21,11 @@
             My Builds
           </router-link>
         </li>
+        <li>
+          <router-link :to="{ name: 'Clean' }" class="btn text-success lighten-30 selectable text-uppercase">
+            PC Cleaning
+          </router-link>
+        </li>
       </ul>
       <!-- LOGIN COMPONENT HERE -->
       <div class="me-2">

@@ -22,6 +22,11 @@ const routes = [
     component: loadPage('EditBuildPage')
   },
   {
+    path: '/Clean',
+    name: 'Clean',
+    component: loadPage('CleaningPage')
+  },
+  {
     path: '/Admin',
     name: 'Admin',
     component: loadPage('AdminPage')

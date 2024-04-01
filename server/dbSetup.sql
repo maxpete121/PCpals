@@ -49,6 +49,13 @@ CREATE TABLE buildParts(
   Foreign Key (partId) REFERENCES stockParts(id) ON DELETE CASCADE
 ) default charset utf8 COMMENT '';
 
+CREATE TABLE cartItems(
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  buildId int NOT NULL,
+  creatorId VARCHAR(255) NOT NULL,
+  Foreign Key (creatorId) REFERENCES accounts(id) ON DELETE CASCADE,
+  Foreign Key (buildId) REFERENCES pcBuilds(id) ON DELETE CASCADE
+) default charset utf8 COMMENT '';
 
 ALTER TABLE stockParts
 ADD COLUMN watts INT
