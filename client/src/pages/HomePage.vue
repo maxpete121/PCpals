@@ -14,7 +14,7 @@
     <div class="col-3 text-center main">
       <h3>Schedule a clean</h3>
       <p>Submit a ticket to our team to get your PC cleaned today!</p>
-      <button class="home-btn">Get a clean</button>
+      <button class="home-btn">Get a clen</button>
     </div>
   </div>
   <div class="row justify-content-center">
