@@ -89,11 +89,13 @@
                        <h6 class="rating-text">{{ recentBuild.rating }}</h6>
                        <h6 class="rating-text">/5⭐</h6>
                     </div>
-                    <h4 class="ms-4">Speed</h4>
-                    <div class="ms-2 speed-view">
-                        <div class="progress progress-bg" role="progressbar" aria-label="Basic example"
-                            aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-                            <div class="progress-bar progress-bg-child" :style="progressWidth"></div>
+                    <div class="d-flex speed-case align-items-center ms-2">
+                        <h5 class="mt-1 text-light">Speed</h5>
+                        <div class="ms-2 mb-2 speed-view">
+                            <div class="progress progress-bg" role="progressbar" aria-label="Basic example"
+                                aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar progress-bg-child" :style="progressWidth"></div>
+                            </div>
                         </div>
                     </div>
             </div>
@@ -151,11 +153,11 @@ export default {
 }
 
 .progress-bg {
-    background-color: gray;
+    background-color:rgb(88, 88, 88);
 }
 
 .progress-bg-child {
-    background-color: purple;
+    background-color: #0cbc87;
 }
 .review-case{
     padding-left: 8px;
@@ -197,6 +199,15 @@ export default {
     border-bottom: solid 2px purple;
     height: 25px;
     width: 100px;
+}
+
+.speed-case{
+    background-color: purple;
+    outline: solid 2px black;
+    height: 31px;
+    border-radius: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
 .part-section {

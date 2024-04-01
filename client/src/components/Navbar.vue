@@ -23,14 +23,15 @@
         </li>
       </ul>
       <!-- LOGIN COMPONENT HERE -->
-      <div>
-        <button class="btn text-light" @click="toggleTheme">
-          <i class="mdi" :class="theme == 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'"></i>
+      <div class="me-2">
+        <button class="btn text-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
+          <i class="mdi mdi-cart fs-3"></i>
         </button>
       </div>
       <Login />
     </div>
   </nav>
+  <CartOffCanvasComponent id="offcanvasCart"/>
 </template>
 
 <script>
@@ -38,6 +39,7 @@ import { onMounted, ref } from 'vue';
 import { loadState, saveState } from '../utils/Store.js';
 import Login from './Login.vue';
 import { pcBuildService } from '../services/PcBuildService.js';
+import CartOffCanvasComponent from './CartOffCanvasComponent.vue';
 export default {
   setup() {
     async function getUserBuilds(){
@@ -60,7 +62,7 @@ export default {
       }
     }
   },
-  components: { Login }
+  components: { Login, CartOffCanvasComponent }
 }
 </script>
 

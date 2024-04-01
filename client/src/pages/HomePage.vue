@@ -1,23 +1,25 @@
 <template>
 <section class="container-fluid">
-  <div class="row justify-content-center">
-    <div class="col-3 text-center main ps-2 pe-2">
-      <h3>Find a PC</h3>
-      <p>Browse our selection of high end gaming PCs, or check out other users builds.</p>
-      <button class="home-btn">Browse</button>
-    </div>
-    <div class="col-3 text-center main ms-4 me-4">
-      <h3>Build your own PC</h3>
-      <p>Make an account or sign in to create a PC build and share it with others!</p>
-      <button class="home-btn ms-4 me-4">Pc Builder</button>
-    </div>
-    <div class="col-3 text-center main">
-      <h3>Schedule a clean</h3>
-      <p>Submit a ticket to our team to get your PC cleaned today!</p>
-      <button class="home-btn">Get a clen</button>
+  <div class="row pb-4 pt-4 justify-content-center">
+    <div class="col-9 d-flex justify-content-evenly">
+      <div class="text-center main ps-2 pe-2">
+        <h3>Find a PC</h3>
+        <p>Browse our selection of high end gaming PCs, or check out other users builds.</p>
+        <button class="home-btn">Browse</button>
+      </div>
+      <div class="text-center main ms-4 me-4">
+        <h3>Build your own PC</h3>
+        <p>Make an account or sign in to create a PC build and share it with others!</p>
+        <button class="home-btn ms-4 me-4">Pc Builder</button>
+      </div>
+      <div class="text-center main">
+        <h3>Schedule a clean</h3>
+        <p>Submit a cleaning ticket to our team to get your PC looking brand new!</p>
+        <button class="home-btn">Get a clean</button>
+      </div>
     </div>
   </div>
-  <div class="row justify-content-center">
+  <div class="row justify-content-center mt-2">
     <div class="col-lg-5 col-11 section-build me-lg-4">
       <h4>Our Suggestions</h4>
       <div class=""></div>
@@ -68,11 +70,7 @@ export default {
 }
 
 .main{
-  background-image: image-set('../assets/img/test1.png');
-  background-position: center;
-  background-size: cover;
-  height: 288px;
-  padding-top: 70px;
+width: 250px;
 }
 .home {
   display: grid;
