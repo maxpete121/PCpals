@@ -24,4 +24,47 @@ public class CartItemController : ControllerBase{
       return BadRequest(error.Message);
     }
     }
+
+    [HttpGet]
+    [Authorize]
+    public async Task<ActionResult<List<CartItems>>> GetUserCartItems(){
+        try
+        {
+            Account userInfo = await auth.GetUserInfoAsync<Account>(HttpContext);
+            List<CartItems> cartItems = cartItemService.GetUserCartItems(userInfo.Id);
+            return Ok(cartItems);
+        }
+    catch (Exception error)
+    {
+      return BadRequest(error.Message);
+    }
+    }
+
+    [HttpGet("{cartItemId}")]
+    public ActionResult<CartItems> GetCartItemById(int cartItemId){
+        try
+        {
+            CartItems cartItems = cartItemService.GetCartItemById(cartItemId);
+            return Ok(cartItems);
+        }
+    catch (Exception error)
+    {
+      return BadRequest(error.Message);
+    }
+    }
+
+    [HttpDelete("{cartItemId}")]
+    [Authorize]
+    public async Task<ActionResult<string>> DeleteCartItem(int cartItemId){
+        try
+        {
+             Account userInfo = await auth.GetUserInfoAsync<Account>(HttpContext);
+             string message = cartItemService.DeleteCartItem(cartItemId, userInfo.Id);
+             return Ok(message);
+        }
+    catch (Exception error)
+    {
+      return BadRequest(error.Message);
+    }
+    }
 }

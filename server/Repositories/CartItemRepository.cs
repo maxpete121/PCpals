@@ -26,4 +26,44 @@ public class CartItemRepository{
         }, cartItemData).FirstOrDefault();
         return newCartItem;
     }
+
+    internal List<CartItems> GetUserCartItems(string userId){
+        string sql = @"
+        SELECT
+        cartItems.*,
+        pcBuilds.*
+        FROM cartItems
+        JOIN pcBuilds ON cartItems.buildId = pcBuilds.id
+        WHERE cartItems.creatorId = @userId
+        ";
+        List<CartItems> cartItems = db.Query<CartItems, PcBuild, CartItems>(sql, (cartItem, pcBuild)=>{
+            cartItem.Build = pcBuild;
+            return cartItem;
+        }, new{userId}).ToList();
+        return cartItems;
+    }
+
+    internal CartItems GetCartItemById(int cartItemId){
+        string sql = @"
+        SELECT
+        cartItems.*,
+        pcBuilds.*
+        FROM cartItems
+        JOIN pcBuilds ON cartItems.buildId = pcBuilds.id
+        WHERE cartItems.id = @cartItemId
+        ";
+        CartItems cartItem = db.Query<CartItems, PcBuild, CartItems>(sql, (cartItems, pcBuild)=>{
+            cartItems.Build = pcBuild;
+            return cartItems;
+        }, new{cartItemId}).FirstOrDefault();
+        return cartItem;
+    }
+
+    internal void DeleteCartItem(int cartItemId){
+        string sql = @"
+        DELETE FROM cartItems
+        WHERE id = @cartItemId
+        ";
+        db.Execute(sql, new{cartItemId});
+    }
 }
