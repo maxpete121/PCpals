@@ -11,7 +11,7 @@
         <div class="d-flex flex-column justify-content-center">
             <div class="d-flex justify-content-center">
             <div class="d-flex justify-content-center mb-2 mt-1 pe-1">
-                <button class="btn-build me-3">Add to Cart</button>
+                <button @click="createCartItem()" class="btn-build me-3">Add to Cart</button>
                 <button  class="btn-build">Save Build</button>
                 <button @click="getActiveReviews()" class="btn-build ms-3">Reviews</button>
             </div>
@@ -112,9 +112,12 @@ import { PcBuild } from '../models/PcBuild';
 import ReviewModal from './ReviewModal.vue';
 import { reviewService } from '../services/ReviewService';
 import { Modal } from 'bootstrap';
+import { cartItemService } from '../services/CartItemService';
+import Pop from '../utils/Pop';
 export default {
     props: { recentBuild: { type: PcBuild, required: true } },
     setup(props) {
+        let useAccount = computed(()=> AppState.account)
         async function getActiveReviews(){
             await setActiveBuild()
             await reviewService.getActiveReviews(props.recentBuild.id)
@@ -123,8 +126,15 @@ export default {
         async function setActiveBuild(){
             await reviewService.setActiveBuild(props.recentBuild.id)
         }
+
+        async function createCartItem(){
+            let itemData = {creatorId: useAccount.value.id, buildId: props.recentBuild.id}
+            await cartItemService.createCartItem(itemData)
+            Pop.success("Added to cart")
+        }
         return {
             getActiveReviews,
+            createCartItem,
             casePic: computed(() => {
                 if (props.recentBuild.casePicture == 'none' || props.recentBuild.casePicture == null) {
                     return 'https://rusutikaa.github.io/docs/developer.apple.com/library/archive/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/defaultphoto_2x.png'

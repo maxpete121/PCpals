@@ -26,6 +26,7 @@ export const AppState = reactive({
   activeBuildForReview: {},
   activeBuildReviews: [],
 
+  cart: [],
   cpu: [],
   gpu: [],
   motherboard: [],

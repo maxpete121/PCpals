@@ -45,6 +45,9 @@ public class Startup
 
     services.AddScoped<ReviewRepository>();
     services.AddScoped<ReviewsService>();
+
+    services.AddScoped<CartItemRepository>();
+    services.AddScoped<CartItemService>();
   }
 
   private void ConfigureCors(IServiceCollection services)
