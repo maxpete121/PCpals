@@ -29,7 +29,7 @@
       </ul>
       <!-- LOGIN COMPONENT HERE -->
       <div class="me-2">
-        <button class="btn text-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
+        <button @click="getCartItems()" class="btn text-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
           <i class="mdi mdi-cart fs-3"></i>
         </button>
       </div>
@@ -45,8 +45,12 @@ import { loadState, saveState } from '../utils/Store.js';
 import Login from './Login.vue';
 import { pcBuildService } from '../services/PcBuildService.js';
 import CartOffCanvasComponent from './CartOffCanvasComponent.vue';
+import { cartItemService } from '../services/CartItemService';
 export default {
   setup() {
+    async function getCartItems(){
+      await cartItemService.getCartItems()
+    }
     async function getUserBuilds(){
       await pcBuildService.getUserBuilds()
     }
@@ -64,7 +68,8 @@ export default {
         theme.value = theme.value == 'light' ? 'dark' : 'light'
         document.documentElement.setAttribute('data-bs-theme', theme.value)
         saveState('theme', theme.value)
-      }
+      },
+      getCartItems,
     }
   },
   components: { Login, CartOffCanvasComponent }
