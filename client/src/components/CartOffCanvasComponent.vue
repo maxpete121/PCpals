@@ -7,8 +7,17 @@
   <div class="offcanvas-body">
     <div class="d-flex flex-column justify-content-between h-100">
       <div class="">
-        <div v-for="cartItem in cartItems">
+        <div class="mt-3" v-for="cartItem in cartItems">
           <CartItemComponent :cartItem="cartItem"/>
+        </div>
+        <div class="build-fee d-flex mt-3 pb-1 justify-content-between">
+          <div class="d-flex">
+            <img class="img-fee me-2" src="https://t3.ftcdn.net/jpg/02/54/36/80/360_F_254368041_H8DrzDQM98OZCKs7OFH14sehWQDvPY7W.jpg" alt="Build fee picture.">
+            <h5>Build Fee</h5>
+          </div>
+          <div class="d-flex">
+            <h5 class="text-success">$100</h5>
+          </div>
         </div>
       </div>
       <div class="d-flex total">
@@ -35,5 +44,14 @@ import CartItemComponent from '../components/CartItemComponent.vue'
   <style lang="scss" scoped>
 .total{
   border-top: solid 1px purple;
+}
+
+.img-fee{
+  height: 50px;
+  width: 50px;
+}
+
+.build-fee{
+  border-bottom: solid 1px  purple;
 }
 </style>

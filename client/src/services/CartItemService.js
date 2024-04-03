@@ -22,8 +22,10 @@ class CartItemService{
         let response = await api.delete(`api/cartItems/${cartItemId}`)
         let cartItemIndex = AppState.cart.findIndex(cart => cart.id == cartItemId)
         AppState.cart.splice(cartItemIndex, 1)
-        return response
+        return response.data
     }
+
+    async totalMath(){}
 }
 
 export const cartItemService = new CartItemService()
