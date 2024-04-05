@@ -27,6 +27,11 @@ const routes = [
     component: loadPage('CleaningPage')
   },
   {
+    path: '/Contact',
+    name: 'Contact',
+    component: loadPage('ContactPage')
+  },
+  {
     path: '/Admin',
     name: 'Admin',
     component: loadPage('AdminPage')

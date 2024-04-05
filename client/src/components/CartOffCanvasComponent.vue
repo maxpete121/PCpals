@@ -22,8 +22,8 @@
       </div>
       <div class="d-flex justify-content-between total pt-2 align-items-center">
         <div class="d-flex">
-          <h4>Total</h4>
-          <h4 class="text-success ms-2">${{ cartTotal }}</h4>
+          <h4>Total:</h4>
+          <h4 class="text-success ms-3">${{ cartTotal }}</h4>
         </div>
         <div>
           <button class="btn btn-success">Checkout</button>

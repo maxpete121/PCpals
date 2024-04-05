@@ -27,7 +27,7 @@
           </router-link>
         </li>
         <li>
-          <router-link :to="{ name: 'Clean' }" class="btn text-success lighten-30 selectable text-uppercase">
+          <router-link :to="{ name: 'Contact' }" class="btn text-success lighten-30 selectable text-uppercase">
             Contact us!
           </router-link>
         </li>

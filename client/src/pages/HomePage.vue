@@ -20,7 +20,7 @@
     </div>
   </div>
   <div class="row justify-content-center mt-2">
-    <div class="col-lg-5 col-11 section-build me-lg-4">
+    <div class="col-lg-5 col-11 section-build me-lg-4 d-flex flex-column align-items-center">
       <h4>Our Suggestions</h4>
       <div class=""></div>
     </div>
