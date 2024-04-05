@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-sm navbar-dark px-3 new-nav">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center text-dark">
-        <h3 class="fst-italic">BoisePcPals</h3>
+        <h3 class="fst-italic d-flex align-items-baseline">Boise<h2 class="fst-italic logo">PC</h2>Pals</h3>
       </div>
     </router-link>
     <router-link :to="{ name: 'Admin' }">
@@ -26,6 +26,11 @@
             PC Cleaning
           </router-link>
         </li>
+        <li>
+          <router-link :to="{ name: 'Clean' }" class="btn text-success lighten-30 selectable text-uppercase">
+            Contact us!
+          </router-link>
+        </li>
       </ul>
       <!-- LOGIN COMPONENT HERE -->
       <div class="me-2">
@@ -40,14 +45,21 @@
 </template>
 
 <script>
-import { onMounted, ref } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 import { loadState, saveState } from '../utils/Store.js';
 import Login from './Login.vue';
 import { pcBuildService } from '../services/PcBuildService.js';
 import CartOffCanvasComponent from './CartOffCanvasComponent.vue';
 import { cartItemService } from '../services/CartItemService';
+import { AppState } from '../AppState';
 export default {
   setup() {
+    let cart = computed(()=> AppState.cart)
+    watch(cart, totalCart)
+
+    async function totalCart(){
+      cartItemService.totalMath()
+    }
     async function getCartItems(){
       await cartItemService.getCartItems()
     }
@@ -99,5 +111,9 @@ a:hover {
   nav {
     height: 64px;
   }
+}
+
+.logo{
+  color: purple;
 }
 </style>

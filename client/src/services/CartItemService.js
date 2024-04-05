@@ -9,6 +9,7 @@ class CartItemService{
         let response = await api.post('api/cartItems', cartItemData)
         let newItem = new CartItems(response.data)
         AppState.cart.unshift(newItem)
+        this.totalMath()
     }
 
     async getCartItems(){
@@ -22,10 +23,17 @@ class CartItemService{
         let response = await api.delete(`api/cartItems/${cartItemId}`)
         let cartItemIndex = AppState.cart.findIndex(cart => cart.id == cartItemId)
         AppState.cart.splice(cartItemIndex, 1)
+        this.totalMath()
         return response.data
     }
 
-    async totalMath(){}
+    async totalMath(){
+        let total = 100
+        for(let i = 0; AppState.cart.length > i; i++){
+            total += AppState.cart[i].build.price
+        }
+        AppState.totalCart = total
+    }
 }
 
 export const cartItemService = new CartItemService()
