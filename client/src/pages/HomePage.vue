@@ -12,8 +12,8 @@
         <p>Make an account or sign in to create a PC build and share it with others!</p>
         <button class="home-btn ms-4 me-4">Pc Builder</button>
       </div>
-      <div class="text-center main info-top title-style">
-        <h3 class="">Schedule a clean</h3>
+      <div class="text-center main info-top">
+        <h3 class="title-style">Schedule a clean</h3>
         <p>Submit a cleaning ticket to our team to get your PC looking brand new!</p>
         <button class="home-btn">Get a clean</button>
       </div>
@@ -125,13 +125,21 @@ width: 250px;
 }
 
 .info-top{
-  background-color: rgba(128, 0, 128, 0.733);
+  background-color: rgba(128, 0, 128, 0.788);
+  border-radius: 10px;
+  padding: 5px;
+  color: white;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.432);
+}
+
+.info-top:hover{
+  background-color: rgb(128, 0, 128);
   border-radius: 10px;
   padding: 5px;
   color: white;
 }
 
 .title-style{
-  text-shadow: 4px 3px 3px black;
+  text-shadow: 3px 3px 3px black;
 }
 </style>

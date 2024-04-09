@@ -17,6 +17,11 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
+          <router-link  :to="{ name: 'Browse' }" class="btn text-success lighten-30 selectable text-uppercase">
+            Browse Builds
+          </router-link>
+        </li>
+        <li>
           <router-link @click="getUserBuilds()" :to="{ name: 'myBuilds' }" class="btn text-success lighten-30 selectable text-uppercase">
             My Builds
           </router-link>

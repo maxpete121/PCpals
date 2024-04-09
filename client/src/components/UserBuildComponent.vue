@@ -6,7 +6,7 @@
                 <h3 class="fst-italic">{{ userBuild.name }}</h3>
                 <div class="d-flex justify-content-center">
                     <h4 class="me-2 fst-italic">Price:</h4>
-                    <h4>${{ userBuild.price }}</h4>
+                    <h4 class="text-success">${{ userBuild.price }}</h4>
                 </div>
             </div>
             <div class="d-flex flex-column justify-content-center">
@@ -189,6 +189,7 @@ export default {
 .build-card {
     outline: solid 1px purple;
     box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.219);
+    border-radius: 10px;
 }
 
 .btn-build {

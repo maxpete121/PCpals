@@ -17,6 +17,11 @@ const routes = [
     component: loadPage('MyBuildsPage')
   },
   {
+    path: '/BrowseBuilds',
+    name: 'Browse',
+    component: loadPage('BrowseBuildsPage')
+  },
+  {
     path: '/EditBuild/:buildId',
     name: 'EditBuild',
     component: loadPage('EditBuildPage')

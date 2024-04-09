@@ -1,5 +1,5 @@
 <template>
-    <section class="container-fluid">
+    <section class="container-fluid page">
         <div class="row mt-3 d-flex flex-column align-items-center mb-2">
           <div class="col-4">
             <img class="img-fluid img-style" src="https://www.digitaltrends.com/wp-content/uploads/2022/04/cleaning-inside-of-pc-desktop.jpg?p=1" alt="Dirty PC picture.">
@@ -66,5 +66,9 @@
 
   .img-style{
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.527);
+  }
+
+  .page{
+    background-color: #535C91;
   }
 </style>
