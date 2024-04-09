@@ -4,7 +4,7 @@
           <div class="col-4">
             <img class="img-fluid img-style" src="https://www.digitaltrends.com/wp-content/uploads/2022/04/cleaning-inside-of-pc-desktop.jpg?p=1" alt="Dirty PC picture.">
           </div>
-          <div class="col-4 mt-2">
+          <div class="col-4 mt-4">
             <div class="clean-info">
               <h3>Need your PC cleaned?</h3>
               <p>Submit a ticket to our cleaning team and we will be in touch within the same business day to schedule a clean for your PC!</p>

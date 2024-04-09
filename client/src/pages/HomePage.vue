@@ -2,18 +2,18 @@
 <section class="container-fluid">
   <div class="row pb-4 pt-4 justify-content-center">
     <div class="col-9 d-flex justify-content-evenly">
-      <div class="text-center main ps-2 pe-2">
-        <h3>Find a PC</h3>
+      <div class="text-center main ps-2 pe-2 info-top">
+        <h3 class="title-style">Find a PC</h3>
         <p>Browse our selection of high end gaming PCs, or check out other users builds.</p>
         <button class="home-btn">Browse</button>
       </div>
-      <div class="text-center main ms-4 me-4">
-        <h3>Build your own PC</h3>
+      <div class="text-center main ms-4 me-4 info-top">
+        <h3 class="title-style">Build your own PC</h3>
         <p>Make an account or sign in to create a PC build and share it with others!</p>
         <button class="home-btn ms-4 me-4">Pc Builder</button>
       </div>
-      <div class="text-center main">
-        <h3>Schedule a clean</h3>
+      <div class="text-center main info-top title-style">
+        <h3 class="">Schedule a clean</h3>
         <p>Submit a cleaning ticket to our team to get your PC looking brand new!</p>
         <button class="home-btn">Get a clean</button>
       </div>
@@ -109,6 +109,7 @@ width: 250px;
   outline: solid 2px purple;
   border-radius: 10px;
   background-color: white;
+  color: black;
 }
 .home-btn:hover{
   all: unset;
@@ -119,6 +120,18 @@ width: 250px;
   outline: solid 2px purple;
   border-radius: 10px;
   background-color: rgb(212, 212, 212);
+  color: black;
   cursor: pointer;
+}
+
+.info-top{
+  background-color: rgba(128, 0, 128, 0.733);
+  border-radius: 10px;
+  padding: 5px;
+  color: white;
+}
+
+.title-style{
+  text-shadow: 4px 3px 3px black;
 }
 </style>
