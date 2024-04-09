@@ -1,6 +1,6 @@
 <template>
     <section class="container-fluid">
-        <div class="row mt-4 justify-content-center">
+        <div class="row mt-3 justify-content-center">
             <div class="col-3">
                 <SearchBuildComponent/>
             </div>

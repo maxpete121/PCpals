@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="d-flex justify-content-center">
         <form action="">
             <div class="d-flex align-items-center">
                 <input class="search-input" type="text">
