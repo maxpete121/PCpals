@@ -23,6 +23,7 @@ import {pcBuildService} from '../services/PcBuildService.js'
 export default {
     props: {pcPart: {type: PcPart, required: true}},
     setup(props){
+
         let activeBuild = computed(()=> AppState.activeBuildToEdit)
         async function deletePcPart(){
             if(props.pcPart.part.type == 'case'){
