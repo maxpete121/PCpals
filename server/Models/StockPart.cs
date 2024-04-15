@@ -13,15 +13,3 @@ public class StockPart : RepoItem<int>{
     public int Watts {get; set;}
 }
 
-
-// {
-// "productImage":"https://m.media-amazon.com/images/I/71tduSp8ooL._AC_SX466_.jpg",
-// "type":"gpu",
-// "size":"none",
-// "price":{"$numberDouble":"289.39"},
-// "name":"MSI Gaming GeForce RTX 3060 12GB",
-// "company":"MSI",
-// "speed":"",
-// "gigs":"12GB",
-// "powerScore": 100
-// }

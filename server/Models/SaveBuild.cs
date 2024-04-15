@@ -1,6 +1,7 @@
 namespace PCpals.Models;
 
-public class Suggestion : RepoItem<int>{
+public class SaveBuild : RepoItem<int>{
+    public string CreatorId {get; set;}
     public int BuildId {get; set;}
     public PcBuild Build {get; set;}
 }
