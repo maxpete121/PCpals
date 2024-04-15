@@ -5,22 +5,36 @@
                 <SearchBuildComponent/>
             </div>
         </div>
+        <div class="row justify-content-center">
+          <h3>All Builds</h3>
+          <div class="col-4 build" v-for="allBuild in allBuilds">
+            <HomeBuildComponent :recentBuild="allBuild"/>
+          </div>
+        </div>
     </section>
   </template>
   
   <script>
-  import { computed } from 'vue';
+  import { computed, onMounted } from 'vue';
   import { AppState } from '../AppState';
   import SearchBuildComponent from '../components/SearchBuildComponent.vue';
+  import HomeBuildComponent from '../components/HomeBuildComponent.vue';
+import { pcBuildService } from '../services/PcBuildService';
   export default {
     setup() {
+      onMounted(()=>{
+        pcBuildService.getSharedBuilds()
+      })
       return {
-        account: computed(() => AppState.account)
+        account: computed(() => AppState.account),
+        allBuilds: computed(()=> AppState.recentBuilds)
       }
-    }, components: {SearchBuildComponent}
+    }, components: {SearchBuildComponent, HomeBuildComponent}
   }
   </script>
   
   <style scoped>
-
+.build{
+  height: 400px;
+}
   </style>
