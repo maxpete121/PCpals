@@ -51,4 +51,19 @@ public class SaveBuildController : ControllerBase{
           return BadRequest(error.Message);
         }
     }
+
+    [HttpDelete("{saveId}")]
+    [Authorize]
+    public async Task<ActionResult<string>> DeleteSaveBuild(int saveId){
+        try
+        {
+            Account userInfo = await auth.GetUserInfoAsync<Account>(HttpContext);
+            string message = saveBuildService.DeleteSaveBuild(saveId, userInfo.Id);
+            return Ok(message);
+        }
+         catch (Exception error)
+        {
+          return BadRequest(error.Message);
+        }
+    }
 }

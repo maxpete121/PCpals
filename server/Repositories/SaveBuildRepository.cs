@@ -59,4 +59,12 @@ public class SaveBuildRepository{
         }, new{userId}).ToList();
         return saveBuild;
     }
+
+    internal void DeleteSaveBuild(int saveId){
+        string sql = @"
+        DELETE FROM saveBuilds
+        WHERE id = @saveId
+        ";
+        db.Execute(sql, new{saveId});
+    }
 }

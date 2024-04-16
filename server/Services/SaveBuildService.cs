@@ -20,4 +20,13 @@ public class SaveBuildService{
         List<SaveBuild> saveBuilds = repo.GetUserSavedBuilds(userId);
         return saveBuilds;
     }
+
+    internal string DeleteSaveBuild(int saveId, string userId){
+        SaveBuild saveBuild = GetSaveBuildById(saveId);
+        if(saveBuild.CreatorId == userId){
+            repo.DeleteSaveBuild(saveId);
+            string message = "Saved build removed.";
+            return message;
+        }else{throw new Exception("Not Authorized.");}
+    }
 }

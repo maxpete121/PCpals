@@ -10,4 +10,19 @@ public class SuggestionController : ControllerBase{
         this.auth = auth;
         this.suggestionService = suggestionService;
     }
+
+    [HttpPost]
+    [Authorize]
+    public async Task<ActionResult<Suggestion>> CreateSuggestion([FromBody] Suggestion suggestionData){
+        try
+        {
+            Account userInfo = await auth.GetUserInfoAsync<Account>(HttpContext); 
+            Suggestion suggestion = suggestionService.CreateSuggestion(suggestionData);
+            return Ok(suggestion);
+        }
+         catch (Exception error)
+        {
+          return BadRequest(error.Message);
+        }
+    }
 }

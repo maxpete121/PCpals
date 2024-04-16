@@ -8,4 +8,9 @@ public class SuggestionService{
     public SuggestionService(SuggestionRepository repo){
         this.repo = repo;
     }
+
+    internal Suggestion CreateSuggestion(Suggestion suggestionData){
+        Suggestion suggestion = repo.CreateSuggestion(suggestionData);
+        return suggestion;
+    }
 }
