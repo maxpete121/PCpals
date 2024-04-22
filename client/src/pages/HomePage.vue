@@ -45,6 +45,7 @@ export default {
     onMounted(()=>{
       getSharedBuilds()
     })
+
     async function getSharedBuilds(){
       await pcBuildService.getSharedBuilds()
     }
