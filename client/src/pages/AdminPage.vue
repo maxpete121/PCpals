@@ -34,11 +34,14 @@
                     <form action="">
                         <div class="d-flex">
                             <label for="">BuildID</label>
-                            <input type="text">
+                            <input suggestionData.buildId type="text">
                         </div>
-                        <div class="d-flex">
+                        <div class="d-flex mt-2">
                             <label for="">AdminCode</label>
-                            <input type="text">
+                            <input v-model="suggestionData.adminCode" type="text">
+                        </div>
+                        <div>
+                            <button>Add Suggestion</button>
                         </div>
                     </form>
                 </div>
@@ -56,7 +59,8 @@ import { StockPart } from '../models/StockPart';
 import { stockPartService } from '../services/StockPartService';
 export default {
     setup(){
-        
+        let suggestionData = ref()
+        suggestionData.value = {}
         let stockPartData = ref()
         stockPartData.value = {}
 
@@ -65,9 +69,11 @@ export default {
             await stockPartService.addStockPart(stockPartData.value)
             stockPartData.value = {}
         }
+        async function createSuggestion(){}
     return { 
         stockPartData,
-        addStockPart
+        addStockPart,
+        suggestionData
      }
     }
 };

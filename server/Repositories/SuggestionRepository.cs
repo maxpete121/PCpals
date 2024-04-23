@@ -26,4 +26,20 @@ public class SuggestionRepository{
         }, suggestionData).FirstOrDefault();
         return suggestion;
     }
+
+    internal List<Suggestion> GetSuggestions(){
+        string sql = @"
+        SELECT
+        suggestions.*,
+        pcBuilds.*
+        FROM suggestions
+        JOIN pcBuilds ON suggestions.buildId = pcBuilds.id
+        WHERE suggestions.adminCode = 17448
+        ";
+        List<Suggestion> suggestion = db.Query<Suggestion, PcBuild, Suggestion>(sql, (suggestion, pcBuild)=>{
+            suggestion.Build = pcBuild;
+            return suggestion;
+        }).ToList();
+        return suggestion;
+    }
 }

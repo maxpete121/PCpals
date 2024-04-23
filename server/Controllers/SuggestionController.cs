@@ -25,4 +25,17 @@ public class SuggestionController : ControllerBase{
           return BadRequest(error.Message);
         }
     }
+
+    [HttpGet]
+    public ActionResult<List<Suggestion>> GetSuggestions(){
+        try
+        {
+            List<Suggestion> suggestions = suggestionService.GetSuggestions();
+            return Ok(suggestions);
+        }
+         catch (Exception error)
+        {
+          return BadRequest(error.Message);
+        }
+    }
 }
