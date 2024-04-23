@@ -21,4 +21,19 @@ public class SuggestionService{
         List<Suggestion> suggestions = repo.GetSuggestions();
         return  suggestions;
     }
+
+    internal Suggestion GetSuggestionById(int suggestionId){
+        Suggestion suggestion = repo.GetSuggestionById(suggestionId);
+        return suggestion;
+    }
+
+    internal string DeleteSuggestion(int suggestionId, string userId){
+        Suggestion suggestion = GetSuggestionById(suggestionId);
+        if(suggestion.CreatorId == userId){
+            repo.DeleteSuggestion(suggestionId);
+            string message = "Suggestion Removed";
+            return message;
+        }else if(suggestion == null){throw new Exception("No suggested build found with that Id.");}
+        else{throw new Exception("You are not authorized to make this request!");}
+    }    
 }

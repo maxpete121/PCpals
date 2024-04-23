@@ -42,4 +42,28 @@ public class SuggestionRepository{
         }).ToList();
         return suggestion;
     }
+
+    internal Suggestion GetSuggestionById(int suggestionId){
+        string sql = @"
+        SELECT
+        suggestions.*,
+        pcBuilds.*
+        FROM suggestions
+        JOIN pcBuilds ON suggestions.buildId = pcBuilds.id
+        WHERE suggestions.id = @suggestionId
+        ";
+        Suggestion suggestion = db.Query<Suggestion, PcBuild, Suggestion>(sql, (suggestion, pcBuild)=>{
+            suggestion.Build = pcBuild;
+            return suggestion;
+        }, new{suggestionId}).FirstOrDefault();
+        return suggestion;
+    }
+
+    internal void DeleteSuggestion(int suggestionId){
+        string sql = @"
+        DELETE FROM suggestions
+        WHERE id = @suggestionId
+        ";
+        db.Execute(sql, new{suggestionId});
+    }
 }

@@ -38,4 +38,32 @@ public class SuggestionController : ControllerBase{
           return BadRequest(error.Message);
         }
     }
+
+    [HttpGet("{suggestionId}")]
+    public ActionResult<Suggestion> GetSuggestionById(int suggestionId){
+        try
+        {
+            Suggestion suggestion = suggestionService.GetSuggestionById(suggestionId);
+            return Ok(suggestion);
+        }
+         catch (Exception error)
+        {
+          return BadRequest(error.Message);
+        }
+    }
+
+    [HttpDelete("{suggestionId}")]
+    [Authorize]
+    public async Task<ActionResult<string>> DeleteSuggestion(int suggestionId){
+        try
+        {
+            Account userInfo = await auth.GetUserInfoAsync<Account>(HttpContext);
+            string message = suggestionService.DeleteSuggestion(suggestionId, userInfo.Id);
+            return message;
+        }
+         catch (Exception error)
+        {
+          return BadRequest(error.Message);
+        }
+    }
 }
