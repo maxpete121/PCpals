@@ -16,7 +16,8 @@ public class SuggestionController : ControllerBase{
     public async Task<ActionResult<Suggestion>> CreateSuggestion([FromBody] Suggestion suggestionData){
         try
         {
-            Account userInfo = await auth.GetUserInfoAsync<Account>(HttpContext); 
+            Account userInfo = await auth.GetUserInfoAsync<Account>(HttpContext);
+            suggestionData.CreatorId = userInfo.Id; 
             Suggestion suggestion = suggestionService.CreateSuggestion(suggestionData);
             return Ok(suggestion);
         }

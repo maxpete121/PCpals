@@ -48,6 +48,12 @@ public class Startup
 
     services.AddScoped<CartItemRepository>();
     services.AddScoped<CartItemService>();
+
+    services.AddScoped<SuggestionRepository>();
+    services.AddScoped<SuggestionService>();
+
+    services.AddScoped<SaveBuildRepository>();
+    services.AddScoped<SaveBuildService>();
   }
 
   private void ConfigureCors(IServiceCollection services)

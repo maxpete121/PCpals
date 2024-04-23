@@ -1,8 +1,12 @@
+import { api } from "./AxiosService"
 
 
 class SuggestionService{
     async getSuggestion(){}
-    async createSuggestion(){}
+    async createSuggestion(suggestionData){
+        let response = await api.post('api/suggestions', suggestionData)
+        console.log(response)
+    }
     async DeleteSuggestion(){}
 }
 

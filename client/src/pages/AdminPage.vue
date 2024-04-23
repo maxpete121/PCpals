@@ -31,10 +31,10 @@
             <div class="col-5 d-flex">
                 <div class="w-50">
                     <h4>Add Suggestion</h4>
-                    <form action="">
+                    <form @submit.prevent="createSuggestion()" action="">
                         <div class="d-flex">
                             <label for="">BuildID</label>
-                            <input suggestionData.buildId type="text">
+                            <input  v-model="suggestionData.adminCode" type="text">
                         </div>
                         <div class="d-flex mt-2">
                             <label for="">AdminCode</label>
@@ -45,7 +45,9 @@
                         </div>
                     </form>
                 </div>
-                <div class="w-50"></div>
+                <div class="w-50">
+                    <div v-for="build in builds"></div>
+                </div>
             </div>
         </div>
     </section>
@@ -56,7 +58,8 @@
 import { AppState } from '../AppState';
 import { computed, ref, onMounted } from 'vue';
 import { StockPart } from '../models/StockPart';
-import { stockPartService } from '../services/StockPartService';
+import { stockPartService } from '../services/StockPartService.js';
+import {suggestionService} from '../services/SuggestionService.js'
 export default {
     setup(){
         let suggestionData = ref()
@@ -69,11 +72,15 @@ export default {
             await stockPartService.addStockPart(stockPartData.value)
             stockPartData.value = {}
         }
-        async function createSuggestion(){}
+        async function createSuggestion(){
+            await suggestionService.createSuggestion(suggestionData.value)
+        }
     return { 
+        builds: computed(()=> AppState.recentBuilds),
         stockPartData,
         addStockPart,
-        suggestionData
+        suggestionData,
+        createSuggestion
      }
     }
 };
