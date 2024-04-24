@@ -8,10 +8,10 @@ public class SuggestionRepository{
 
     internal Suggestion CreateSuggestion(Suggestion suggestionData){
         string sql = @"
-        INSERT INTO saveBuilds
-        (creatorId, buildId)
+        INSERT INTO suggestions
+        (creatorId, buildId, adminCode)
         VALUES
-        (@creatorId, @buildId);
+        (@creatorId, @buildId, @adminCode);
 
         SELECT
         suggestions.*,

@@ -34,7 +34,7 @@
                     <form @submit.prevent="createSuggestion()" action="">
                         <div class="d-flex">
                             <label for="">BuildID</label>
-                            <input  v-model="suggestionData.adminCode" type="text">
+                            <input  v-model="suggestionData.buildId" type="text">    
                         </div>
                         <div class="d-flex mt-2">
                             <label for="">AdminCode</label>
@@ -46,7 +46,9 @@
                     </form>
                 </div>
                 <div class="w-50">
-                    <div v-for="build in builds"></div>
+                    <div v-for="build in builds">
+                        <AdminBuildComponent :userBuild="build"/>
+                    </div>
                 </div>
             </div>
         </div>
@@ -60,12 +62,17 @@ import { computed, ref, onMounted } from 'vue';
 import { StockPart } from '../models/StockPart';
 import { stockPartService } from '../services/StockPartService.js';
 import {suggestionService} from '../services/SuggestionService.js'
+import AdminBuildComponent from '../components/AdminBuildComponent.vue';
+import { pcBuildService } from '../services/PcBuildService';
 export default {
     setup(){
         let suggestionData = ref()
         suggestionData.value = {}
         let stockPartData = ref()
         stockPartData.value = {}
+        onMounted(()=>{
+            pcBuildService.getSharedBuilds()
+        })
 
         async function addStockPart(){
             console.log(stockPartData.value)
@@ -74,6 +81,7 @@ export default {
         }
         async function createSuggestion(){
             await suggestionService.createSuggestion(suggestionData.value)
+            suggestionData.value = {}
         }
     return { 
         builds: computed(()=> AppState.recentBuilds),
@@ -82,7 +90,7 @@ export default {
         suggestionData,
         createSuggestion
      }
-    }
+    }, components: { AdminBuildComponent }
 };
 </script>
 

@@ -9,12 +9,13 @@
 <script>
 import { computed } from 'vue';
 import { AppState } from '../AppState';
+import AdminBuildComponent from '../components/AdminBuildComponent.vue';
 export default {
   setup() {
     return {
       account: computed(() => AppState.account)
     }
-  }
+  }, components: { AdminBuildComponent }
 }
 </script>
 
