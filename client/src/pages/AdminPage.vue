@@ -46,9 +46,18 @@
                     </form>
                 </div>
                 <div class="w-50">
+                    <h3>Builds to suggest</h3>
                     <div v-for="build in builds">
                         <AdminBuildComponent :userBuild="build"/>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-5">
+                <h3>Suggested Builds Posted</h3>
+                <div v-for="suggestion in suggestions">
+                    <SuggestedAdminBuild :suggestedBuild="suggestion"/>
                 </div>
             </div>
         </div>
@@ -63,6 +72,7 @@ import { StockPart } from '../models/StockPart';
 import { stockPartService } from '../services/StockPartService.js';
 import {suggestionService} from '../services/SuggestionService.js'
 import AdminBuildComponent from '../components/AdminBuildComponent.vue';
+import SuggestedAdminBuild from '../components/SuggestedAdminBuild.vue'
 import { pcBuildService } from '../services/PcBuildService';
 export default {
     setup(){
@@ -72,6 +82,7 @@ export default {
         stockPartData.value = {}
         onMounted(()=>{
             pcBuildService.getSharedBuilds()
+            suggestionService.getSuggestions()
         })
 
         async function addStockPart(){
@@ -84,13 +95,14 @@ export default {
             suggestionData.value = {}
         }
     return { 
+        suggestions: computed(()=> AppState.suggestedBuilds),
         builds: computed(()=> AppState.recentBuilds),
         stockPartData,
         addStockPart,
         suggestionData,
         createSuggestion
      }
-    }, components: { AdminBuildComponent }
+    }, components: { AdminBuildComponent, SuggestedAdminBuild }
 };
 </script>
 

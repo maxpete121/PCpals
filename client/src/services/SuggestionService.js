@@ -13,7 +13,12 @@ class SuggestionService{
         let response = await api.post('api/suggestions', suggestionData)
         console.log(response)
     }
-    async DeleteSuggestion(){}
+    async deleteSuggestion(suggestionId){
+        let response = await api.delete(`api/suggestions/${suggestionId}`)
+        let buildIndex = AppState.suggestedBuilds.findIndex(build => build.id == suggestionId)
+        AppState.suggestedBuilds.slice(buildIndex, 1)
+        return response.data
+    }
 }
 
 export const suggestionService = new SuggestionService()

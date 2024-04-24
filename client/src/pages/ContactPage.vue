@@ -49,6 +49,6 @@
 
 .social{
   border-top: solid 1px purple;
-  width: 38%;
+  width: 45%;
 }
 </style>
