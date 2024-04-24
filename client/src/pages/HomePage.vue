@@ -22,7 +22,9 @@
   <div class="row justify-content-center mt-2">
     <div class="col-lg-5 col-11 section-build me-lg-4 d-flex flex-column align-items-center">
       <h4>Our Suggestions</h4>
-      <div class=""></div>
+      <div v-for="suggestion in suggestions" class="">
+        <SuggestionBuildComponent :suggestedBuild="suggestion"/>
+      </div>
     </div>
     <div class="col-lg-5 col-11 d-flex flex-column align-items-center section-build pt-1 pb-3">
       <h4>Recent Builds</h4>
@@ -40,19 +42,27 @@ import { AppState } from '../AppState';
 import { pcBuildService } from '../services/PcBuildService';
 import HomeBuildComponent from '../components/HomeBuildComponent.vue';
 import ReviewModal from '../components/ReviewModal.vue';
+import SuggestionBuildComponent from '../components/SuggestionBuildComponent.vue'
+import { suggestionService } from '../services/SuggestionService';
 export default {
   setup() {
     onMounted(()=>{
       getSharedBuilds()
+      getSuggestions()
     })
 
     async function getSharedBuilds(){
       await pcBuildService.getSharedBuilds()
     }
-    return {
-      recentBuilds: computed(()=> AppState.recentBuilds)
+
+    async function getSuggestions(){
+      await suggestionService.getSuggestions()
     }
-  }, components: {HomeBuildComponent, ReviewModal}
+    return {
+      recentBuilds: computed(()=> AppState.recentBuilds),
+      suggestions: computed(()=> AppState.suggestedBuilds)
+    }
+  }, components: {HomeBuildComponent, ReviewModal, SuggestionBuildComponent}
 }
 </script>
 
