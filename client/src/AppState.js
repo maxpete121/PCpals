@@ -8,7 +8,7 @@ export const AppState = reactive({
   account: {},
   /**@type {PcBuild[]} */
   userBuilds: [],
- /**@type {PcBuild[]} */
+
   savedUserBuilds: [],
 // /**@type {PcBuild} */
   activeBuildToEdit: {},

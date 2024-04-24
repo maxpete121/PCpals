@@ -11,7 +11,8 @@ class SuggestionService{
     }
     async createSuggestion(suggestionData){
         let response = await api.post('api/suggestions', suggestionData)
-        console.log(response)
+        let newSuggestion = new Suggestion(response.data)
+        AppState.suggestedBuilds.unshift(newSuggestion)
     }
     async deleteSuggestion(suggestionId){
         let response = await api.delete(`api/suggestions/${suggestionId}`)

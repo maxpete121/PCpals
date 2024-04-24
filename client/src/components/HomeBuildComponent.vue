@@ -12,7 +12,7 @@
             <div class="d-flex justify-content-center">
             <div class="d-flex justify-content-center mb-2 mt-1 pe-1">
                 <button @click="createCartItem()" class="btn-build me-3">Add to Cart</button>
-                <button  class="btn-build">Save Build</button>
+                <button @click="createSaveBuild()"  class="btn-build">Save Build</button>
                 <button @click="getActiveReviews()" class="btn-build ms-3">Reviews</button>
             </div>
                 </div>
@@ -114,6 +114,7 @@ import { reviewService } from '../services/ReviewService';
 import { Modal } from 'bootstrap';
 import { cartItemService } from '../services/CartItemService';
 import Pop from '../utils/Pop';
+import { saveBuildService } from '../services/SaveBuildService';
 export default {
     props: { recentBuild: { type: PcBuild, required: true } },
     setup(props) {
@@ -132,7 +133,13 @@ export default {
             await cartItemService.createCartItem(itemData)
             Pop.success("Added to cart")
         }
+
+        async function createSaveBuild(){
+            let saveBuildData = {creatorId: useAccount.value.id, buildId: props.recentBuild.id}
+            await saveBuildService.createSaveBuild(saveBuildData)
+        }
         return {
+            createSaveBuild,
             getActiveReviews,
             createCartItem,
             casePic: computed(() => {
