@@ -10,7 +10,11 @@ class SaveBuildService{
         AppState.savedUserBuilds.unshift(newSavedBuild)
     }
 
-    async getSaveBuilds(){}
+    async getSaveBuilds(){
+        let response = await api.get('api/saveBuilds/userBuilds')
+        let savedBuilds = await response.data.map(saved => new SaveBuild(saved))
+        AppState.savedUserBuilds = savedBuilds
+    }
 }
 
 export const saveBuildService = new SaveBuildService()

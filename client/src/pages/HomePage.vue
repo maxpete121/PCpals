@@ -1,7 +1,26 @@
 <template>
 <section class="container-fluid">
-  <div class="row pb-4 pt-4 justify-content-center">
-    <div class="col-9 d-flex justify-content-evenly">
+  <div class="row">
+    <div class="col-8">
+      <h3 class="fst-italic">Our Mission</h3>
+    </div>
+  </div>
+  <div class="row justify-content-center mt-3">
+    <div class="col-lg-5 col-11 section-build me-lg-4 d-flex flex-column align-items-center">
+      <h4>Our Suggestions</h4>
+      <div v-for="suggestion in suggestions" class="">
+        <SuggestionBuildComponent :suggestedBuild="suggestion"/>
+      </div>
+    </div>
+    <div class="col-lg-5 col-11 d-flex flex-column align-items-center section-build pt-1 pb-3">
+      <h4>Recent Builds</h4>
+      <div class="d-flex justify-content-center" v-for="recentBuild in recentBuilds">
+        <HomeBuildComponent :recentBuild="recentBuild"/>
+      </div>
+    </div>
+  </div>
+  <div class="row pb-4 pt-4 justify-content-center bg-dark mt-3">
+    <div class="col-9 d-flex justify-content-evenly mt-3 mb-3">
       <div class="text-center main ps-2 pe-2 info-top">
         <h3 class="title-style">Find a PC</h3>
         <p>Browse our selection of high end gaming PCs, or check out other users builds.</p>
@@ -16,20 +35,6 @@
         <h3 class="title-style">Schedule a clean</h3>
         <p>Submit a cleaning ticket to our team to get your PC looking brand new!</p>
         <button class="home-btn">Get a clean</button>
-      </div>
-    </div>
-  </div>
-  <div class="row justify-content-center mt-2">
-    <div class="col-lg-5 col-11 section-build me-lg-4 d-flex flex-column align-items-center">
-      <h4>Our Suggestions</h4>
-      <div v-for="suggestion in suggestions" class="">
-        <SuggestionBuildComponent :suggestedBuild="suggestion"/>
-      </div>
-    </div>
-    <div class="col-lg-5 col-11 d-flex flex-column align-items-center section-build pt-1 pb-3">
-      <h4>Recent Builds</h4>
-      <div class="d-flex justify-content-center mb-3" v-for="recentBuild in recentBuilds">
-        <HomeBuildComponent :recentBuild="recentBuild"/>
       </div>
     </div>
   </div>

@@ -23,6 +23,9 @@ class PcPartService{
     async getBuildParts(buildId){
         let response = await api.get(`api/buildParts/${buildId}`)
         let newParts = await response.data.map(part => new PcPart(part))
+        if(newParts.length == 0){
+            this.allClear()
+        }
         AppState.activeBuildParts = newParts
         for(let i = 0; AppState.activeBuildParts.length > i; i++){
             if(AppState.activeBuildParts[i].part.type == 'cpu' && AppState.cpu.length == 0){
@@ -61,6 +64,16 @@ class PcPartService{
         else if(part.part.type == 'case'){AppState.case = []}
         else if(part.part.type == 'storage'){AppState.storage = []}
         else if(part.part.type == 'powerS'){AppState.powerSupply = []}
+    }
+    async allClear(){
+        console.log('hm')
+        AppState.cpu = []
+        AppState.gpu = []
+        AppState.motherboard = []
+        AppState.ram = []
+        AppState.case = []
+        AppState.storage = []
+        AppState.powerSupply = []
     }
     async powerScoreMath(pcId){
         let totalScore = 0

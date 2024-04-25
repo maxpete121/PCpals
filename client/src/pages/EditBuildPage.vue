@@ -121,6 +121,7 @@ export default {
         watch(activeBuild, getBuildParts)
         onMounted(()=>{
             if(account.value.id){
+                pcPartService.allClear()
                 getBuildParts()
             }
        })
@@ -128,6 +129,7 @@ export default {
             await pcBuildService.getPcById(route.params.buildId)
         }
         async function getStockParts(type){
+            if(type == 'cpu')
             await stockPartService.getStockParts(type)
         }
         async function getBuildParts(){

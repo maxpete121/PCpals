@@ -6,7 +6,7 @@ import { api } from "./AxiosService"
 class SuggestionService{
     async getSuggestions(){
         let response = await api.get('api/suggestions')
-        let pcSuggestions = response.data.map(suggestion => new Suggestion(suggestion))
+        let pcSuggestions = await response.data.map(suggestion => new Suggestion(suggestion))
         AppState.suggestedBuilds = pcSuggestions
     }
     async createSuggestion(suggestionData){

@@ -8,17 +8,17 @@ public class SaveBuildRepository{
 
     internal SaveBuild CreateSaveBuild(SaveBuild saveBuildData){
         string sql = @"
-        INSERT INTO saveBuilds
+        INSERT INTO saveBuild
         (creatorId, buildId)
         VALUES
         (@creatorId, @buildId);
 
         SELECT
-        saveBuilds.*,
+        saveBuild.*,
         pcBuilds.*
-        FROM saveBuilds
-        JOIN pcBuilds ON saveBuilds.buildId = pcBuilds.id
-        WHERE saveBuilds.id = LAST_INSERT_ID()
+        FROM saveBuild
+        JOIN pcBuilds ON saveBuild.buildId = pcBuilds.id
+        WHERE saveBuild.id = LAST_INSERT_ID()
         ";
         SaveBuild saveBuild = db.Query<SaveBuild, PcBuild, SaveBuild>(sql, (saveBuild, pcBuild)=>{
             saveBuild.Build = pcBuild;
@@ -30,11 +30,11 @@ public class SaveBuildRepository{
     internal SaveBuild GetSaveBuildById(int saveBuildId){
         string sql = @"
         SELECT
-        saveBuilds.*,
+        saveBuild.*,
         pcBuilds.*
-        FROM saveBuilds
-        JOIN pcBuilds ON saveBuilds.buildId = pcBuilds.id
-        WHERE saveBuilds.id = @saveBuildId
+        FROM saveBuild
+        JOIN pcBuilds ON saveBuild.buildId = pcBuilds.id
+        WHERE saveBuild.id = @saveBuildId
         ";
         SaveBuild saveBuild = db.Query<SaveBuild, PcBuild, SaveBuild>(sql, (saveBuild, pcBuild)=>{
             saveBuild.Build = pcBuild;
@@ -46,11 +46,11 @@ public class SaveBuildRepository{
     internal List<SaveBuild> GetUserSavedBuilds(string userId){
         string sql = @"
         SELECT
-        saveBuilds.*,
+        saveBuild.*,
         pcBuilds.*
-        FROM saveBuilds
-        JOIN pcBuilds ON saveBuilds.buildId = pcBuilds.id
-        WHERE saveBuilds.creatorId = @userId
+        FROM saveBuild
+        JOIN pcBuilds ON saveBuild.buildId = pcBuilds.id
+        WHERE saveBuild.creatorId = @userId
         ";
 
         List<SaveBuild> saveBuild = db.Query<SaveBuild, PcBuild, SaveBuild>(sql, (saveBuild, pcBuild)=>{
@@ -62,7 +62,7 @@ public class SaveBuildRepository{
 
     internal void DeleteSaveBuild(int saveId){
         string sql = @"
-        DELETE FROM saveBuilds
+        DELETE FROM saveBuild
         WHERE id = @saveId
         ";
         db.Execute(sql, new{saveId});
