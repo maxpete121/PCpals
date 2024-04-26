@@ -15,6 +15,13 @@ class SaveBuildService{
         let savedBuilds = await response.data.map(saved => new SaveBuild(saved))
         AppState.savedUserBuilds = savedBuilds
     }
+
+    async deleteSaveBuild(saveBuildId){
+        let response = await api.delete(`api/saveBuilds/${saveBuildId}`)
+        let saveIndex = AppState.savedUserBuilds.findIndex(saved => saved.id == saveBuildId)
+        AppState.savedUserBuilds.splice(saveIndex, 1)
+        return response.data
+    }
 }
 
 export const saveBuildService = new SaveBuildService()

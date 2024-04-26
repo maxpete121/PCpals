@@ -15,15 +15,18 @@
     <div class="row justify-content-center">
       <div class="col-lg-3 col-7 mt-3">
         <div class="d-flex filter-container justify-content-center">
-          <button class="btn-one">Your Builds</button>
-          <button class="btn-two">Saved Builds</button>
+          <button @click="getUserBuilds()" class="btn-one">Created Builds</button>
+          <button @click="getSaveBuilds()" class="btn-two">Saved Builds</button>
         </div>
       </div>
     </div>
     <div class="row justify-content-center">
       <div class="col-lg-5 col-11 d-flex flex-column align-items-center">
-        <div v-for="userBuild in userBuilds">
+        <div v-if="userBuildType == 'created'" v-for="userBuild in userBuilds">
         <UserBuildComponent :userBuild="userBuild"/>
+        </div>
+        <div v-if="userBuildType == 'saved'" v-for="saveBuild in saveBuilds">
+          <SaveBuildComponent :saveBuild="saveBuild"/>
         </div>
       </div>
     </div>
@@ -36,7 +39,9 @@ import { Account } from '../models/Account';
 import { AppState } from '../AppState';
 import { pcBuildService } from '../services/PcBuildService';
 import UserBuildComponent from '../components/UserBuildComponent.vue';
+import SaveBuildComponent from '../components/SaveBuildComponent.vue'
 import Pop from '../utils/Pop';
+import { saveBuildService } from '../services/SaveBuildService';
 
 export default {
   setup() {
@@ -52,14 +57,23 @@ export default {
         Pop.success(`${build.name} created!`)
     }
     async function getUserBuilds(){
+      AppState.userBuildType = 'created'
       await pcBuildService.getUserBuilds()
+    }
+    async function getSaveBuilds(){
+      AppState.userBuildType = 'saved'
+      await saveBuildService.getSaveBuilds()
     }
     return {
       createBuild,
       buildRef,
+      getUserBuilds,
+      getSaveBuilds,
       userBuilds: computed(()=> AppState.userBuilds),
+      userBuildType: computed(()=> AppState.userBuildType),
+      saveBuilds: computed(()=> AppState.savedUserBuilds)
     }
-  }, components: {UserBuildComponent}
+  }, components: {UserBuildComponent, SaveBuildComponent}
 }
 </script>
 

@@ -21,7 +21,7 @@
             Browse Builds
           </router-link>
         </li>
-        <li>
+        <li v-if="account.id">
           <router-link @click="getUserBuilds()" :to="{ name: 'myBuilds' }" class="btn text-success lighten-30 selectable text-uppercase">
             My Builds
           </router-link>
@@ -87,6 +87,7 @@ export default {
         saveState('theme', theme.value)
       },
       getCartItems,
+      account: computed(()=> AppState.account)
     }
   },
   components: { Login, CartOffCanvasComponent }

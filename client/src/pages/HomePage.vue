@@ -1,27 +1,40 @@
 <template>
 <section class="container-fluid">
-  <div class="row">
-    <div class="col-8">
-      <h3 class="fst-italic">Why go with us?</h3>
-      <h6>Here at BoisePcPals we make the process of getting your dream PC a breeze.</h6>
+  <div class="row justify-content-center">
+    <div class="col-8 justify-content-center mt-3 text-center">
+      <h3 class="fst-italic">How it works?</h3>
+      <div class="d-flex justify-content-center">
+        <div class="text-center w-50">
+          <h4>Build a PC</h4>
+          <h6>Login or create an account to access our PC Builder.</h6>
+          <h6>Set the builder to either pro or beginner.</h6>
+          <h6>Build the PC of your dreams!</h6>
+        </div>
+        <div class="text-center w-50">
+          <h4>Browse PCs</h4>
+          <h6>Browse builds made and suggested by us!</h6>
+          <h6>Buy builds made by other customers!</h6>
+          <h6>Save builds your interested in for later!</h6>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="row justify-content-center mt-3">
-    <div class="col-lg-5 col-11 section-build me-lg-4 d-flex flex-column align-items-center">
+  <div class="row justify-content-center mt-3 bg-dark pt-4">
+    <div class="col-lg-5 col-11 section-build me-lg-4 d-flex flex-column align-items-center bg-white">
       <h4>Our Suggestions</h4>
       <div v-for="suggestion in suggestions" class="">
         <SuggestionBuildComponent :suggestedBuild="suggestion"/>
       </div>
     </div>
-    <div class="col-lg-5 col-11 d-flex flex-column align-items-center section-build pt-1 pb-3">
+    <div class="col-lg-5 col-11 d-flex flex-column align-items-center section-build pt-1 pb-3 bg-white">
       <h4>Recent Builds</h4>
       <div class="d-flex justify-content-center" v-for="recentBuild in recentBuilds">
         <HomeBuildComponent :recentBuild="recentBuild"/>
       </div>
     </div>
   </div>
-  <div class="row pb-4 pt-4 justify-content-center bg-dark mt-3">
-    <div class="col-9 d-flex justify-content-evenly mt-3 mb-3">
+  <div class="row pb-4 pt-4 justify-content-center bg-dark">
+    <div class="col-9 d-flex justify-content-evenly mt-2 mb-3">
       <div class="text-center main ps-2 pe-2 info-top">
         <h3 class="title-style">Find a PC</h3>
         <p>Browse our selection of high end gaming PCs, or check out other users builds.</p>
@@ -114,7 +127,6 @@ width: 250px;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.171);
   overflow-y: scroll;
   height: 345px;
-  border-radius: 15px;
 }
 
 .home-btn{
