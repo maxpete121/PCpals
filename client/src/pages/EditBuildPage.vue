@@ -92,6 +92,11 @@
                             <button v-if="activeBuild.powerSupply == null || activeBuild.powerSupply == 'none'" @click="getStockParts('powerS')" class="type-button-end">Power Supply</button>
                         </span>
                     </div>
+                    <div class="d-flex" v-if="currentType == 'cpu'">
+                        <button>Intel</button>
+                        <h6 class="ms-3 me-3 mt-1">Or</h6>
+                        <button>AMD</button>
+                    </div>
                     <div class="w-100" v-for="stockPart in stockParts">
                      <StockPartComponent class="mt-3" :stockPart="stockPart"/>
                     </div>
@@ -129,11 +134,14 @@ export default {
             await pcBuildService.getPcById(route.params.buildId)
         }
         async function getStockParts(type){
-            if(type == 'cpu')
+            AppState.currentPartType = type
             await stockPartService.getStockParts(type)
         }
         async function getBuildParts(){
             await pcPartService.getBuildParts(activeBuild.value.id)
+        }
+        async function setCpuType(type){
+            AppState.currentPartType = type
         }
 
     return { 
@@ -148,6 +156,7 @@ export default {
         Rams: computed(()=> AppState.ram),
         Storages: computed(()=> AppState.storage),
         PowerSupplys: computed(()=> AppState.powerSupply),
+        currentType: computed(()=> AppState.currentPartType),
      }
     }, components: {StockPartComponent, PcPartComponent}
 };

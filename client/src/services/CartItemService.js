@@ -28,7 +28,12 @@ class CartItemService{
     }
 
     async totalMath(){
-        let total = 100
+        let length = AppState.cart.length
+        let total = length * 100
+        if(total == 0){
+            total = 100
+        }
+        AppState.totalCart = total
         for(let i = 0; AppState.cart.length > i; i++){
             total += AppState.cart[i].build.price
         }

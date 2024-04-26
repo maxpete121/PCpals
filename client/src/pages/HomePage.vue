@@ -2,7 +2,8 @@
 <section class="container-fluid">
   <div class="row">
     <div class="col-8">
-      <h3 class="fst-italic">Our Mission</h3>
+      <h3 class="fst-italic">Why go with us?</h3>
+      <h6>Here at BoisePcPals we make the process of getting your dream PC a breeze.</h6>
     </div>
   </div>
   <div class="row justify-content-center mt-3">

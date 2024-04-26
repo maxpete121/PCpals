@@ -17,6 +17,10 @@
           </div>
           <div class="d-flex">
             <h5 class="text-success">$100</h5>
+            <span v-if="cartLength > 1" class="d-flex align-items-baseline ms-3">
+              <h6>X</h6>
+              <h5>{{ cartLength }}</h5>
+            </span>
           </div>
         </div>
       </div>
@@ -42,7 +46,11 @@ import CartItemComponent from '../components/CartItemComponent.vue'
     setup() {
       return {
         cartTotal: computed(()=> AppState.totalCart),
-        cartItems: computed(()=> AppState.cart)
+        cartItems: computed(()=> AppState.cart),
+        cartLength: computed(()=>{
+          let count = AppState.cart.length
+          return count
+        })
       }
     }, components: {CartItemComponent}
   }
