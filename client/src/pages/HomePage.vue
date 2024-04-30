@@ -1,32 +1,35 @@
 <template>
 <section class="container-fluid">
-  <div class="row justify-content-center">
+  <div class="row justify-content-center mb-4">
     <div class="col-8 justify-content-center mt-3 text-center">
       <h3 class="fst-italic">How it works?</h3>
-      <div class="d-flex justify-content-center">
-        <div class="text-center w-50">
+      <div class="d-flex justify-content-center mt-2">
+        <div class="text-center top-home-info me-4 pb-2 bg-white">
           <h4>Build a PC</h4>
           <h6>Login or create an account to access our PC Builder.</h6>
           <h6>Set the builder to either pro or beginner.</h6>
           <h6>Build the PC of your dreams!</h6>
+          <button class="home-btn" v-if="account.id">Make a build!</button>
+          <button class="home-btn" v-if="!account.id">Login/Create Account</button>
         </div>
-        <div class="text-center w-50">
+        <div class="text-center top-home-info ms-4 pb-2 bg-white">
           <h4>Browse PCs</h4>
           <h6>Browse builds made and suggested by us!</h6>
           <h6>Buy builds made by other customers!</h6>
           <h6>Save builds your interested in for later!</h6>
+          <button class="home-btn">Browse User Builds</button>
         </div>
       </div>
     </div>
   </div>
-  <div class="row justify-content-center mt-3 bg-dark pt-4">
-    <div class="col-lg-5 col-11 section-build me-lg-4 d-flex flex-column align-items-center bg-white">
+  <div class="row justify-content-center mt-4 bg-dark pt-4">
+    <div class="col-lg-5 col-11 section-build me-lg-4 d-flex flex-column align-items-center bg-white mt-lg-4">
       <h4>Our Suggestions</h4>
       <div v-for="suggestion in suggestions" class="">
         <SuggestionBuildComponent :suggestedBuild="suggestion"/>
       </div>
     </div>
-    <div class="col-lg-5 col-11 d-flex flex-column align-items-center section-build pt-1 pb-3 bg-white">
+    <div class="col-lg-5 col-11 d-flex flex-column align-items-center section-build pt-1 pb-3 bg-white mt-lg-4">
       <h4>Recent Builds</h4>
       <div class="d-flex justify-content-center" v-for="recentBuild in recentBuilds">
         <HomeBuildComponent :recentBuild="recentBuild"/>
@@ -34,7 +37,7 @@
     </div>
   </div>
   <div class="row pb-4 pt-4 justify-content-center bg-dark">
-    <div class="col-9 d-flex justify-content-evenly mt-2 mb-3">
+    <div class="col-9 d-flex justify-content-evenly mt-4 mb-3">
       <div class="text-center main ps-2 pe-2 info-top">
         <h3 class="title-style">Find a PC</h3>
         <p>Browse our selection of high end gaming PCs, or check out other users builds.</p>
@@ -79,7 +82,8 @@ export default {
     }
     return {
       recentBuilds: computed(()=> AppState.recentBuilds),
-      suggestions: computed(()=> AppState.suggestedBuilds)
+      suggestions: computed(()=> AppState.suggestedBuilds),
+      account: computed(()=> AppState.account)
     }
   }, components: {HomeBuildComponent, ReviewModal, SuggestionBuildComponent}
 }
@@ -91,6 +95,13 @@ export default {
     max-height: 300px;
     max-width: 600px;
   }
+
+  .top-home-info{
+  outline: solid 2px purple;
+  border-radius: 10px;
+  width: 550px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.582);
+}
 }
 @media screen and (max-width: 576px) {
   .img-resize{
@@ -98,6 +109,8 @@ export default {
     max-width: 300px;
   }
 }
+
+
 
 .main{
 width: 250px;

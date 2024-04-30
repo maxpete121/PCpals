@@ -12,6 +12,12 @@ class AccountService {
       logger.error('HAVE YOU STARTED YOUR SERVER YET???', err)
     }
   }
+
+  async adminTest(userId){
+    if(userId == '66031e91512102090555f1f3'){
+      return true
+    }else{return false}
+  }
 }
 
 export const accountService = new AccountService()

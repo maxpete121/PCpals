@@ -6,7 +6,7 @@
       </div>
     </router-link>
     <router-link :to="{ name: 'Admin' }">
-    <div>
+    <div v-if="adminVal == 'yes'">
       <h6>Admin Page</h6>
     </div>
      </router-link>
@@ -57,10 +57,14 @@ import { pcBuildService } from '../services/PcBuildService.js';
 import CartOffCanvasComponent from './CartOffCanvasComponent.vue';
 import { cartItemService } from '../services/CartItemService';
 import { AppState } from '../AppState';
+import { accountService } from '../services/AccountService';
 export default {
   setup() {
     let cart = computed(()=> AppState.cart)
+    let useAccount = computed(()=> AppState.account)
+    let adminVal = ref('')
     watch(cart, totalCart)
+    watch(useAccount, adminTest)
 
     async function totalCart(){
       cartItemService.totalMath()
@@ -72,10 +76,17 @@ export default {
       await pcBuildService.getUserBuilds()
     }
 
+    async function adminTest(){
+      let result = await accountService.adminTest(useAccount.value.id)
+      if(result == true){ adminVal.value = 'yes'}
+      else{adminVal.value = 'no'}
+    }
+
     const theme = ref(loadState('theme') || 'light')
 
     onMounted(() => {
       document.documentElement.setAttribute('data-bs-theme', theme.value)
+      adminTest()
     })
 
     return {
@@ -87,7 +98,8 @@ export default {
         saveState('theme', theme.value)
       },
       getCartItems,
-      account: computed(()=> AppState.account)
+      account: computed(()=> AppState.account),
+      adminVal
     }
   },
   components: { Login, CartOffCanvasComponent }
