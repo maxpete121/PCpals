@@ -11,7 +11,7 @@ export const AppState = reactive({
 
   savedUserBuilds: [],
 
-  userBuildType: '',
+  userBuildType: 'created',
 // /**@type {PcBuild} */
   activeBuildToEdit: {},
 // /**@type {} */

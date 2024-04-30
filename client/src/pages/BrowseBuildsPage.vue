@@ -5,7 +5,7 @@
                 <SearchBuildComponent/>
             </div>
         </div>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center ps-4 pe-4 text-center pt-2">
           <h3>All Builds</h3>
           <div class="col-4 build" v-for="allBuild in allBuilds">
             <HomeBuildComponent :recentBuild="allBuild"/>
