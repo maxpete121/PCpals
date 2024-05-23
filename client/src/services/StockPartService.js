@@ -15,6 +15,18 @@ class StockPartService{
         let parts = await response.data.map(part => new StockPart(part))
         AppState.activeStockParts = parts
     }
+
+    async getStockPartsIntel(type){
+        let response = await api.get(`api/stockParts/${type}/intel`)
+        let parts = await response.data.map(part => new StockPart(part))
+        AppState.activeStockParts = parts
+    }
+
+    async getStockPartsAMD(type){
+        let response = await api.get(`api/stockParts/${type}/amd`)
+        let parts = await response.data.map(part => new StockPart(part))
+        AppState.activeStockParts = parts
+    }
 }
 
 export const stockPartService = new StockPartService()

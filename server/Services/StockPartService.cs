@@ -11,6 +11,12 @@ public class StockPartService{
         StockPart stockPart = repo.CreateStockPart(stockPartData);
         return stockPart;
     }
+    
+    internal List<StockPart> GetPartsByType(string type){
+        List<StockPart> stockParts = repo.GetPartsByType(type);
+        return stockParts;
+    }
+
     internal List<StockPart> GetIntelPartsByType(string type){
         List<StockPart> stockParts = repo.GetIntelPartsByType(type);
         return stockParts;

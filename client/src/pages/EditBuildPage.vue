@@ -93,9 +93,9 @@
                         </span>
                     </div>
                     <div class="d-flex" v-if="currentType == 'cpu'">
-                        <button>Intel</button>
+                        <button @click="setCpuType('Intel')">Intel</button>
                         <h6 class="ms-3 me-3 mt-1">Or</h6>
-                        <button>AMD</button>
+                        <button @click="setCpuType('AMD')">AMD</button>
                     </div>
                     <div class="w-100" v-for="stockPart in stockParts">
                      <StockPartComponent class="mt-3" :stockPart="stockPart"/>
@@ -134,19 +134,31 @@ export default {
             await pcBuildService.getPcById(route.params.buildId)
         }
         async function getStockParts(type){
-            AppState.currentPartType = type
-            await stockPartService.getStockParts(type)
+            if(type == 'cpu' && AppState.partCompany == 'Intel'){
+                AppState.currentPartType = type
+                await stockPartService.getStockPartsIntel(type)
+            }else if(type == 'cpu' && AppState.partCompany == 'AMD'){
+                AppState.currentPartType = type
+                await stockPartService.getStockPartsAMD(type)
+            }
+            else{
+                console.log('huh')
+                AppState.currentPartType = type
+                await stockPartService.getStockParts(type)
+            }
         }
         async function getBuildParts(){
             await pcPartService.getBuildParts(activeBuild.value.id)
         }
         async function setCpuType(type){
-            AppState.currentPartType = type
+            AppState.partCompany = type
+            getStockParts('cpu')
         }
 
     return { 
         activeBuild,
         getStockParts,
+        setCpuType,
         stockParts: computed(()=> AppState.activeStockParts),
         pcParts: computed(()=> AppState.activeBuildParts),
         CPUs: computed(()=> AppState.cpu),

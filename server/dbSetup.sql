@@ -75,3 +75,8 @@ CREATE TABLE suggestions(
 ALTER TABLE stockParts
 ADD COLUMN watts INT
 AFTER powerScore;
+
+        SELECT
+        *
+        FROM stockParts
+        WHERE type = 'case'

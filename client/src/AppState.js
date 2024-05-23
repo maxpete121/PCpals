@@ -19,6 +19,8 @@ export const AppState = reactive({
 
   currentPartType: '',
 
+  partCompany: 'Intel',
+
   activeStockParts: [],
 
   activeBuildParts: [],

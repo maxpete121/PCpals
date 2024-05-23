@@ -24,12 +24,23 @@ public class StockPartRepository{
         return stockPart;
     }
 
+        internal List<StockPart> GetPartsByType(string type){
+        string sql = @"
+        SELECT
+        *
+        FROM stockParts
+        WHERE type = @type
+        ";
+        List<StockPart> stockParts = db.Query<StockPart>(sql, new{type}).ToList();
+        return stockParts;
+    }
+
     internal List<StockPart> GetIntelPartsByType(string type){
         string sql = @"
         SELECT
         *
         FROM stockParts
-        WHERE type = @type AND company = Intel
+        WHERE type = @type AND company = 'Intel'
         ";
         List<StockPart> stockParts = db.Query<StockPart>(sql, new{type}).ToList();
         return stockParts;

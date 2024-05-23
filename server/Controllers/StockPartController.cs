@@ -28,6 +28,19 @@ public class StockPartController : ControllerBase{
     }
 
     [HttpGet("{type}")]
+    public ActionResult<List<StockPart>> GetPartsByType(string type){
+        try
+        {
+           List<StockPart> stockParts = stockPartService.GetPartsByType(type);
+           return Ok(stockParts); 
+        }
+         catch (Exception error)
+        {
+          return BadRequest(error.Message);
+        }
+    }
+
+    [HttpGet("{type}/intel")]
     public ActionResult<List<StockPart>> GetIntelPartsByType(string type){
         try
         {
