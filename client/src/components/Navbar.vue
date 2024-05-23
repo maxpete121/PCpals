@@ -1,8 +1,8 @@
 <template>
-  <nav class="navbar navbar-expand-sm navbar-dark px-3 new-nav">
+  <nav class="navbar navbar-expand-sm navbar-dark px-3 new-nav bg-dark">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center text-dark">
-        <h3 class="fst-italic d-flex align-items-baseline">Boise<h2 class="fst-italic logo">PC</h2>Pals</h3>
+        <h3 class="fst-italic d-flex align-items-baseline text-light mt-lg-1">Boise<h2 class="fst-italic logo">PC</h2>Pals</h3>
       </div>
     </router-link>
     <router-link :to="{ name: 'Admin' }">
@@ -40,7 +40,7 @@
       <!-- LOGIN COMPONENT HERE -->
       <div class="me-2">
         <button @click="getCartItems()" class="btn text-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
-          <i class="mdi mdi-cart fs-3"></i>
+          <i class="text-light mdi mdi-cart fs-3"></i>
         </button>
       </div>
       <Login />

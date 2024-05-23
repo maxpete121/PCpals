@@ -3,14 +3,14 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Reviews</h1>
         <button type="button" class="btn-close" @click="closeModal()" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div>
           <div class="text-center d-flex flex-column align-items-center">
-            <button style="display: block;" id="createButton" @click="showReviewCreate()">Leave a review!</button>
-            <button style="display: none;" id="closeButton" @click="hideReviewCreate()">Close❌</button>
+            <button style="display: block;" id="createButton" class="open-review-button" @click="showReviewCreate()">Leave a review!</button>
+            <button style="display: none;" id="closeButton" class="open-review-button" @click="hideReviewCreate()">Close</button>
             <div style="display: none;" id="reviewCreateWrapper">
               <form @submit.prevent="createReview()" class="d-flex flex-column align-items-center mt-2">
                 <div class="d-flex input-box pb-2">
@@ -35,7 +35,7 @@
             </div>
           </div>
           <div class="review-holder">
-            <div class="mt-2" v-for="activeReview in activeReviews">
+            <div class="mt-3" v-for="activeReview in activeReviews">
               <ReviewComponent :review="activeReview"/>
             </div>
           </div>
@@ -102,5 +102,16 @@ export default {
 }
 .input-box{
   border-bottom: solid 1px purple;
+}
+
+.open-review-button{
+  all: unset;
+  background-color: purple;
+  border-radius: 3px;
+  color: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 8px;
+  padding-left: 8px;
 }
 </style>

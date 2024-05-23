@@ -115,6 +115,7 @@ import { Modal } from 'bootstrap';
 import { cartItemService } from '../services/CartItemService';
 import Pop from '../utils/Pop';
 import { saveBuildService } from '../services/SaveBuildService';
+import { AuthService } from '../services/AuthService';
 export default {
     props: { recentBuild: { type: PcBuild, required: true } },
     setup(props) {
@@ -129,15 +130,21 @@ export default {
         }
 
         async function createCartItem(){
-            let itemData = {creatorId: useAccount.value.id, buildId: props.recentBuild.id}
-            await cartItemService.createCartItem(itemData)
-            Pop.success("Added to cart")
+            if(useAccount.value.id){
+                let itemData = {creatorId: useAccount.value.id, buildId: props.recentBuild.id}
+                await cartItemService.createCartItem(itemData)
+                Pop.success("Added to cart")
+            }else if(window.confirm("You must create an account to add a build to your cart. Would you like to proceed?")){
+                AuthService.loginWithPopup()
+            }
         }
 
         async function createSaveBuild(){
-            let saveBuildData = {creatorId: useAccount.value.id, buildId: props.recentBuild.id}
-            await saveBuildService.createSaveBuild(saveBuildData)
-            Pop.success("Build Saved")
+            if(useAccount.value.id){
+                let saveBuildData = {creatorId: useAccount.value.id, buildId: props.recentBuild.id}
+                await saveBuildService.createSaveBuild(saveBuildData)
+                Pop.success("Build Saved")
+            }else if(window.confirm("You must create an account to save a build. Would you like to proceed?")){}
         }
         return {
             createSaveBuild,
