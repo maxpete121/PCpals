@@ -92,7 +92,7 @@
                             <button v-if="activeBuild.powerSupply == null || activeBuild.powerSupply == 'none'" @click="getStockParts('powerS')" class="type-button-end">Power Supply</button>
                         </span>
                     </div>
-                    <div class="d-flex" v-if="currentType == 'cpu'">
+                    <div class="d-flex mt-3" v-if="currentType == 'cpu'">
                         <button @click="setCpuType('Intel')">Intel</button>
                         <h6 class="ms-3 me-3 mt-1">Or</h6>
                         <button @click="setCpuType('AMD')">AMD</button>

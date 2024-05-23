@@ -115,11 +115,22 @@ import { Modal } from 'bootstrap';
 import { cartItemService } from '../services/CartItemService';
 import Pop from '../utils/Pop';
 import { Suggestion } from '../models/Suggestion';
+import { AuthService } from '../services/AuthService';
 export default {
     props: { suggestedBuild: { type: Suggestion, required: true } },
     setup(props) {
         let useAccount = computed(()=> AppState.account)
+        async function createCartItem(){
+            if(useAccount.value.id){
+                let itemData = {creatorId: useAccount.value.id, buildId: props.suggestedBuild.build.id}
+                await cartItemService.createCartItem(itemData)
+                Pop.success("Added to cart")
+            }else if(window.confirm("You must create an account to add a build to your cart. Would you like to proceed?")){
+                AuthService.loginWithPopup()
+            }
+        }
         return {
+            createCartItem,
             casePic: computed(() => {
                 let build = props.suggestedBuild.build
                 if (build.casePicture == 'none' || build.casePicture == null) {

@@ -1,10 +1,10 @@
 <template>
     <div class="review-card p-1 d-flex flex-column align-items-center">
         <span class="d-flex rating">
-            <p>{{ review.stars }}</p>
-            <p>/5⭐</p>
+            <h5>{{ review.stars }}</h5>
+            <h5>/5⭐</h5>
         </span>
-        <h5 class="title">{{ review.title }}</h5>
+        <h5 class="title mt-3 fst-italic">{{ review.title }}</h5>
         <div class="w-100 ms-3">
             <h6>Description</h6>
             <p>{{ review.body }}</p>

@@ -72,8 +72,8 @@ CREATE TABLE suggestions(
   Foreign Key (buildId) REFERENCES pcBuilds(id) ON DELETE CASCADE
 ) default charset utf8 COMMENT '';
 
-ALTER TABLE stockParts
-ADD COLUMN watts INT
+ALTER TABLE pcBuilds
+ COLUMN chipSet
 AFTER powerScore;
 
         SELECT

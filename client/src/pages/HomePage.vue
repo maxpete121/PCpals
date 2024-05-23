@@ -3,8 +3,8 @@
   <div class="row justify-content-center mb-4 mt-3 pb-2">
     <div class="col-8 justify-content-center mt-3 text-center">
       <h3 class="fst-italic"></h3>
-      <div class="d-flex justify-content-center mt-2">
-        <div class="text-center top-home-info me-4 pb-2 bg-white">
+      <div class="d-lg-flex justify-content-center mt-2">
+        <div class="text-center top-home-info mt-3 mb-lg-3 me-lg-4 pb-2 bg-white">
           <h4>Build a PC</h4>
           <img class="img-browse" src="https://storage-asset.msi.com/global/picture/article/seo_168231685364461e357a5f07.82597235.jpeg" alt="">
           <h6 class="mt-3">Login or create an account to access our PC Builder.</h6>
@@ -13,7 +13,7 @@
           <button class="home-btn mt-3" v-if="account.id">Make a build!</button>
           <button class="home-btn mt-3" v-if="!account.id">Login/Create Account</button>
         </div>
-        <div class="text-center top-home-info ms-4 pb-2 bg-white">
+        <div class="text-center top-home-info mt-3 mb-lg-3 ms-lg-4 pb-2 bg-white">
           <h4>Browse PCs</h4>
           <img class="img-browse" src="https://media.cnn.com/api/v1/images/stellar/prod/200630133939-build-3-1.jpg?q=w_4032,h_3024,x_0,y_0,c_fill" alt="">
           <h6 class="mt-3">Browse builds made and suggested by us!</h6>
@@ -112,6 +112,7 @@ export default {
 .img-browse{
   height: 220px;
   width: 340px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.24);
 }
 }
 @media screen and (max-width: 576px) {
@@ -119,6 +120,16 @@ export default {
     max-height: 100px;
     max-width: 300px;
   }
+  .img-browse{
+  height: 120px;
+  width: 240px;
+}
+.top-home-info{
+  outline: solid 2px purple;
+  border-radius: 10px;
+  width: 280px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.582);
+}
 }
 
 
