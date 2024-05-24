@@ -1,6 +1,6 @@
 <template>
   <section class="container-fluid">
-    <div class="row justify-content-center mt-3 mb-4">
+    <div class="row justify-content-center mt-3 mb-4 pb-2">
       <div class="col-lg-4 col-10 mt-3 info-card p-2 d-flex flex-column align-items-center">
         <h4>Welcome to your builds!</h4>
         <div class="d-flex flex-column align-items-center">
@@ -12,7 +12,7 @@
         </div>
       </div>
     </div>
-    <div class="row justify-content-center bg-dark pb-2 mt-2 pt-3 mt-3">
+    <div class="row justify-content-center bg-dark pb-2 mt-4 pt-3 mt-3">
       <div class="col-lg-3 col-7 mt-3">
         <div class="d-flex filter-container justify-content-center">
           <button @click="getUserBuilds()" class="btn-one">Created Builds</button>
@@ -20,7 +20,7 @@
         </div>
       </div>
     </div>
-    <div class="row justify-content-center bg-dark pt-3 pb-3">
+    <div class="row justify-content-center bg-dark pt-3 pb-3 h-100">
       <div class="col-lg-5 col-11 d-flex flex-column align-items-center">
         <div v-if="userBuildType == 'created'" v-for="userBuild in userBuilds">
         <UserBuildComponent :userBuild="userBuild"/>

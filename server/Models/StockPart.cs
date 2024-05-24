@@ -11,5 +11,6 @@ public class StockPart : RepoItem<int>{
     public string Gigs {get; set;}
     public int PowerScore {get; set;}
     public int Watts {get; set;}
+    public string ChipSet {get; set;}
 }
 

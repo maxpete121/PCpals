@@ -1,5 +1,8 @@
 <template>
     <div class="build-part d-flex justify-content-between align-items-center">
+        <div>
+            <img class="product-image" :src="pcPart.part.productImage" alt="Part Picture">
+        </div>
         <div class="d-flex align-items-center mt-1">
             <h6>{{ pcPart.part.name }}</h6>
         </div>
@@ -53,7 +56,13 @@ export default {
     outline: solid 1px purple;
     color: black;
     border-radius: 5px;
-    height: 50px;
+    height: 70px;
+    background-color: white;
     // box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.185);
+}
+
+.product-image{
+    max-width: 100px;
+    max-height: 60px;
 }
 </style>

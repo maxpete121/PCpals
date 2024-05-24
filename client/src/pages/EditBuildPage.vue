@@ -1,8 +1,8 @@
 <template>
     <div class="container-fluid">
         <div class="row mt-3 justify-content-center">
-            <div class="col-lg-5 col-10">
-                <div class="d-flex justify-content-evenly info-box mb-2">
+            <div class="col-lg-5 col-10 bg-dark pt-3 part-view">
+                <div class="d-flex justify-content-evenly info-box mb-2 bg-light">
                     <span class="pc-info mt-2">
                         <h4>{{ activeBuild.name }}</h4>
                     </span>
@@ -16,7 +16,7 @@
                     </span>
                 </div>
                 <div class="part-holder">
-                    <h4 class="fst-italic">Case</h4>
+                    <h4 class="fst-italic text-light">Case</h4>
                     <div v-for="Case in Cases">
                         <PcPartComponent :pcPart="Case"/>
                     </div>
@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 <div class="part-holder">
-                    <h4 class="fst-italic">CPU</h4>
+                    <h4 class="fst-italic text-light">CPU</h4>
                     <div v-for="CPU in CPUs">
                         <PcPartComponent :pcPart="CPU"/>
                     </div>
@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="part-holder">
-                    <h4 class="fst-italic">GPU</h4>
+                    <h4 class="fst-italic text-light">GPU</h4>
                     <div v-for="GPU in GPUs">
                         <PcPartComponent :pcPart="GPU"/>
                     </div>
@@ -43,7 +43,7 @@
                     </div>
                 </div>
                 <div class="part-holder">
-                    <h4 class="fst-italic">MotherBoard</h4>
+                    <h4 class="fst-italic text-light">MotherBoard</h4>
                     <div v-for="MotherBoard in Motherboards">
                         <PcPartComponent :pcPart="MotherBoard"/>
                     </div>
@@ -52,7 +52,7 @@
                     </div>
                 </div>
                 <div class="part-holder">
-                    <h4 class="fst-italic">Ram</h4>
+                    <h4 class="fst-italic text-light">Ram</h4>
                     <div v-for="Ram in Rams">
                         <PcPartComponent :pcPart="Ram"/>
                     </div>
@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <div class="part-holder">
-                    <h4 class="fst-italic">Storage</h4>
+                    <h4 class="fst-italic text-light">Storage</h4>
                     <div v-for="Storage in Storages">
                         <PcPartComponent :pcPart="Storage"/>
                     </div>
@@ -70,7 +70,7 @@
                     </div>
                 </div>
                 <div class="part-holder">
-                    <h4 class="fst-italic">Power Supply</h4>
+                    <h4 class="fst-italic text-light">Power Supply</h4>
                     <div v-for="PowerSupply in PowerSupplys">
                         <PcPartComponent :pcPart="PowerSupply"/>
                     </div>
@@ -79,7 +79,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5 col-12 d-flex flex-column align-items-center">
+            <div class="col-lg-5 col-12 d-flex flex-column align-items-center ps-3 pe-3 ms-lg-4">
                 <div class="sticky-top w-100">
                     <div class="w-100 d-flex justify-content-center">
                         <span class="box mt-2">
@@ -184,6 +184,12 @@ export default {
 .pc-info{
     border-bottom: solid 1px purple;
 }
+
+.part-view{
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.288);
+}
+
 .info-box{
     outline: solid 2px purple;
     padding-bottom: 5px;
@@ -192,7 +198,7 @@ export default {
 }
 .part-holder{
     border-bottom: solid 2px purple;
-    height: 100px;
+    height: 130px;
     margin-top: 10px;
     padding-left: 8px;
     padding-right: 8px;
