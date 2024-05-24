@@ -27,7 +27,7 @@
   <div class="row justify-content-center mt-4 bg-dark pt-4">
     <div class="col-lg-5 col-11 section-build me-lg-4 d-flex flex-column align-items-center bg-white mt-lg-4">
       <div class="">
-        <h4>Our Suggestions</h4>
+        <h4 class="title-font">Our Suggestions</h4>
       </div>
       <div v-for="suggestion in suggestions" class="">
         <SuggestionBuildComponent :suggestedBuild="suggestion"/>
@@ -35,7 +35,7 @@
     </div>
     <div class="col-lg-5 col-11 d-flex flex-column align-items-center section-build pt-1 pb-3 bg-white mt-lg-4">
       <div class="">
-        <h4>Recent Builds</h4>
+        <h4 class="title-font">Recent Builds</h4>
       </div>
       <div class="d-flex justify-content-center" v-for="recentBuild in recentBuilds">
         <HomeBuildComponent :recentBuild="recentBuild"/>
@@ -132,7 +132,9 @@ export default {
 }
 }
 
-
+.title-font{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
 
 .main{
 width: 250px;

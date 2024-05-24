@@ -190,6 +190,7 @@ export default {
     outline: solid 1px purple;
     box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.219);
     border-radius: 10px;
+    background-color: white;
 }
 
 .btn-build {
