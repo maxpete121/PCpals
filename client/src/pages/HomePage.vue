@@ -10,8 +10,8 @@
           <h6 class="mt-3">Login or create an account to access our PC Builder.</h6>
           <h6>Set the builder to either pro or beginner.</h6>
           <h6>Build the PC of your dreams!</h6>
-          <button class="home-btn mt-3" v-if="account.id">Make a build!</button>
-          <button class="home-btn mt-3" v-if="!account.id">Login/Create Account</button>
+          <button @click="editBuildPage()" class="home-btn mt-3" v-if="account.id">Make a build!</button>
+          <button @click="loginHome()" class="home-btn mt-3" v-if="!account.id">Login/Create Account</button>
         </div>
         <div class="text-center top-home-info mt-3 mb-lg-3 ms-lg-4 pb-2 bg-white">
           <h4>Browse PCs</h4>
@@ -19,13 +19,13 @@
           <h6 class="mt-3">Browse builds made and suggested by us!</h6>
           <h6>Buy builds made by other customers!</h6>
           <h6>Save builds your interested in for later!</h6>
-          <button class="home-btn mt-3">Browse User Builds</button>
+          <button @click="goToBrowseBuilds()" class="home-btn mt-3">Browse User Builds</button>
         </div>
       </div>
     </div>
   </div>
   <div class="row justify-content-center mt-4 bg-dark pt-4">
-    <div class="col-lg-5 col-11 section-build me-lg-4 d-flex flex-column align-items-center bg-white mt-lg-4">
+    <div class="col-lg-5 col-11 section-build me-lg-4 d-flex flex-column pt-2 pb-3 align-items-center bg-white mt-lg-4">
       <div class="">
         <h4 class="title-font">Our Suggestions</h4>
       </div>
@@ -33,7 +33,7 @@
         <SuggestionBuildComponent :suggestedBuild="suggestion"/>
       </div>
     </div>
-    <div class="col-lg-5 col-11 d-flex flex-column align-items-center section-build pt-1 pb-3 bg-white mt-lg-4">
+    <div class="col-lg-5 col-11 d-flex flex-column align-items-center section-build pt-2 pb-3 bg-white mt-lg-4">
       <div class="">
         <h4 class="title-font">Recent Builds</h4>
       </div>
@@ -72,13 +72,16 @@ import HomeBuildComponent from '../components/HomeBuildComponent.vue';
 import ReviewModal from '../components/ReviewModal.vue';
 import SuggestionBuildComponent from '../components/SuggestionBuildComponent.vue'
 import { suggestionService } from '../services/SuggestionService';
+import { AuthService } from '../services/AuthService';
+import { router } from '../router';
 export default {
   setup() {
     onMounted(()=>{
       getSharedBuilds()
       getSuggestions()
     })
-
+    
+    let useAccount = computed(()=> AppState.account)
     async function getSharedBuilds(){
       await pcBuildService.getSharedBuilds()
     }
@@ -86,7 +89,22 @@ export default {
     async function getSuggestions(){
       await suggestionService.getSuggestions()
     }
+
+    async function loginHome(){
+      AuthService.loginWithPopup()
+    }
+
+    async function editBuildPage(){
+      router.push({ name: 'MyBuilds'})
+    }
+
+    async function goToBrowseBuilds(){
+      router.push({ path: '/BrowseBuilds'})
+    }
     return {
+      goToBrowseBuilds,
+      editBuildPage,
+      loginHome,
       recentBuilds: computed(()=> AppState.recentBuilds),
       suggestions: computed(()=> AppState.suggestedBuilds),
       account: computed(()=> AppState.account)
