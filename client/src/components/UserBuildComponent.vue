@@ -87,12 +87,23 @@
                         </div>
                     </div>
                 </div>
-                <div class="d-flex justify-content-center mt-2">
+                <div class="d-lg-flex justify-content-center mt-2 button-holder-lg">
                     <button class="btn-build me-2">Add to Cart</button>
                     <button v-if="userBuild.isPrivate == false" @click="updateShare('true')" class="btn-build me-2">Make Private</button>
                     <button v-else @click="updateShare('false')" class="btn-build me-2">Share Build</button>
                     <button @click="getPcById()" class="btn-build me-2">Edit Build</button>
                     <button @click="deleteBuild()" class="btn-delete">Delete<i class="mdi mdi-delete"></i></button>
+                </div>
+                <div class="align-items-center mt-2 button-holder-sm">
+                    <div class="d-flex mt-2">
+                        <button class="btn-build me-2">Add to Cart</button>
+                        <button v-if="userBuild.isPrivate == false" @click="updateShare('true')" class="btn-build me-2">Make Private</button>
+                        <button v-else @click="updateShare('false')" class="btn-build me-2">Share Build</button>
+                        <button @click="getPcById()" class="btn-build">Edit Build</button>
+                    </div>
+                    <div class="d-flex mt-3">
+                        <button @click="deleteBuild()" class="btn-delete">Delete<i class="mdi mdi-delete"></i></button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -140,6 +151,47 @@ export default {
 
 
 <style lang="scss" scoped>
+@media screen and (min-width: 576px) {
+    .specs {
+    width: 385px;
+    height: 170px;
+    overflow-y: scroll;
+    outline: solid 2px purple;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.208);
+}
+
+   .button-holder-lg{
+    display: block;
+   }
+
+   .button-holder-sm{
+    visibility: hidden;
+    display: none;
+   }
+}
+
+@media screen and (max-width: 576px) {
+    .specs {
+    width: 325px;
+    height: 170px;
+    overflow-y: scroll;
+    outline: solid 2px purple;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.208);
+}
+
+   .button-holder-lg{
+    visibility: hidden;
+    display: none;
+   }
+
+   .button-holder-sm{
+    display: flex;
+    flex-direction: column;
+   }
+}
+
 .cover-img {
     width: 130px;
     max-height: 100;
@@ -156,16 +208,6 @@ export default {
 
 .progress-bg-child {
     background-color: purple;
-}
-
-.specs {
-    width: 385px;
-    height: 170px;
-    overflow-y: scroll;
-    outline: solid 2px purple;
-    border-radius: 5px;
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.208);
-
 }
 
 .part-title {
