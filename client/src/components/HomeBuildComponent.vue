@@ -1,5 +1,5 @@
 <template>
-    <div class="build-card d-lg-flex align-items-center pb-1 mt-4">
+    <div class="build-card d-lg-flex align-items-center pb-1 mt-3">
         <div class="ms-1 d-flex flex-column align-items-center mt-1">
             <img class="cover-img" :src="casePic" alt="Case picture">
                 <h3>{{ recentBuild.name }}</h3>

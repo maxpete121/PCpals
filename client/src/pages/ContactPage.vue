@@ -1,7 +1,7 @@
 <template>
     <section class="container-fluid">
         <div class="row justify-content-center">
-          <div class="col-3 contact-title-card mt-3 text-center p-1 d-flex flex-column align-items-center">
+          <div class="col-lg-3 col-11 contact-title-card mt-3 text-center p-1 d-flex flex-column align-items-center">
             <h5>Give us a call or send us a message!</h5>
             <h3>We're here to help!</h3>
             <div class="d-flex justify-content-center align-items-center social mt-2 pt-1 ps-1 pe-1">
@@ -40,6 +40,20 @@
   </script>
   
   <style lang="scss" scoped>
+  @media screen and (min-width: 576px) {
+    .social{
+  border-top: solid 1px purple;
+  width: 45%;
+}
+}
+
+@media screen and (max-width: 576px) {
+  .social{
+  border-top: solid 1px purple;
+  width: 55%;
+}
+}
+
 .contact-title-card{
   outline: solid 1px purple;
   background-color: white;
@@ -47,8 +61,4 @@
   border-radius: 10px;
 }
 
-.social{
-  border-top: solid 1px purple;
-  width: 45%;
-}
 </style>

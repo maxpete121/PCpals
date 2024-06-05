@@ -176,6 +176,11 @@ export default {
 
 
 <style lang="scss" scoped>
+@media screen and (min-width: 576px) {
+}
+
+@media screen and (max-width: 576px) {
+}
 .box{
     outline: solid 2px purple;
     border-radius: 15px;

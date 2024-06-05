@@ -1,16 +1,16 @@
 <template>
     <section class="container-fluid page">
         <div class="row mt-3 d-flex flex-column align-items-center mb-2">
-          <div class="col-4">
+          <div class="col-lg-4 col-10">
             <img class="img-fluid img-style" src="https://www.digitaltrends.com/wp-content/uploads/2022/04/cleaning-inside-of-pc-desktop.jpg?p=1" alt="Dirty PC picture.">
           </div>
-          <div class="col-4 mt-4">
+          <div class="col-lg-4 col-8 mt-4">
             <div class="clean-info">
               <h3>Need your PC cleaned?</h3>
               <p>Submit a ticket to our cleaning team and we will be in touch within the same business day to schedule a clean for your PC!</p>
             </div>
-            <div class="d-flex justify-content-center mt-3">
-              <div class="me-4 clean-info">
+            <div class="d-flex flex-column flex-lg-row justify-content-center mt-lg-3">
+              <div class="me-lg-4 clean-info mt-3">
                 <h5 class="border-bottom">Clean details...</h5>
                 <span class="d-flex">
                   <p class="fst-italic me-2 list-item">Price:</p>
@@ -23,7 +23,7 @@
                   <p class="list-item">✅Exterior Wipe down</p>
                 </span>
               </div>
-              <div class="text-center clean-info ms-4">
+              <div class="text-center clean-info ms-lg-4 mt-3">
                 <h5>Submit a ticket</h5>
                 <form action="">
                   <div class="d-flex flex-column">
