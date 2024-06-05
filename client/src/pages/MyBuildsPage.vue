@@ -49,6 +49,12 @@ export default {
     let buildRef = ref('')
     let account = computed(()=> AppState.account)
     watch(account, getUserBuilds)
+
+    if(account.value.id){
+      onMounted(()=>{
+        getUserBuilds()
+      })
+    }
     
     async function createBuild(){
         let buildData = {name: buildRef.value, creatorId: account.value.id}

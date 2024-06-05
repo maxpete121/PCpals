@@ -170,6 +170,39 @@ export default {
 
 
 <style lang="scss" scoped>
+@media screen and (min-width: 576px) {
+    .specs {
+    width: 360px;
+    height: 165px;
+    overflow-y: scroll;
+    outline: solid 2px purple;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.208);
+}
+    .cover-img {
+      max-width: 140px;
+      max-height: 100;
+   }
+}
+
+@media screen and (max-width: 576px) {
+    .specs {
+    width: 320px;
+    height: 165px;
+    overflow-y: scroll;
+    outline: solid 2px purple;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.208);
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+ .cover-img {
+      max-width: 100px;
+      max-height: 60;
+   }
+}
+
 .build-card {
     outline: solid 2px purple;
     box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.219);
@@ -209,15 +242,6 @@ export default {
     height: 27px;
     border-bottom: solid 1px purple;
 }
-.specs {
-    width: 360px;
-    height: 165px;
-    overflow-y: scroll;
-    outline: solid 2px purple;
-    border-radius: 5px;
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.208);
-
-}
 
 .part-title {
     background-color: rgba(255, 255, 255, 0.24);
@@ -243,11 +267,6 @@ export default {
     border: solid 1px purple;
     height: 28px;
     margin-top: 7px;
-}
-
-.cover-img {
-    max-width: 140px;
-    max-height: 100;
 }
 
 .btn-build {

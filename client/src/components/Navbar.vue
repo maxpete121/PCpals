@@ -1,51 +1,51 @@
 <template>
-  <nav class="navbar navbar-expand-sm navbar-dark px-3 new-nav bg-dark">
-    <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex flex-column align-items-center text-dark">
-        <h3 class="fst-italic d-flex align-items-baseline text-light mt-lg-1">Boise<h2 class="fst-italic logo">PC</h2>Pals</h3>
+    <nav class="navbar navbar-expand-sm navbar-dark px-3 new-nav bg-dark sticky-top">
+      <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
+        <div class="d-flex flex-column align-items-center text-dark">
+          <h3 class="fst-italic d-flex align-items-baseline text-light mt-lg-1">Boise<h2 class="fst-italic logo">PC</h2>Pals</h3>
+        </div>
+      </router-link>
+      <router-link :to="{ name: 'Admin' }">
+      <div v-if="adminVal == 'yes'">
+        <h6>Admin Page</h6>
       </div>
-    </router-link>
-    <router-link :to="{ name: 'Admin' }">
-    <div v-if="adminVal == 'yes'">
-      <h6>Admin Page</h6>
-    </div>
-     </router-link>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto">
-        <li>
-          <router-link  :to="{ name: 'Browse' }" class="btn text-success lighten-30 selectable text-uppercase">
-            Browse Builds
-          </router-link>
-        </li>
-        <li v-if="account.id">
-          <router-link @click="getUserBuilds()" :to="{ name: 'myBuilds' }" class="btn text-success lighten-30 selectable text-uppercase">
-            My Builds
-          </router-link>
-        </li>
-        <li>
-          <router-link :to="{ name: 'Clean' }" class="btn text-success lighten-30 selectable text-uppercase">
-            PC Cleaning
-          </router-link>
-        </li>
-        <li>
-          <router-link :to="{ name: 'Contact' }" class="btn text-success lighten-30 selectable text-uppercase">
-            Contact us!
-          </router-link>
-        </li>
-      </ul>
-      <!-- LOGIN COMPONENT HERE -->
-      <div class="me-2">
-        <button @click="getCartItems()" class="btn text-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
-          <i class="text-light mdi mdi-cart fs-3"></i>
-        </button>
+       </router-link>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto">
+          <li>
+            <router-link  :to="{ name: 'Browse' }" class="btn text-success lighten-30 selectable text-uppercase">
+              Browse Builds
+            </router-link>
+          </li>
+          <li v-if="account.id">
+            <router-link @click="getUserBuilds()" :to="{ name: 'myBuilds' }" class="btn text-success lighten-30 selectable text-uppercase">
+              My Builds
+            </router-link>
+          </li>
+          <li>
+            <router-link :to="{ name: 'Clean' }" class="btn text-success lighten-30 selectable text-uppercase">
+              PC Cleaning
+            </router-link>
+          </li>
+          <li>
+            <router-link :to="{ name: 'Contact' }" class="btn text-success lighten-30 selectable text-uppercase">
+              Contact us!
+            </router-link>
+          </li>
+        </ul>
+        <!-- LOGIN COMPONENT HERE -->
+        <div class="me-2">
+          <button @click="getCartItems()" class="btn text-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
+            <i class="text-light mdi mdi-cart fs-3"></i>
+          </button>
+        </div>
+        <Login />
       </div>
-      <Login />
-    </div>
-  </nav>
+    </nav>
   <CartOffCanvasComponent id="offcanvasCart"/>
 </template>
 
