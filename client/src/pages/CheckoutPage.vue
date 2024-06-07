@@ -1,9 +1,12 @@
 <template>
-    <div class="about text-center">
-      <h1>Welcome {{ account.name }}</h1>
-      <img class="rounded" :src="account.picture" alt="" />
-      <p>{{ account.email }}</p>
+  <section class="container-fluid">
+    <div class="">
+      <div>
+        <h4>Your Items</h4>
+      </div>
+      <div></div>
     </div>
+  </section>
   </template>
   
   <script>
@@ -13,6 +16,7 @@
   export default {
     setup() {
       return {
+        cartItems: computed(() => AppState.cart),
         account: computed(() => AppState.account)
       }
     }, components: { AdminBuildComponent }

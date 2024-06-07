@@ -30,7 +30,7 @@
           <h4 class="text-success ms-3">${{ cartTotal }}</h4>
         </div>
         <div>
-          <button class="btn btn-success">Checkout</button>
+          <button @click="goToCheckout()" class="btn btn-success">Checkout</button>
         </div>
       </div>
     </div>
@@ -42,9 +42,18 @@
   import { computed } from 'vue'
 import { AppState } from '../AppState';
 import CartItemComponent from '../components/CartItemComponent.vue'
+import { router } from '../router';
+import { Modal } from 'bootstrap';
+import { Offcanvas } from 'bootstrap';
   export default {
     setup() {
+      async function goToCheckout(){
+        router.push({ path: '/Checkout'})
+        Offcanvas.getOrCreateInstance('#offcanvasCart').hide()
+      }
+
       return {
+        goToCheckout,
         cartTotal: computed(()=> AppState.totalCart),
         cartItems: computed(()=> AppState.cart),
         cartLength: computed(()=>{

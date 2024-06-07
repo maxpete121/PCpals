@@ -42,6 +42,11 @@ const routes = [
     component: loadPage('AdminPage')
   },
   {
+    path: '/Checkout',
+    name: 'Checkout',
+    component: loadPage('CheckoutPage')
+  },
+  {
     path: '/account',
     name: 'Account',
     component: loadPage('AccountPage'),
