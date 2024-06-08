@@ -1,37 +1,66 @@
 <template>
   <section class="container-fluid">
     <div class="row justify-content-center">
-      <div class="col-4">
+      <div class="col-lg-3 col-11 mt-3 me-lg-3">
+        <form action="">
+          <div class="">
+            <h4 class="mb-2 title pb-1">Name</h4>
+            <div class="d-flex flex-column flex-lg-row align-items-baseline justify-content-evenly">
+              <div class="d-flex flex-column me-3">
+                <label for="">First</label>
+                <input class="input-rework" type="text" required>
+              </div>
+              <div class="d-flex flex-column">
+                <label for="">Last</label>
+                <input class="input-rework" type="text" required>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h4 class="mb-2 mt-4 title pb-1">Card Info</h4>
+            <div class="d-flex flex-column flex-lg-row justify-content-evenly">
+             <div class="d-flex flex-column me-3">
+               <label for="">Address</label>
+               <input class="input-rework" type="text" required>
+             </div>
+             <div class="d-flex flex-column">
+               <label for="">Address line 2 (Optional)</label>
+               <input class="input-rework" type="text" required>
+             </div>
+            </div>
+            <div class="d-flex flex-column flex-lg-row justify-content-evenly mt-3">
+              <div class="d-flex flex-column me-3">
+               <label for="">Card number</label>
+               <input class="input-rework" type="text" required>
+             </div>
+             <div class="d-flex flex-column me-3">
+               <label for="">Name on card</label>
+               <input class="input-rework" type="text" required>
+             </div>
+            </div>
+          </div>
+          <div class="">
+            <h4 class="mb-2 title pb-1 mt-4 pb-1">Shipping Address</h4>
+            <div class="d-flex flex-column flex-lg-row align-items-baseline justify-content-evenly">
+              <div class="d-flex flex-column me-3">
+                <label for="">Address</label>
+                <input class="input-rework" type="text" required>
+              </div>
+              <div class="d-flex flex-column me-3">
+                <label for="">Apt, suite, unit, ect.</label>
+                <input class="input-rework" type="text" required>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-lg-4 col-11 mt-3 me-lg-3">
         <div class="text-center">
           <h4>Your Items</h4>
         </div>
         <div class="mt-3" v-for="cartItem in cartItems">
           <CartItemComponent :cartItem="cartItem"/>
         </div>
-      </div>
-      <div class="col-4">
-        <form action="">
-          <div>
-            <div>
-              <label for="">First name</label>
-              <input type="text">
-            </div>
-            <div>
-              <label for="">last</label>
-              <input type="text">
-            </div>
-          </div>
-          <div>
-           <div>
-             <label for="">Address</label>
-             <input type="text">
-           </div>
-           <div>
-             <label for="">Card Number</label>
-             <input type="text">
-           </div>
-          </div>
-        </form>
       </div>
     </div>
   </section>
@@ -61,10 +90,30 @@ import { cartItemService } from '../services/CartItemService';
   </script>
   
   <style scoped>
+    @media screen and (min-width: 576px) {
+      .input-rework{
+       all: unset;
+       border: solid 1px purple;
+       border-radius: 3px;
+       width: 220px;
+    }
+}
+
+    @media screen and (max-width: 576px) {
+      .input-rework{
+       all: unset;
+       border: solid 1px purple;
+       border-radius: 3px;
+       width: 220px;
+    }
+}
+
   img {
     max-width: 100px;
   }
   .title{
     border-bottom:solid 1px purple;
   }
+
+
   </style>

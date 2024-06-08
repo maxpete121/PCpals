@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid">
         <div class="row mt-3 justify-content-center">
-            <div class="col-lg-5 col-10 bg-dark pt-3 part-view">
+            <div class="col-lg-5 col-11 bg-dark pt-3 part-view">
                 <div class="d-flex justify-content-evenly info-box mb-2 bg-light">
                     <span class="pc-info mt-2">
                         <h4>{{ activeBuild.name }}</h4>
@@ -177,9 +177,23 @@ export default {
 
 <style lang="scss" scoped>
 @media screen and (min-width: 576px) {
+    .part-holder{
+    border-bottom: solid 2px purple;
+    height: 120px;
+    margin-top: 10px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
 }
 
 @media screen and (max-width: 576px) {
+    .part-holder{
+    border-bottom: solid 2px purple;
+    height: 140px;
+    margin-top: 10px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
 }
 .box{
     outline: solid 2px purple;
@@ -201,13 +215,7 @@ export default {
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.322);
     border-radius: 8px;
 }
-.part-holder{
-    border-bottom: solid 2px purple;
-    height: 130px;
-    margin-top: 10px;
-    padding-left: 8px;
-    padding-right: 8px;
-}
+
 .type-button{
     all: unset;
     border-right: solid 1px black;
