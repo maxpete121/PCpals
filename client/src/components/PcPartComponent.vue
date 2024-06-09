@@ -7,10 +7,10 @@
             <div class="d-flex align-items-center mt-1 justify-content-end">
                 <h6>{{ pcPart.part.name }}</h6>
             </div>
-            <div class="d-flex align-items-center justify-content-end">
-                <div class="d-flex me-3">
+            <div class="d-flex align-items-lg-center align-items-baseline justify-content-end">
+                <div class="d-flex align-items baseline me-3 pt-3 pt-lg-0">
                     <h6 class="me-2">Price:</h6>
-                    <h6>${{ pcPart.part.price }}</h6>
+                    <h6 class="text-success">${{ pcPart.part.price }}</h6>
                 </div>
                 <button @click="deletePcPart()" class="btn btn-outline-danger"><i class="mdi mdi-delete"></i></button>
             </div>
@@ -74,7 +74,7 @@ export default {
     outline: solid 1px purple;
     color: black;
     border-radius: 5px;
-    height: 90px;
+    height: 98px;
     background-color: white;
     // box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.185);
 }
@@ -83,7 +83,7 @@ export default {
 
 
 .product-image{
-    max-width: 100px;
-    max-height: 60px;
+    max-width: 110px;
+    max-height: 65px;
 }
 </style>

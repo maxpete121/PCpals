@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-sm navbar-dark px-3 new-nav bg-dark sticky-top">
+    <nav class="navbar navbar-expand-sm navbar-dark px-3 new-nav bg-dark ">
       <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
         <div class="d-flex flex-column align-items-center text-dark">
           <h3 class="fst-italic d-flex align-items-baseline text-light mt-lg-1">Boise<h2 class="fst-italic logo">PC</h2>Pals</h3>
@@ -38,8 +38,8 @@
           </li>
         </ul>
         <!-- LOGIN COMPONENT HERE -->
-        <div class="me-2">
-          <button @click="getCartItems()" class="btn text-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
+        <div class="me-3 sticky-top">
+          <button @click="getCartItems()" class="cart-button sticky-top" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
             <i class="text-light mdi mdi-cart fs-3"></i>
           </button>
         </div>
@@ -134,4 +134,32 @@ a:hover {
 .logo{
   color: purple;
 }
+
+.cart-button{
+  all: unset;
+  border-radius: 50%;
+  border: solid 1px black;
+  outline: solid 1px white;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.cart-button:hover{
+  all: unset;
+  border-radius: 50%;
+  border: solid 1px black;
+  outline: solid 2px white;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.cart-button:focus{
+  all: unset;
+  border-radius: 50%;
+  border: solid 1px black;
+  outline: solid 2px white;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 </style>

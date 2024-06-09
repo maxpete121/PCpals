@@ -1,15 +1,15 @@
 <template>
-    <div class="part-card d-flex align-items-center justify-content-between w-100">
+    <div class="part-card d-lg-flex align-items-center justify-content-between w-100">
         <div class="d-flex align-items-center">
             <img class="part-image" :src="stockPart.productImage" alt="Part image">
-            <p class="ms-3 text-size">{{ stockPart.name }}</p>
+            <h5 class="ms-3 text-size">{{ stockPart.name }}</h5>
         </div>
         <div class="d-flex align-items-center">
-            <div class="">
-                <span class="d-flex price-area justify-content-center">
+            <div class="d-flex">
+                <div class="d-flex price-area justify-content-center me-3">
                     <h6 class="me-2">Price:</h6>
                     <h6>${{ stockPart.price }}</h6>
-                </span>
+                </div>
                 <div class="d-flex">
                     <h6 class="me-2">Speed</h6>
                     <div class="me-2 speed-view mt-1">
@@ -60,7 +60,7 @@ export default {
 <style lang="scss" scoped>
 @media screen and (max-width: 576px){
     .text-size{
-        font-size: x-small;
+        font-size: small;
     }
 }
 .part-card {

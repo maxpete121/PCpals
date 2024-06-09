@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid">
         <div class="row mt-3 justify-content-center">
-            <div class="col-lg-5 col-11 bg-dark pt-3 part-view">
+            <div class="col-lg-5 col-12 pb-2 bg-dark pt-3 part-view">
                 <div class="d-flex justify-content-evenly info-box mb-2 bg-light">
                     <span class="pc-info mt-2">
                         <h4>{{ activeBuild.name }}</h4>
@@ -20,7 +20,7 @@
                     <div v-for="Case in Cases">
                         <PcPartComponent :pcPart="Case"/>
                     </div>
-                    <div class="d-flex align-items-end" v-if="Cases.length == 0">
+                    <div class="d-flex align-items-end pt-4 pt-lg-0" v-if="Cases.length == 0">
                     <h4 class="mt-4 text-danger">No Part selected...</h4>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                     <div v-for="CPU in CPUs">
                         <PcPartComponent :pcPart="CPU"/>
                     </div>
-                    <div class="d-flex align-items-end" v-if="CPUs.length == 0">
+                    <div class="d-flex align-items-end pt-4 pt-lg-0" v-if="CPUs.length == 0">
                     <h4 class="mt-4 text-danger">No Part selected...</h4>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                     <div v-for="GPU in GPUs">
                         <PcPartComponent :pcPart="GPU"/>
                     </div>
-                    <div class="d-flex align-items-end" v-if="GPUs.length == 0">
+                    <div class="d-flex align-items-end pt-4 pt-lg-0" v-if="GPUs.length == 0">
                     <h4 class="mt-4 text-danger">No Part selected...</h4>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                     <div v-for="MotherBoard in Motherboards">
                         <PcPartComponent :pcPart="MotherBoard"/>
                     </div>
-                    <div class="d-flex align-items-end" v-if="Motherboards.length == 0">
+                    <div class="d-flex align-items-end pt-4 pt-lg-0" v-if="Motherboards.length == 0">
                         <h4 class="mt-4 text-danger">No Part selected...</h4>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                     <div v-for="Ram in Rams">
                         <PcPartComponent :pcPart="Ram"/>
                     </div>
-                    <div class="d-flex align-items-end" v-if="Rams.length == 0">
+                    <div class="d-flex align-items-end pt-4 pt-lg-0" v-if="Rams.length == 0">
                     <h4 class="mt-4 text-danger">No Part selected...</h4>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                     <div v-for="Storage in Storages">
                         <PcPartComponent :pcPart="Storage"/>
                     </div>
-                    <div class="d-flex align-items-end" v-if="Storages.length == 0">
+                    <div class="d-flex align-items-end pt-4 pt-lg-0" v-if="Storages.length == 0">
                     <h4 class="mt-4 text-danger">No Part selected...</h4>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
                     <div v-for="PowerSupply in PowerSupplys">
                         <PcPartComponent :pcPart="PowerSupply"/>
                     </div>
-                    <div class="d-flex align-items-end" v-if="PowerSupplys.length == 0">
+                    <div class="d-flex align-items-end pt-4 pt-lg-0" v-if="PowerSupplys.length == 0">
                     <h4 class="mt-4 text-danger">No Part selected...</h4>
                     </div>
                 </div>

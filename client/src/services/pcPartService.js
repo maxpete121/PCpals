@@ -95,6 +95,13 @@ class PcPartService{
         let roundedAverage = Math.round(price * 100) / 100
         return roundedAverage
     }
+
+    async wattageMath(){
+        let wattage = 0
+        for(let i = 0; AppState.activeBuildParts.length > i; i++){
+            wattage += AppState.activeBuildParts[i].part.watts
+        }
+    }
 }
 
 export const pcPartService = new PcPartService()
