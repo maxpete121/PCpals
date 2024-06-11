@@ -101,7 +101,9 @@ class PcPartService{
     async wattageMath(){
         let wattage = 0
         for(let i = 0; AppState.activeBuildParts.length > i; i++){
-            wattage += AppState.activeBuildParts[i].part.watts
+            if(AppState.activeBuildParts[i].part.type !== "powerS"){
+                wattage += AppState.activeBuildParts[i].part.watts
+            }
         }
         return wattage
     }

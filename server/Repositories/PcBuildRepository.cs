@@ -79,7 +79,8 @@ public class PcBuildRepository{
         ram = @ram,
         pcStorage = @pcStorage,
         cooler = @cooler,
-        powerSupply = @powerSupply
+        powerSupply = @powerSupply,
+        maxWattage = @maxWattage
         WHERE id = @id;
 
         SELECT

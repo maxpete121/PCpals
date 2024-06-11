@@ -2,18 +2,26 @@
     <div class="container-fluid">
         <div class="row mt-3 justify-content-center">
             <div class="col-lg-5 col-12 pb-2 bg-dark pt-3 part-view">
-                <div class="d-flex justify-content-evenly info-box mb-2 bg-light">
-                    <span class="pc-info mt-2">
-                        <h4>{{ activeBuild.name }}</h4>
-                    </span>
-                    <span class="d-flex ms-4 pc-info mt-2">
-                        <h4 class="me-2">Price:</h4>
-                        <h4>${{ activeBuild.price }}</h4>
-                    </span>
-                    <span class="d-flex ms-4 pc-info mt-2">
-                        <h4 class="me-2">Power Score:</h4>
-                        <h4>{{ activeBuild.powerScore }}</h4>
-                    </span>
+                <div class="mb-2 p-2 d-lg-flex justify-content-center">
+                    <div class="info-box bg-light ps-1 pe-1">
+                        <div class="pc-info mt-2 d-flex justify-content-between">
+                            <h5 class="ms-3 me-2">Build name:</h5>
+                            <h5 class="me-2" >{{ activeBuild.name }}</h5>
+                        </div>
+                        <div class="pc-info mt-2 d-flex justify-content-between mt-1">
+                            <h5 class="ms-3 me-2">Price:</h5>
+                            <h5 class="me-2 text-success" >${{ activeBuild.price }}</h5>
+                        </div>
+                        <div class="pc-info mt-2 d-flex justify-content-between mt-1">
+                            <h5 class="ms-3 me-2">Power Score:</h5>
+                            <h5 class="me-2" >{{ activeBuild.powerScore }}%</h5>
+                        </div>
+                        <div class="pc-info mt-2 d-flex justify-content-between mt-1">
+                            <h5 class="ms-3 me-2">Wattage:</h5>
+                            <h5 v-if="activeBuild.watts < activeBuild.maxWattage" class="me-2" >{{ activeBuild.watts }} / {{ activeBuild.maxWattage }}</h5>
+                            <h5 v-else-if="activeBuild.watts >= activeBuild.maxWattage" class="me-2 text-danger" >{{ activeBuild.watts }} / {{ activeBuild.maxWattage }}</h5>
+                        </div>
+                    </div>
                 </div>
                 <div class="part-holder">
                     <h4 class="fst-italic text-light">Case</h4>
@@ -184,6 +192,13 @@ export default {
     padding-left: 8px;
     padding-right: 8px;
 }
+.info-box{
+    outline: solid 2px purple;
+    padding-bottom: 5px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.322);
+    border-radius: 8px;
+    width: 50%;
+}
 }
 
 @media screen and (max-width: 576px) {
@@ -193,6 +208,12 @@ export default {
     margin-top: 10px;
     padding-left: 8px;
     padding-right: 8px;
+}
+.info-box{
+    outline: solid 2px purple;
+    padding-bottom: 5px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.322);
+    border-radius: 8px;
 }
 }
 .box{
@@ -209,12 +230,6 @@ export default {
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.288);
 }
 
-.info-box{
-    outline: solid 2px purple;
-    padding-bottom: 5px;
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.322);
-    border-radius: 8px;
-}
 
 .type-button{
     all: unset;

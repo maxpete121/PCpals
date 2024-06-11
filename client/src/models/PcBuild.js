@@ -10,6 +10,7 @@ export class PcBuild{
         this.creator = data.creator
         this.isPrivate = data.isPrivate
         this.watts = data.watts
+        this.maxWattage = data.maxWattage || 0
         this.pcCase = data.pcCase
         this.casePicture = data.casePicture
         this.pcCpu = data.pcCpu

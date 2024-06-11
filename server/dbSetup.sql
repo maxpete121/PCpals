@@ -73,7 +73,7 @@ CREATE TABLE suggestions(
 ) default charset utf8 COMMENT '';
 
 ALTER TABLE pcBuilds
-ADD COLUMN watts INT
-AFTER isPrivate;
+ADD COLUMN maxWattage INT
+AFTER watts;
 
 

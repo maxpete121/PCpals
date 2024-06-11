@@ -8,6 +8,7 @@ public class PcBuild : RepoItem<int>{
     public decimal Rating {get; set;}
     public Boolean IsPrivate {get; set;}
     public int Watts {get; set;}
+    public int MaxWattage {get;set;}
     public string PcCase {get; set;}
     public string CasePicture {get; set;}
     public string PcCpu {get; set;}
