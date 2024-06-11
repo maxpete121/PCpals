@@ -122,7 +122,8 @@ public class PcBuildRepository{
         string sql = @"
         UPDATE pcBuilds SET
         powerScore = @powerScore,
-        price = @price
+        price = @price,
+        watts = @watts
         WHERE id = @id;
 
         SELECT

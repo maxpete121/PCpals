@@ -11,7 +11,8 @@ class PcPartService{
         AppState.activeBuildParts.push(newPart)
         let price = await this.PriceMath()
         let average = await this.powerScoreMath(newPart.creatorId)
-        pcBuildService.updatePowerScore(newPart.buildId, average, price)
+        let watts = await this.wattageMath()
+        pcBuildService.updatePowerScore(newPart.buildId, average, price, watts)
         if(newPart.part.type == 'cpu' && AppState.cpu.length == 0){AppState.cpu.push(newPart)}
         else if(newPart.part.type == 'gpu' && AppState.gpu.length == 0){AppState.gpu.push(newPart)}
         else if(newPart.part.type == 'motherB' && AppState.motherboard.length == 0){AppState.motherboard.push(newPart)}
@@ -56,7 +57,8 @@ class PcPartService{
     async PartClear(part){
         let price = await this.PriceMath()
         let average = await this.powerScoreMath()
-        pcBuildService.updatePowerScore(part.buildId, average, price)
+        let watts = await this.wattageMath()
+        pcBuildService.updatePowerScore(part.buildId, average, price, watts)
         if(part.part.type == 'cpu'){AppState.cpu = []}
         else if(part.part.type == 'gpu'){AppState.gpu = []}
         else if(part.part.type == 'motherB'){AppState.motherboard = []}
@@ -66,7 +68,7 @@ class PcPartService{
         else if(part.part.type == 'powerS'){AppState.powerSupply = []}
     }
     async allClear(){
-        console.log('hm')
+        // console.log('hm')
         AppState.cpu = []
         AppState.gpu = []
         AppState.motherboard = []
@@ -101,6 +103,7 @@ class PcPartService{
         for(let i = 0; AppState.activeBuildParts.length > i; i++){
             wattage += AppState.activeBuildParts[i].part.watts
         }
+        return wattage
     }
 }
 

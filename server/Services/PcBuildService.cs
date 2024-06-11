@@ -62,6 +62,7 @@ public class PcBuildService{
         if(originalPc.CreatorId == userId){
             originalPc.PowerScore = updateData.PowerScore;
             originalPc.Price = updateData.Price;
+            originalPc.Watts = updateData.Watts;
             PcBuild updatedData = repo.UpdatePowerScore(originalPc);
             return updatedData;
         }else{throw new Exception("Not Authorized.");}
