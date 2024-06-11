@@ -1,8 +1,16 @@
 <template>
   <section class="container-fluid">
     <div class="row justify-content-center">
+      <div class="col-lg-4 col-11 mt-3 me-lg-3">
+        <div class="text-center">
+          <h4>Your Items</h4>
+        </div>
+        <div class="mt-3" v-for="cartItem in cartItems">
+          <CartItemComponent :cartItem="cartItem"/>
+        </div>
+      </div>
       <div class="col-lg-3 col-11 mt-3 me-lg-3">
-        <form action="">
+        <form @submit.prevent="checkout()" action="">
           <div class="">
             <h4 class="mb-2 title pb-1">Name</h4>
             <div class="d-flex flex-column flex-lg-row align-items-baseline justify-content-evenly">
@@ -52,15 +60,11 @@
               </div>
             </div>
           </div>
+          <div class="d-flex mt-4">
+            <button class="me-2">Purchase</button>
+            <button class="">Cancel</button>
+          </div>
         </form>
-      </div>
-      <div class="col-lg-4 col-11 mt-3 me-lg-3">
-        <div class="text-center">
-          <h4>Your Items</h4>
-        </div>
-        <div class="mt-3" v-for="cartItem in cartItems">
-          <CartItemComponent :cartItem="cartItem"/>
-        </div>
       </div>
     </div>
   </section>
@@ -72,6 +76,7 @@
   import AdminBuildComponent from '../components/AdminBuildComponent.vue';
   import CartItemComponent from '../components/CartItemComponent.vue'
 import { cartItemService } from '../services/CartItemService';
+import Pop from '../utils/Pop';
   export default {
     setup() {
       let useAccount = computed(()=> AppState.account)
@@ -80,8 +85,13 @@ import { cartItemService } from '../services/CartItemService';
           cartItemService.getCartItems()
         }
         watch(useAccount, cartItemService.getCartItems)
-      })
+
+        })
+          function checkout(){
+            Pop.error('Feature not yet supported.')
+          }
       return {
+        checkout,
         cartItems: computed(() => AppState.cart),
         account: computed(() => AppState.account)
       }

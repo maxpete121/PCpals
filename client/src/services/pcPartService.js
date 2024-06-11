@@ -12,7 +12,7 @@ class PcPartService{
         let price = await this.PriceMath()
         let average = await this.powerScoreMath(newPart.creatorId)
         let watts = await this.wattageMath()
-        pcBuildService.updatePowerScore(newPart.buildId, average, price, watts)
+        await pcBuildService.updatePowerScore(newPart.buildId, average, price, watts)
         if(newPart.part.type == 'cpu' && AppState.cpu.length == 0){AppState.cpu.push(newPart)}
         else if(newPart.part.type == 'gpu' && AppState.gpu.length == 0){AppState.gpu.push(newPart)}
         else if(newPart.part.type == 'motherB' && AppState.motherboard.length == 0){AppState.motherboard.push(newPart)}

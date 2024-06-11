@@ -3,8 +3,8 @@
         <div class="row mt-3 justify-content-center">
             <div class="col-lg-5 col-12 pb-2 bg-dark pt-3 part-view">
                 <div class="mb-2 p-2 d-lg-flex justify-content-center">
-                    <div class="info-box bg-light ps-1 pe-1">
-                        <div class="pc-info mt-2 d-flex justify-content-between">
+                    <div class="info-box bg-light p-2">
+                        <div class="pc-info d-flex justify-content-between">
                             <h5 class="ms-3 me-2">Build name:</h5>
                             <h5 class="me-2" >{{ activeBuild.name }}</h5>
                         </div>
@@ -87,8 +87,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5 col-12 d-flex flex-column align-items-center ps-3 pe-3 ms-lg-4">
+            <div class="col-lg-5 col-12 d-flex flex-column align-items-center ps-3 pe-3 ms-lg-4 mt-3 mt-lg-0 mb-3 mb-lg-0">
                 <div class="sticky-top w-100">
+                    <div class="text-center">
+                        <h4 class="title-font d-inline-block ps-2 pe-2">Add Parts</h4>
+                    </div>
                     <div class="w-100 d-flex justify-content-center">
                         <span class="box mt-2">
                             <button v-if="activeBuild.pcCase == null || activeBuild.pcCase == 'none'" @click="getStockParts('case')" class="type-button">Case</button>
@@ -215,6 +218,10 @@ export default {
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.322);
     border-radius: 8px;
 }
+}
+.title-font{
+    border-bottom: solid 2px purple;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 .box{
     outline: solid 2px purple;

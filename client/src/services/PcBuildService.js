@@ -1,7 +1,9 @@
 
 import { AppState } from "../AppState"
 import { PcBuild } from "../models/PcBuild"
+import Pop from "../utils/Pop"
 import { api } from "./AxiosService"
+import { pcPartService } from "./pcPartService"
 
 
 class PcBuildService{
@@ -44,7 +46,6 @@ class PcBuildService{
         else if(stockPartData.type == 'storage'){buildData.pcStorage = stockPartData.name}
         else if(stockPartData.type == 'powerS'){
             buildData.powerSupply = stockPartData.name
-            buildData.maxWattage = stockPartData.watts
         }
         else if(stockPartData.type == 'cooler'){buildData.cooler = stockPartData.name}
         let response = await api.put(`api/pcBuilds/${pcId}/parts`, buildData)
@@ -54,15 +55,23 @@ class PcBuildService{
 
     async updateShare(pcId){
         let activeBuild = AppState.userBuilds.find(build => build.id == pcId)
-        if(activeBuild.isPrivate == true){
+        let hasAllParts = await this.checkForParts(pcId)
+        if(activeBuild.isPrivate == true && hasAllParts == true){
             activeBuild.isPrivate = false
-        }else if(activeBuild.isPrivate == false){
-            activeBuild.isPrivate = true
+            let updateData = {isPrivate: activeBuild.isPrivate}
+            let response = await api.put(`api/pcBuilds/${pcId}/share/update`, updateData)
+            let newBuildData = new PcBuild(response.data)
+            AppState.userBuilds = AppState.userBuilds.map(build => build.id !== pcId ? build : newBuildData)
+        }else if(activeBuild.isPrivate == true && hasAllParts == false){
+            Pop.error('PC does not have all required parts.')
         }
-        let updateData = {isPrivate: activeBuild.isPrivate}
-        let response = await api.put(`api/pcBuilds/${pcId}/share/update`, updateData)
-        let newBuildData = new PcBuild(response.data)
-        AppState.userBuilds = AppState.userBuilds.map(build => build.id !== pcId ? build : newBuildData)
+        else if(activeBuild.isPrivate == false){
+            activeBuild.isPrivate = true
+            let updateData = {isPrivate: activeBuild.isPrivate}
+            let response = await api.put(`api/pcBuilds/${pcId}/share/update`, updateData)
+            let newBuildData = new PcBuild(response.data)
+            AppState.userBuilds = AppState.userBuilds.map(build => build.id !== pcId ? build : newBuildData)
+        }
     }
 
     async updatePowerScore(pcId, average, price, wattage){
@@ -87,7 +96,17 @@ class PcBuildService{
         let allBuilds = await response.data.map(build => new PcBuild(build))
         AppState.recentBuilds = allBuilds
     }
-
+    
+    async checkForParts(buildId){
+        let hasParts = false
+        await pcPartService.getBuildParts(buildId)
+        await pcPartService.allClear()
+        let partCount = AppState.activeBuildParts.length
+        if(partCount >= 7){
+            hasParts = true
+        }
+        return hasParts
+    }
 
 }
 
