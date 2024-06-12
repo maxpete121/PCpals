@@ -117,6 +117,7 @@ import { computed, ref, onMounted } from 'vue';
 import { PcBuild } from '../models/PcBuild';
 import { pcBuildService } from '../services/PcBuildService';
 import { router } from '../router';
+import Pop from '../utils/Pop';
 export default {
     props: { userBuild: { type: PcBuild, required: true } },
     setup(props) {

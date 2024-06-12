@@ -61,7 +61,8 @@ class PcBuildService{
             let updateData = {isPrivate: activeBuild.isPrivate}
             let response = await api.put(`api/pcBuilds/${pcId}/share/update`, updateData)
             let newBuildData = new PcBuild(response.data)
-            AppState.userBuilds = AppState.userBuilds.map(build => build.id !== pcId ? build : newBuildData)
+            AppState.userBuilds = await AppState.userBuilds.map(build => build.id !== pcId ? build : newBuildData)
+            Pop.success('PC was shared for others to see!')
         }else if(activeBuild.isPrivate == true && hasAllParts == false){
             Pop.error('PC does not have all required parts.')
         }
@@ -71,11 +72,12 @@ class PcBuildService{
             let response = await api.put(`api/pcBuilds/${pcId}/share/update`, updateData)
             let newBuildData = new PcBuild(response.data)
             AppState.userBuilds = AppState.userBuilds.map(build => build.id !== pcId ? build : newBuildData)
+            Pop.success('PC was made private.')
         }
     }
 
-    async updatePowerScore(pcId, average, price, wattage){
-        let buildData = {powerScore: average, price: price, watts: wattage}
+    async updatePowerScore(pcId, average, price, wattage, maxWatts){
+        let buildData = {powerScore: average, price: price, watts: wattage, maxWattage: maxWatts}
         // console.log(buildData)
         let response = await api.put(`api/pcBuilds/${pcId}/powerScore`, buildData)
         let newBuild = new PcBuild(response.data)

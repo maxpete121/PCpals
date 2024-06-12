@@ -79,8 +79,7 @@ public class PcBuildRepository{
         ram = @ram,
         pcStorage = @pcStorage,
         cooler = @cooler,
-        powerSupply = @powerSupply,
-        maxWattage = @maxWattage
+        powerSupply = @powerSupply
         WHERE id = @id;
 
         SELECT
@@ -124,7 +123,8 @@ public class PcBuildRepository{
         UPDATE pcBuilds SET
         powerScore = @powerScore,
         price = @price,
-        watts = @watts
+        watts = @watts,
+        maxWattage = @maxWattage
         WHERE id = @id;
 
         SELECT

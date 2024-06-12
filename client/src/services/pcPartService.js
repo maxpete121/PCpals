@@ -12,7 +12,8 @@ class PcPartService{
         let price = await this.PriceMath()
         let average = await this.powerScoreMath(newPart.creatorId)
         let watts = await this.wattageMath()
-        await pcBuildService.updatePowerScore(newPart.buildId, average, price, watts)
+        let maxWattage = await this.findMaxWattage()
+        await pcBuildService.updatePowerScore(newPart.buildId, average, price, watts, maxWattage)
         if(newPart.part.type == 'cpu' && AppState.cpu.length == 0){AppState.cpu.push(newPart)}
         else if(newPart.part.type == 'gpu' && AppState.gpu.length == 0){AppState.gpu.push(newPart)}
         else if(newPart.part.type == 'motherB' && AppState.motherboard.length == 0){AppState.motherboard.push(newPart)}
@@ -58,7 +59,8 @@ class PcPartService{
         let price = await this.PriceMath()
         let average = await this.powerScoreMath()
         let watts = await this.wattageMath()
-        pcBuildService.updatePowerScore(part.buildId, average, price, watts)
+        let maxWattage = await this.findMaxWattage()
+        pcBuildService.updatePowerScore(part.buildId, average, price, watts, maxWattage)
         if(part.part.type == 'cpu'){AppState.cpu = []}
         else if(part.part.type == 'gpu'){AppState.gpu = []}
         else if(part.part.type == 'motherB'){AppState.motherboard = []}
@@ -96,6 +98,17 @@ class PcPartService{
         }
         let roundedAverage = Math.round(price * 100) / 100
         return roundedAverage
+    }
+
+    async findMaxWattage(){
+        let maxWattage = 0
+        let activePowerS = await AppState.activeBuildParts.find(part => part.part.type == 'powerS')
+        if(activePowerS){
+            maxWattage += activePowerS.part.watts
+            return maxWattage
+        }else{
+            return maxWattage
+        }
     }
 
     async wattageMath(){
