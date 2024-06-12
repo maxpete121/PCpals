@@ -103,10 +103,10 @@
                             <button v-if="activeBuild.powerSupply == null || activeBuild.powerSupply == 'none'" @click="getStockParts('powerS')" class="type-button-end">Power Supply</button>
                         </span>
                     </div>
-                    <div class="d-flex mt-3" v-if="currentType == 'cpu'">
-                        <button @click="setCpuType('Intel')">Intel</button>
+                    <div class="d-flex mt-3" v-if="currentType == 'cpu' && Motherboards.length == 0">
+                        <button class="cpu-select-button" @click="setCpuType('Intel')">Intel</button>
                         <h6 class="ms-3 me-3 mt-1">Or</h6>
-                        <button @click="setCpuType('AMD')">AMD</button>
+                        <button class="cpu-select-button" @click="setCpuType('AMD')">AMD</button>
                     </div>
                     <div class="w-100" v-for="stockPart in stockParts">
                      <StockPartComponent class="mt-3" :stockPart="stockPart"/>
@@ -237,6 +237,36 @@ export default {
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.288);
 }
 
+.cpu-select-button{
+    all: unset;
+    border: solid 2px purple;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.cpu-select-button:hover{
+    all: unset;
+    border: solid 2px purple;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: rgb(230, 230, 230);
+    cursor: pointer;
+}
+
+.cpu-select-button:focus{
+    all: unset;
+    border: solid 2px purple;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: rgb(230, 230, 230);
+    cursor: pointer;
+}
 
 .type-button{
     all: unset;

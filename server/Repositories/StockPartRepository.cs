@@ -52,7 +52,7 @@ public class StockPartRepository{
         SELECT
         *
         FROM stockParts
-        WHERE type = @type AND company = AMD
+        WHERE type = @type AND company = 'AMD'
         ";
         List<StockPart> stockParts = db.Query<StockPart>(sql, new{type}).ToList();
         return stockParts;

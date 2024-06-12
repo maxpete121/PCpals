@@ -151,6 +151,7 @@ a:hover {
   outline: solid 2px white;
   padding-left: 10px;
   padding-right: 10px;
+  cursor: pointer;
 }
 
 .cart-button:focus{
@@ -160,6 +161,7 @@ a:hover {
   outline: solid 2px white;
   padding-left: 10px;
   padding-right: 10px;
+  cursor: pointer;
 }
 
 </style>
