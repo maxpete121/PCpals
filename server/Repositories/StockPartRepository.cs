@@ -46,14 +46,14 @@ public class StockPartRepository{
         return stockParts;
     }
 
-    internal List<StockPart> GetMotherBoards(DataHolder parameter){
+    internal List<StockPart> GetMotherBoards(string parameter){
         string sql = @"
         SELECT
         *
         FROM stockParts
-        WHERE type = @type AND chipSet = @chipSet
+        WHERE type = 'motherB' AND chipSet = @parameter
         ";
-        List<StockPart> stockParts = db.Query<StockPart>(sql, parameter).ToList();
+        List<StockPart> stockParts = db.Query<StockPart>(sql, new{parameter}).ToList();
         return stockParts;
     }
     

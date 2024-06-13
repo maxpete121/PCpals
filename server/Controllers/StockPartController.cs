@@ -67,7 +67,7 @@ public class StockPartController : ControllerBase{
     }
 
     [HttpGet("{type}/motherB")]
-    public ActionResult<List<StockPart>> GetMotherBoards(DataHolder type){
+    public ActionResult<List<StockPart>> GetMotherBoards(string type){
       try
       {
         List<StockPart> stockParts = stockPartService.GetMotherBoards(type);

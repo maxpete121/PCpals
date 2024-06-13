@@ -127,7 +127,6 @@ import { stockPartService } from '../services/StockPartService';
 import StockPartComponent from '../components/StockPartComponent.vue';
 import PcPartComponent from '../components/PcPartComponent.vue';
 import { pcPartService } from '../services/pcPartService';
-import {DataHoler} from '../models/DataHolder.js'
 export default {
     setup(){
         let route = useRoute()
@@ -158,12 +157,11 @@ export default {
             }
             else if(type == 'motherB' && currentMotherboardType == 'Intel'){
                 AppState.currentPartType = type
-                let data = {type: 'motherB', chipSet: 'Intel'}
-                let partData = new DataHolder
+                let data = 'Intel'
                 await stockPartService.getMotherBoards(data)
             }else if(type == 'motherB' && currentMotherboardType == 'AMD'){
                 AppState.currentPartType = type
-                let data = {type: 'motherB', chipSet: 'AMD'}
+                let data = 'AMD'
                 await stockPartService.getMotherBoards(data)
             }
             else{
