@@ -46,7 +46,7 @@ public class StockPartRepository{
         return stockParts;
     }
 
-    internal List<StockPart> GetMotherBoards(object parameter){
+    internal List<StockPart> GetMotherBoards(DataHolder parameter){
         string sql = @"
         SELECT
         *

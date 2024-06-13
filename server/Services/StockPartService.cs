@@ -27,7 +27,7 @@ public class StockPartService{
         return stockParts;
     }
 
-    internal List<StockPart>  GetMotherBoards(object parameter){
+    internal List<StockPart>  GetMotherBoards(DataHolder parameter){
         List<StockPart> stockParts = repo. GetMotherBoards(parameter);
         return stockParts;
     }
