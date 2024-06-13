@@ -144,16 +144,31 @@ export default {
         async function getPcById(){
             await pcBuildService.getPcById(route.params.buildId)
         }
+
+        async function partCheck(){
+            AppState.activeStockParts = []
+            let currentTypePart = await AppState.activeBuildParts.find(part => part.part.type == 'motherB')
+            let currentType = ''
+            if(currentTypePart){
+                currentType = currentTypePart.part.chipSet
+                AppState.partCompany = currentType
+                return currentType
+            }else if(!currentTypePart){
+                currentType = AppState.partCompany
+                return currentType
+            }
+        }
+
         async function getStockParts(type){
-            if(type == 'cpu' && AppState.partCompany == 'Intel'){
+            let currentType = await partCheck()
+            if(type == 'cpu' && AppState.partCompany == 'Intel' && currentType == 'Intel'){
                 AppState.currentPartType = type
                 await stockPartService.getStockPartsIntel(type)
-            }else if(type == 'cpu' && AppState.partCompany == 'AMD'){
+            }else if(type == 'cpu' && AppState.partCompany == 'AMD' && currentType == 'AMD'){
                 AppState.currentPartType = type
                 await stockPartService.getStockPartsAMD(type)
             }
             else{
-                console.log('huh')
                 AppState.currentPartType = type
                 await stockPartService.getStockParts(type)
             }
