@@ -103,10 +103,19 @@
                             <button v-if="activeBuild.powerSupply == null || activeBuild.powerSupply == 'none'" @click="getStockParts('powerS')" class="type-button-end">Power Supply</button>
                         </span>
                     </div>
-                    <div class="d-flex mt-3" v-if="currentType == 'cpu' && Motherboards.length == 0">
-                        <button class="cpu-select-button" @click="setCpuType('Intel')">Intel</button>
-                        <h6 class="ms-3 me-3 mt-1">Or</h6>
-                        <button class="cpu-select-button" @click="setCpuType('AMD')">AMD</button>
+                    <div class="mt-3 text-center" v-if="currentType == 'cpu' && Motherboards.length == 0 && CPUs.length == 0">
+                        <h4 class="title-font d-inline-block">Company</h4>
+                        <div class="d-flex justify-content-center">
+                            <button class="cpu-select-button me-2" @click="setCpuType('Intel')">Intel</button>
+                            <button class="cpu-select-button" @click="setCpuType('AMD')">AMD</button>
+                        </div>
+                    </div>
+                    <div class="text-center mt-3" v-if="currentType == 'motherB' && CPUs.length == 0 && Motherboards.length == 0">
+                        <h4 class="title-font d-inline-block">Company</h4>
+                        <div class="d-flex justify-content-center">
+                            <button class="cpu-select-button me-2" @click="setMotherboardType('Intel')">Intel</button>
+                            <button class="cpu-select-button" @click="setMotherboardType('AMD')">AMD</button>
+                        </div>
                     </div>
                     <div class="w-100" v-for="stockPart in stockParts">
                      <StockPartComponent class="mt-3" :stockPart="stockPart"/>
@@ -150,16 +159,18 @@ export default {
             let currentCpuType = await stockPartService.partCheckForCPU()
             if(type == 'cpu' && AppState.partCompany == 'Intel' && currentCpuType == 'Intel'){
                 AppState.currentPartType = type
-                await stockPartService.getStockPartsIntel(type)
+                let data = 'Intel'
+                await stockPartService.getStockPartsCpu(data)
             }else if(type == 'cpu' && AppState.partCompany == 'AMD' && currentCpuType == 'AMD'){
                 AppState.currentPartType = type
-                await stockPartService.getStockPartsAMD(type)
+                let data = 'AMD'
+                await stockPartService.getStockPartsCpu(data)
             }
-            else if(type == 'motherB' && currentMotherboardType == 'Intel'){
+            else if(type == 'motherB' && currentMotherboardType == 'Intel' && AppState.partCompany == 'Intel'){
                 AppState.currentPartType = type
                 let data = 'Intel'
                 await stockPartService.getMotherBoards(data)
-            }else if(type == 'motherB' && currentMotherboardType == 'AMD'){
+            }else if(type == 'motherB' && currentMotherboardType == 'AMD' && AppState.partCompany == 'AMD'){
                 AppState.currentPartType = type
                 let data = 'AMD'
                 await stockPartService.getMotherBoards(data)
@@ -176,11 +187,16 @@ export default {
             AppState.partCompany = type
             getStockParts('cpu')
         }
+        async function setMotherboardType(type){
+            AppState.partCompany = type
+            getStockParts('motherB')
+        }
 
     return { 
         activeBuild,
         getStockParts,
         setCpuType,
+        setMotherboardType,
         stockParts: computed(()=> AppState.activeStockParts),
         pcParts: computed(()=> AppState.activeBuildParts),
         CPUs: computed(()=> AppState.cpu),

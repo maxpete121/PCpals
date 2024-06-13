@@ -2,7 +2,7 @@
     <div class="build-card d-lg-flex align-items-center pb-1 mt-3">
         <div class="ms-1 d-flex flex-column align-items-center mt-1">
             <img class="cover-img" :src="casePic" alt="Case picture">
-                <h3>{{ recentBuild.name }}</h3>
+                <h4>{{ recentBuild.name }}</h4>
             <span class="d-flex text-success">
                 <h4 class="fst-italic me-2">Price:</h4>
                 <h4>${{ recentBuild.price }}</h4>

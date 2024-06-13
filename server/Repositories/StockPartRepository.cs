@@ -35,14 +35,14 @@ public class StockPartRepository{
         return stockParts;
     }
 
-    internal List<StockPart> GetIntelPartsByType(string type){
+    internal List<StockPart> GetCpuPartsByType(string chipSet){
         string sql = @"
         SELECT
         *
         FROM stockParts
-        WHERE type = @type AND company = 'Intel'
+        WHERE type = 'cpu' AND company = @chipSet
         ";
-        List<StockPart> stockParts = db.Query<StockPart>(sql, new{type}).ToList();
+        List<StockPart> stockParts = db.Query<StockPart>(sql, new{chipSet}).ToList();
         return stockParts;
     }
 
@@ -54,17 +54,6 @@ public class StockPartRepository{
         WHERE type = 'motherB' AND chipSet = @parameter
         ";
         List<StockPart> stockParts = db.Query<StockPart>(sql, new{parameter}).ToList();
-        return stockParts;
-    }
-    
-    internal List<StockPart> GetAMDPartsByType(string type){
-        string sql = @"
-        SELECT
-        *
-        FROM stockParts
-        WHERE type = @type AND company = 'AMD'
-        ";
-        List<StockPart> stockParts = db.Query<StockPart>(sql, new{type}).ToList();
         return stockParts;
     }
 

@@ -17,13 +17,8 @@ public class StockPartService{
         return stockParts;
     }
 
-    internal List<StockPart> GetIntelPartsByType(string type){
-        List<StockPart> stockParts = repo.GetIntelPartsByType(type);
-        return stockParts;
-    }
-
-    internal List<StockPart> GetAMDPartsByType(string type){
-        List<StockPart> stockParts = repo.GetAMDPartsByType(type);
+    internal List<StockPart> GetCpuPartsByType(string type){
+        List<StockPart> stockParts = repo.GetCpuPartsByType(type);
         return stockParts;
     }
 

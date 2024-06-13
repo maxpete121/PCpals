@@ -40,11 +40,11 @@ public class StockPartController : ControllerBase{
         }
     }
 
-    [HttpGet("{type}/intel")]
-    public ActionResult<List<StockPart>> GetIntelPartsByType(string type){
+    [HttpGet("{type}/cpu")]
+    public ActionResult<List<StockPart>> GetCpuPartsByType(string type){
         try
         {
-           List<StockPart> stockParts = stockPartService.GetIntelPartsByType(type);
+           List<StockPart> stockParts = stockPartService.GetCpuPartsByType(type);
            return Ok(stockParts); 
         }
          catch (Exception error)
@@ -53,18 +53,6 @@ public class StockPartController : ControllerBase{
         }
     }
 
-    [HttpGet("{type}/amd")]
-    public ActionResult<List<StockPart>> GetAMDPartsByType(string type){
-        try
-        {
-           List<StockPart> stockParts = stockPartService.GetAMDPartsByType(type);
-           return Ok(stockParts); 
-        }
-         catch (Exception error)
-        {
-          return BadRequest(error.Message);
-        }
-    }
 
     [HttpGet("{type}/motherB")]
     public ActionResult<List<StockPart>> GetMotherBoards(string type){
