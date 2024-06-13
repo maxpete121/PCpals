@@ -146,6 +146,7 @@ export default {
         }
 
         async function getStockParts(type){
+            let currentMotherboardType = await stockPartService.partCheckForMotherboard()
             let currentCpuType = await stockPartService.partCheckForCPU()
             if(type == 'cpu' && AppState.partCompany == 'Intel' && currentCpuType == 'Intel'){
                 AppState.currentPartType = type
@@ -154,10 +155,16 @@ export default {
                 AppState.currentPartType = type
                 await stockPartService.getStockPartsAMD(type)
             }
-            else if(type == 'motherB'){
+            else if(type == 'motherB' && currentMotherboardType == 'Intel'){
                 AppState.currentPartType = type
-                await stockPartService.getStockParts(type)
-            }else{
+                let data = {type: 'motherB', chipSet: 'Intel'}
+                await stockPartService.getMotherBoards(data)
+            }else if(type == 'motherB' && currentMotherboardType == 'AMD'){
+                AppState.currentPartType = type
+                let data = {type: 'motherB', chipSet: 'AMD'}
+                await stockPartService.getMotherBoards(data)
+            }
+            else{
                 AppState.currentPartType = type
                 await stockPartService.getStockParts(type)
             }

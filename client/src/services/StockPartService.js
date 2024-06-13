@@ -27,6 +27,12 @@ class StockPartService{
         let parts = await response.data.map(part => new StockPart(part))
         AppState.activeStockParts = parts
     }
+    
+    async getMotherBoards(data){
+        let response = await api.get(`api/stockParts/${data}/motherB`)
+        let parts = await response.data.map(part => new StockPart(part))
+        AppState.activeStockParts = parts
+    }
 
     async partCheckForCPU(){
         AppState.activeStockParts = []

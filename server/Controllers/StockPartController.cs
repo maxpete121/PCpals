@@ -53,7 +53,7 @@ public class StockPartController : ControllerBase{
         }
     }
 
-        [HttpGet("{type}/amd")]
+    [HttpGet("{type}/amd")]
     public ActionResult<List<StockPart>> GetAMDPartsByType(string type){
         try
         {
@@ -64,6 +64,19 @@ public class StockPartController : ControllerBase{
         {
           return BadRequest(error.Message);
         }
+    }
+
+    [HttpGet("{type}/motherB")]
+    public ActionResult<List<StockPart>> GetMotherBoards(object type){
+      try
+      {
+        List<StockPart> stockParts = stockPartService.GetMotherBoards(type);
+        return Ok(stockParts);
+      }
+       catch (Exception error)
+      {
+        return BadRequest(error.Message);
+      }
     }
     
     [HttpDelete("{partId}")]

@@ -22,8 +22,13 @@ public class StockPartService{
         return stockParts;
     }
 
-        internal List<StockPart> GetAMDPartsByType(string type){
+    internal List<StockPart> GetAMDPartsByType(string type){
         List<StockPart> stockParts = repo.GetAMDPartsByType(type);
+        return stockParts;
+    }
+
+    internal List<StockPart>  GetMotherBoards(object parameter){
+        List<StockPart> stockParts = repo. GetMotherBoards(parameter);
         return stockParts;
     }
 

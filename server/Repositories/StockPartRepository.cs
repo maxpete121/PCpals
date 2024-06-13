@@ -46,6 +46,16 @@ public class StockPartRepository{
         return stockParts;
     }
 
+    internal List<StockPart> GetMotherBoards(object parameter){
+        string sql = @"
+        SELECT
+        *
+        FROM stockParts
+        WHERE type = @type AND chipSet = @chipSet
+        ";
+        List<StockPart> stockParts = db.Query<StockPart>(sql, parameter).ToList();
+        return stockParts;
+    }
     
     internal List<StockPart> GetAMDPartsByType(string type){
         string sql = @"
