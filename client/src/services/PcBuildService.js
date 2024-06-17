@@ -19,7 +19,7 @@ class PcBuildService{
         let response = await api.get('api/pcBuilds/account')
         let userBuilds = response.data.map(build => new PcBuild(build))
         AppState.userBuilds = userBuilds
-        // console.log(userBuilds)
+        AppState.userBuilds.reverse()
     }
 
     async getPcById(pcId){
@@ -97,6 +97,7 @@ class PcBuildService{
         let response = await api.get('api/pcBuilds/shared')
         let allBuilds = await response.data.map(build => new PcBuild(build))
         AppState.recentBuilds = allBuilds
+        AppState.recentBuilds.reverse()
     }
     
     async checkForParts(buildId){

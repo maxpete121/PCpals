@@ -20,7 +20,7 @@
         </div>
       </div>
     </div>
-    <div class="row justify-content-center bg-dark pt-3 pb-3 h-100">
+    <div class="row justify-content-center bg-dark pt-3 pb-3 build-container">
       <div class="col-lg-5 col-11 d-flex flex-column align-items-center ps-1 pe-1">
         <div v-if="userBuildType == 'created'" v-for="userBuild in userBuilds">
         <UserBuildComponent :userBuild="userBuild"/>
@@ -87,6 +87,10 @@ export default {
 @media screen and (min-width: 576px) {}
 
 @media screen and (max-width: 576px) {}
+
+.build-container{
+  min-height: 430px;
+}
 
 .btn-one{
   all: unset;

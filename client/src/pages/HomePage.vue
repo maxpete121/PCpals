@@ -28,7 +28,7 @@
       </div>
     </div>
   </div>
-  <div class="row justify-content-center mt-4 bg-dark pt-4">
+  <div class="row justify-content-center mt-4 bg-dark pt-4 container-builds">
     <div class="col-lg-4 col-11 section-build me-lg-4 d-flex flex-column pt-2 pb-3 align-items-center bg-white mt-lg-4">
       <div class="">
         <h4 class="title-font">Our Suggestions</h4>
@@ -49,17 +49,17 @@
   <div class="row pb-4 pt-4 justify-content-center bg-dark">
     <div class="col-9 d-flex flex-column flex-lg-row justify-content-lg-evenly justify-content-center mt-4 mb-3">
       <div class="text-center main p-3 info-top mt-lg-1 mt-3 d-flex flex-column align-self-center">
-        <h3 class="title-style">Find a PC</h3>
-        <p>Browse our selection of high end gaming PCs, or check out other users builds.</p>
-        <button class="home-btn">Browse</button>
+        <h3 class="title-style">Our Goal</h3>
+        <p>Our goal is to bring desktop gaming to the public, at affordable prices.</p>
+        <button class="home-btn">Learn More</button>
       </div>
       <div class="text-center main p-3 ms-lg-4 me-lg-4 info-top mt-lg-1 mt-3 d-flex flex-column align-self-center">
-        <h3 class="title-style">Build your own PC</h3>
-        <p>Make an account or sign in to create a PC build and share it with others!</p>
-        <button class="home-btn ms-4 me-4">Pc Builder</button>
+        <h3 class="title-style">Speed Scores</h3>
+        <p>Speed scores are here to give you a general sense of your PC's power.</p>
+        <button class="home-btn ms-4 me-4">Learn More</button>
       </div>
       <div class="text-center main p-3 info-top mt-lg-1 mt-3 d-flex flex-column align-self-center">
-        <h3 class="title-style">Schedule a clean</h3>
+        <h3 class="title-style">How we work</h3>
         <p>Submit a cleaning ticket to our team to get your PC looking brand new!</p>
         <button class="home-btn">Get a clean</button>
       </div>
@@ -169,6 +169,11 @@ export default {
   overflow-y: scroll;
   height: 530px;
 }
+
+.container-builds{
+  box-shadow: -3px -3px -3px rgba(0, 0, 0, 0.205);
+}
+
 }
 
 .title-font{
