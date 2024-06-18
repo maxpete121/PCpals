@@ -78,7 +78,6 @@ class PcBuildService{
 
     async updatePowerScore(pcId, average, price, wattage, maxWatts){
         let buildData = {powerScore: average, price: price, watts: wattage, maxWattage: maxWatts}
-        // console.log(buildData)
         let response = await api.put(`api/pcBuilds/${pcId}/powerScore`, buildData)
         let newBuild = new PcBuild(response.data)
         AppState.activeBuildToEdit = newBuild
@@ -86,7 +85,6 @@ class PcBuildService{
 
     async updateRating(ratingData, buildId){
         let buildData = {rating: ratingData}
-        // console.log(buildData, buildId)
         let response = await api.put(`api/pcBuilds/${buildId}/rating`, buildData)
         let updatedBuild = new PcBuild(response.data)
         AppState.activeBuildForReview = updatedBuild
