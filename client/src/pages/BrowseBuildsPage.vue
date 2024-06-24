@@ -5,7 +5,7 @@
                 <SearchBuildComponent/>
             </div>
         </div>
-        <div class="row text-center justify-content-center mt-3">
+        <div class="row text-center justify-content-center mt-4 mb-2">
           <div class="col-2">
             <h3 class="title d-inline-block">Our Suggestions</h3>
           </div>

@@ -61,7 +61,7 @@
       <div class="text-center main p-3 info-top mt-lg-1 mt-3 d-flex flex-column align-self-center">
         <h3 class="title-style">How we work</h3>
         <p>Submit a cleaning ticket to our team to get your PC looking brand new!</p>
-        <button class="home-btn">Get a clean</button>
+        <button class="home-btn">Learn More</button>
       </div>
     </div>
   </div>
