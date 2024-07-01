@@ -8,30 +8,18 @@ export const AppState = reactive({
   account: {},
   /**@type {PcBuild[]} */
   userBuilds: [],
-
   savedUserBuilds: [],
-
   userBuildType: 'created',
-// /**@type {PcBuild} */
   activeBuildToEdit: {},
-// /**@type {} */
   suggestedBuilds: [],
-
   currentPartType: '',
-
   partCompany: 'Intel',
-
   activeStockParts: [],
-
   activeBuildParts: [],
-
   recentBuilds: [],
-
   topReviewed: [],
-
   activeBuildForReview: {},
   activeBuildReviews: [],
-
   cart: [],
   totalCart: 100,
   cpu: [],

@@ -1,11 +1,11 @@
 <template>
     <div class="part-card d-lg-flex align-items-center justify-content-between w-100">
-        <div class="d-flex align-items-center">
+        <div class="d-flex align-items-center justify-content-center">
             <img class="part-image" :src="stockPart.productImage" alt="Part image">
             <h5 class="ms-3 text-size">{{ stockPart.name }}</h5>
         </div>
         <div class="d-flex align-items-center">
-            <div class="d-flex">
+            <div class="d-flex justify-content-center">
                 <div class="d-flex price-area justify-content-center me-3">
                     <h6 class="me-2">Price:</h6>
                     <h6>${{ stockPart.price }}</h6>
@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="options-card me-3 d-flex align-items-center">
-                <button class="option-button">Details</button>
+                <button class="option-button">Info</button>
                 <button @click="addPcPart()" class="option-button-two">Add</button>
             </div>
         </div>

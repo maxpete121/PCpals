@@ -93,7 +93,7 @@
                         <h4 class="title-font d-inline-block ps-2 pe-2">Add Parts</h4>
                     </div>
                     <div class="w-100 d-flex justify-content-center">
-                        <span class="box mt-2">
+                        <span class="box select-large mt-2">
                             <button v-if="activeBuild.pcCase == null || activeBuild.pcCase == 'none'" @click="getStockParts('case')" class="type-button">Case</button>
                             <button v-if="activeBuild.pcCpu == null || activeBuild.pcCpu == 'none'" @click="getStockParts('cpu')" class="type-button">CPUs</button>
                             <button v-if="activeBuild.gpu == null || activeBuild.gpu == 'none'" @click="getStockParts('gpu')" class="type-button">GPUs</button>
@@ -102,6 +102,19 @@
                             <button v-if="activeBuild.storage == null || activeBuild.storage == 'none'" @click="getStockParts('storage')" class="type-button">Storage</button>
                             <button v-if="activeBuild.powerSupply == null || activeBuild.powerSupply == 'none'" @click="getStockParts('powerS')" class="type-button-end">Power Supply</button>
                         </span>
+                        <div class="d-flex flex-column align-items-center">
+                            <span class="box select-small mt-2">
+                                <button v-if="activeBuild.pcCase == null || activeBuild.pcCase == 'none'" @click="getStockParts('case')" class="type-button">Case</button>
+                                <button v-if="activeBuild.pcCpu == null || activeBuild.pcCpu == 'none'" @click="getStockParts('cpu')" class="type-button">CPUs</button>
+                                <button v-if="activeBuild.gpu == null || activeBuild.gpu == 'none'" @click="getStockParts('gpu')" class="type-button">GPUs</button>
+                                <button v-if="activeBuild.motherBoard == null || activeBuild.motherBoard == 'none'" @click="getStockParts('motherB')" class="type-button">Motherboards</button>
+                            </span>
+                            <span class="box select-small mt-3">
+                                <button v-if="activeBuild.ram == null || activeBuild.ram == 'none'" @click="getStockParts('ram')" class="type-button">RAM</button>
+                                <button v-if="activeBuild.storage == null || activeBuild.storage == 'none'" @click="getStockParts('storage')" class="type-button">Storage</button>
+                                <button v-if="activeBuild.powerSupply == null || activeBuild.powerSupply == 'none'" @click="getStockParts('powerS')" class="type-button-end">Power Supply</button>
+                            </span>
+                        </div>
                     </div>
                     <div class="mt-3 text-center" v-if="currentType == 'cpu' && Motherboards.length == 0 && CPUs.length == 0">
                         <h4 class="title-font d-inline-block">Company</h4>
@@ -229,6 +242,9 @@ export default {
     border-radius: 8px;
     width: 50%;
 }
+.select-small{
+    display: none;
+}
 }
 
 @media screen and (max-width: 576px) {
@@ -244,6 +260,9 @@ export default {
     padding-bottom: 5px;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.322);
     border-radius: 8px;
+}
+.select-large{
+    display: none;
 }
 }
 .title-font{
