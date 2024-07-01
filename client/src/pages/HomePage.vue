@@ -29,7 +29,7 @@
     </div>
   </div>
   <div class="row justify-content-center mt-4 bg-dark pt-4 container-builds">
-    <div class="col-lg-4 col-11 section-build me-lg-4 d-flex flex-column pt-2 pb-3 align-items-center bg-white mt-lg-4">
+    <div class="col-lg-5 col-11 section-build me-lg-4 d-flex flex-column pt-2 pb-3 align-items-center bg-white mt-lg-4">
       <div class="">
         <h4 class="title-font">Our Suggestions</h4>
       </div>
@@ -37,7 +37,7 @@
         <SuggestionBuildComponent :suggestedBuild="suggestion"/>
       </div>
     </div>
-    <div class="col-lg-4 col-11 d-flex flex-column align-items-center ms-lg-4 section-build pt-2 pb-3 bg-white mt-3 mt-lg-4">
+    <div class="col-lg-5 col-11 d-flex flex-column align-items-center ms-lg-4 section-build pt-2 pb-3 bg-white mt-3 mt-lg-4">
       <div class="">
         <h4 class="title-font">Recent Builds</h4>
       </div>

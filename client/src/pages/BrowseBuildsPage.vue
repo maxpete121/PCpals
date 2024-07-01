@@ -11,7 +11,7 @@
           </div>
         </div>
         <div class="row justify-content-center text-center">
-          <div class="col-lg-4 col-11" v-for="suggestedBuild in suggestedBuilds">
+          <div class="col-lg-5 col-11" v-for="suggestedBuild in suggestedBuilds">
             <SuggestionBuildComponent :suggestedBuild="suggestedBuild"/>
           </div>
         </div>
@@ -21,7 +21,7 @@
           </div>
         </div>
         <div class="row justify-content-center ps-4 pe-4 text-center pt-2 main-section">
-            <div class="col-lg-4 col-12 build mt-3" v-for="allBuild in allBuilds">
+            <div class="col-lg-5 col-12 build mt-3" v-for="allBuild in allBuilds">
               <BrowseBuildComponent :recentBuild="allBuild"/>
             </div>
         </div>
