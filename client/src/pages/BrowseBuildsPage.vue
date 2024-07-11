@@ -25,6 +25,7 @@
               <BrowseBuildComponent :recentBuild="allBuild"/>
             </div>
         </div>
+        <BuildDetailsModal id="BuildModal"/>
     </section>
   </template>
   
@@ -37,6 +38,7 @@
 import { pcBuildService } from '../services/PcBuildService';
 import { suggestionService } from '../services/SuggestionService';
 import SuggestionBuildComponent from '../components/SuggestionBuildComponent.vue';
+import BuildDetailsModal from '../components/BuildDetailsModal.vue'
   export default {
     setup() {
       onMounted(()=>{
@@ -48,7 +50,7 @@ import SuggestionBuildComponent from '../components/SuggestionBuildComponent.vue
         account: computed(() => AppState.account),
         allBuilds: computed(()=> AppState.recentBuilds)
       }
-    }, components: {SearchBuildComponent, BrowseBuildComponent, SuggestionBuildComponent}
+    }, components: {SearchBuildComponent, BrowseBuildComponent, SuggestionBuildComponent, BuildDetailsModal}
   }
   </script>
   

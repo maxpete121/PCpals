@@ -13,7 +13,7 @@
             <div class="d-flex justify-content-center mb-2 mt-1 pe-1">
                 <button @click="createCartItem()" class="btn-build me-3">Add to Cart</button>
                 <button @click="createSaveBuild()"  class="btn-build">Save Build</button>
-                <button @click="getActiveReviews()" class="btn-build ms-3">Reviews</button>
+                <button @click="OpenDetailsModal()" class="btn-build ms-3">Reviews</button>
             </div>
                 </div>
             <div class="specs text-center me-lg-4 ms-lg-3 ps-2 pe-2 pb-2 mt-1">
@@ -117,6 +117,7 @@ import Pop from '../utils/Pop';
 import { Suggestion } from '../models/Suggestion';
 import { AuthService } from '../services/AuthService';
 import { saveBuildService } from '../services/SaveBuildService';
+import {pcPartService} from '../services/pcPartService.js'
 export default {
     props: { suggestedBuild: { type: Suggestion, required: true } },
     setup(props) {
@@ -141,6 +142,12 @@ export default {
             }
         }
 
+        async function OpenDetailsModal(){
+            setActiveBuild()
+            pcPartService.getBuildParts(props.suggestedBuild.build.id)
+            Modal.getOrCreateInstance("#BuildModal").show()
+        }
+
         async function getActiveReviews(){
             await setActiveBuild()
             await reviewService.getActiveReviews(props.suggestedBuild.build.id)
@@ -153,6 +160,7 @@ export default {
             createCartItem,
             createSaveBuild,
             getActiveReviews,
+            OpenDetailsModal,
             casePic: computed(() => {
                 let build = props.suggestedBuild.build
                 if (build.casePicture == 'none' || build.casePicture == null) {

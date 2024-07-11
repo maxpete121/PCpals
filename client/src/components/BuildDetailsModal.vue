@@ -4,7 +4,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="exampleModalLabel">Details</h1>
-            <button type="button" class="btn-close" @click="" aria-label="Close"></button>
+            <button type="button" class="btn-close" @click="CloseModal()" aria-label="Close"></button>
           </div>
           <div class="modal-body">
               <div class="d-flex justify-content-center">
@@ -142,6 +142,8 @@
         setup(){
             async function CloseModal(){
                 Modal.getOrCreateInstance("#BuildModal").hide()
+                AppState.activeBuildParts = []
+                AppState.activeBuildForReview = []
             }
 
             async function getReviews(){
