@@ -13,7 +13,7 @@
             <div class="d-flex justify-content-center mb-2 mt-1 pe-1">
                 <button @click="createCartItem()" class="btn-build me-3">Add to Cart</button>
                 <button @click="createSaveBuild()"  class="btn-build">Save Build</button>
-                <button @click="getActiveReviews()" class="btn-build ms-3">Reviews</button>
+                <button @click="OpenDetailsModal()" class="btn-build ms-3">Details</button>
             </div>
                 </div>
             <div class="specs text-center me-lg-4 ms-lg-3 ps-2 pe-2 pb-2 mt-1">
@@ -116,6 +116,7 @@ import { cartItemService } from '../services/CartItemService';
 import Pop from '../utils/Pop';
 import { saveBuildService } from '../services/SaveBuildService';
 import { AuthService } from '../services/AuthService';
+import {pcPartService} from '../services/pcPartService.js'
 export default {
     props: { recentBuild: { type: PcBuild, required: true } },
     setup(props) {
@@ -123,9 +124,14 @@ export default {
         async function getActiveReviews(){
             await setActiveBuild()
             await reviewService.getActiveReviews(props.recentBuild.id)
+            Modal.getOrCreateInstance("#BuildModal").hide()
             Modal.getOrCreateInstance("#reviewModal").show()
         }
-        async function OpenDetailsModal(){}
+        async function OpenDetailsModal(){
+            setActiveBuild()
+            pcPartService.getBuildParts(props.recentBuild.id)
+            Modal.getOrCreateInstance("#BuildModal").show()
+        }
         async function setActiveBuild(){
             await reviewService.setActiveBuild(props.recentBuild.id)
         }
@@ -151,6 +157,7 @@ export default {
             createSaveBuild,
             getActiveReviews,
             createCartItem,
+            OpenDetailsModal,
             casePic: computed(() => {
                 if (props.recentBuild.casePicture == 'none' || props.recentBuild.casePicture == null) {
                     return 'https://rusutikaa.github.io/docs/developer.apple.com/library/archive/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/defaultphoto_2x.png'

@@ -65,6 +65,7 @@
       </div>
     </div>
   </div>
+  <BuildDetailsModal id="BuildModal"/>
 </section>
 </template>
 
@@ -74,10 +75,11 @@ import { AppState } from '../AppState';
 import { pcBuildService } from '../services/PcBuildService';
 import HomeBuildComponent from '../components/HomeBuildComponent.vue';
 import ReviewModal from '../components/ReviewModal.vue';
-import SuggestionBuildComponent from '../components/SuggestionBuildComponent.vue'
+import SuggestionBuildComponent from '../components/SuggestionBuildComponent.vue';
 import { suggestionService } from '../services/SuggestionService';
 import { AuthService } from '../services/AuthService';
 import { router } from '../router';
+import BuildDetailsModal from '../components/BuildDetailsModal.vue';
 export default {
   setup() {
     onMounted(()=>{
@@ -113,7 +115,7 @@ export default {
       suggestions: computed(()=> AppState.suggestedBuilds),
       account: computed(()=> AppState.account)
     }
-  }, components: {HomeBuildComponent, ReviewModal, SuggestionBuildComponent}
+  }, components: {HomeBuildComponent, ReviewModal, SuggestionBuildComponent, BuildDetailsModal}
 }
 </script>
 
