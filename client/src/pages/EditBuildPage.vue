@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid">
         <div class="row mt-3 justify-content-center">
-            <div class="col-lg-5 col-12 pb-2 bg-dark pt-3 part-view">
+            <div class="col-lg-5 col-12 pb-2 bg-dark pt-3 part-view order-lg-0 order-1">
                 <div class="mb-2 p-2 d-lg-flex justify-content-center">
                     <div class="info-box bg-light p-2">
                         <div class="pc-info d-flex justify-content-between">
@@ -87,7 +87,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5 col-12 d-flex flex-column align-items-center ps-3 pe-3 ms-lg-4 mt-3 mt-lg-0 mb-3 mb-lg-0">
+            <div class="col-lg-5 col-12 d-flex flex-column align-items-center order-lg-1 order-0 ps-3 pe-3 ms-lg-4 mb-3 mb-lg-0">
                 <div class="sticky-top w-100">
                     <div class="text-center">
                         <h4 class="title-font d-inline-block ps-2 pe-2">Add Parts</h4>
