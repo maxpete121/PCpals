@@ -25,8 +25,8 @@
                         <h5 class="title-card">Case:</h5>
                     </span>
                     <div class="part-section rounded-2 d-flex justify-content-center">
-                        <p class="fst-italic" v-if="suggestedBuild.build.pcCase && suggestedBuild.build.pcCase !== 'none'">{{ suggestedBuild.build.pcCase }}✅</p>
-                        <p v-else>None🚫</p>
+                        <h6 class="fst-italic part-text" v-if="suggestedBuild.build.pcCase && suggestedBuild.build.pcCase !== 'none'">{{ suggestedBuild.build.pcCase }}✅</h6>
+                        <h6 v-else>None🚫</h6>
                     </div>
                 </div>
                 <div class="mb-2">
@@ -34,8 +34,8 @@
                         <h5 class="title-card">CPU:</h5>
                     </span>
                     <div class="part-section rounded-2 d-flex justify-content-center">
-                        <p class="fst-italic" v-if="suggestedBuild.build.pcCpu && suggestedBuild.build.pcCpu !== 'none'">{{ suggestedBuild.build.pcCpu }}✅</p>
-                        <p v-else>None🚫</p>
+                        <h6 class="fst-italic part-text" v-if="suggestedBuild.build.pcCpu && suggestedBuild.build.pcCpu !== 'none'">{{ suggestedBuild.build.pcCpu }}✅</h6>
+                        <h6 v-else>None🚫</h6>
                     </div>
                 </div>
                 <div class="mb-2">
@@ -43,8 +43,8 @@
                         <h5 class="title-card">GPU:</h5>
                     </span>
                     <div class="part-section rounded-2 d-flex justify-content-center">
-                        <p class="fst-italic" v-if="suggestedBuild.build.gpu && suggestedBuild.build.gpu !== 'none'">{{ suggestedBuild.build.gpu }}✅</p>
-                        <p v-else>None🚫</p>
+                        <h6 class="fst-italic part-text" v-if="suggestedBuild.build.gpu && suggestedBuild.build.gpu !== 'none'">{{ suggestedBuild.build.gpu }}✅</h6>
+                        <h6 v-else>None🚫</h6>
                     </div>
                 </div>
                 <div class="mb-2">
@@ -52,8 +52,8 @@
                         <h5 class="title-card">Ram:</h5>
                     </span>
                     <div class="part-section rounded-2 d-flex justify-content-center">
-                        <p class="fst-italic" v-if="suggestedBuild.build.ram && suggestedBuild.build.ram !== 'none'">{{ suggestedBuild.build.ram }}✅</p>
-                        <p v-else>None🚫</p>
+                        <h6 class="fst-italic part-text" v-if="suggestedBuild.build.ram && suggestedBuild.build.ram !== 'none'">{{ suggestedBuild.build.ram }}✅</h6>
+                        <h6 v-else>None🚫</h6>
                     </div>
                 </div>
                 <div class="mb-2">
@@ -61,8 +61,8 @@
                         <h5 class="title-card">Motherboard:</h5>
                     </span>
                     <div class="part-section rounded-2 d-flex justify-content-center">
-                        <p class="fst-italic" v-if="suggestedBuild.build.motherBoard && suggestedBuild.build.motherBoard !== 'none'">{{ suggestedBuild.build.motherBoard }}✅</p>
-                        <p v-else>None🚫</p>
+                        <h6 class="fst-italic part-text" v-if="suggestedBuild.build.motherBoard && suggestedBuild.build.motherBoard !== 'none'">{{ suggestedBuild.build.motherBoard }}✅</h6>
+                        <h6 v-else>None🚫</h6>
                     </div>
                 </div>
                 <div class="mb-2">
@@ -70,8 +70,8 @@
                         <h5 class="title-card">Storage:</h5>
                     </span>
                     <div class="part-section rounded-2 d-flex justify-content-center">
-                        <p class="fst-italic" v-if="suggestedBuild.build.pcStorage && suggestedBuild.build.pcStorage !== 'none'">{{ suggestedBuild.build.pcStorage }}✅</p>
-                        <p v-else>None🚫</p>
+                        <h6 class="fst-italic part-text" v-if="suggestedBuild.build.pcStorage && suggestedBuild.build.pcStorage !== 'none'">{{ suggestedBuild.build.pcStorage }}✅</h6>
+                        <h6 v-else>None🚫</h6>
                     </div>
                 </div>
                 <div class="">
@@ -79,8 +79,8 @@
                         <h5 class="title-card">Power Supply:</h5>
                     </span>
                     <div class="part-section rounded-2 d-flex justify-content-center">
-                        <p class="fst-italic" v-if="suggestedBuild.build.powerSupply && suggestedBuild.build.powerSupply !== 'none'">{{ suggestedBuild.build.powerSupply }}✅</p>
-                        <p v-else>None🚫</p>
+                        <h6 class="fst-italic part-text" v-if="suggestedBuild.build.powerSupply && suggestedBuild.build.powerSupply !== 'none'">{{ suggestedBuild.build.powerSupply }}✅</h6>
+                        <h6 v-else>None🚫</h6>
                     </div>
                 </div>
             </div>
@@ -265,8 +265,18 @@ export default {
 
 .part-section {
     border: solid 1px purple;
-    height: 28px;
+    max-height: 70px;
     margin-top: 7px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 2px;
+    padding-right: 2px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+.part-text{
+    margin: 0;
 }
 
 .btn-build {
