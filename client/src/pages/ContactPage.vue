@@ -58,20 +58,16 @@
   <script>
   import { computed, ref } from 'vue'
   import { AppState } from '../AppState'
-  import {supportTicketService} from '../services/supportTicketService.js';
+  import {supportTicketService} from '../services/SupportTicketService';
   import Pop from '../utils/Pop';
   export default {
     setup() {
       let ticketData = ref()
       ticketData.value = {}
       async function createSupportTicket(){
-        try {
           await supportTicketService.createSupportTicket(ticketData.value)
           ticketData.value = {}
           Pop.success("Ticket Submitted")
-        } catch (error) {
-          Pop.error("Support ticket not submitted")
-        }
       }
       return {
         account: computed(()=> AppState.account),
