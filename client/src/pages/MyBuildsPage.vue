@@ -2,7 +2,7 @@
   <section class="container-fluid">
     <div class="row justify-content-center mt-3 mb-4 pb-2">
       <div class="col-lg-4 col-10 mt-3 info-card p-2 d-flex flex-column align-items-center">
-        <h4>Welcome to your builds!</h4>
+        <h4>Your PC builds</h4>
         <div class="d-flex flex-column align-items-center">
           <h5 class="mt-2">Create new build...</h5>
           <form @submit.prevent="createBuild()" class="mt-1" action="">

@@ -19,7 +19,7 @@
           <h6>Set the builder to either pro or beginner.</h6>
           <h6>Build the PC of your dreams!</h6>
           <div class="text-center">
-            <button @click="editBuildPage()" class="home-btn mt-3" v-if="account.id">Make a build!</button>
+            <button @click="editBuildPage()" class="home-btn mt-3" v-if="account.id">Create a build!</button>
             <button @click="loginHome()" class="home-btn mt-3" v-if="!account.id">Login/Create Account</button>
           </div>
         </div>
@@ -36,21 +36,25 @@
       </div>
     </div>
   </div>
-  <div class="row justify-content-center mt-4 bg-dark pt-4 container-builds">
-    <div class="col-lg-5 col-11 section-build me-lg-4 d-flex flex-column pt-2 pb-3 align-items-center bg-white mt-lg-4">
-      <div class="">
-        <h4 class="title-font">Our Suggestions</h4>
+  <div class="row justify-content-center bg-dark pt-2 pt-lg-0 container-builds">
+    <div class="col-lg-5 col-12 me-lg-4 mt-lg-4">
+      <div class="text-center">
+        <h4 class="title-font text-light">Our Suggestions</h4>
       </div>
-      <div v-for="suggestion in suggestions" class="">
-        <SuggestionBuildComponent :suggestedBuild="suggestion"/>
+      <div class="w-100 d-flex flex-column pt-2 pb-3 align-items-center bg-white section-build ps-2 pe-2">
+        <div v-for="suggestion in suggestions" class="">
+          <SuggestionBuildComponent :suggestedBuild="suggestion"/>
+        </div>
       </div>
     </div>
-    <div class="col-lg-5 col-11 d-flex flex-column align-items-center ms-lg-4 section-build pt-2 pb-3 bg-white mt-3 mt-lg-4">
-      <div class="">
-        <h4 class="title-font">Recent Builds</h4>
+    <div class="col-lg-5 mt-lg-0 mt-4 col-12 ms-lg-4 mt-lg-4">
+      <div class="text-center mt-lg-0">
+        <h4 class="title-font text-light">Recent Builds</h4>
       </div>
-      <div class="d-flex justify-content-center" v-for="recentBuild in recentBuilds">
-        <HomeBuildComponent :recentBuild="recentBuild"/>
+      <div class="w-100 bg-white align-items-center section-build d-flex flex-column align-items-center ps-2 pe-2 pt-2 pb-3">
+        <div class="d-flex justify-content-center" v-for="recentBuild in recentBuilds">
+          <HomeBuildComponent :recentBuild="recentBuild"/>
+        </div>
       </div>
     </div>
   </div>

@@ -31,7 +31,7 @@
         </div>
         <div>
           <button v-if="account.id" @click="goToCheckout()" class="btn btn-success">Checkout</button>
-          <button @click="cartLogin()" class="btn btn-success">Login/Create Account</button>
+          <button v-else @click="cartLogin()" class="btn btn-success">Login/Create Account</button>
         </div>
       </div>
     </div>

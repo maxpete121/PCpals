@@ -18,8 +18,8 @@ public class SupportTicketRepository{
         supportTickets.*,
         accounts.*
         FROM supportTickets
-        JOIN accounts ON supportTicket.creatorId = accounts.id
-        WHERE supportTicket.id = LAST_INSERT_ID()
+        JOIN accounts ON supportTickets.creatorId = accounts.id
+        WHERE supportTickets.id = LAST_INSERT_ID()
         ";
         SupportTickets supportTickets = db.Query<SupportTickets, Account, SupportTickets>(sql, (ticket, account)=>{
           ticket.Creator = account;
@@ -34,7 +34,7 @@ public class SupportTicketRepository{
         supportTickets.*,
         accounts.*
         FROM supportTickets
-        JOIN accounts ON supportTicket.creatorId = accounts.id
+        JOIN accounts ON supportTickets.creatorId = accounts.id
         ";
         List<SupportTickets>  supportTickets = db.Query<SupportTickets, Account, SupportTickets>(sql, (ticket, account)=>{
           ticket.Creator = account;

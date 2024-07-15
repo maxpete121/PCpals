@@ -24,20 +24,27 @@
           </div>
         </div>
         <div class="row justify-content-center mt-4">
-          <div class="col-lg-3 col-11 contact-title-card d-flex flex-column align-items-center p-1">
+          <div v-if="!account.id" class="text-center">
+            <h5>Please Login/Create Account to submit support tickets.</h5>
+          </div>
+          <div v-else class="col-lg-3 col-11 contact-title-card d-flex flex-column align-items-center p-1">
             <h4>Submit a support ticket!</h4>
-            <form action="">
+            <form @submit.prevent="createSupportTicket()">
               <div class="d-flex flex-column">
-                <label for="name">Full Name</label>
-                <input name="name" type="text" maxlength="80">
+                <label for="name">Name</label>
+                <input required v-model="ticketData.customerName" name="name" type="text" minlength="3" maxlength="80">
+              </div>
+              <div class="d-flex flex-column mt-2">
+                <label for="subject">Email</label>
+                <input required v-model="ticketData.customerEmail" name="subject" type="text" minlength="10" maxlength="80">
               </div>
               <div class="d-flex flex-column mt-2">
                 <label for="subject">Subject</label>
-                <input name="subject" type="text" maxlength="80">
+                <input required v-model="ticketData.issueSubject" name="subject" type="text" minlength="3" maxlength="100">
               </div>
               <div class="d-flex flex-column mt-2">
                 <label for="issue">Problem description</label>
-                <textarea name="issue" cols="30" rows="4"></textarea>
+                <textarea required v-model="ticketData.issueDescription" name="issue" cols="30" rows="4"></textarea>
               </div>
               <div class="mt-2 text-center">
                 <button class="btn btn-outline-dark">Submit</button>
@@ -49,12 +56,27 @@
   </template>
   
   <script>
-  import { computed } from 'vue'
+  import { computed, ref } from 'vue'
   import { AppState } from '../AppState'
+  import {supportTicketService} from '../services/supportTicketService.js';
+  import Pop from '../utils/Pop';
   export default {
     setup() {
+      let ticketData = ref()
+      ticketData.value = {}
+      async function createSupportTicket(){
+        try {
+          await supportTicketService.createSupportTicket(ticketData.value)
+          ticketData.value = {}
+          Pop.success("Ticket Submitted")
+        } catch (error) {
+          Pop.error("Support ticket not submitted")
+        }
+      }
       return {
-
+        account: computed(()=> AppState.account),
+        ticketData,
+        createSupportTicket
       }
     }
   }
