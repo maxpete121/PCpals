@@ -30,7 +30,7 @@
           <h4 class="text-success ms-3">${{ cartTotal }}</h4>
         </div>
         <div>
-          <button @click="goToCheckout()" class="btn btn-success">Checkout</button>
+          <button v-if="account.id" @click="goToCheckout()" class="btn btn-success">Checkout</button>
         </div>
       </div>
     </div>
@@ -56,6 +56,7 @@ import { Offcanvas } from 'bootstrap';
         goToCheckout,
         cartTotal: computed(()=> AppState.totalCart),
         cartItems: computed(()=> AppState.cart),
+        account: computed(()=> AppState.account),
         cartLength: computed(()=>{
           let count = AppState.cart.length
           return count

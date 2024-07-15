@@ -7,8 +7,27 @@
             <button type="button" class="btn-close" @click="CloseModal()" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-              <div class="d-flex justify-content-center">
-                  <h4 class="d-inline-block title-text">{{ activeBuild.name }}</h4>
+            <div class="d-flex justify-content-center">
+                <h4 class="d-inline-block title-text">{{ activeBuild.name }}</h4>
+            </div>
+            <div class="d-flex justify-content-center mt-2">
+                <h5 class="me-2">Build Price:</h5>
+                <h5 class="text-success">${{ activeBuild.price }}</h5>
+            </div>
+            <div class="d-flex justify-content-center mt-2">
+                <h5 class="me-2">Power Score:</h5>
+                <h5>{{ activeBuild.powerScore }}/100</h5>
+                <h4 class="ms-2 text-warning" title="Power scores are a general rating on a PCs capabilities"><i class="mdi mdi-information-box-outline"></i></h4>
+                <p class="pt-1 ms-1 notification-text">Notification</p>
+            </div>
+            <div class="p-2 d-flex justify-content-center">
+                <div class="warning-notification d-flex">
+                    <h4 class="text-warning me-1"><i class="mdi mdi-information-outline"></i></h4>
+                    <p class="notification-text">Power scores are a general rating of a PCs capabilities. The scores attributed to each available PC part are still being adjusted for better accuracy.</p>
+                </div>
+            </div>
+              <div class="text-center mt-2">
+                  <button class="review-button" @click="getReviews()">Reviews</button>
               </div>
               <div class="d-flex flex-column justify-content-center">
                 <div v-for="buildPart in buildParts" class="build-part-section">
@@ -215,6 +234,31 @@
         width: 30%;
     }
     }
+
+    .review-button{
+        all: unset;
+        outline: solid 2px black;
+        border-radius: 6px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        padding-left: 6px;
+        padding-right: 6px;
+        background-color: purple;
+        color: white;
+    }
+    .review-button:hover{
+        all: unset;
+        outline: solid 2px black;
+        border-radius: 6px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        padding-left: 6px;
+        padding-right: 6px;
+        background-color: rgb(155, 0, 155);
+        color: white;
+        cursor: pointer;
+    }
+
     .title-text{
         border-bottom: solid 1px purple;
         padding-left: 4px;
@@ -227,4 +271,13 @@
         margin: 0;
     }
 
+    .warning-notification{
+        background-color: rgba(255, 238, 1, 0.438);
+        padding: 4px;
+    }
+
+    .notification-text{
+        margin: 0;
+        font-size: small;
+    }
     </style>

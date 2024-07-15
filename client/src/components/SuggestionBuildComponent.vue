@@ -13,7 +13,7 @@
             <div class="d-flex justify-content-center mb-2 mt-1 pe-1">
                 <button @click="createCartItem()" class="btn-build me-3">Add to Cart</button>
                 <button @click="createSaveBuild()"  class="btn-build">Save Build</button>
-                <button @click="OpenDetailsModal()" class="btn-build ms-3">Reviews</button>
+                <button @click="OpenDetailsModal()" class="btn-build ms-3">Details</button>
             </div>
                 </div>
             <div class="specs text-center me-lg-4 ms-lg-3 ps-2 pe-2 pb-2 mt-1">
