@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-sm navbar-dark px-3 new-nav bg-dark ">
       <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
         <div class="d-flex flex-column align-items-center text-dark">
-          <h3 class="fst-italic d-flex align-items-baseline text-light mt-lg-1">Boise<h2 class="fst-italic logo">PC</h2>Pals</h3>
+          <img class="logo" src="../assets/img/Logo.png" alt="PC pals logo">
         </div>
       </router-link>
       <router-link :to="{ name: 'Admin' }">
@@ -132,7 +132,10 @@ a:hover {
 }
 
 .logo{
-  color: purple;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  max-height: 90px;
+  max-width: 130px;
 }
 
 .cart-button{
