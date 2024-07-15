@@ -64,12 +64,14 @@ CREATE TABLE saveBuild(
   Foreign Key (buildId) REFERENCES pcBuilds(id) ON DELETE CASCADE
 ) default charset utf8 COMMENT '';
 
-CREATE TABLE suggestions(
+CREATE TABLE supportTickets(
   id INT AUTO_INCREMENT PRIMARY KEY,
-  buildId int NOT NULL,
-  creatorId VARCHAR(255),
-  adminCode int NOT NULL,
-  Foreign Key (buildId) REFERENCES pcBuilds(id) ON DELETE CASCADE
+  creatorId VARCHAR(255) NOT NULL,
+  customerName VARCHAR(80),
+  customerEmail VARCHAR(80),
+  issueSubject VARCHAR(100),
+  issueDescription VARCHAR(500),
+  Foreign Key (creatorId) REFERENCES accounts(id) ON DELETE CASCADE
 ) default charset utf8 COMMENT '';
 
 ALTER TABLE pcBuilds

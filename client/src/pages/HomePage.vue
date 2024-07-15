@@ -1,12 +1,17 @@
 <template>
 <section class="container-fluid w-100">
-  <div class="row justify-content-center mt-2 mb-2">
-    <div class=""></div>
+  <div class="row justify-content-center mt-2">
+    <div class="p-2 d-flex justify-content-center">
+        <div class="warning-notification d-flex align-items-lg-center">
+            <h4 class="text-warning me-1 mt-lg-2"><i class="mdi mdi-information-outline"></i></h4>
+            <p class="notification-text">WARNING: Computers can not yet be purchased as this website is currently in development. Please submit any issues or bugs via support ticket <router-link :to="{ name: 'Contact' }" >here</router-link>.</p>
+        </div>
+    </div>
   </div>
   <div class="row justify-content-center mb-4 mt-2 pb-2">
-    <div class="col-lg-8 col-11 justify-content-center mt-3 text-center">
+    <div class="col-lg-8 col-11 justify-content-center mt-1 text-center">
       <h3 class="fst-italic"></h3>
-      <div class="d-flex flex-column flex-lg-row justify-content-center mt-2">
+      <div class="d-flex flex-column flex-lg-row justify-content-center">
         <div class="text-center top-home-info mt-3 mb-lg-3 me-lg-4 pb-2 bg-white d-flex flex-column align-self-center">
           <h4>Build a PC</h4>
           <img class="img-browse d-flex align-self-center" src="https://storage-asset.msi.com/global/picture/article/seo_168231685364461e357a5f07.82597235.jpeg" alt="">
