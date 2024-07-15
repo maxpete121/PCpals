@@ -10,30 +10,35 @@
               <div class="d-flex justify-content-center">
                   <h4 class="d-inline-block title-text">{{ activeBuild.name }}</h4>
               </div>
-              <div>
+              <div class="d-flex flex-column justify-content-center">
                 <div v-for="buildPart in buildParts" class="build-part-section">
-                    <div class="mt-3 order-0" v-if="buildPart.part.type == 'case'">
+                    <div class="mt-4 d-flex flex-column align-items-center" v-if="buildPart.part.type == 'case'">
                         <h5 class="d-inline-block title-text">CASE:</h5>
-                        <div class="part-showcase">
-                            <h6 class="me-4 part-text">{{ buildPart.part.name }}</h6>
-                            <div class="d-flex mt-lg-0 mt-1">
-                                <h6 class="part-text">Price:</h6>
-                                <h6 class="ms-2 text-success part-text">${{ buildPart.part.price }}</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-3 order-1" v-if="buildPart.part.type == 'cpu'">
-                        <h5 class="d-inline-block title-text">CPU:</h5>
-                        <div class="part-showcase">
+                        <div class="part-showcase d-flex justify-content-evenly">
                             <img class="part-image" :src="buildPart.part.productImage" alt="cpu image">
-                            <div class="text-center">
-                                <h6 class="me-lg-4 part-text">{{ buildPart.part.name }}</h6>
-                                <div class="d-flex justify-content-center mt-1 mt-lg-0 align-items-center">
-                                    <div class="d-flex">
+                            <div class="text-center ms-lg-4 d-flex flex-column align-items-center">
+                                <h6 class="mt-2 part-text">{{ buildPart.part.name }}</h6>
+                                <div class="d-flex flex-lg-column justify-content-center mt-1 mt-lg-1 align-items-center">
+                                    <div class="d-flex me-2 me-lg-0">
                                         <h6 class="part-text">Price:</h6>
                                         <h6 class="ms-2 text-success part-text">${{ buildPart.part.price }}</h6>
                                     </div>
-                                    <div class="d-flex ms-3">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 d-flex flex-column align-items-center" v-if="buildPart.part.type == 'cpu'">
+                        <h5 class="d-inline-block title-text">CPU:</h5>
+                        <div class="part-showcase  d-flex justify-content-evenly">
+                            <img class="part-image" :src="buildPart.part.productImage" alt="cpu image">
+                            <div class="text-center ms-lg-4 d-flex flex-column align-items-center">
+                                <h6 class="mt-2 part-text">{{ buildPart.part.name }}</h6>
+                                <div class="d-flex flex-lg-column justify-content-center mt-1 mt-lg-1 align-items-center">
+                                    <div class="d-flex me-2 me-lg-0">
+                                        <h6 class="part-text">Price:</h6>
+                                        <h6 class="ms-2 text-success part-text">${{ buildPart.part.price }}</h6>
+                                    </div>
+                                    <div class="d-flex text-center mt-lg-1">
                                         <h6 class="me-2 part-text">Speed:</h6>
                                         <h6 class="part-text">{{ buildPart.part.speed }}</h6>
                                     </div>
@@ -41,18 +46,18 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mt-3 order-2" v-if="buildPart.part.type == 'gpu'">
+                    <div class="mt-4 d-flex flex-column align-items-center" v-if="buildPart.part.type == 'gpu'">
                         <h5 class="d-inline-block title-text">GPU:</h5>
-                        <div class="part-showcase">
-                            <img class="part-image" :src="buildPart.part.productImage" alt="gpu image">
-                            <div>
-                                <h6 class="me-lg-4 part-text">{{ buildPart.part.name }}</h6>
-                                <div class="d-flex justify-content-center mt-1 mt-lg-0">
-                                    <div class="d-flex mt-lg-0 mt-1">
+                        <div class="part-showcase  d-flex justify-content-evenly">
+                            <img class="part-image" :src="buildPart.part.productImage" alt="cpu image">
+                            <div class="text-center ms-lg-4 d-flex flex-column align-items-center">
+                                <h6 class="mt-2 part-text">{{ buildPart.part.name }}</h6>
+                                <div class="d-flex flex-lg-column justify-content-center mt-1 mt-lg-1 align-items-center">
+                                    <div class="d-flex me-2 me-lg-0">
                                         <h6 class="part-text">Price:</h6>
                                         <h6 class="ms-2 text-success part-text">${{ buildPart.part.price }}</h6>
                                     </div>
-                                    <div class="d-flex mt-1 ms-3">
+                                    <div class="d-flex text-center mt-lg-1">
                                         <h6 class="me-2 part-text">Gigs:</h6>
                                         <h6 class="part-text">{{ buildPart.part.gigs }}</h6>
                                     </div>
@@ -60,62 +65,74 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mt-3 order-1" v-if="buildPart.part.type == 'ram'">
+                    <div class="mt-4 d-flex flex-column align-items-center" v-if="buildPart.part.type == 'ram'">
                         <h5 class="d-inline-block title-text">RAM:</h5>
-                        <div class="part-showcase">
-                            <h6 class="me-lg-4 part-text">{{ buildPart.part.name }}</h6>
-                            <div class="d-flex mt-1 mt-lg-0">
-                                <div class="d-flex mt-lg-0 mt-1">
-                                    <h6 class="part-text">Price:</h6>
-                                    <h6 class="ms-2 text-success part-text">${{ buildPart.part.price }}</h6>
-                                </div>
-                                <div class="d-flex mt-1 ms-3">
-                                    <h6 class="me-2 part-text">Speed:</h6>
-                                    <h6 class="part-text">{{ buildPart.part.speed }}</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-3 order-2" v-if="buildPart.part.type == 'motherB'">
-                        <h5 class="d-inline-block title-text">MOTHERBOARD:</h5>
-                        <div class="part-showcase">
-                            <h6 class="me-lg-4 part-text">{{ buildPart.part.name }}</h6>
-                            <div class="d-flex mt-1 mt-lg-0">
-                                <div class="d-flex mt-lg-0 mt-1">
-                                    <h6 class="part-text">Price:</h6>
-                                    <h6 class="ms-2 text-success part-text">${{ buildPart.part.price }}</h6>
+                        <div class="part-showcase  d-flex justify-content-evenly">
+                            <img class="part-image" :src="buildPart.part.productImage" alt="cpu image">
+                            <div class="text-center ms-lg-4 d-flex flex-column align-items-center">
+                                <h6 class="mt-2 part-text">{{ buildPart.part.name }}</h6>
+                                <div class="d-flex flex-lg-column justify-content-center mt-1 mt-lg-1 align-items-center mb-1">
+                                    <div class="d-flex me-2 me-lg-0">
+                                        <h6 class="part-text">Price:</h6>
+                                        <h6 class="ms-2 text-success part-text">${{ buildPart.part.price }}</h6>
+                                    </div>
+                                    <div class="d-flex text-center mt-lg-1">
+                                        <h6 class="me-2 part-text">Speed:</h6>
+                                        <h6 class="part-text">{{ buildPart.part.speed }}</h6>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="mt-3 order-1" v-if="buildPart.part.type == 'storage'">
+                    <div class="mt-4 d-flex flex-column align-items-center" v-if="buildPart.part.type == 'motherB'">
+                        <h5 class="d-inline-block title-text">MOTHERBOARD</h5>
+                        <div class="part-showcase  d-flex justify-content-evenly">
+                            <img class="part-image" :src="buildPart.part.productImage" alt="cpu image">
+                            <div class="text-center ms-lg-4 d-flex flex-column align-items-center">
+                                <h6 class="mt-2 part-text">{{ buildPart.part.name }}</h6>
+                                <div class="d-flex flex-lg-column justify-content-center mt-1 mt-lg-1 align-items-center">
+                                    <div class="d-flex me-2 me-lg-0">
+                                        <h6 class="part-text">Price:</h6>
+                                        <h6 class="ms-2 text-success part-text">${{ buildPart.part.price }}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 d-flex flex-column align-items-center" v-if="buildPart.part.type == 'storage'">
                         <h5 class="d-inline-block title-text">STORAGE:</h5>
-                        <div class="part-showcase">
-                            <h6 class="me-lg-4 part-text">{{ buildPart.part.name }}</h6>
-                            <div class="d-flex mt-1 mt-lg-0">
-                                <div class="d-flex mt-lg-0 mt-1">
-                                    <h6 class="part-text">Price:</h6>
-                                    <h6 class="ms-2 text-success part-text">${{ buildPart.part.price }}</h6>
-                                </div>
-                                <div class="d-flex mt-1 ms-3">
-                                    <h6 class="me-2 part-text">Space:</h6>
-                                    <h6 class="part-text">{{ buildPart.part.gigs}}</h6>
+                        <div class="part-showcase  d-flex justify-content-evenly">
+                            <img class="part-image" :src="buildPart.part.productImage" alt="cpu image">
+                            <div class="text-center ms-lg-4 d-flex flex-column align-items-center">
+                                <h6 class="mt-2 part-text">{{ buildPart.part.name }}</h6>
+                                <div class="d-flex flex-lg-column justify-content-center mt-1 mt-lg-1 align-items-center mb-1">
+                                    <div class="d-flex me-2 me-lg-0">
+                                        <h6 class="part-text">Price:</h6>
+                                        <h6 class="ms-2 text-success part-text">${{ buildPart.part.price }}</h6>
+                                    </div>
+                                    <div class="d-flex text-center mt-lg-1">
+                                        <h6 class="me-2 part-text">Capacity:</h6>
+                                        <h6 class="part-text">{{ buildPart.part.gigs }}</h6>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="mt-3 order-1" v-if="buildPart.part.type == 'powerS'">
+                    <div class="mt-4 d-flex flex-column align-items-center" v-if="buildPart.part.type == 'powerS'">
                         <h5 class="d-inline-block title-text">POWER SUPPLY:</h5>
-                        <div class="part-showcase">
-                            <h6 class="me-lg-4 part-text">{{ buildPart.part.name }}</h6>
-                            <div class="d-flex mt-1 mt-lg-0">
-                                <div class="d-flex mt-lg-0 mt-1">
-                                    <h6 class="part-text">Price:</h6>
-                                    <h6 class="ms-2 text-success part-text">${{ buildPart.part.price }}</h6>
-                                </div>
-                                <div class="d-flex mt-1 ms-3">
-                                    <h6 class="me-2 part-text">Wattage:</h6>
-                                    <h6 class="part-text">{{ buildPart.part.watts}}</h6>
+                        <div class="part-showcase  d-flex justify-content-evenly">
+                            <img class="part-image" :src="buildPart.part.productImage" alt="cpu image">
+                            <div class="text-center ms-lg-4 d-flex flex-column align-items-center">
+                                <h6 class="part-text mt-1">{{ buildPart.part.name }}</h6>
+                                <div class="d-flex flex-lg-column justify-content-center mt-1 mt-lg-1 align-items-center">
+                                    <div class="d-flex me-2 me-lg-0">
+                                        <h6 class="part-text">Price:</h6>
+                                        <h6 class="ms-2 text-success part-text">${{ buildPart.part.price }}</h6>
+                                    </div>
+                                    <div class="d-flex text-center mt-lg-1">
+                                        <h6 class="me-2 part-text">Wattage:</h6>
+                                        <h6 class="part-text">{{ buildPart.part.watts }}</h6>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -140,6 +157,8 @@
     import ReviewComponent from './ReviewComponent.vue';
     export default {
         setup(){
+            let activeBuild = computed(()=> AppState.activeBuildForReview)
+
             async function CloseModal(){
                 Modal.getOrCreateInstance("#BuildModal").hide()
                 AppState.activeBuildParts = []
@@ -147,13 +166,17 @@
             }
 
             async function getReviews(){
-
+                await reviewService.setActiveBuild(activeBuild.value.id)
+            await reviewService.getActiveReviews(activeBuild.value.id)
+            Modal.getOrCreateInstance("#BuildModal").hide()
+            Modal.getOrCreateInstance("#reviewModal").show()
             }
 
         return { 
           CloseModal,  
           buildParts: computed(()=> AppState.activeBuildParts),
-          activeBuild: computed(()=> AppState.activeBuildForReview)
+          activeBuild,
+          getReviews,
          }
         }, components: {ReviewComponent}
     };
@@ -166,18 +189,22 @@
         outline: solid 2px purple;
         box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.315);
         max-height: 200px;
-        max-width: 650px;
+        width: 450px;
         padding: 5px;
         display: flex;
         justify-content: center;
+    }
+    .part-image{
+        height: 20%;
+        width: 20%;
     }
     }
     @media screen and (max-width: 576px){
         .part-showcase{
         outline: solid 2px purple;
         box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.315);
-        max-height: 200px;
-        max-width: 460px;
+        max-height: 260px;
+        width: 360px;
         padding: 5px;
         display: flex;
         flex-direction: column;
