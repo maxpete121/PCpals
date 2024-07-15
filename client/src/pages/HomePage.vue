@@ -1,5 +1,8 @@
 <template>
 <section class="container-fluid w-100">
+  <div class="row justify-content-center mt-2 mb-2">
+    <div class=""></div>
+  </div>
   <div class="row justify-content-center mb-4 mt-2 pb-2">
     <div class="col-lg-8 col-11 justify-content-center mt-3 text-center">
       <h3 class="fst-italic"></h3>
@@ -120,6 +123,16 @@ export default {
 </script>
 
 <style scoped lang="scss">
+    .warning-notification{
+        background-color: rgba(255, 238, 1, 0.438);
+        padding: 4px;
+    }
+
+    .notification-text{
+        margin: 0;
+        font-size: small;
+    }
+
 @media screen and (min-width: 576px) {
   .img-resize{
     max-height: 300px;

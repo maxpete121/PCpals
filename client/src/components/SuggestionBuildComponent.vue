@@ -147,19 +147,13 @@ export default {
             pcPartService.getBuildParts(props.suggestedBuild.build.id)
             Modal.getOrCreateInstance("#BuildModal").show()
         }
-
-        async function getActiveReviews(){
-            await setActiveBuild()
-            await reviewService.getActiveReviews(props.suggestedBuild.build.id)
-            Modal.getOrCreateInstance("#reviewModal").show()
-        }
+        
         async function setActiveBuild(){
             await reviewService.setActiveBuild(props.suggestedBuild.build.id)
         }
         return {
             createCartItem,
             createSaveBuild,
-            getActiveReviews,
             OpenDetailsModal,
             casePic: computed(() => {
                 let build = props.suggestedBuild.build

@@ -1,12 +1,12 @@
 <template>
     <section class="container-fluid">
         <div class="row mt-3 justify-content-center">
-            <div class="col-3">
+            <div style="display: none;" class="col-3">
                 <SearchBuildComponent/>
             </div>
         </div>
         <div class="row justify-content-center mt-4 mb-2">
-          <div class="col-2 d-flex justify-content-center">
+          <div class="col-10 d-flex justify-content-center">
             <h3 class="title ps-1 pe-1">Our Suggestions</h3>
           </div>
         </div>
@@ -16,7 +16,7 @@
           </div>
         </div>
         <div class="row mt-4 d-flex justify-content-center">
-          <div class="col-2 d-flex justify-content-center">
+          <div class="col-10 d-flex justify-content-center">
             <h3 class="title ps-1 pe-1">All Builds</h3>
           </div>
         </div>

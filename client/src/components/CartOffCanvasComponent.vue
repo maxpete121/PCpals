@@ -31,6 +31,7 @@
         </div>
         <div>
           <button v-if="account.id" @click="goToCheckout()" class="btn btn-success">Checkout</button>
+          <button @click="cartLogin()" class="btn btn-success">Login/Create Account</button>
         </div>
       </div>
     </div>
@@ -45,6 +46,7 @@ import CartItemComponent from '../components/CartItemComponent.vue'
 import { router } from '../router';
 import { Modal } from 'bootstrap';
 import { Offcanvas } from 'bootstrap';
+import {AuthService} from '../services/AuthService.js';
   export default {
     setup() {
       async function goToCheckout(){
@@ -52,7 +54,12 @@ import { Offcanvas } from 'bootstrap';
         Offcanvas.getOrCreateInstance('#offcanvasCart').hide()
       }
 
+      async function cartLogin(){
+        AuthService.loginWithPopup()
+      }
+
       return {
+        cartLogin,
         goToCheckout,
         cartTotal: computed(()=> AppState.totalCart),
         cartItems: computed(()=> AppState.cart),

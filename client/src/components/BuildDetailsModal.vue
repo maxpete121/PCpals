@@ -23,7 +23,7 @@
             <div class="p-2 d-flex justify-content-center">
                 <div class="warning-notification d-flex">
                     <h4 class="text-warning me-1"><i class="mdi mdi-information-outline"></i></h4>
-                    <p class="notification-text">Power scores are a general rating of a PCs capabilities. The scores attributed to each available PC part are still being adjusted for better accuracy.</p>
+                    <p class="notification-text">Power scores are a general rating of a PCs gaming capabilities. The scores attributed to each available PC part are still being adjusted for better accuracy.</p>
                 </div>
             </div>
               <div class="text-center mt-2">
