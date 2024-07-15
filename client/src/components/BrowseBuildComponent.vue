@@ -1,5 +1,5 @@
 <template>
-    <div class="build-card d-lg-flex align-items-center pb-2 h-100 pt-3 pt-lg-1 pb-lg-1">
+    <div class="build-card d-lg-flex justify-content-evenly align-items-center pb-2 h-100 pt-3 pt-lg-1 pb-lg-1">
         <div class="ms-1 d-flex flex-column align-items-center mt-1">
             <img class="cover-img" :src="casePic" alt="Case picture">
                 <h3>{{ recentBuild.name }}</h3>
@@ -177,7 +177,7 @@ export default {
 }
     .cover-img {
       max-width: 140px;
-      max-height: 100;
+      max-height: 190px;
    }
 }
 
@@ -195,7 +195,7 @@ export default {
 
  .cover-img {
       max-width: 100px;
-      max-height: 60;
+      max-height: 120px;
    }
 }
 

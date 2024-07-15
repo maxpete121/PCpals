@@ -1,5 +1,5 @@
 <template>
-    <div class="build-card d-lg-flex align-items-center pb-2 pt-2 mt-3">
+    <div class="build-card d-lg-flex justify-content-lg-evenly align-items-center pb-2 pt-2 mt-3">
         <div class="ms-1 d-flex flex-column align-items-center mt-1">
             <img class="cover-img" :src="casePic" alt="Case picture">
                 <h4>{{ suggestedBuild.build.name }}</h4>
@@ -188,8 +188,8 @@ export default {
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.208);
 }
     .cover-img {
-      max-width: 140px;
-      max-height: 100;
+        max-width: 140px;
+        max-height: 190px;
    }
 }
 
@@ -206,8 +206,8 @@ export default {
 }
 
  .cover-img {
-      max-width: 100px;
-      max-height: 60;
+    max-width: 100px;
+    max-height: 120px;
    }
 }
 

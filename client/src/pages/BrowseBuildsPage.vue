@@ -5,9 +5,9 @@
                 <SearchBuildComponent/>
             </div>
         </div>
-        <div class="row text-center justify-content-center mt-4 mb-2">
-          <div class="col-2">
-            <h3 class="title d-inline-block">Our Suggestions</h3>
+        <div class="row justify-content-center mt-4 mb-2">
+          <div class="col-2 d-flex justify-content-center">
+            <h3 class="title ps-1 pe-1">Our Suggestions</h3>
           </div>
         </div>
         <div class="row justify-content-center text-center">
@@ -15,9 +15,9 @@
             <SuggestionBuildComponent :suggestedBuild="suggestedBuild"/>
           </div>
         </div>
-        <div class="row mt-4 text-center justify-content-center">
-          <div class="col-2">
-            <h3 class="title d-inline-block ps-1 pe-1">All Builds</h3>
+        <div class="row mt-4 d-flex justify-content-center">
+          <div class="col-2 d-flex justify-content-center">
+            <h3 class="title ps-1 pe-1">All Builds</h3>
           </div>
         </div>
         <div class="row justify-content-center ps-4 pe-4 text-center pt-2 main-section">
@@ -59,17 +59,23 @@ import BuildDetailsModal from '../components/BuildDetailsModal.vue'
   .build{
   height: 300px;
 }
+
+.title{
+  border-bottom: solid 1px purple;
+  padding-bottom: 5px;
+}
 }
 
 @media screen and (max-width: 576px) {
   .build{
   height: 500px;
 }
-}
 
 .title{
   border-bottom: solid 1px purple;
   padding-bottom: 5px;
 }
+}
+
 
   </style>

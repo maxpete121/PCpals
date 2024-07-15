@@ -46,7 +46,7 @@
       </div>
     </div>
   </div>
-  <div class="row pb-4 pt-4 justify-content-center bg-dark">
+  <div style="display: none;" class="row pb-4 pt-4 justify-content-center bg-dark">
     <div class="col-9 d-flex flex-column flex-lg-row justify-content-lg-evenly justify-content-center mt-4 mb-3">
       <div class="text-center main p-3 info-top mt-lg-1 mt-3 d-flex flex-column align-self-center">
         <h3 class="title-style">Our Goal</h3>
