@@ -9,7 +9,7 @@
       return {
         account: computed(() => AppState.account)
       }
-    }, components: { AdminBuildComponent }
+    }
   }
   </script>
   
