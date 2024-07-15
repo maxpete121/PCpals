@@ -74,8 +74,8 @@ CREATE TABLE supportTickets(
   Foreign Key (creatorId) REFERENCES accounts(id) ON DELETE CASCADE
 ) default charset utf8 COMMENT '';
 
-ALTER TABLE pcBuilds
-ADD COLUMN maxWattage INT
-AFTER watts;
+ALTER TABLE supportTickets
+ADD COLUMN ticketStatus VARCHAR(50)
+AFTER issueDescription;
 
 

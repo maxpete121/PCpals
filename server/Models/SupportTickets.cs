@@ -6,4 +6,6 @@ public class SupportTickets : RepoItem<int>{
     public string CustomerEmail {get; set;}
     public string IssueSubject {get; set;}
     public string IssueDescription {get; set;}
+    public string TicketStatus {get; set;}
+    public Account Creator {get; set;}
 }

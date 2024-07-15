@@ -54,6 +54,9 @@ public class Startup
 
     services.AddScoped<SaveBuildRepository>();
     services.AddScoped<SaveBuildService>();
+
+    services.AddScoped<SupportTicketRepository>();
+    services.AddScoped<SupportTicketService>();
   }
 
   private void ConfigureCors(IServiceCollection services)
