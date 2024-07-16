@@ -8,7 +8,7 @@
                 <h4>${{ suggestedBuild.build.price }}</h4>
             </span>
         </div>
-        <div class="d-flex flex-column justify-content-center">
+        <div class="d-flex flex-column align-items-center justify-content-center">
             <div class="d-flex justify-content-center">
             <div class="d-flex justify-content-center mb-2 mt-1 pe-1">
                 <button @click="createCartItem()" class="btn-build me-3">Add to Cart</button>

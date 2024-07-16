@@ -36,7 +36,7 @@
       </div>
     </div>
   </div>
-  <div class="row justify-content-center bg-dark pt-2 pt-lg-0 container-builds">
+  <div class="row justify-content-center bg-dark pt-2 pt-lg-0 container-builds pb-2">
     <div class="col-lg-5 col-12 me-lg-4 mt-lg-4">
       <div class="text-center">
         <h4 class="title-font text-light">Our Suggestions</h4>

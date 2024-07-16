@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div class="d-flex flex-column justify-content-center">
-                <div class="d-flex justify-content-center">
+                <div class="d-flex justify-content-center align-items-baseline">
                     <h4>Speed</h4>
                     <div class="ms-2 speed-view">
                         <div class="progress progress-bg" role="progressbar" aria-label="Basic example"
@@ -28,8 +28,8 @@
                             <h5 class="title-card">Case:</h5>
                         </span>
                         <div class="part-section rounded-2 d-flex justify-content-center">
-                            <p class="fst-italic" v-if="userBuild.pcCase && userBuild.pcCase !== 'none'">{{ userBuild.pcCase }}✅</p>
-                            <p v-else>None🚫</p>
+                            <p class="fst-italic part-text" v-if="userBuild.pcCase && userBuild.pcCase !== 'none'">{{ userBuild.pcCase }}✅</p>
+                            <p class="part-text" v-else>None🚫</p>
                         </div>
                     </div>
                     <div class="mb-2">
@@ -37,8 +37,8 @@
                             <h5 class="title-card">CPU:</h5>
                         </span>
                         <div class="part-section rounded-2 d-flex justify-content-center">
-                            <p class="fst-italic" v-if="userBuild.pcCpu && userBuild.pcCpu !== 'none'">{{ userBuild.pcCpu }}✅</p>
-                            <p v-else>None🚫</p>
+                            <p class="fst-italic part-text" v-if="userBuild.pcCpu && userBuild.pcCpu !== 'none'">{{ userBuild.pcCpu }}✅</p>
+                            <p class="part-text" v-else>None🚫</p>
                         </div>
                     </div>
                     <div class="mb-2">
@@ -46,8 +46,8 @@
                             <h5 class="title-card">GPU:</h5>
                         </span>
                         <div class="part-section rounded-2 d-flex justify-content-center">
-                            <p class="fst-italic" v-if="userBuild.gpu && userBuild.gpu !== 'none'">{{ userBuild.gpu }}✅</p>
-                            <p v-else>None🚫</p>
+                            <p class="fst-italic part-text" v-if="userBuild.gpu && userBuild.gpu !== 'none'">{{ userBuild.gpu }}✅</p>
+                            <p class="part-text" v-else>None🚫</p>
                         </div>
                     </div>
                     <div class="mb-2">
@@ -55,8 +55,8 @@
                             <h5 class="title-card">Ram:</h5>
                         </span>
                         <div class="part-section rounded-2 d-flex justify-content-center">
-                            <p class="fst-italic" v-if="userBuild.ram && userBuild.ram !== 'none'">{{ userBuild.ram }}✅</p>
-                            <p v-else>None🚫</p>
+                            <p class="fst-italic part-text" v-if="userBuild.ram && userBuild.ram !== 'none'">{{ userBuild.ram }}✅</p>
+                            <p class="part-text" v-else>None🚫</p>
                         </div>
                     </div>
                     <div class="mb-2">
@@ -64,8 +64,8 @@
                             <h5 class="title-card">Motherboard:</h5>
                         </span>
                         <div class="part-section rounded-2 d-flex justify-content-center">
-                            <p class="fst-italic" v-if="userBuild.motherBoard && userBuild.motherBoard !== 'none'">{{ userBuild.motherBoard }}✅</p>
-                            <p v-else>None🚫</p>
+                            <p class="fst-italic part-text" v-if="userBuild.motherBoard && userBuild.motherBoard !== 'none'">{{ userBuild.motherBoard }}✅</p>
+                            <p class="part-text" v-else>None🚫</p>
                         </div>
                     </div>
                     <div class="mb-2">
@@ -73,8 +73,8 @@
                             <h5 class="title-card">Storage:</h5>
                         </span>
                         <div class="part-section rounded-2 d-flex justify-content-center">
-                            <p class="fst-italic" v-if="userBuild.pcStorage && userBuild.pcStorage !== 'none'">{{ userBuild.pcStorage }}✅</p>
-                            <p v-else>None🚫</p>
+                            <p class="fst-italic part-text" v-if="userBuild.pcStorage && userBuild.pcStorage !== 'none'">{{ userBuild.pcStorage }}✅</p>
+                            <p class="part-text" v-else>None🚫</p>
                         </div>
                     </div>
                     <div class="">
@@ -82,8 +82,8 @@
                             <h5 class="title-card">Power Supply:</h5>
                         </span>
                         <div class="part-section rounded-2 d-flex justify-content-center">
-                            <p class="fst-italic" v-if="userBuild.powerSupply && userBuild.powerSupply !== 'none'">{{ userBuild.powerSupply }}✅</p>
-                            <p v-else>None🚫</p>
+                            <p class="fst-italic part-text" v-if="userBuild.powerSupply && userBuild.powerSupply !== 'none'">{{ userBuild.powerSupply }}✅</p>
+                            <p class="part-text" v-else>None🚫</p>
                         </div>
                     </div>
                 </div>
@@ -219,9 +219,20 @@ export default {
 
 .part-section {
     border: solid 1px purple;
-    height: 28px;
+    max-height: 70px;
     margin-top: 7px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 2px;
+    padding-right: 2px;
+    display: flex;
+    align-items: center;
+    text-align: center;
 }
+.part-text{
+    margin: 0;
+}
+
 .part-type{
     height: 25px;  
 }

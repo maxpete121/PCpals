@@ -20,8 +20,8 @@
             <h3 class="title ps-1 pe-1">All Builds</h3>
           </div>
         </div>
-        <div class="row justify-content-center ps-4 pe-4 text-center pt-2 main-section">
-            <div class="col-lg-5 col-12 build mt-3" v-for="allBuild in allBuilds">
+        <div class="row justify-content-center text-center pt-2 main-section">
+            <div class="col-lg-5 col-11 build mt-3" v-for="allBuild in allBuilds">
               <BrowseBuildComponent :recentBuild="allBuild"/>
             </div>
         </div>

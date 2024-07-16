@@ -1,5 +1,5 @@
 <template>
-    <div class="build-card d-lg-flex justify-content-evenly align-items-center pb-2 h-100 pt-3 pt-lg-1 pb-lg-1">
+    <div class="build-card w-100 d-lg-flex justify-content-evenly align-items-center pb-2 h-100 pt-3 pt-lg-1 pb-lg-1">
         <div class="ms-1 d-flex flex-column align-items-center mt-1">
             <img class="cover-img" :src="casePic" alt="Case picture">
                 <h3>{{ recentBuild.name }}</h3>
@@ -8,7 +8,7 @@
                 <h4>${{ recentBuild.price }}</h4>
             </span>
         </div>
-        <div class="d-flex flex-column justify-content-center">
+        <div class="d-flex flex-column justify-content-center align-items-center">
             <div class="d-flex justify-content-center">
             <div class="d-flex justify-content-center mb-2 mt-1 pe-1">
                 <button @click="createCartItem()" class="btn-build me-3">Add to Cart</button>
@@ -16,7 +16,7 @@
                 <button @click="OpenDetailsModal()" class="btn-build ms-3">Details</button>
             </div>
                 </div>
-            <div class="specs text-center me-lg-4 ms-lg-3 ps-2 pe-2 pb-2 mt-1">
+            <div class="specs text-center me-lg-4 ms-lg-4 ps-2 pe-2 pb-2 mt-1">
                 <div class="sticky-top part-title d-flex justify-content-center">
                     <h5 class="fst-italic title-child">PC Parts:</h5>
                 </div>
