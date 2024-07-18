@@ -261,7 +261,7 @@ export default {
     padding-bottom: 3px;
     padding-right: 6px;
     padding-left: 6px;
-    outline: solid 2px black;
+    outline: solid 2px rgb(119, 0, 119);
     border-radius: 2px;
     color: white;
     background-color: purple;
@@ -273,7 +273,7 @@ export default {
     padding-bottom: 3px;
     padding-right: 6px;
     padding-left: 6px;
-    outline: solid 2px black;
+    outline: solid 2px rgb(119, 0, 119);
     border-radius: 2px;
     color: white;
     background-color: rgb(146, 0, 146);

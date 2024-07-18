@@ -234,7 +234,7 @@ export default {
     padding-bottom: 3px;
     border-radius: 5px;
     height: 31px;
-    outline: solid 2px black;
+    outline: solid 2px rgb(119, 0, 119);
 }
 .rating-text{
     height: 18px;
@@ -260,7 +260,7 @@ export default {
 
 .speed-case{
     background-color: purple;
-    outline: solid 2px black;
+    outline: solid 2px rgb(119, 0, 119);
     height: 31px;
     border-radius: 5px;
     padding-left: 8px;
@@ -289,7 +289,7 @@ export default {
     padding-bottom: 3px;
     padding-right: 6px;
     padding-left: 6px;
-    outline: solid 2px black;
+    outline: solid 2px rgb(119, 0, 119);
     border-radius: 2px;
     color: white;
     background-color: purple;
@@ -301,35 +301,12 @@ export default {
     padding-bottom: 3px;
     padding-right: 6px;
     padding-left: 6px;
-    outline: solid 2px black;
+    outline: solid 2px rgb(119, 0, 119);
     border-radius: 2px;
     color: white;
     background-color: rgb(146, 0, 146);
     cursor: pointer;
 }
 
-.btn-delete {
-    all: unset;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding-right: 6px;
-    padding-left: 6px;
-    outline: solid 2px red;
-    background-color: red;
-    color: white;
-    border-radius: 2px;
-}
 
-.btn-delete:hover {
-    all: unset;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding-right: 6px;
-    padding-left: 6px;
-    outline: solid 2px red;
-    border-radius: 2px;
-    background-color: rgb(211, 0, 0);
-    color: white;
-    cursor: pointer;
-}
 </style>

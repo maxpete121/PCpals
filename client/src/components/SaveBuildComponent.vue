@@ -13,7 +13,7 @@
             <div class="d-flex justify-content-center mb-2 mt-1 pe-1">
                 <button @click="createCartItem()" class="btn-build me-3">Add to Cart</button>
                 <button @click="deleteSaveBuild()"  class="btn-build">Remove</button>
-                <button @click="getActiveReviews()" class="btn-build ms-3">Reviews</button>
+                <button @click="OpenDetailsModal()" class="btn-build ms-3">Details</button>
             </div>
                 </div>
             <div class="specs text-center me-lg-4 ms-lg-3 ps-2 pe-2 pb-2 mt-1">
@@ -116,15 +116,17 @@ import { cartItemService } from '../services/CartItemService';
 import Pop from '../utils/Pop';
 import { saveBuildService } from '../services/SaveBuildService';
 import { SaveBuild } from '../models/SaveBuild';
+import {pcPartService} from '../services/pcPartService'
 export default {
     props: { saveBuild: { type: SaveBuild, required: true } },
     setup(props) {
         let useAccount = computed(()=> AppState.account)
-        async function getActiveReviews(){
-            await setActiveBuild()
-            await reviewService.getActiveReviews(props.saveBuild.buildId)
-            Modal.getOrCreateInstance("#reviewModal").show()
+        async function OpenDetailsModal(){
+            setActiveBuild()
+            await pcPartService.getBuildParts(props.saveBuild.build.id)
+            Modal.getOrCreateInstance("#BuildModal").show()
         }
+
         async function setActiveBuild(){
             await reviewService.setActiveBuild(props.saveBuild.buildId)
         }
@@ -153,7 +155,7 @@ export default {
                 return style
             }),
             deleteSaveBuild,
-            getActiveReviews,
+            OpenDetailsModal,
             createCartItem,
         }
     }, components: {ReviewModal}
@@ -189,7 +191,7 @@ export default {
     padding-bottom: 3px;
     border-radius: 5px;
     height: 31px;
-    outline: solid 2px black;
+    outline: solid 2px rgb(119, 0, 119);
 }
 .rating-text{
     height: 18px;
@@ -224,7 +226,7 @@ export default {
 
 .speed-case{
     background-color: purple;
-    outline: solid 2px black;
+    outline: solid 2px rgb(119, 0, 119);
     height: 31px;
     border-radius: 5px;
     padding-left: 8px;
@@ -248,7 +250,7 @@ export default {
     padding-bottom: 3px;
     padding-right: 6px;
     padding-left: 6px;
-    outline: solid 2px black;
+    outline: solid 2px rgb(119, 0, 119);
     border-radius: 2px;
     color: white;
     background-color: purple;
@@ -260,7 +262,7 @@ export default {
     padding-bottom: 3px;
     padding-right: 6px;
     padding-left: 6px;
-    outline: solid 2px black;
+    outline: solid 2px rgb(119, 0, 119);
     border-radius: 2px;
     color: white;
     background-color: rgb(146, 0, 146);

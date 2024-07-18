@@ -212,6 +212,7 @@
         padding: 5px;
         display: flex;
         justify-content: center;
+        border-radius: 8px;
     }
     .part-image{
         height: 20%;
@@ -228,6 +229,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        border-radius: 8px;
     }
     .part-image{
         height: 30%;

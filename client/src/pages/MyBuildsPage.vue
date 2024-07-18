@@ -30,6 +30,7 @@
         </div>
       </div>
     </div>
+    <BuildDetailsModal id="BuildModal"/>
   </section>
 </template>
 
@@ -42,6 +43,7 @@ import UserBuildComponent from '../components/UserBuildComponent.vue';
 import SaveBuildComponent from '../components/SaveBuildComponent.vue'
 import Pop from '../utils/Pop';
 import { saveBuildService } from '../services/SaveBuildService';
+import BuildDetailsModal from '../components/BuildDetailsModal.vue'
 
 export default {
   setup() {
@@ -79,7 +81,7 @@ export default {
       userBuildType: computed(()=> AppState.userBuildType),
       saveBuilds: computed(()=> AppState.savedUserBuilds)
     }
-  }, components: {UserBuildComponent, SaveBuildComponent}
+  }, components: {UserBuildComponent, SaveBuildComponent, BuildDetailsModal}
 }
 </script>
 
