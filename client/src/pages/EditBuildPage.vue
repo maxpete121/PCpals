@@ -1,8 +1,11 @@
 <template>
     <div class="container-fluid">
         <div class="row mt-3 justify-content-center">
-            <div class="col-lg-5 col-12 pb-2 bg-dark pt-3 part-view order-lg-0 order-1">
-                <div class="mb-2 p-2 d-lg-flex justify-content-center">
+            <div class="col-lg-5 col-12 pb-2 bg-dark pt-3 part-view">
+                <div class="mb-3 p-2 d-flex flex-column align-items-center">
+                    <div class="mb-2">
+                        <button @click="backToBuilds()" class="back-button"><i class="mdi mdi-arrow-left"></i> Back</button>
+                    </div>
                     <div class="info-box bg-light p-2">
                         <div class="pc-info d-flex justify-content-between">
                             <h5 class="ms-3 me-2">Build name:</h5>
@@ -87,7 +90,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5 col-12 d-flex flex-column align-items-center order-lg-1 order-0 ps-3 pe-3 ms-lg-4 mb-3 mb-lg-0">
+            <div class="col-lg-6 col-12 d-flex flex-column align-items-center mt-3 mt-lg-0 ps-3 pe-3 ms-lg-4 mb-3 mb-lg-0">
                 <div class="sticky-top w-100">
                     <div class="text-center">
                         <h4 class="title-font d-inline-block ps-2 pe-2">Add Parts</h4>
@@ -99,7 +102,7 @@
                             <button v-if="activeBuild.gpu == null || activeBuild.gpu == 'none'" @click="getStockParts('gpu')" class="type-button">GPUs</button>
                             <button v-if="activeBuild.motherBoard == null || activeBuild.motherBoard == 'none'" @click="getStockParts('motherB')" class="type-button">Motherboards</button>
                             <button v-if="activeBuild.ram == null || activeBuild.ram == 'none'" @click="getStockParts('ram')" class="type-button">RAM</button>
-                            <button v-if="activeBuild.storage == null || activeBuild.storage == 'none'" @click="getStockParts('storage')" class="type-button">Storage</button>
+                            <button v-if=" Storages.length == 0" @click="getStockParts('storage')" class="type-button">Storage</button>
                             <button v-if="activeBuild.powerSupply == null || activeBuild.powerSupply == 'none'" @click="getStockParts('powerS')" class="type-button-end">Power Supply</button>
                         </span>
                         <div class="d-flex flex-column align-items-center">
@@ -111,7 +114,7 @@
                             </span>
                             <span class="box select-small mt-3">
                                 <button v-if="activeBuild.ram == null || activeBuild.ram == 'none'" @click="getStockParts('ram')" class="type-button">RAM</button>
-                                <button v-if="activeBuild.storage == null || activeBuild.storage == 'none'" @click="getStockParts('storage')" class="type-button">Storage</button>
+                                <button v-if="Storages.length == 0" @click="getStockParts('storage')" class="type-button">Storage</button>
                                 <button v-if="activeBuild.powerSupply == null || activeBuild.powerSupply == 'none'" @click="getStockParts('powerS')" class="type-button-end">Power Supply</button>
                             </span>
                         </div>
@@ -149,6 +152,7 @@ import { stockPartService } from '../services/StockPartService';
 import StockPartComponent from '../components/StockPartComponent.vue';
 import PcPartComponent from '../components/PcPartComponent.vue';
 import { pcPartService } from '../services/pcPartService';
+import { router } from '../router';
 export default {
     setup(){
         let route = useRoute()
@@ -205,11 +209,17 @@ export default {
             getStockParts('motherB')
         }
 
+        async function backToBuilds(){
+            await pcBuildService.getUserBuilds()
+            router.push({ path: '/MyBuilds'})
+        }
+
     return { 
         activeBuild,
         getStockParts,
         setCpuType,
         setMotherboardType,
+        backToBuilds,
         stockParts: computed(()=> AppState.activeStockParts),
         pcParts: computed(()=> AppState.activeBuildParts),
         CPUs: computed(()=> AppState.cpu),
@@ -260,11 +270,35 @@ export default {
     padding-bottom: 5px;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.322);
     border-radius: 8px;
+    min-width: 300px;
 }
 .select-large{
     display: none;
 }
 }
+.back-button{
+    all: unset;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    background-color: purple;
+    color: white;
+    border-radius: 5px;
+}
+
+.back-button:hover{
+    all: unset;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    background-color: rgb(165, 0, 165);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 .title-font{
     border-bottom: solid 2px purple;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;

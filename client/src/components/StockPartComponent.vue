@@ -1,27 +1,28 @@
 <template>
-    <div class="part-card d-lg-flex align-items-center justify-content-between w-100">
-        <div class="d-flex align-items-center justify-content-center">
-            <img class="part-image" :src="stockPart.productImage" alt="Part image">
-            <h5 class="ms-3 text-size">{{ stockPart.name }}</h5>
-        </div>
-        <div class="d-flex align-items-center">
-            <div class="d-flex justify-content-center">
-                <div class="d-flex price-area justify-content-center me-3">
-                    <h6 class="me-2">Price:</h6>
-                    <h6>${{ stockPart.price }}</h6>
-                </div>
-                <div class="d-flex">
-                    <h6 class="me-2">Speed</h6>
-                    <div class="me-2 speed-view mt-1">
-                        <div class="progress progress-bg" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-                            <div class="progress-bar progress-bg-child" :style="progressWidth"></div>
-                        </div>
+    <div class="part-card d-flex align-items-center justify-content-between w-100 pt-1 pb-1 ps-2 pe-2">
+        <div class="d-flex flex-column flex-lg-row text-center align-items-center justify-content-lg-start justify-content-between w-50">
+            <img class="part-image ms-lg-1" :src="stockPart.productImage" alt="Part image">
+            <div class="d-flex mt-lg-0 mt-1 ms-lg-3">
+                <h6 v-if="stockPart.type == 'case'" class="me-2">Quality</h6>
+                <h6 v-else class="me-2">Speed</h6>
+                <div class="me-2 speed-view mt-1">
+                    <div class="progress progress-bg" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar progress-bg-child" :style="progressWidth"></div>
                     </div>
                 </div>
             </div>
-            <div class="options-card me-3 d-flex align-items-center">
-                <button class="option-button">Info</button>
-                <button @click="addPcPart()" class="option-button-two">Add</button>
+        </div>
+        <div class="d-flex flex-column text-center flex-lg-row justify-content-lg-end align-items-center w-50">
+            <h5 class="text-size">{{ stockPart.name }}</h5>
+            <div class="d-flex ms-lg-3 price-area justify-content-center me-lg-3">
+                    <h6 class="me-2">Price:</h6>
+                    <h6>${{ stockPart.price }}</h6>
+            </div>
+            <div class="">
+                <div class="options-card d-flex align-items-center">
+                    <button class="option-button">Info</button>
+                    <button @click="addPcPart()" class="option-button-two">Add</button>
+                </div>
             </div>
         </div>
     </div>
@@ -62,6 +63,20 @@ export default {
     .text-size{
         font-size: small;
     }
+    .part-image {
+    max-height: 70px;
+    max-width: 100px;
+}
+}
+
+@media screen and (min-width: 576px){
+    .text-size{
+        font-size: small;
+    }
+    .part-image {
+    max-height: 70px;
+    max-width: 170px;
+}
 }
 .part-card {
     outline: solid 1px purple;
@@ -75,12 +90,6 @@ export default {
     outline: solid 1px purple;
     cursor: pointer;
     transform: scale(1.02);
-}
-
-.part-image {
-    max-height: 70px;
-    max-width: 170px;
-    border-radius: 10px;
 }
 
 .speed-view{
@@ -100,6 +109,7 @@ export default {
     border-radius: 20px;
     overflow: hidden;
     padding: 1px;
+    width: 96px;
 }
 
 .option-button {

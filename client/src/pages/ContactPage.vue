@@ -65,9 +65,10 @@
       let ticketData = ref()
       ticketData.value = {}
       async function createSupportTicket(){
-          await supportTicketService.createSupportTicket(ticketData.value)
-          ticketData.value = {}
-          Pop.success("Ticket Submitted")
+        ticketData.value.ticketStatus = 'new'
+        await supportTicketService.createSupportTicket(ticketData.value)
+        ticketData.value = {}
+        Pop.success("Ticket Submitted")
       }
       return {
         account: computed(()=> AppState.account),

@@ -40,25 +40,30 @@
                             <label for="">AdminCode</label>
                             <input v-model="suggestionData.adminCode" type="text">
                         </div>
-                        <div>
+                        <div class="mt-2 text-center">
                             <button>Add Suggestion</button>
                         </div>
                     </form>
                 </div>
-                <div class="w-50">
-                    <h3>Builds to suggest</h3>
+                <div class="w-50 user-builds bg-dark">
+                    <h3 class="text-light">Builds to suggest</h3>
                     <div v-for="build in builds">
                         <AdminBuildComponent :userBuild="build"/>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row mt-3">
+        <div class="row mt-3 justify-content-center">
             <div class="col-5">
                 <h3>Suggested Builds Posted</h3>
                 <div v-for="suggestion in suggestions">
                     <SuggestedAdminBuild :suggestedBuild="suggestion"/>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-5">
+                <h4>Support Tickets</h4>
             </div>
         </div>
     </section>
@@ -108,5 +113,10 @@ export default {
 
 
 <style lang="scss" scoped>
-
+.user-builds{
+    max-height: 400px;
+    overflow-y: scroll;
+    border-radius: 10px;
+    padding: 10px;
+}
 </style>

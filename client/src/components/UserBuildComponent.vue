@@ -122,8 +122,16 @@ export default {
     props: { userBuild: { type: PcBuild, required: true } },
     setup(props) {
         async function getPcById() {
-            await pcBuildService.getPcById(props.userBuild.id)
-            router.push({ name: 'EditBuild', params: { buildId: props.userBuild.id } })
+            if(props.userBuild.isPrivate == false){
+                if(window.confirm("Editing a public build will make it private. Would you like to continue?")){
+                    await updateShare()
+                    await pcBuildService.getPcById(props.userBuild.id)
+                    router.push({ name: 'EditBuild', params: { buildId: props.userBuild.id } })
+                }
+            }else{
+                await pcBuildService.getPcById(props.userBuild.id)
+                router.push({ name: 'EditBuild', params: { buildId: props.userBuild.id } })
+            }
         }
         async function updateShare() {
             await pcBuildService.updateShare(props.userBuild.id)
