@@ -88,7 +88,7 @@
                     </div>
                 </div>
                 <div class="d-lg-flex justify-content-center mt-2 button-holder-lg">
-                    <button class="btn-build me-2">Add to Cart</button>
+                    <button @click="createCartItem()" class="btn-build me-2">Add to Cart</button>
                     <button v-if="userBuild.isPrivate == false" @click="updateShare('true')" class="btn-build me-2">Make Private</button>
                     <button v-else @click="updateShare('false')" class="btn-build me-2">Share Build</button>
                     <button @click="getPcById()" class="btn-build me-2">Edit Build</button>
@@ -118,9 +118,12 @@ import { PcBuild } from '../models/PcBuild';
 import { pcBuildService } from '../services/PcBuildService';
 import { router } from '../router';
 import Pop from '../utils/Pop';
+import {cartItemService} from '../services/CartItemService'
+import {AuthService} from '../services/AuthService'
 export default {
     props: { userBuild: { type: PcBuild, required: true } },
     setup(props) {
+        let useAccount = computed(()=> AppState.account)
         async function getPcById() {
             if(props.userBuild.isPrivate == false){
                 if(window.confirm("Editing a public build will make it private. Would you like to continue?")){
@@ -140,10 +143,20 @@ export default {
             if (window.confirm('Would you like to delete this build?'))
                 await pcBuildService.deleteBuild(props.userBuild.id)
         }
+        async function createCartItem(){
+            if(useAccount.value.id){
+                let itemData = {creatorId: useAccount.value.id, buildId: props.userBuild.id}
+                await cartItemService.createCartItem(itemData)
+                Pop.success("Added to cart")
+            }else if(window.confirm("You must create an account to add a build to your cart. Would you like to proceed?")){
+                AuthService.loginWithPopup()
+            }
+        }
         return {
             deleteBuild,
             getPcById,
             updateShare,
+            createCartItem,
             casePic: computed(() => {
                 if (props.userBuild.casePicture == 'none' || props.userBuild.casePicture == null) {
                     return 'https://rusutikaa.github.io/docs/developer.apple.com/library/archive/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Art/defaultphoto_2x.png'

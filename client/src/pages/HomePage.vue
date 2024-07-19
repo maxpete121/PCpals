@@ -4,7 +4,8 @@
     <div class="p-2 d-flex justify-content-center">
         <div class="warning-notification d-flex align-items-lg-center">
             <h4 class="text-warning me-1 mt-lg-2"><i class="mdi mdi-information-outline"></i></h4>
-            <p class="notification-text">WARNING: Computers can not yet be purchased as this website is currently in development. Please submit any issues or bugs via support ticket <router-link :to="{ name: 'Contact' }" >here</router-link>.</p>
+            <p class="notification-text">WARNING: Computers can not yet be purchased as this website is currently in development. Please submit any issues or bugs via support ticket <router-link :to="{ name: 'Contact' }" >here</router-link>.
+            To experience all features, create an account with a fake email and password.</p>
         </div>
     </div>
   </div>

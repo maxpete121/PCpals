@@ -39,7 +39,9 @@ export default {
       user: computed(() => AppState.user),
       account: computed(() => AppState.account),
       async login() {
-        AuthService.loginWithPopup()
+        if(window.confirm("This login is for development purposes. To experience all features, please enter a fake email and password when creating an account.")){
+          AuthService.loginWithPopup()
+        }
       },
       async logout() {
         AuthService.logout({ returnTo: window.location.origin })

@@ -1,15 +1,30 @@
 <template>
   <section class="container-fluid">
     <div class="row justify-content-center">
-      <div class="col-lg-4 col-11 mt-3 me-lg-3">
+      <div class="col-lg-4 d-flex flex-column align-items-center col-11 mt-3 me-lg-4">
         <div class="text-center">
           <h4>Your Items</h4>
         </div>
-        <div class="mt-3" v-for="cartItem in cartItems">
-          <CartItemComponent :cartItem="cartItem"/>
+        <div class="text-center cart-items w-100 pt-1 pb-2">
+          <h5 v-if="cartItems.length == 0">There are no items in your cart.</h5>
+          <div class="mt-3" v-for="cartItem in cartItems">
+            <CartItemComponent :cartItem="cartItem"/>
+          </div>
+          <div class="d-flex bg-light justify-content-between p-2 rounded-1">
+            <h5>Build Fee</h5>
+            <div class="d-flex">
+              <h5>$100</h5>
+              <h6 v-if="cartItems.length > 0">x</h6>
+              <h6 v-if="cartItems.length > 0">{{ cartItems.length }}</h6>
+            </div>
+          </div>
+        </div>
+        <div class="cart-total d-flex justify-content-end pt-2 w-100">
+          <h4 class="me-2">Total:</h4>
+          <h4>${{ cartTotal }}</h4>
         </div>
       </div>
-      <div class="col-lg-3 col-11 mt-3 me-lg-3">
+      <div class="col-lg-3 form-section col-11 mt-3 ms-lg-4">
         <form @submit.prevent="checkout()" action="">
           <div class="">
             <h4 class="mb-2 title pb-1">Name</h4>
@@ -93,7 +108,8 @@ import Pop from '../utils/Pop';
       return {
         checkout,
         cartItems: computed(() => AppState.cart),
-        account: computed(() => AppState.account)
+        account: computed(() => AppState.account),
+        cartTotal: computed(()=> AppState.totalCart)
       }
     }, components: { AdminBuildComponent, CartItemComponent }
   }
@@ -107,6 +123,12 @@ import Pop from '../utils/Pop';
        border-radius: 3px;
        width: 220px;
     }
+
+    .cart-items{
+      border-bottom: solid 1px purple;
+      overflow-y: scroll;
+      height: 400px;
+    }
 }
 
     @media screen and (max-width: 576px) {
@@ -116,6 +138,17 @@ import Pop from '../utils/Pop';
        border-radius: 3px;
        width: 220px;
     }
+
+    .cart-items{
+      border-bottom: solid 1px purple;
+      overflow-y: scroll;
+      height: 200px;
+    }
+
+    .form-section{
+      display: flex;
+      justify-content: center;
+    }
 }
 
   img {
@@ -123,6 +156,9 @@ import Pop from '../utils/Pop';
   }
   .title{
     border-bottom:solid 1px purple;
+  }
+  .cart-total{
+    border-bottom: solid 1px purple;
   }
 
 
