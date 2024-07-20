@@ -144,7 +144,7 @@ export default {
 
         async function OpenDetailsModal(){
             setActiveBuild()
-            pcPartService.getBuildParts(props.suggestedBuild.build.id)
+            await pcPartService.getBuildParts(props.suggestedBuild.build.id)
             Modal.getOrCreateInstance("#BuildModal").show()
         }
         
