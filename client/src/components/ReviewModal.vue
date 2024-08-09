@@ -10,7 +10,7 @@
         <div>
           <div class="text-center d-flex flex-column align-items-center">
             <button class="review-button mb-2" @click="backToDetails()"><i class="mdi mdi-arrow-left-bold"></i> Back to Details</button>
-            <button style="display: block;" id="createButton" class="review-button" @click="showReviewCreate()">Leave a review!</button>
+            <button v-if="account.id" style="display: block;" id="createButton" class="review-button" @click="showReviewCreate()">Leave a review!</button>
             <button style="display: none;" id="closeButton" class="review-button" @click="hideReviewCreate()">Close</button>
             <div style="display: none;" id="reviewCreateWrapper">
               <form @submit.prevent="createReview()" class="d-flex flex-column align-items-center mt-2">
@@ -97,6 +97,7 @@ export default {
       }
     return { 
       activeReviews: computed(()=> AppState.activeBuildReviews),
+      account,
       activeBuild,
       createReview,
       closeModal,

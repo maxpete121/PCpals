@@ -38,11 +38,11 @@
     </div>
   </div>
   <div class="row justify-content-center bg-dark pt-2 pt-lg-0 container-builds pb-2">
-    <div class="col-lg-5 col-12 me-lg-4 mt-lg-4">
+    <div class="col-lg-5 col-12 me-lg-4 mb-2 mb-lg-0 mt-lg-4">
       <div class="text-center">
         <h4 class="title-font text-light">Our Suggestions</h4>
       </div>
-      <div class="w-100 d-flex flex-column pt-2 pb-3 align-items-center bg-white section-build ps-2 pe-2">
+      <div class="w-100 d-flex flex-column pt-2 pb-3 align-items-center section-build ps-2 pe-2">
         <div v-for="suggestion in suggestions" class="">
           <SuggestionBuildComponent :suggestedBuild="suggestion"/>
         </div>
@@ -52,7 +52,7 @@
       <div class="text-center mt-lg-0">
         <h4 class="title-font text-light">Recent Builds</h4>
       </div>
-      <div class="w-100 bg-white align-items-center section-build d-flex flex-column align-items-center ps-2 pe-2 pt-2 pb-3">
+      <div class="w-100 align-items-center section-build d-flex flex-column align-items-center ps-2 pe-2 pt-2 pb-3">
         <div class="d-flex justify-content-center" v-for="recentBuild in recentBuilds">
           <HomeBuildComponent :recentBuild="recentBuild"/>
         </div>
@@ -163,10 +163,26 @@ export default {
 }
 
 .section-build{
-  outline: solid 2px purple;
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.171);
+  border-top: solid 2px white;
+  border-bottom: solid 2px white;
+  // box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.171);
   overflow-y: scroll;
   height: 345px;
+}
+.section-build::-webkit-scrollbar{
+  width: 8px;
+}
+.section-build::-webkit-scrollbar-track{
+  background: rgb(37, 37, 37);
+  outline: solid 1px white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 3px;
+}
+.section-build::-webkit-scrollbar-thumb{
+  background: white;
+  border-radius: 3px;
+  margin: 1px;
 }
 }
 @media screen and (max-width: 576px) {
@@ -189,10 +205,25 @@ export default {
 }
 
 .section-build{
-  outline: solid 2px purple;
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.171);
+  border-top: solid 2px white;
+  border-bottom: solid 2px white;
   overflow-y: scroll;
   height: 530px;
+}
+.section-build::-webkit-scrollbar{
+  width: 5px;
+}
+.section-build::-webkit-scrollbar-track{
+  background: rgb(37, 37, 37);
+  outline: solid 1px white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 3px;
+}
+.section-build::-webkit-scrollbar-thumb{
+  background: white;
+  border-radius: 3px;
+  margin: 1px;
 }
 
 .container-builds{
