@@ -38,7 +38,7 @@
           </li>
         </ul>
         <!-- LOGIN COMPONENT HERE -->
-        <div class="me-3 sticky-top">
+        <div class="me-lg-3 mt-lg-0 mt-2 mb-lg-0 mb-1 sticky-top">
           <button @click="getCartItems()" class="cart-button sticky-top" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
             <i class="text-light mdi mdi-cart fs-3"></i>
           </button>

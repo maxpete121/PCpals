@@ -10,28 +10,31 @@
     </div>
   </div>
   <div class="row justify-content-center mb-4 mt-2 pb-2">
-    <div class="col-lg-8 col-11 justify-content-center mt-1 text-center">
-      <h3 class="fst-italic"></h3>
-      <div class="d-flex flex-column flex-lg-row justify-content-center">
-        <div class="text-center top-home-info mt-3 mb-lg-3 me-lg-4 pb-2 bg-white d-flex flex-column align-self-center">
-          <h4>Build a PC</h4>
+    <div class="col-lg-8 col-11 justify-content-evenly mt-1 text-center">
+      <div class="d-flex flex-column flex-lg-row justify-content-evenly">
+        <div class="text-center mt-4 mt-lg-2 mb-lg-3 me-lg-4 pb-2 d-flex flex-column align-self-center">
+          <h4 class="fst-italic title-font">Build a PC</h4>
           <img class="img-browse d-flex align-self-center" src="https://storage-asset.msi.com/global/picture/article/seo_168231685364461e357a5f07.82597235.jpeg" alt="">
-          <h6 class="mt-3">Login or create an account to access our PC Builder.</h6>
-          <h6>Set the builder to either pro or beginner.</h6>
-          <h6>Build the PC of your dreams!</h6>
-          <div class="text-center">
-            <button @click="editBuildPage()" class="home-btn mt-3" v-if="account.id">Create a build!</button>
-            <button @click="loginHome()" class="home-btn mt-3" v-if="!account.id">Login/Create Account</button>
+          <div class="top-home-info mt-3 d-flex flex-column align-items-center">
+            <h6 class="mt-3">Login or create an account to access our PC Builder.</h6>
+            <h6>Set the builder to either pro or beginner.</h6>
+            <h6>Build the PC of your dreams!</h6>
+            <div class="text-center">
+              <button @click="editBuildPage()" class="home-btn mt-3" v-if="account.id">Create a build!</button>
+              <button @click="loginHome()" class="home-btn mt-3" v-if="!account.id">Login/Create Account</button>
+            </div>
           </div>
         </div>
-        <div class="text-center top-home-info mt-3 mb-lg-3 ms-lg-4 pb-2 bg-white d-flex flex-column align-self-center">
-          <h4>Browse PCs</h4>
+        <div class="text-center mt-4 mt-lg-2 mb-lg-3 ms-lg-4 pb-2 d-flex flex-column align-self-center">
+          <h4 class="fst-italic title-font">Browse PCs</h4>
           <img class="img-browse d-flex align-self-center" src="https://media.cnn.com/api/v1/images/stellar/prod/200630133939-build-3-1.jpg?q=w_4032,h_3024,x_0,y_0,c_fill" alt="">
-          <h6 class="mt-3">Browse builds made and suggested by us!</h6>
-          <h6>Buy builds made by other customers!</h6>
-          <h6>Save builds your interested in for later!</h6>
-          <div class="text-center">
-            <button @click="goToBrowseBuilds()" class="home-btn mt-3">Browse User Builds</button>
+          <div class=" top-home-info mt-3 d-flex flex-column align-items-center">
+            <h6 class="mt-3">Browse builds made and suggested by us!</h6>
+            <h6>Buy builds made by other customers!</h6>
+            <h6>Save builds your interested in for later!</h6>
+            <div class="text-center">
+              <button @click="goToBrowseBuilds()" class="home-btn mt-3">Browse User Builds</button>
+            </div>
           </div>
         </div>
       </div>
@@ -40,7 +43,7 @@
   <div class="row justify-content-center bg-dark pt-2 pt-lg-0 container-builds pb-2">
     <div class="col-lg-5 col-12 me-lg-4 mb-2 mb-lg-0 mt-lg-4">
       <div class="text-center">
-        <h4 class="title-font text-light">Our Suggestions</h4>
+        <h4 class="title-font fst-italic text-light">Our Suggestions</h4>
       </div>
       <div class="w-100 d-flex flex-column pt-2 pb-3 align-items-center section-build ps-2 pe-2">
         <div v-for="suggestion in suggestions" class="">
@@ -50,7 +53,7 @@
     </div>
     <div class="col-lg-5 mt-lg-0 mt-4 col-12 ms-lg-4 mt-lg-4">
       <div class="text-center mt-lg-0">
-        <h4 class="title-font text-light">Recent Builds</h4>
+        <h4 class="title-font fst-italic text-light">Recent Builds</h4>
       </div>
       <div class="w-100 align-items-center section-build d-flex flex-column align-items-center ps-2 pe-2 pt-2 pb-3">
         <div class="d-flex justify-content-center" v-for="recentBuild in recentBuilds">
@@ -150,16 +153,14 @@ export default {
   }
 
   .top-home-info{
-  outline: solid 2px purple;
-  border-radius: 10px;
-  width: 550px;
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.582);
+    border-top: solid 1px purple;
 }
 
 .img-browse{
   height: 220px;
   width: 340px;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.24);
+  border-radius: 5px;
 }
 
 .section-build{
@@ -193,15 +194,11 @@ export default {
   .img-browse{
   height: 150px;
   width: 250px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.24);
 }
 .top-home-info{
-  outline: solid 2px purple;
-  border-radius: 10px;
-  width: 300px;
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.582);
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 15px;
+ border-top: solid 1px purple;
 }
 
 .section-build{
@@ -267,9 +264,9 @@ width: 250px;
   padding-top: 4px;
   padding-bottom: 4px;
   border-radius: 10px;
-  background-color: whitesmoke;
-  outline: solid 2px purple;
-  color: black;
+  background-color: purple;
+  outline: solid 2px rgb(116, 0, 116);
+  color: white;
 }
 .home-btn:hover{
   all: unset;
@@ -277,10 +274,10 @@ width: 250px;
   padding-right: 8px;
   padding-top: 4px;
   padding-bottom: 4px;
-  outline: solid 2px purple;
+  outline: solid 2px rgb(116, 0, 116);
   border-radius: 10px;
-  background-color: rgb(221, 221, 221);
-  color: black;
+  background-color: rgb(146, 0, 146);
+  color: white;
   cursor: pointer;
 }
 
