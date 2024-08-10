@@ -17,13 +17,17 @@
             <div class="d-flex justify-content-center mt-2">
                 <h5 class="me-2">Power Score:</h5>
                 <h5>{{ activeBuild.powerScore }}/100</h5>
-                <h4 class="ms-2 text-warning" title="Power scores are a general rating on a PCs capabilities"><i class="mdi mdi-information-box-outline"></i></h4>
+                <h4 @click="openWarning()" class="ms-2 notify text-warning" title="Power scores are a general rating on a PCs capabilities"><i class="mdi mdi-information-box-outline"></i></h4>
                 <p class="pt-1 ms-1 notification-text">Notification</p>
             </div>
-            <div class="p-2 d-flex justify-content-center">
+            <div id="powerScoreWarning" class="p-2 ">
                 <div class="warning-notification d-flex">
                     <h4 class="text-warning me-1"><i class="mdi mdi-information-outline"></i></h4>
                     <p class="notification-text">Power scores are a general rating of a PCs gaming capabilities. The scores attributed to each available PC part are still being adjusted for better accuracy.</p>
+                    <i @click="closeWarning()" class="mdi mdi-close close-btn"></i>
+                </div>
+                <div class="d-flex justify-content-center mt-2">
+    
                 </div>
             </div>
               <div class="text-center mt-2">
@@ -191,11 +195,21 @@
             Modal.getOrCreateInstance("#reviewModal").show()
             }
 
+            async function closeWarning(){
+                document.getElementById('powerScoreWarning').style.display = 'none'
+            }
+
+            async function openWarning(){
+                document.getElementById('powerScoreWarning').style.display = 'block'
+            }
+
         return { 
           CloseModal,  
           buildParts: computed(()=> AppState.activeBuildParts),
           activeBuild,
           getReviews,
+          closeWarning,
+          openWarning,
          }
         }, components: {ReviewComponent}
     };
@@ -281,5 +295,19 @@
     .notification-text{
         margin: 0;
         font-size: small;
+    }
+    .close-btn{
+        margin: 0;
+        padding: 0;
+    }
+
+    .close-btn:hover{
+        margin: 0;
+        padding: 0;
+        transform: scale(1.1);
+    }
+
+    .notify:hover{
+        cursor: pointer;
     }
     </style>

@@ -211,6 +211,7 @@ export default {
     outline: solid 2px purple;
     box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.219);
     background-color: whitesmoke;
+    border-radius: 7px;
 }
 
 .speed-view {
